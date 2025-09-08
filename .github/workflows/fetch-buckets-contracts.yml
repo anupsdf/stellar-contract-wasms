@@ -39,13 +39,17 @@ jobs:
         run: |
           BUCKETS=$(cd list-buckets && cargo run --locked)
           echo "Buckets: $BUCKETS"
-          IFS=' ' read -r -a bucket_array <<< "$BUCKETS"
-          for i in {0..21}; do
-            if [ $i -lt ${#bucket_array[@]} ]; then
-              echo "bucket$i=${bucket_array[$i]}" >> $GITHUB_OUTPUT
-            else
-              echo "bucket$i=" >> $GITHUB_OUTPUT
+          i=0
+          while IFS= read -r line; do
+            if [ -n "$line" ] && [ $i -lt 22 ]; then
+              echo "bucket$i=$line" >> "$GITHUB_OUTPUT"
+              i=$((i+1))
             fi
+          done <<< "$BUCKETS"
+          # Fill remaining outputs with empty strings
+          while [ $i -lt 22 ]; do
+            echo "bucket$i=" >> "$GITHUB_OUTPUT"
+            i=$((i+1))
           done
 
   get-contracts:
