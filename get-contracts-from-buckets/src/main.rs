@@ -1,4 +1,5 @@
 use flate2::read::GzDecoder;
+use human_bytes::human_bytes;
 use reqwest::Client;
 use std::env;
 use std::fs;
@@ -41,17 +42,17 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         
         let compressed_data = if Path::new(&cache_path).exists() {
             // Load from cache
-            println!("Loading bucket from cache: {}", bucket_name);
+            println!("Bucket: {} (cached)", bucket_name);
             fs::read(&cache_path)?
         } else {
             // Download from network
-            println!("Downloading bucket: {}", bucket_name);
+            println!("Bucket: {}", bucket_name);
             
             let response = client.get(&bucket_url).send().await?;
             let status = response.status();
             let data = response.bytes().await?;
             
-            println!("Downloaded {} bytes (status: {})", data.len(), status);
+            println!("Downloaded {} (status: {})", human_bytes(data.len() as f64), status);
             
             if status.is_success() && data.len() > 100 {
                 // Save to cache
@@ -66,7 +67,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         let mut data = Vec::new();
         decoder.read_to_end(&mut data)?;
 
-        println!("Decompressed to {} bytes", data.len());
+        println!("Decompressed to {}", human_bytes(data.len() as f64));
         processed_buckets += 1;
 
         match decode_bucket(&data) {
@@ -108,9 +109,9 @@ fn decode_bucket(data: &[u8]) -> Result<usize, Box<dyn std::error::Error>> {
                     let file_name = format!("contracts/{}.wasm", wasm_hash);
                     fs::write(&file_name, &contract_code.code)?;
                     println!(
-                        "  Saved contract code: {} ({} bytes)",
+                        "  Saved contract code: {} ({})",
                         file_name,
-                        contract_code.code.len()
+                        human_bytes(contract_code.code.len() as f64)
                     );
                 }
             }
