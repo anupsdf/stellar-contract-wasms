@@ -36,11 +36,11 @@ jobs:
       - run: rustup upgrade
       - uses: stellar/actions/rust-cache@main
       - name: Check list-buckets
-        run: cargo check --locked --manifest-path .scripts/list-buckets/Cargo.toml
+        run: cargo check --locked --release --manifest-path .scripts/list-buckets/Cargo.toml
       - name: Run list-buckets
         id: list-buckets
         run: |
-          BUCKETS=$(cargo run --locked --manifest-path .scripts/list-buckets/Cargo.toml)
+          BUCKETS=$(cargo run --locked --release --manifest-path .scripts/list-buckets/Cargo.toml)
           echo "Buckets: $BUCKETS"
           i=0
           while IFS= read -r line; do
@@ -237,11 +237,11 @@ jobs:
 
       - name: Check get-contracts-from-buckets
         run: >
-          cargo check --locked --manifest-path .scripts/get-contracts-from-buckets/Cargo.toml
+          cargo check --locked --release --manifest-path .scripts/get-contracts-from-buckets/Cargo.toml
 
       - name: Run get-contracts-from-buckets
         run: >
-          cargo run --locked --manifest-path .scripts/get-contracts-from-buckets/Cargo.toml --
+          cargo run --locked --release --manifest-path .scripts/get-contracts-from-buckets/Cargo.toml --
           ${{ needs.list-buckets.outputs.bucket0 }}
           ${{ needs.list-buckets.outputs.bucket1 }}
           ${{ needs.list-buckets.outputs.bucket2 }}
