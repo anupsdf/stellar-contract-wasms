@@ -16,7 +16,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     eprintln!("Latest ledger: {}", current_ledger);
 
     // Get the bucket list
-    let buckets = has_json["currentBuckets"].as_array().unwrap().iter().flat_map(|v| [&v["curr"], &v["snap"]]);
+    let buckets = has_json["currentBuckets"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .flat_map(|v| [&v["curr"], &v["snap"]]);
     eprintln!("Found {} bucket entries", buckets.clone().count());
     for b in buckets {
         let b = b.as_str().unwrap();
