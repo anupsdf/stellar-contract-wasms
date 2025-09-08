@@ -35,7 +35,9 @@ jobs:
       - uses: actions/checkout@v4
       - run: rustup upgrade
       - uses: stellar/actions/rust-cache@main
-      - name: list-buckets
+      - name: Check list-buckets
+        run: cargo check --locked --manifest-path .scripts/list-buckets/Cargo.toml
+      - name: Run list-buckets
         id: list-buckets
         run: |
           BUCKETS=$(cargo run --locked --manifest-path .scripts/list-buckets/Cargo.toml)
@@ -232,6 +234,10 @@ jobs:
           key: bucket-${{ needs.list-buckets.outputs.bucket21 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket21 }}-
+
+      - name: Check get-contracts-from-buckets
+        run: >
+          cargo check --locked --manifest-path .scripts/get-contracts-from-buckets/Cargo.toml
 
       - name: Run get-contracts-from-buckets
         run: >
