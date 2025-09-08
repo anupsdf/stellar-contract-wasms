@@ -52,7 +52,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             let status = response.status();
             let data = response.bytes().await?;
             
-            println!("Downloaded {} (status: {})", human_bytes(data.len() as f64), status);
+            println!("Downloaded {}", human_bytes(data.len() as f64));
             
             if status.is_success() && data.len() > 100 {
                 // Save to cache
@@ -67,7 +67,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         let mut data = Vec::new();
         decoder.read_to_end(&mut data)?;
 
-        println!("Decompressed to {}", human_bytes(data.len() as f64));
+        println!("Decompressed {}", human_bytes(data.len() as f64));
         processed_buckets += 1;
 
         match decode_bucket(&data) {
