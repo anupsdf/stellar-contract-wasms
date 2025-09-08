@@ -120,11 +120,7 @@ fn decode_bucket(data: &[u8]) -> Result<usize, Box<dyn std::error::Error>> {
                     let wasm_hash = hex::encode(&contract_code.hash);
                     let file_name = format!("contracts/{}.wasm", wasm_hash);
                     fs::write(&file_name, &contract_code.code)?;
-                    eprintln!(
-                        "  Contract Code: {} ({})",
-                        wasm_hash,
-                        human_bytes(contract_code.code.len() as f64)
-                    );
+                    eprintln!("  Contract Code: {wasm_hash} ({})" human_bytes(contract_code.code.len() as f64));
                 }
             }
             _ => {}
