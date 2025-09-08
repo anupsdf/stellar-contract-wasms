@@ -1,6 +1,6 @@
 use flate2::read::GzDecoder;
 use reqwest::Client;
-use serde_json::Value;
+use std::env;
 use std::fs;
 use std::io::Read;
 use std::path::Path;
@@ -11,24 +11,17 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let client = Client::new();
     let base_url = "https://history.stellar.org/prd/core-live/core_live_001";
 
-    // Fetch the HAS file
-    let has_url = format!("{}/.well-known/stellar-history.json", base_url);
-    let has_response = client.get(&has_url).send().await?;
-    let has_json: Value = has_response.json().await?;
-
-    // Find the latest ledger
-    let current_ledger = has_json["currentLedger"].as_u64().unwrap();
-    println!("Latest ledger: {}", current_ledger);
-
-    // Get the bucket list
-    let buckets = if let Some(b) = has_json["currentBuckets"].as_array() {
-        b
-    } else {
-        println!("No buckets found in HAS file");
+    // Get bucket names from command line arguments
+    let args: Vec<String> = env::args().collect();
+    if args.len() < 2 {
+        eprintln!("Usage: {} <bucket_hash1> [bucket_hash2] ...", args[0]);
+        eprintln!("Example: {} 0000000000000000000000000000000000000000000000000000000000000001", args[0]);
         return Ok(());
-    };
+    }
 
-    println!("Found {} bucket entries", buckets.len());
+    let buckets = &args[1..]; // Skip the program name
+
+    println!("Processing {} bucket(s)", buckets.len());
 
     // Create cache directory if it doesn't exist
     fs::create_dir_all("cache")?;
@@ -37,17 +30,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut processed_buckets = 0;
     let mut found_contracts = 0;
 
-    println!("Using correct Stellar bucket file path format:");
-    println!("bucket/pp/qq/rr/bucket-ppqqrrssssssssssssssssssssssssssssssssssssssssssssssssssssssssss.xdr.gz");
-    println!();
-
-    for bucket in buckets {
-        let bucket_name = bucket["curr"].as_str().unwrap();
-
-        if bucket_name == "0000000000000000000000000000000000000000000000000000000000000000" {
-            continue;
-        }
-
+    for bucket_name in buckets {
         // Construct bucket file path according to Stellar format:
         // bucket/pp/qq/rr/bucket-ppqqrrssssssssssssssssssssssssssssssssssssssssssssssssssssssssss.xdr.gz
         let pp = &bucket_name[0..2];
