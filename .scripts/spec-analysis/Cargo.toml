@@ -6,3 +6,4 @@ edition = "2021"
 [dependencies]
 soroban-spec = "23.0.2"
 stellar-xdr = "23.0.0"
+human_bytes = "0.4"
