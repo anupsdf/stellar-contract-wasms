@@ -1,0 +1,87 @@
+name: Fetch Contracts
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  list-buckets:
+    runs-on: ubuntu-latest
+    outputs:
+      buckets: ${{ steps.get-buckets.outputs.buckets }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+
+      - name: Build list-buckets
+        run: cargo build --release --bin list-buckets
+
+      - name: Run list-buckets
+        id: get-buckets
+        run: |
+          BUCKETS=$(./target/release/list-buckets)
+          echo "buckets=$BUCKETS" >> $GITHUB_OUTPUT
+          echo "Buckets to process: $BUCKETS"
+
+  get-contracts:
+    runs-on: ubuntu-latest
+    needs: list-buckets
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+
+      - name: Restore cached buckets
+        uses: actions/cache@v4
+        with:
+          path: cache/
+          key: buckets-${{ github.sha }}
+          restore-keys: |
+            buckets-
+
+      - name: Download buckets from list
+        run: |
+          mkdir -p cache/
+          BUCKETS="${{ needs.list-buckets.outputs.buckets }}"
+          echo "Processing buckets: $BUCKETS"
+          # Assuming the list is space-separated bucket IDs
+          for bucket in $BUCKETS; do
+            if [ ! -f "cache/bucket-${bucket}.xdr.gz" ]; then
+              echo "Bucket $bucket not cached locally, would need to fetch it"
+              # Here you might need to add logic to download the bucket if not cached
+            else
+              echo "Bucket $bucket already cached"
+            fi
+          done
+
+      - name: Build get-contracts-from-buckets
+        run: cargo build --release --bin get-contracts-from-buckets
+
+      - name: Run get-contracts-from-buckets
+        run: |
+          BUCKETS="${{ needs.list-buckets.outputs.buckets }}"
+          ./target/release/get-contracts-from-buckets $BUCKETS
+
+      - name: Check for new contracts
+        id: check-changes
+        run: |
+          if [ -d contracts/ ] && [ "$(ls -A contracts/)" ]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push contracts
+        if: steps.check-changes.outputs.has_changes == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add contracts/
+          git commit -m "Update contracts from buckets" || echo "No changes to commit"
+          git push
