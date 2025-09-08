@@ -9,34 +9,51 @@ jobs:
   list-buckets:
     runs-on: ubuntu-latest
     outputs:
-      buckets: ${{ steps.get-buckets.outputs.buckets }}
+      bucket0: ${{ steps.list-buckets.outputs.bucket0 }}
+      bucket1: ${{ steps.list-buckets.outputs.bucket1 }}
+      bucket2: ${{ steps.list-buckets.outputs.bucket2 }}
+      bucket3: ${{ steps.list-buckets.outputs.bucket3 }}
+      bucket4: ${{ steps.list-buckets.outputs.bucket4 }}
+      bucket5: ${{ steps.list-buckets.outputs.bucket5 }}
+      bucket6: ${{ steps.list-buckets.outputs.bucket6 }}
+      bucket7: ${{ steps.list-buckets.outputs.bucket7 }}
+      bucket8: ${{ steps.list-buckets.outputs.bucket8 }}
+      bucket9: ${{ steps.list-buckets.outputs.bucket9 }}
+      bucket10: ${{ steps.list-buckets.outputs.bucket10 }}
+      bucket11: ${{ steps.list-buckets.outputs.bucket11 }}
+      bucket12: ${{ steps.list-buckets.outputs.bucket12 }}
+      bucket13: ${{ steps.list-buckets.outputs.bucket13 }}
+      bucket14: ${{ steps.list-buckets.outputs.bucket14 }}
+      bucket15: ${{ steps.list-buckets.outputs.bucket15 }}
+      bucket16: ${{ steps.list-buckets.outputs.bucket16 }}
+      bucket17: ${{ steps.list-buckets.outputs.bucket17 }}
+      bucket18: ${{ steps.list-buckets.outputs.bucket18 }}
+      bucket19: ${{ steps.list-buckets.outputs.bucket19 }}
+      bucket20: ${{ steps.list-buckets.outputs.bucket20 }}
+      bucket21: ${{ steps.list-buckets.outputs.bucket21 }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Rust
-        uses: actions-rust-lang/setup-rust-toolchain@v1
-
-      - name: Build list-buckets
-        run: cargo build --release --bin list-buckets
-
-      - name: Run list-buckets
-        id: get-buckets
+      - uses: actions/checkout@v4
+      - run: rustup upgrade
+      - name: list-buckets
+        id: list-buckets
         run: |
-          BUCKETS=$(./target/release/list-buckets)
-          echo "buckets=$BUCKETS" >> $GITHUB_OUTPUT
-          echo "Buckets to process: $BUCKETS"
+          BUCKETS=$(cd list-buckets && cargo run --locked --path .)
+          echo "Buckets: $BUCKETS"
+          IFS=' ' read -r -a bucket_array <<< "$BUCKETS"
+          for i in {0..21}; do
+            if [ $i -lt ${#bucket_array[@]} ]; then
+              echo "bucket$i=${bucket_array[$i]}" >> $GITHUB_OUTPUT
+            else
+              echo "bucket$i=" >> $GITHUB_OUTPUT
+            fi
+          done
 
   get-contracts:
     runs-on: ubuntu-latest
     needs: list-buckets
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Rust
-        uses: actions-rust-lang/setup-rust-toolchain@v1
-
+      - uses: actions/checkout@v4
+      - run: rustup upgrade
       - name: Restore cached buckets
         uses: actions/cache@v4
         with:
@@ -48,14 +65,14 @@ jobs:
       - name: Download buckets from list
         run: |
           mkdir -p cache/
-          BUCKETS="${{ needs.list-buckets.outputs.buckets }}"
+          BUCKETS="${{ needs.list-buckets.outputs.bucket0 }} ${{ needs.list-buckets.outputs.bucket1 }} ${{ needs.list-buckets.outputs.bucket2 }} ${{ needs.list-buckets.outputs.bucket3 }} ${{ needs.list-buckets.outputs.bucket4 }} ${{ needs.list-buckets.outputs.bucket5 }} ${{ needs.list-buckets.outputs.bucket6 }} ${{ needs.list-buckets.outputs.bucket7 }} ${{ needs.list-buckets.outputs.bucket8 }} ${{ needs.list-buckets.outputs.bucket9 }} ${{ needs.list-buckets.outputs.bucket10 }} ${{ needs.list-buckets.outputs.bucket11 }} ${{ needs.list-buckets.outputs.bucket12 }} ${{ needs.list-buckets.outputs.bucket13 }} ${{ needs.list-buckets.outputs.bucket14 }} ${{ needs.list-buckets.outputs.bucket15 }} ${{ needs.list-buckets.outputs.bucket16 }} ${{ needs.list-buckets.outputs.bucket17 }} ${{ needs.list-buckets.outputs.bucket18 }} ${{ needs.list-buckets.outputs.bucket19 }} ${{ needs.list-buckets.outputs.bucket20 }} ${{ needs.list-buckets.outputs.bucket21 }}"
           echo "Processing buckets: $BUCKETS"
           # Assuming the list is space-separated bucket IDs
           for bucket in $BUCKETS; do
-            if [ ! -f "cache/bucket-${bucket}.xdr.gz" ]; then
+            if [ -n "$bucket" ] && [ ! -f "cache/bucket-${bucket}.xdr.gz" ]; then
               echo "Bucket $bucket not cached locally, would need to fetch it"
               # Here you might need to add logic to download the bucket if not cached
-            else
+            elif [ -n "$bucket" ]; then
               echo "Bucket $bucket already cached"
             fi
           done
@@ -65,7 +82,7 @@ jobs:
 
       - name: Run get-contracts-from-buckets
         run: |
-          BUCKETS="${{ needs.list-buckets.outputs.buckets }}"
+          BUCKETS="${{ needs.list-buckets.outputs.bucket0 }} ${{ needs.list-buckets.outputs.bucket1 }} ${{ needs.list-buckets.outputs.bucket2 }} ${{ needs.list-buckets.outputs.bucket3 }} ${{ needs.list-buckets.outputs.bucket4 }} ${{ needs.list-buckets.outputs.bucket5 }} ${{ needs.list-buckets.outputs.bucket6 }} ${{ needs.list-buckets.outputs.bucket7 }} ${{ needs.list-buckets.outputs.bucket8 }} ${{ needs.list-buckets.outputs.bucket9 }} ${{ needs.list-buckets.outputs.bucket10 }} ${{ needs.list-buckets.outputs.bucket11 }} ${{ needs.list-buckets.outputs.bucket12 }} ${{ needs.list-buckets.outputs.bucket13 }} ${{ needs.list-buckets.outputs.bucket14 }} ${{ needs.list-buckets.outputs.bucket15 }} ${{ needs.list-buckets.outputs.bucket16 }} ${{ needs.list-buckets.outputs.bucket17 }} ${{ needs.list-buckets.outputs.bucket18 }} ${{ needs.list-buckets.outputs.bucket19 }} ${{ needs.list-buckets.outputs.bucket20 }} ${{ needs.list-buckets.outputs.bucket21 }}"
           ./target/release/get-contracts-from-buckets $BUCKETS
 
       - name: Check for new contracts
