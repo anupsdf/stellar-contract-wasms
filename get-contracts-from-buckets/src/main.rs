@@ -15,7 +15,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Get bucket names from command line arguments
     let args: Vec<String> = env::args().collect();
     if args.len() < 2 {
-        eeprintln!("Usage: {} <bucket_hash1> [bucket_hash2] ...", args[0]);
+        eprintln!("Usage: {} <bucket_hash1> [bucket_hash2] ...", args[0]);
         return Ok(());
     }
 
