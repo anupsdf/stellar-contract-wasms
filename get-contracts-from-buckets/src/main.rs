@@ -37,19 +37,16 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         let qq = &bucket_name[2..4];
         let rr = &bucket_name[4..6];
         let _remaining = &bucket_name[6..];
-        let bucket_url = format!(
-            "{}/bucket/{}/{}/{}/bucket-{}.xdr.gz",
-            base_url, pp, qq, rr, bucket_name
-        );
-        let cache_path = format!("cache/bucket-{}.xdr.gz", bucket_name);
+        let bucket_url = format!("{base_url}/bucket/{pp}/{qq}/{rr}/bucket-{bucket_name}.xdr.gz");
+        let cache_path = format!("cache/bucket-{bucket_name}.xdr.gz");
 
         let data = if Path::new(&cache_path).exists() {
             // Load from cache
-            eprintln!("Bucket: {} (cached)", bucket_name);
+            eprintln!("Bucket: {bucket_name} (cached)");
             fs::read(&cache_path)?
         } else {
             // Download from network
-            eprintln!("Bucket: {}", bucket_name);
+            eprintln!("Bucket: {bucket_name}");
 
             // First make a HEAD request to get the file size
             let head_response = client.head(&bucket_url).send().await?;
@@ -65,7 +62,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 "unknown size".to_string()
             };
 
-            eprintln!("  Downloading {}...", expected_size);
+            eprintln!("  Downloading {expected_size}...");
 
             let response = client.get(&bucket_url).send().await?;
             let status = response.status();
@@ -94,15 +91,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 found_contracts += count;
             }
             Err(e) => {
-                eprintln!("Error decoding bucket {}: {}", bucket_name, e);
+                eprintln!("Error decoding bucket {bucket_name}: {e}");
             }
         }
     }
 
-    eprintln!(
-        "Summary: Processed {} buckets, found {} contract codes",
-        processed_buckets, found_contracts
-    );
+    eprintln!("Summary: Processed {processed_buckets} buckets, found {found_contracts} contract.");
 
     Ok(())
 }
