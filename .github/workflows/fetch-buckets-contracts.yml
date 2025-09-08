@@ -37,7 +37,7 @@ jobs:
       - name: list-buckets
         id: list-buckets
         run: |
-          BUCKETS=$(cd list-buckets && cargo run --locked --path .)
+          BUCKETS=$(cd list-buckets && cargo run --locked)
           echo "Buckets: $BUCKETS"
           IFS=' ' read -r -a bucket_array <<< "$BUCKETS"
           for i in {0..21}; do
@@ -255,7 +255,7 @@ jobs:
       - name: Run get-contracts-from-buckets
         run: |
           BUCKETS="${{ needs.list-buckets.outputs.bucket0 }} ${{ needs.list-buckets.outputs.bucket1 }} ${{ needs.list-buckets.outputs.bucket2 }} ${{ needs.list-buckets.outputs.bucket3 }} ${{ needs.list-buckets.outputs.bucket4 }} ${{ needs.list-buckets.outputs.bucket5 }} ${{ needs.list-buckets.outputs.bucket6 }} ${{ needs.list-buckets.outputs.bucket7 }} ${{ needs.list-buckets.outputs.bucket8 }} ${{ needs.list-buckets.outputs.bucket9 }} ${{ needs.list-buckets.outputs.bucket10 }} ${{ needs.list-buckets.outputs.bucket11 }} ${{ needs.list-buckets.outputs.bucket12 }} ${{ needs.list-buckets.outputs.bucket13 }} ${{ needs.list-buckets.outputs.bucket14 }} ${{ needs.list-buckets.outputs.bucket15 }} ${{ needs.list-buckets.outputs.bucket16 }} ${{ needs.list-buckets.outputs.bucket17 }} ${{ needs.list-buckets.outputs.bucket18 }} ${{ needs.list-buckets.outputs.bucket19 }} ${{ needs.list-buckets.outputs.bucket20 }} ${{ needs.list-buckets.outputs.bucket21 }}"
-          cd get-contracts-from-buckets && cargo run --locked --path . -- $BUCKETS
+          cd get-contracts-from-buckets && cargo run --locked -- $BUCKETS
 
       - name: Commit contracts
         run: |
