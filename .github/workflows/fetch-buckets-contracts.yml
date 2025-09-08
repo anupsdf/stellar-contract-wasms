@@ -47,11 +47,6 @@ jobs:
               i=$((i+1))
             fi
           done <<< "$BUCKETS"
-          # Fill remaining outputs with empty strings
-          while [ $i -lt 22 ]; do
-            echo "bucket$i=" >> "$GITHUB_OUTPUT"
-            i=$((i+1))
-          done
 
   get-contracts:
     runs-on: ubuntu-latest
@@ -60,6 +55,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: rustup upgrade
       - uses: stellar/actions/rust-cache@main
+
       - name: Restore cached bucket0
         uses: actions/cache@v4
         if: ${{ needs.list-buckets.outputs.bucket0 != '' }}
@@ -68,7 +64,6 @@ jobs:
           key: bucket-${{ needs.list-buckets.outputs.bucket0 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket0 }}-
-
       - name: Restore cached bucket1
         uses: actions/cache@v4
         if: ${{ needs.list-buckets.outputs.bucket1 != '' }}
@@ -77,7 +72,6 @@ jobs:
           key: bucket-${{ needs.list-buckets.outputs.bucket1 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket1 }}-
-
       - name: Restore cached bucket2
         uses: actions/cache@v4
         if: ${{ needs.list-buckets.outputs.bucket2 != '' }}
@@ -86,7 +80,6 @@ jobs:
           key: bucket-${{ needs.list-buckets.outputs.bucket2 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket2 }}-
-
       - name: Restore cached bucket3
         uses: actions/cache@v4
         if: ${{ needs.list-buckets.outputs.bucket3 != '' }}
@@ -95,7 +88,6 @@ jobs:
           key: bucket-${{ needs.list-buckets.outputs.bucket3 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket3 }}-
-
       - name: Restore cached bucket4
         uses: actions/cache@v4
         if: ${{ needs.list-buckets.outputs.bucket4 != '' }}
@@ -104,7 +96,6 @@ jobs:
           key: bucket-${{ needs.list-buckets.outputs.bucket4 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket4 }}-
-
       - name: Restore cached bucket5
         uses: actions/cache@v4
         if: ${{ needs.list-buckets.outputs.bucket5 != '' }}
@@ -113,7 +104,6 @@ jobs:
           key: bucket-${{ needs.list-buckets.outputs.bucket5 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket5 }}-
-
       - name: Restore cached bucket6
         uses: actions/cache@v4
         if: ${{ needs.list-buckets.outputs.bucket6 != '' }}
@@ -122,7 +112,6 @@ jobs:
           key: bucket-${{ needs.list-buckets.outputs.bucket6 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket6 }}-
-
       - name: Restore cached bucket7
         uses: actions/cache@v4
         if: ${{ needs.list-buckets.outputs.bucket7 != '' }}
@@ -131,7 +120,6 @@ jobs:
           key: bucket-${{ needs.list-buckets.outputs.bucket7 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket7 }}-
-
       - name: Restore cached bucket8
         uses: actions/cache@v4
         if: ${{ needs.list-buckets.outputs.bucket8 != '' }}
@@ -140,7 +128,6 @@ jobs:
           key: bucket-${{ needs.list-buckets.outputs.bucket8 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket8 }}-
-
       - name: Restore cached bucket9
         uses: actions/cache@v4
         if: ${{ needs.list-buckets.outputs.bucket9 != '' }}
@@ -149,7 +136,6 @@ jobs:
           key: bucket-${{ needs.list-buckets.outputs.bucket9 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket9 }}-
-
       - name: Restore cached bucket10
         uses: actions/cache@v4
         if: ${{ needs.list-buckets.outputs.bucket10 != '' }}
@@ -158,7 +144,6 @@ jobs:
           key: bucket-${{ needs.list-buckets.outputs.bucket10 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket10 }}-
-
       - name: Restore cached bucket11
         uses: actions/cache@v4
         if: ${{ needs.list-buckets.outputs.bucket11 != '' }}
@@ -167,7 +152,6 @@ jobs:
           key: bucket-${{ needs.list-buckets.outputs.bucket11 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket11 }}-
-
       - name: Restore cached bucket12
         uses: actions/cache@v4
         if: ${{ needs.list-buckets.outputs.bucket12 != '' }}
@@ -176,7 +160,6 @@ jobs:
           key: bucket-${{ needs.list-buckets.outputs.bucket12 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket12 }}-
-
       - name: Restore cached bucket13
         uses: actions/cache@v4
         if: ${{ needs.list-buckets.outputs.bucket13 != '' }}
@@ -185,7 +168,6 @@ jobs:
           key: bucket-${{ needs.list-buckets.outputs.bucket13 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket13 }}-
-
       - name: Restore cached bucket14
         uses: actions/cache@v4
         if: ${{ needs.list-buckets.outputs.bucket14 != '' }}
@@ -194,7 +176,6 @@ jobs:
           key: bucket-${{ needs.list-buckets.outputs.bucket14 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket14 }}-
-
       - name: Restore cached bucket15
         uses: actions/cache@v4
         if: ${{ needs.list-buckets.outputs.bucket15 != '' }}
@@ -203,7 +184,6 @@ jobs:
           key: bucket-${{ needs.list-buckets.outputs.bucket15 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket15 }}-
-
       - name: Restore cached bucket16
         uses: actions/cache@v4
         if: ${{ needs.list-buckets.outputs.bucket16 != '' }}
@@ -212,7 +192,6 @@ jobs:
           key: bucket-${{ needs.list-buckets.outputs.bucket16 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket16 }}-
-
       - name: Restore cached bucket17
         uses: actions/cache@v4
         if: ${{ needs.list-buckets.outputs.bucket17 != '' }}
@@ -221,7 +200,6 @@ jobs:
           key: bucket-${{ needs.list-buckets.outputs.bucket17 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket17 }}-
-
       - name: Restore cached bucket18
         uses: actions/cache@v4
         if: ${{ needs.list-buckets.outputs.bucket18 != '' }}
@@ -230,7 +208,6 @@ jobs:
           key: bucket-${{ needs.list-buckets.outputs.bucket18 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket18 }}-
-
       - name: Restore cached bucket19
         uses: actions/cache@v4
         if: ${{ needs.list-buckets.outputs.bucket19 != '' }}
@@ -239,7 +216,6 @@ jobs:
           key: bucket-${{ needs.list-buckets.outputs.bucket19 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket19 }}-
-
       - name: Restore cached bucket20
         uses: actions/cache@v4
         if: ${{ needs.list-buckets.outputs.bucket20 != '' }}
@@ -248,7 +224,6 @@ jobs:
           key: bucket-${{ needs.list-buckets.outputs.bucket20 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket20 }}-
-
       - name: Restore cached bucket21
         uses: actions/cache@v4
         if: ${{ needs.list-buckets.outputs.bucket21 != '' }}
@@ -259,9 +234,30 @@ jobs:
             bucket-${{ needs.list-buckets.outputs.bucket21 }}-
 
       - name: Run get-contracts-from-buckets
-        run: |
-          BUCKETS="${{ needs.list-buckets.outputs.bucket0 }} ${{ needs.list-buckets.outputs.bucket1 }} ${{ needs.list-buckets.outputs.bucket2 }} ${{ needs.list-buckets.outputs.bucket3 }} ${{ needs.list-buckets.outputs.bucket4 }} ${{ needs.list-buckets.outputs.bucket5 }} ${{ needs.list-buckets.outputs.bucket6 }} ${{ needs.list-buckets.outputs.bucket7 }} ${{ needs.list-buckets.outputs.bucket8 }} ${{ needs.list-buckets.outputs.bucket9 }} ${{ needs.list-buckets.outputs.bucket10 }} ${{ needs.list-buckets.outputs.bucket11 }} ${{ needs.list-buckets.outputs.bucket12 }} ${{ needs.list-buckets.outputs.bucket13 }} ${{ needs.list-buckets.outputs.bucket14 }} ${{ needs.list-buckets.outputs.bucket15 }} ${{ needs.list-buckets.outputs.bucket16 }} ${{ needs.list-buckets.outputs.bucket17 }} ${{ needs.list-buckets.outputs.bucket18 }} ${{ needs.list-buckets.outputs.bucket19 }} ${{ needs.list-buckets.outputs.bucket20 }} ${{ needs.list-buckets.outputs.bucket21 }}"
-          cd get-contracts-from-buckets && cargo run --locked -- $BUCKETS
+        run: >
+          cd get-contracts-from-buckets && cargo run --locked --
+          ${{ needs.list-buckets.outputs.bucket0 }}
+          ${{ needs.list-buckets.outputs.bucket1 }}
+          ${{ needs.list-buckets.outputs.bucket2 }}
+          ${{ needs.list-buckets.outputs.bucket3 }}
+          ${{ needs.list-buckets.outputs.bucket4 }}
+          ${{ needs.list-buckets.outputs.bucket5 }}
+          ${{ needs.list-buckets.outputs.bucket6 }}
+          ${{ needs.list-buckets.outputs.bucket7 }}
+          ${{ needs.list-buckets.outputs.bucket8 }}
+          ${{ needs.list-buckets.outputs.bucket9 }}
+          ${{ needs.list-buckets.outputs.bucket10 }}
+          ${{ needs.list-buckets.outputs.bucket11 }}
+          ${{ needs.list-buckets.outputs.bucket12 }}
+          ${{ needs.list-buckets.outputs.bucket13 }}
+          ${{ needs.list-buckets.outputs.bucket14 }}
+          ${{ needs.list-buckets.outputs.bucket15 }}
+          ${{ needs.list-buckets.outputs.bucket16 }}
+          ${{ needs.list-buckets.outputs.bucket17 }}
+          ${{ needs.list-buckets.outputs.bucket18 }}
+          ${{ needs.list-buckets.outputs.bucket19 }}
+          ${{ needs.list-buckets.outputs.bucket20 }}
+          ${{ needs.list-buckets.outputs.bucket21 }}
 
       - name: Commit contracts
         run: |
