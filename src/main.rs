@@ -3,6 +3,7 @@ use reqwest::Client;
 use serde_json::Value;
 use std::fs;
 use std::io::Read;
+use std::path::Path;
 use stellar_xdr::curr::{BucketEntry, Frame, LedgerEntryData, Limited, Limits, ReadXdr};
 
 #[tokio::main]
@@ -29,6 +30,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     println!("Found {} bucket entries", buckets.len());
 
+    // Create cache directory if it doesn't exist
+    fs::create_dir_all("cache")?;
+
     // Download and process bucket files
     let mut processed_buckets = 0;
     let mut found_contracts = 0;
@@ -51,39 +55,46 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         let rr = &bucket_name[4..6];
         let _remaining = &bucket_name[6..];
         let bucket_url = format!("{}/bucket/{}/{}/{}/bucket-{}.xdr.gz", base_url, pp, qq, rr, bucket_name);
-        println!("Attempting to download bucket: {}", bucket_name);
-        println!("URL: {}", bucket_url);
+        let cache_path = format!("cache/bucket-{}.xdr.gz", bucket_name);
+        
+        let compressed_data = if Path::new(&cache_path).exists() {
+            // Load from cache
+            println!("Loading bucket from cache: {}", bucket_name);
+            fs::read(&cache_path)?
+        } else {
+            // Download from network
+            println!("Downloading bucket: {}", bucket_name);
+            println!("URL: {}", bucket_url);
+            
+            let response = client.get(&bucket_url).send().await?;
+            let status = response.status();
+            let data = response.bytes().await?;
+            
+            println!("Downloaded {} bytes (status: {})", data.len(), status);
+            
+            if status.is_success() && data.len() > 100 {
+                // Save to cache
+                fs::write(&cache_path, &data)?;
+                println!("Saved to cache: {}", cache_path);
+            }
+            
+            data.to_vec()
+        };
 
-        match client.get(&bucket_url).send().await {
-            Ok(response) => {
-                let status = response.status();
-                let compressed_data = response.bytes().await?;
+        // Decompress the gzip data
+        let mut decoder = GzDecoder::new(&compressed_data[..]);
+        let mut data = Vec::new();
+        decoder.read_to_end(&mut data)?;
 
-                println!("Downloaded {} bytes (status: {})", compressed_data.len(), status);
+        println!("Decompressed to {} bytes", data.len());
+        processed_buckets += 1;
 
-                if status.is_success() && compressed_data.len() > 100 {
-                    // Decompress the gzip data
-                    let mut decoder = GzDecoder::new(&compressed_data[..]);
-                    let mut data = Vec::new();
-                    decoder.read_to_end(&mut data)?;
-
-                    println!("Decompressed to {} bytes", data.len());
-                    processed_buckets += 1;
-
-                    match decode_bucket(&data) {
-                        Ok(count) => {
-                            found_contracts += count;
-                        }
-                        Err(e) => {
-                            println!("Error decoding bucket {}: {}", bucket_name, e);
-                        }
-                    }
-                } else {
-                    println!("Bucket download failed (status: {}, size: {} bytes)", status, compressed_data.len());
-                }
+        match decode_bucket(&data) {
+            Ok(count) => {
+                found_contracts += count;
             }
             Err(e) => {
-                println!("Error fetching bucket {}: {}", bucket_name, e);
+                println!("Error decoding bucket {}: {}", bucket_name, e);
             }
         }
         println!();
@@ -98,6 +109,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 
 fn decode_bucket(data: &[u8]) -> Result<usize, Box<dyn std::error::Error>> {
+    // Create contracts directory if it doesn't exist
+    fs::create_dir_all("contracts")?;
+
     let mut cursor = std::io::Cursor::new(data);
     let mut limited = Limited::new(&mut cursor, Limits::none());
 
@@ -111,7 +125,7 @@ fn decode_bucket(data: &[u8]) -> Result<usize, Box<dyn std::error::Error>> {
                 if let LedgerEntryData::ContractCode(contract_code) = &live_entry.data {
                     contract_count += 1;
                     let wasm_hash = hex::encode(&contract_code.hash);
-                    let file_name = format!("{}.wasm", wasm_hash);
+                    let file_name = format!("contracts/{}.wasm", wasm_hash);
                     fs::write(&file_name, &contract_code.code)?;
                     println!(
                         "  Saved contract code: {} ({} bytes)",
