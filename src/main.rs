@@ -1,7 +1,9 @@
+use flate2::read::GzDecoder;
 use reqwest::Client;
 use serde_json::Value;
 use std::fs;
-use stellar_xdr::curr::{BucketEntry, LedgerEntryData, Limited, Limits, ReadXdr};
+use std::io::Read;
+use stellar_xdr::curr::{BucketEntry, Frame, LedgerEntryData, Limited, Limits, ReadXdr};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -31,6 +33,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut processed_buckets = 0;
     let mut found_contracts = 0;
 
+    println!("Using correct Stellar bucket file path format:");
+    println!("bucket/pp/qq/rr/bucket-ppqqrrssssssssssssssssssssssssssssssssssssssssssssssssssssssssss.xdr.gz");
+    println!();
+
     for bucket in buckets {
         let bucket_name = bucket["curr"].as_str().unwrap();
 
@@ -38,29 +44,49 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             continue;
         }
 
-        let bucket_url = format!("{}/bucket/{}", base_url, bucket_name);
+        // Construct bucket file path according to Stellar format:
+        // bucket/pp/qq/rr/bucket-ppqqrrssssssssssssssssssssssssssssssssssssssssssssssssssssssssss.xdr.gz
+        let pp = &bucket_name[0..2];
+        let qq = &bucket_name[2..4];
+        let rr = &bucket_name[4..6];
+        let _remaining = &bucket_name[6..];
+        let bucket_url = format!("{}/bucket/{}/{}/{}/bucket-{}.xdr.gz", base_url, pp, qq, rr, bucket_name);
+        println!("Attempting to download bucket: {}", bucket_name);
+        println!("URL: {}", bucket_url);
 
         match client.get(&bucket_url).send().await {
             Ok(response) => {
-                let data = response.bytes().await?;
+                let status = response.status();
+                let compressed_data = response.bytes().await?;
 
-                println!("Processing bucket: {} ({} bytes)", bucket_name, data.len());
-                println!("Contents: {data:?}");
-                processed_buckets += 1;
+                println!("Downloaded {} bytes (status: {})", compressed_data.len(), status);
 
-                match decode_bucket(&data) {
-                    Ok(count) => {
-                        found_contracts += count;
+                if status.is_success() && compressed_data.len() > 100 {
+                    // Decompress the gzip data
+                    let mut decoder = GzDecoder::new(&compressed_data[..]);
+                    let mut data = Vec::new();
+                    decoder.read_to_end(&mut data)?;
+
+                    println!("Decompressed to {} bytes", data.len());
+                    processed_buckets += 1;
+
+                    match decode_bucket(&data) {
+                        Ok(count) => {
+                            found_contracts += count;
+                        }
+                        Err(e) => {
+                            println!("Error decoding bucket {}: {}", bucket_name, e);
+                        }
                     }
-                    Err(e) => {
-                        println!("Error decoding bucket {}: {}", bucket_name, e);
-                    }
+                } else {
+                    println!("Bucket download failed (status: {}, size: {} bytes)", status, compressed_data.len());
                 }
             }
             Err(e) => {
                 println!("Error fetching bucket {}: {}", bucket_name, e);
             }
         }
+        println!();
     }
 
     println!(
@@ -78,7 +104,8 @@ fn decode_bucket(data: &[u8]) -> Result<usize, Box<dyn std::error::Error>> {
     let mut contract_count = 0;
 
     // Try to read multiple entries
-    while let Ok(entry) = BucketEntry::read_xdr(&mut limited) {
+    while let Ok(entry) = Frame::<BucketEntry>::read_xdr(&mut limited) {
+        let Frame(entry) = entry;
         match entry {
             BucketEntry::Liveentry(live_entry) | BucketEntry::Initentry(live_entry) => {
                 if let LedgerEntryData::ContractCode(contract_code) = &live_entry.data {
