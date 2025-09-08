@@ -127,8 +127,8 @@ fn decode_bucket(data: &[u8]) -> Result<usize, Box<dyn std::error::Error>> {
                     let file_name = format!("contracts/{}.wasm", wasm_hash);
                     fs::write(&file_name, &contract_code.code)?;
                     eprintln!(
-                        "  Saved contract code: {} ({})",
-                        file_name,
+                        "  Contract Code: {} ({})",
+                        wasm_hash,
                         human_bytes(contract_code.code.len() as f64)
                     );
                 }
