@@ -1455,5 +1455,5 @@ b699527d2c20d3d2509be6bacfacb5bc70e4443e90217c55e0e031dc98e47d09.wasm,ok,_,14,17
 596ace8b855436478512821a2e0ecb02973b1bad0a4057dc541fd0ca4d7cf037.wasm,ok,_,24,14.1 KiB
 5fd9b2dff5d1273980f75c1dad48aff77ad95eff3d7278994bfb59803fdbad04.wasm,ok,_,5,10 KiB
 42e07c346e42d0ca5f5d500343540dafbeafa6951754ee77c087b3bad03b22e7.wasm,ok,_,7,18.2 KiB
-Contracts with specs: 1453 (0.9979396%)
-Contracts without specs: 3 (0.0020604397%)
+Contracts with specs: 1453 (0.9979396%),_,_,_,_
+Contracts without specs: 3 (0.0020604397%),_,_,_,_
