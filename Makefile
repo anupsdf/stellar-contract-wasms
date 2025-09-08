@@ -1,7 +1,7 @@
 install:
-	cd list-buckets && cargo install --locked --path .
-	cd get-contracts-from-buckets && cargo install --locked --path .
+	cargo install --locked --manifest-path list-buckets/Cargo.toml --path .
+	cargo install --locked --manifest-path get-contracts-from-buckets/Cargo.toml --path .
 
 fmt:
-	cd list-buckets && cargo fmt
-	cd get-contracts-from-buckets && cargo fmt
+	cargo fmt --manifest-path list-buckets/Cargo.toml
+	cargo fmt --manifest-path get-contracts-from-buckets/Cargo.toml

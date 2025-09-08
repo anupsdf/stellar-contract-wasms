@@ -38,7 +38,7 @@ jobs:
       - name: list-buckets
         id: list-buckets
         run: |
-          BUCKETS=$(cd list-buckets && cargo run --locked)
+          BUCKETS=$(cargo run --locked --manifest-path list-buckets/Cargo.toml)
           echo "Buckets: $BUCKETS"
           i=0
           while IFS= read -r line; do
@@ -235,7 +235,7 @@ jobs:
 
       - name: Run get-contracts-from-buckets
         run: >
-          cd get-contracts-from-buckets && cargo run --locked --
+          cargo run --locked --manifest-path get-contracts-from-buckets/Cargo.toml --
           ${{ needs.list-buckets.outputs.bucket0 }}
           ${{ needs.list-buckets.outputs.bucket1 }}
           ${{ needs.list-buckets.outputs.bucket2 }}
