@@ -48,8 +48,8 @@ fn main() -> Result<(), Box<dyn Error>> {
         }
     }
     let total = count_with_specs+count_without_specs;
-    println!("Contracts with specs: {count_with_specs} ({}%)", count_with_specs as f32/total as f32);
-    println!("Contracts without specs: {count_without_specs} ({}%)", count_without_specs as f32/total as f32);
+    println!("Contracts with specs: {count_with_specs} ({}%),_,_,_,_", count_with_specs as f32/total as f32);
+    println!("Contracts without specs: {count_without_specs} ({}%),_,_,_,_", count_without_specs as f32/total as f32);
     
     Ok(())
 }
