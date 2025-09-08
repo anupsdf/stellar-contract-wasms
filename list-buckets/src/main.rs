@@ -1,8 +1,5 @@
 use reqwest::Client;
 use serde_json::Value;
-use std::fs;
-use std::io::Read;
-use std::path::Path;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {

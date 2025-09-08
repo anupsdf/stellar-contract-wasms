@@ -361,7 +361,6 @@ dependencies = [
  "flate2",
  "hex",
  "reqwest",
- "serde_json",
  "stellar-xdr",
  "tokio",
 ]

@@ -15,7 +15,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args: Vec<String> = env::args().collect();
     if args.len() < 2 {
         eprintln!("Usage: {} <bucket_hash1> [bucket_hash2] ...", args[0]);
-        eprintln!("Example: {} 0000000000000000000000000000000000000000000000000000000000000001", args[0]);
         return Ok(());
     }
 
@@ -47,7 +46,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         } else {
             // Download from network
             println!("Downloading bucket: {}", bucket_name);
-            println!("URL: {}", bucket_url);
             
             let response = client.get(&bucket_url).send().await?;
             let status = response.status();
@@ -58,7 +56,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             if status.is_success() && data.len() > 100 {
                 // Save to cache
                 fs::write(&cache_path, &data)?;
-                println!("Saved to cache: {}", cache_path);
             }
             
             data.to_vec()
