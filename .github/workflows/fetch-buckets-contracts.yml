@@ -54,28 +54,203 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: rustup upgrade
-      - name: Restore cached buckets
+      - name: Restore cached bucket0
         uses: actions/cache@v4
+        if: ${{ needs.list-buckets.outputs.bucket0 != '' }}
         with:
-          path: cache/
-          key: buckets-${{ github.sha }}
+          path: cache/bucket-${{ needs.list-buckets.outputs.bucket0 }}.xdr
+          key: bucket-${{ needs.list-buckets.outputs.bucket0 }}-${{ github.sha }}
           restore-keys: |
-            buckets-
+            bucket-${{ needs.list-buckets.outputs.bucket0 }}-
 
-      - name: Download buckets from list
-        run: |
-          mkdir -p cache/
-          BUCKETS="${{ needs.list-buckets.outputs.bucket0 }} ${{ needs.list-buckets.outputs.bucket1 }} ${{ needs.list-buckets.outputs.bucket2 }} ${{ needs.list-buckets.outputs.bucket3 }} ${{ needs.list-buckets.outputs.bucket4 }} ${{ needs.list-buckets.outputs.bucket5 }} ${{ needs.list-buckets.outputs.bucket6 }} ${{ needs.list-buckets.outputs.bucket7 }} ${{ needs.list-buckets.outputs.bucket8 }} ${{ needs.list-buckets.outputs.bucket9 }} ${{ needs.list-buckets.outputs.bucket10 }} ${{ needs.list-buckets.outputs.bucket11 }} ${{ needs.list-buckets.outputs.bucket12 }} ${{ needs.list-buckets.outputs.bucket13 }} ${{ needs.list-buckets.outputs.bucket14 }} ${{ needs.list-buckets.outputs.bucket15 }} ${{ needs.list-buckets.outputs.bucket16 }} ${{ needs.list-buckets.outputs.bucket17 }} ${{ needs.list-buckets.outputs.bucket18 }} ${{ needs.list-buckets.outputs.bucket19 }} ${{ needs.list-buckets.outputs.bucket20 }} ${{ needs.list-buckets.outputs.bucket21 }}"
-          echo "Processing buckets: $BUCKETS"
-          # Assuming the list is space-separated bucket IDs
-          for bucket in $BUCKETS; do
-            if [ -n "$bucket" ] && [ ! -f "cache/bucket-${bucket}.xdr.gz" ]; then
-              echo "Bucket $bucket not cached locally, would need to fetch it"
-              # Here you might need to add logic to download the bucket if not cached
-            elif [ -n "$bucket" ]; then
-              echo "Bucket $bucket already cached"
-            fi
-          done
+      - name: Restore cached bucket1
+        uses: actions/cache@v4
+        if: ${{ needs.list-buckets.outputs.bucket1 != '' }}
+        with:
+          path: cache/bucket-${{ needs.list-buckets.outputs.bucket1 }}.xdr
+          key: bucket-${{ needs.list-buckets.outputs.bucket1 }}-${{ github.sha }}
+          restore-keys: |
+            bucket-${{ needs.list-buckets.outputs.bucket1 }}-
+
+      - name: Restore cached bucket2
+        uses: actions/cache@v4
+        if: ${{ needs.list-buckets.outputs.bucket2 != '' }}
+        with:
+          path: cache/bucket-${{ needs.list-buckets.outputs.bucket2 }}.xdr
+          key: bucket-${{ needs.list-buckets.outputs.bucket2 }}-${{ github.sha }}
+          restore-keys: |
+            bucket-${{ needs.list-buckets.outputs.bucket2 }}-
+
+      - name: Restore cached bucket3
+        uses: actions/cache@v4
+        if: ${{ needs.list-buckets.outputs.bucket3 != '' }}
+        with:
+          path: cache/bucket-${{ needs.list-buckets.outputs.bucket3 }}.xdr
+          key: bucket-${{ needs.list-buckets.outputs.bucket3 }}-${{ github.sha }}
+          restore-keys: |
+            bucket-${{ needs.list-buckets.outputs.bucket3 }}-
+
+      - name: Restore cached bucket4
+        uses: actions/cache@v4
+        if: ${{ needs.list-buckets.outputs.bucket4 != '' }}
+        with:
+          path: cache/bucket-${{ needs.list-buckets.outputs.bucket4 }}.xdr
+          key: bucket-${{ needs.list-buckets.outputs.bucket4 }}-${{ github.sha }}
+          restore-keys: |
+            bucket-${{ needs.list-buckets.outputs.bucket4 }}-
+
+      - name: Restore cached bucket5
+        uses: actions/cache@v4
+        if: ${{ needs.list-buckets.outputs.bucket5 != '' }}
+        with:
+          path: cache/bucket-${{ needs.list-buckets.outputs.bucket5 }}.xdr
+          key: bucket-${{ needs.list-buckets.outputs.bucket5 }}-${{ github.sha }}
+          restore-keys: |
+            bucket-${{ needs.list-buckets.outputs.bucket5 }}-
+
+      - name: Restore cached bucket6
+        uses: actions/cache@v4
+        if: ${{ needs.list-buckets.outputs.bucket6 != '' }}
+        with:
+          path: cache/bucket-${{ needs.list-buckets.outputs.bucket6 }}.xdr
+          key: bucket-${{ needs.list-buckets.outputs.bucket6 }}-${{ github.sha }}
+          restore-keys: |
+            bucket-${{ needs.list-buckets.outputs.bucket6 }}-
+
+      - name: Restore cached bucket7
+        uses: actions/cache@v4
+        if: ${{ needs.list-buckets.outputs.bucket7 != '' }}
+        with:
+          path: cache/bucket-${{ needs.list-buckets.outputs.bucket7 }}.xdr
+          key: bucket-${{ needs.list-buckets.outputs.bucket7 }}-${{ github.sha }}
+          restore-keys: |
+            bucket-${{ needs.list-buckets.outputs.bucket7 }}-
+
+      - name: Restore cached bucket8
+        uses: actions/cache@v4
+        if: ${{ needs.list-buckets.outputs.bucket8 != '' }}
+        with:
+          path: cache/bucket-${{ needs.list-buckets.outputs.bucket8 }}.xdr
+          key: bucket-${{ needs.list-buckets.outputs.bucket8 }}-${{ github.sha }}
+          restore-keys: |
+            bucket-${{ needs.list-buckets.outputs.bucket8 }}-
+
+      - name: Restore cached bucket9
+        uses: actions/cache@v4
+        if: ${{ needs.list-buckets.outputs.bucket9 != '' }}
+        with:
+          path: cache/bucket-${{ needs.list-buckets.outputs.bucket9 }}.xdr
+          key: bucket-${{ needs.list-buckets.outputs.bucket9 }}-${{ github.sha }}
+          restore-keys: |
+            bucket-${{ needs.list-buckets.outputs.bucket9 }}-
+
+      - name: Restore cached bucket10
+        uses: actions/cache@v4
+        if: ${{ needs.list-buckets.outputs.bucket10 != '' }}
+        with:
+          path: cache/bucket-${{ needs.list-buckets.outputs.bucket10 }}.xdr
+          key: bucket-${{ needs.list-buckets.outputs.bucket10 }}-${{ github.sha }}
+          restore-keys: |
+            bucket-${{ needs.list-buckets.outputs.bucket10 }}-
+
+      - name: Restore cached bucket11
+        uses: actions/cache@v4
+        if: ${{ needs.list-buckets.outputs.bucket11 != '' }}
+        with:
+          path: cache/bucket-${{ needs.list-buckets.outputs.bucket11 }}.xdr
+          key: bucket-${{ needs.list-buckets.outputs.bucket11 }}-${{ github.sha }}
+          restore-keys: |
+            bucket-${{ needs.list-buckets.outputs.bucket11 }}-
+
+      - name: Restore cached bucket12
+        uses: actions/cache@v4
+        if: ${{ needs.list-buckets.outputs.bucket12 != '' }}
+        with:
+          path: cache/bucket-${{ needs.list-buckets.outputs.bucket12 }}.xdr
+          key: bucket-${{ needs.list-buckets.outputs.bucket12 }}-${{ github.sha }}
+          restore-keys: |
+            bucket-${{ needs.list-buckets.outputs.bucket12 }}-
+
+      - name: Restore cached bucket13
+        uses: actions/cache@v4
+        if: ${{ needs.list-buckets.outputs.bucket13 != '' }}
+        with:
+          path: cache/bucket-${{ needs.list-buckets.outputs.bucket13 }}.xdr
+          key: bucket-${{ needs.list-buckets.outputs.bucket13 }}-${{ github.sha }}
+          restore-keys: |
+            bucket-${{ needs.list-buckets.outputs.bucket13 }}-
+
+      - name: Restore cached bucket14
+        uses: actions/cache@v4
+        if: ${{ needs.list-buckets.outputs.bucket14 != '' }}
+        with:
+          path: cache/bucket-${{ needs.list-buckets.outputs.bucket14 }}.xdr
+          key: bucket-${{ needs.list-buckets.outputs.bucket14 }}-${{ github.sha }}
+          restore-keys: |
+            bucket-${{ needs.list-buckets.outputs.bucket14 }}-
+
+      - name: Restore cached bucket15
+        uses: actions/cache@v4
+        if: ${{ needs.list-buckets.outputs.bucket15 != '' }}
+        with:
+          path: cache/bucket-${{ needs.list-buckets.outputs.bucket15 }}.xdr
+          key: bucket-${{ needs.list-buckets.outputs.bucket15 }}-${{ github.sha }}
+          restore-keys: |
+            bucket-${{ needs.list-buckets.outputs.bucket15 }}-
+
+      - name: Restore cached bucket16
+        uses: actions/cache@v4
+        if: ${{ needs.list-buckets.outputs.bucket16 != '' }}
+        with:
+          path: cache/bucket-${{ needs.list-buckets.outputs.bucket16 }}.xdr
+          key: bucket-${{ needs.list-buckets.outputs.bucket16 }}-${{ github.sha }}
+          restore-keys: |
+            bucket-${{ needs.list-buckets.outputs.bucket16 }}-
+
+      - name: Restore cached bucket17
+        uses: actions/cache@v4
+        if: ${{ needs.list-buckets.outputs.bucket17 != '' }}
+        with:
+          path: cache/bucket-${{ needs.list-buckets.outputs.bucket17 }}.xdr
+          key: bucket-${{ needs.list-buckets.outputs.bucket17 }}-${{ github.sha }}
+          restore-keys: |
+            bucket-${{ needs.list-buckets.outputs.bucket17 }}-
+
+      - name: Restore cached bucket18
+        uses: actions/cache@v4
+        if: ${{ needs.list-buckets.outputs.bucket18 != '' }}
+        with:
+          path: cache/bucket-${{ needs.list-buckets.outputs.bucket18 }}.xdr
+          key: bucket-${{ needs.list-buckets.outputs.bucket18 }}-${{ github.sha }}
+          restore-keys: |
+            bucket-${{ needs.list-buckets.outputs.bucket18 }}-
+
+      - name: Restore cached bucket19
+        uses: actions/cache@v4
+        if: ${{ needs.list-buckets.outputs.bucket19 != '' }}
+        with:
+          path: cache/bucket-${{ needs.list-buckets.outputs.bucket19 }}.xdr
+          key: bucket-${{ needs.list-buckets.outputs.bucket19 }}-${{ github.sha }}
+          restore-keys: |
+            bucket-${{ needs.list-buckets.outputs.bucket19 }}-
+
+      - name: Restore cached bucket20
+        uses: actions/cache@v4
+        if: ${{ needs.list-buckets.outputs.bucket20 != '' }}
+        with:
+          path: cache/bucket-${{ needs.list-buckets.outputs.bucket20 }}.xdr
+          key: bucket-${{ needs.list-buckets.outputs.bucket20 }}-${{ github.sha }}
+          restore-keys: |
+            bucket-${{ needs.list-buckets.outputs.bucket20 }}-
+
+      - name: Restore cached bucket21
+        uses: actions/cache@v4
+        if: ${{ needs.list-buckets.outputs.bucket21 != '' }}
+        with:
+          path: cache/bucket-${{ needs.list-buckets.outputs.bucket21 }}.xdr
+          key: bucket-${{ needs.list-buckets.outputs.bucket21 }}-${{ github.sha }}
+          restore-keys: |
+            bucket-${{ needs.list-buckets.outputs.bucket21 }}-
 
       - name: Build get-contracts-from-buckets
         run: cargo build --release --bin get-contracts-from-buckets
