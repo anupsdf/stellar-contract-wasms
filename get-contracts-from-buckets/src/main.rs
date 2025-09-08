@@ -46,7 +46,22 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             fs::read(&cache_path)?
         } else {
             // Download from network
-            println!("Bucket: {}", bucket_name);
+            println!("Downloading bucket: {}", bucket_name);
+            
+            // First make a HEAD request to get the file size
+            let head_response = client.head(&bucket_url).send().await?;
+            let expected_size = if head_response.status().is_success() {
+                head_response.headers()
+                    .get("content-length")
+                    .and_then(|v| v.to_str().ok())
+                    .and_then(|s| s.parse::<u64>().ok())
+                    .map(|size| human_bytes(size as f64))
+                    .unwrap_or_else(|| "unknown size".to_string())
+            } else {
+                "unknown size".to_string()
+            };
+            
+            println!("Downloading {}...", expected_size);
             
             let response = client.get(&bucket_url).send().await?;
             let status = response.status();
