@@ -59,7 +59,7 @@ jobs:
         if: ${{ needs.list-buckets.outputs.bucket0 != '' }}
         with:
           path: cache/bucket-${{ needs.list-buckets.outputs.bucket0 }}.xdr
-          key: bucket-${{ needs.list-buckets.outputs.bucket0 }}-${{ github.sha }}
+          key: bucket-${{ needs.list-buckets.outputs.bucket0 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket0 }}-
 
@@ -68,7 +68,7 @@ jobs:
         if: ${{ needs.list-buckets.outputs.bucket1 != '' }}
         with:
           path: cache/bucket-${{ needs.list-buckets.outputs.bucket1 }}.xdr
-          key: bucket-${{ needs.list-buckets.outputs.bucket1 }}-${{ github.sha }}
+          key: bucket-${{ needs.list-buckets.outputs.bucket1 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket1 }}-
 
@@ -77,7 +77,7 @@ jobs:
         if: ${{ needs.list-buckets.outputs.bucket2 != '' }}
         with:
           path: cache/bucket-${{ needs.list-buckets.outputs.bucket2 }}.xdr
-          key: bucket-${{ needs.list-buckets.outputs.bucket2 }}-${{ github.sha }}
+          key: bucket-${{ needs.list-buckets.outputs.bucket2 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket2 }}-
 
@@ -86,7 +86,7 @@ jobs:
         if: ${{ needs.list-buckets.outputs.bucket3 != '' }}
         with:
           path: cache/bucket-${{ needs.list-buckets.outputs.bucket3 }}.xdr
-          key: bucket-${{ needs.list-buckets.outputs.bucket3 }}-${{ github.sha }}
+          key: bucket-${{ needs.list-buckets.outputs.bucket3 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket3 }}-
 
@@ -95,7 +95,7 @@ jobs:
         if: ${{ needs.list-buckets.outputs.bucket4 != '' }}
         with:
           path: cache/bucket-${{ needs.list-buckets.outputs.bucket4 }}.xdr
-          key: bucket-${{ needs.list-buckets.outputs.bucket4 }}-${{ github.sha }}
+          key: bucket-${{ needs.list-buckets.outputs.bucket4 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket4 }}-
 
@@ -104,7 +104,7 @@ jobs:
         if: ${{ needs.list-buckets.outputs.bucket5 != '' }}
         with:
           path: cache/bucket-${{ needs.list-buckets.outputs.bucket5 }}.xdr
-          key: bucket-${{ needs.list-buckets.outputs.bucket5 }}-${{ github.sha }}
+          key: bucket-${{ needs.list-buckets.outputs.bucket5 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket5 }}-
 
@@ -113,7 +113,7 @@ jobs:
         if: ${{ needs.list-buckets.outputs.bucket6 != '' }}
         with:
           path: cache/bucket-${{ needs.list-buckets.outputs.bucket6 }}.xdr
-          key: bucket-${{ needs.list-buckets.outputs.bucket6 }}-${{ github.sha }}
+          key: bucket-${{ needs.list-buckets.outputs.bucket6 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket6 }}-
 
@@ -122,7 +122,7 @@ jobs:
         if: ${{ needs.list-buckets.outputs.bucket7 != '' }}
         with:
           path: cache/bucket-${{ needs.list-buckets.outputs.bucket7 }}.xdr
-          key: bucket-${{ needs.list-buckets.outputs.bucket7 }}-${{ github.sha }}
+          key: bucket-${{ needs.list-buckets.outputs.bucket7 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket7 }}-
 
@@ -131,7 +131,7 @@ jobs:
         if: ${{ needs.list-buckets.outputs.bucket8 != '' }}
         with:
           path: cache/bucket-${{ needs.list-buckets.outputs.bucket8 }}.xdr
-          key: bucket-${{ needs.list-buckets.outputs.bucket8 }}-${{ github.sha }}
+          key: bucket-${{ needs.list-buckets.outputs.bucket8 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket8 }}-
 
@@ -140,7 +140,7 @@ jobs:
         if: ${{ needs.list-buckets.outputs.bucket9 != '' }}
         with:
           path: cache/bucket-${{ needs.list-buckets.outputs.bucket9 }}.xdr
-          key: bucket-${{ needs.list-buckets.outputs.bucket9 }}-${{ github.sha }}
+          key: bucket-${{ needs.list-buckets.outputs.bucket9 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket9 }}-
 
@@ -149,7 +149,7 @@ jobs:
         if: ${{ needs.list-buckets.outputs.bucket10 != '' }}
         with:
           path: cache/bucket-${{ needs.list-buckets.outputs.bucket10 }}.xdr
-          key: bucket-${{ needs.list-buckets.outputs.bucket10 }}-${{ github.sha }}
+          key: bucket-${{ needs.list-buckets.outputs.bucket10 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket10 }}-
 
@@ -158,7 +158,7 @@ jobs:
         if: ${{ needs.list-buckets.outputs.bucket11 != '' }}
         with:
           path: cache/bucket-${{ needs.list-buckets.outputs.bucket11 }}.xdr
-          key: bucket-${{ needs.list-buckets.outputs.bucket11 }}-${{ github.sha }}
+          key: bucket-${{ needs.list-buckets.outputs.bucket11 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket11 }}-
 
@@ -167,7 +167,7 @@ jobs:
         if: ${{ needs.list-buckets.outputs.bucket12 != '' }}
         with:
           path: cache/bucket-${{ needs.list-buckets.outputs.bucket12 }}.xdr
-          key: bucket-${{ needs.list-buckets.outputs.bucket12 }}-${{ github.sha }}
+          key: bucket-${{ needs.list-buckets.outputs.bucket12 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket12 }}-
 
@@ -176,7 +176,7 @@ jobs:
         if: ${{ needs.list-buckets.outputs.bucket13 != '' }}
         with:
           path: cache/bucket-${{ needs.list-buckets.outputs.bucket13 }}.xdr
-          key: bucket-${{ needs.list-buckets.outputs.bucket13 }}-${{ github.sha }}
+          key: bucket-${{ needs.list-buckets.outputs.bucket13 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket13 }}-
 
@@ -185,7 +185,7 @@ jobs:
         if: ${{ needs.list-buckets.outputs.bucket14 != '' }}
         with:
           path: cache/bucket-${{ needs.list-buckets.outputs.bucket14 }}.xdr
-          key: bucket-${{ needs.list-buckets.outputs.bucket14 }}-${{ github.sha }}
+          key: bucket-${{ needs.list-buckets.outputs.bucket14 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket14 }}-
 
@@ -194,7 +194,7 @@ jobs:
         if: ${{ needs.list-buckets.outputs.bucket15 != '' }}
         with:
           path: cache/bucket-${{ needs.list-buckets.outputs.bucket15 }}.xdr
-          key: bucket-${{ needs.list-buckets.outputs.bucket15 }}-${{ github.sha }}
+          key: bucket-${{ needs.list-buckets.outputs.bucket15 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket15 }}-
 
@@ -203,7 +203,7 @@ jobs:
         if: ${{ needs.list-buckets.outputs.bucket16 != '' }}
         with:
           path: cache/bucket-${{ needs.list-buckets.outputs.bucket16 }}.xdr
-          key: bucket-${{ needs.list-buckets.outputs.bucket16 }}-${{ github.sha }}
+          key: bucket-${{ needs.list-buckets.outputs.bucket16 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket16 }}-
 
@@ -212,7 +212,7 @@ jobs:
         if: ${{ needs.list-buckets.outputs.bucket17 != '' }}
         with:
           path: cache/bucket-${{ needs.list-buckets.outputs.bucket17 }}.xdr
-          key: bucket-${{ needs.list-buckets.outputs.bucket17 }}-${{ github.sha }}
+          key: bucket-${{ needs.list-buckets.outputs.bucket17 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket17 }}-
 
@@ -221,7 +221,7 @@ jobs:
         if: ${{ needs.list-buckets.outputs.bucket18 != '' }}
         with:
           path: cache/bucket-${{ needs.list-buckets.outputs.bucket18 }}.xdr
-          key: bucket-${{ needs.list-buckets.outputs.bucket18 }}-${{ github.sha }}
+          key: bucket-${{ needs.list-buckets.outputs.bucket18 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket18 }}-
 
@@ -230,7 +230,7 @@ jobs:
         if: ${{ needs.list-buckets.outputs.bucket19 != '' }}
         with:
           path: cache/bucket-${{ needs.list-buckets.outputs.bucket19 }}.xdr
-          key: bucket-${{ needs.list-buckets.outputs.bucket19 }}-${{ github.sha }}
+          key: bucket-${{ needs.list-buckets.outputs.bucket19 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket19 }}-
 
@@ -239,7 +239,7 @@ jobs:
         if: ${{ needs.list-buckets.outputs.bucket20 != '' }}
         with:
           path: cache/bucket-${{ needs.list-buckets.outputs.bucket20 }}.xdr
-          key: bucket-${{ needs.list-buckets.outputs.bucket20 }}-${{ github.sha }}
+          key: bucket-${{ needs.list-buckets.outputs.bucket20 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket20 }}-
 
@@ -248,29 +248,16 @@ jobs:
         if: ${{ needs.list-buckets.outputs.bucket21 != '' }}
         with:
           path: cache/bucket-${{ needs.list-buckets.outputs.bucket21 }}.xdr
-          key: bucket-${{ needs.list-buckets.outputs.bucket21 }}-${{ github.sha }}
+          key: bucket-${{ needs.list-buckets.outputs.bucket21 }}
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket21 }}-
-
-      - name: Build get-contracts-from-buckets
-        run: cargo build --release --bin get-contracts-from-buckets
 
       - name: Run get-contracts-from-buckets
         run: |
           BUCKETS="${{ needs.list-buckets.outputs.bucket0 }} ${{ needs.list-buckets.outputs.bucket1 }} ${{ needs.list-buckets.outputs.bucket2 }} ${{ needs.list-buckets.outputs.bucket3 }} ${{ needs.list-buckets.outputs.bucket4 }} ${{ needs.list-buckets.outputs.bucket5 }} ${{ needs.list-buckets.outputs.bucket6 }} ${{ needs.list-buckets.outputs.bucket7 }} ${{ needs.list-buckets.outputs.bucket8 }} ${{ needs.list-buckets.outputs.bucket9 }} ${{ needs.list-buckets.outputs.bucket10 }} ${{ needs.list-buckets.outputs.bucket11 }} ${{ needs.list-buckets.outputs.bucket12 }} ${{ needs.list-buckets.outputs.bucket13 }} ${{ needs.list-buckets.outputs.bucket14 }} ${{ needs.list-buckets.outputs.bucket15 }} ${{ needs.list-buckets.outputs.bucket16 }} ${{ needs.list-buckets.outputs.bucket17 }} ${{ needs.list-buckets.outputs.bucket18 }} ${{ needs.list-buckets.outputs.bucket19 }} ${{ needs.list-buckets.outputs.bucket20 }} ${{ needs.list-buckets.outputs.bucket21 }}"
-          ./target/release/get-contracts-from-buckets $BUCKETS
+          cd get-contracts-from-buckets && cargo run --locked --path . -- $BUCKETS
 
-      - name: Check for new contracts
-        id: check-changes
-        run: |
-          if [ -d contracts/ ] && [ "$(ls -A contracts/)" ]; then
-            echo "has_changes=true" >> $GITHUB_OUTPUT
-          else
-            echo "has_changes=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Commit and push contracts
-        if: steps.check-changes.outputs.has_changes == 'true'
+      - name: Commit contracts
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"

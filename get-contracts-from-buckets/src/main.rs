@@ -38,7 +38,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         let rr = &bucket_name[4..6];
         let _remaining = &bucket_name[6..];
         let bucket_url = format!("{base_url}/bucket/{pp}/{qq}/{rr}/bucket-{bucket_name}.xdr.gz");
-        let cache_path = format!("cache/bucket-{bucket_name}.xdr.gz");
+        let cache_path = format!("cache/bucket-{bucket_name}.xdr");
 
         let data = if Path::new(&cache_path).exists() {
             // Load from cache
