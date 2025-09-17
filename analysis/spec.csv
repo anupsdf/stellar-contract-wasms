@@ -1484,6 +1484,6 @@ c14743ccfa00f0ad8e45dbcba5e87d175b76bfc12ded52d0fb87c790b4056647.wasm,ok,_,6,tru
 fc351dc94670a0864f1ec8e598fb6a0f12b759010697102127a990ecbfd260b4.wasm,ok,_,7,false,13.4 KiB
 9b7f31c0763b9588e8e39994f5cb96b6c0c3890a36aa5cb0d8bb7a81aa2fd547.wasm,ok,_,3,true,2.4 KiB
 1b883c32721d191a06c2306cc85586dc6ba9bd1144f6edffe988edc89bde8682.wasm,ok,_,104,true,71.4 KiB
-Contracts with specs: 1482 (0.9979798%),_,_,_,_,_
-Contracts with specs and docs: 436 (0.2936027%),_,_,_,_,_
-Contracts without specs: 3 (0.002020202%),_,_,_,_,_
+Contracts with specs: 1482 (99.79798%),_,_,_,_,_
+Contracts with specs and docs: 436 (29.360271%),_,_,_,_,_
+Contracts without specs: 3 (0.20202021%),_,_,_,_,_
