@@ -18,7 +18,11 @@ fn main() -> Result<(), Box<dyn Error>> {
         return Err(format!("{} is not a directory", dir_path).into());
     }
 
-    let entries = fs::read_dir(dir_path)?;
+    let mut paths = fs::read_dir(dir_path)?
+        .map(|r| r.map(|e| e.path()))
+        .collect::<Result<Vec<_>, _>>()?;
+    paths.sort();
+    let paths = paths;
 
     let mut count_with_specs = 0;
     let mut count_without_specs = 0;
@@ -26,9 +30,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     println!("file,result,message,entries,has docs,size");
 
-    for entry in entries {
-        let path = entry?.path();
-
+    for path in paths {
         let Some(extension) = path.extension() else {
             continue;
         };
