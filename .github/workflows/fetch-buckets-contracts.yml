@@ -240,10 +240,6 @@ jobs:
           restore-keys: |
             bucket-${{ needs.list-buckets.outputs.bucket21 }}-
 
-      - name: Check get-contracts-from-buckets
-        run: >
-          cargo check --locked --release --manifest-path .scripts/get-contracts-from-buckets/Cargo.toml
-
       - name: Run get-contracts-from-buckets
         run: >
           cargo run --locked --release --manifest-path .scripts/get-contracts-from-buckets/Cargo.toml --
@@ -269,10 +265,6 @@ jobs:
           ${{ needs.list-buckets.outputs.bucket19 }}
           ${{ needs.list-buckets.outputs.bucket20 }}
           ${{ needs.list-buckets.outputs.bucket21 }}
-
-      - name: Check spec-analysis
-        run: >
-          cargo check --locked --release --manifest-path .scripts/spec-analysis/Cargo.toml
 
       - name: Run spec-analysis
         run: >
