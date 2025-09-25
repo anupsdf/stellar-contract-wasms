@@ -122,19 +122,20 @@ fn main() -> Result<(), Box<dyn Error>> {
 
 fn section_name(id: u8) -> &'static str {
     match id {
-        1 => "Type",
-        2 => "Import",
-        3 => "Function",
-        4 => "Table",
-        5 => "Memory",
-        6 => "Global",
-        7 => "Export",
-        8 => "Start",
-        9 => "Element",
-        10 => "Code",
-        11 => "Data",
-        12 => "DataCount",
-        13 => "Tag",
+        0 => "custom",
+        1 => "type",
+        2 => "import",
+        3 => "function",
+        4 => "table",
+        5 => "memory",
+        6 => "global",
+        7 => "export",
+        8 => "start",
+        9 => "element",
+        10 => "code",
+        11 => "data",
+        12 => "datacount",
+        13 => "tag",
         _ => "Unknown",
     }
 }
