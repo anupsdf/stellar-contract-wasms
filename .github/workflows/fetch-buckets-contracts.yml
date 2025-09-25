@@ -278,9 +278,9 @@ jobs:
         run: >
           cargo run --locked --release --manifest-path .scripts/spec-analysis/Cargo.toml contracts/ > analysis/spec.csv
 
-      - name: Run dupe-section-analysis
+      - name: Run dupe-code-analysis
         run: >
-          cargo run --locked --release --manifest-path .scripts/dupe-section-analysis/Cargo.toml contracts/ > analysis/dupe.csv
+          cargo run --locked --release --manifest-path .scripts/dupe-code-analysis/Cargo.toml contracts/ > analysis/dupe-code.csv
 
       - name: Commit contracts
         run: |
