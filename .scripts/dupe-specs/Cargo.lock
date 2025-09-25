@@ -202,7 +202,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "dupe-code-analysis"
+name = "dupe-section-analysis"
 version = "0.1.0"
 dependencies = [
  "csv",

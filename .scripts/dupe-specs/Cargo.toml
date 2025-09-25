@@ -1,0 +1,13 @@
+[package]
+name = "dupe-section-analysis"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+soroban-spec = "23.0.2"
+stellar-xdr = "23.0.0"
+human_bytes = "0.4"
+wasmparser = "0.201"
+wasm-encoder = "0.201"
+sha2 = "0.10"
+csv = "1.1"
