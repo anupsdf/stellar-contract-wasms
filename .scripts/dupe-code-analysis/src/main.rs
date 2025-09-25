@@ -68,7 +68,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     eprintln!("Unique hashes: {}", hash_counts.len());
 
     let mut hash_counts_vec: Vec<_> = hash_counts.iter().collect();
-    hash_counts_vec.sort_by(|a, b| b.1.cmp(a.1));
+    hash_counts_vec.sort_by(|a, b| b.1.cmp(a.1).then(a.0.cmp(b.0)));
 
     let mut wtr = Writer::from_writer(io::stdout());
     wtr.write_record(&["hash", "count"])?;
