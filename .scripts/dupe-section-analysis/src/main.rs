@@ -79,6 +79,10 @@ fn main() -> Result<(), Box<dyn Error>> {
     let mut wtr = Writer::from_writer(io::stdout());
     wtr.write_record(&["section", "hash", "count", "size", "count x size"])?;
     for ((id, hash), (count, size)) in section_vec {
+        // Only output sections with more than one use.
+        if count == &1 {
+            continue;
+        }
         wtr.write_record(&[
             &format!("{}({})", section_name(*id), id),
             hash,
