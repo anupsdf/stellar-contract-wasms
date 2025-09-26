@@ -30,6 +30,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let mut total_specs = 0;
     let mut spec_counts: HashMap<String, u32> = HashMap::new();
     let mut spec_xdrs: HashMap<String, Vec<u8>> = HashMap::new();
+    let mut function_names: HashMap<String, Vec<String>> = HashMap::new();
 
     for path in paths {
         let Some(extension) = path.extension() else {
@@ -55,6 +56,14 @@ fn main() -> Result<(), Box<dyn Error>> {
             let mut limited = Limited::new(Cursor::new(data), Limits::none());
             let mut entries = ScSpecEntry::read_xdr_iter(&mut limited).collect::<Result<Vec<_>,_>>().unwrap();
 
+            let fn_names: Vec<String> = entries.iter().filter_map(|e| {
+                if let ScSpecEntry::FunctionV0(f) = e {
+                    Some(f.name.to_string())
+                } else {
+                    None
+                }
+            }).collect();
+
             // Clear all doc fields recursively
             for entry in &mut entries {
                 clear_docs(entry);
@@ -75,6 +84,8 @@ fn main() -> Result<(), Box<dyn Error>> {
             let hash = Sha256::digest(&xdr);
             let hash_str = format!("{:x}", hash);
 
+            function_names.insert(hash_str.clone(), fn_names);
+
             total_specs += 1;
             spec_xdrs.insert(hash_str.clone(), xdr);
             *spec_counts.entry(hash_str).or_insert(0) += 1;
@@ -89,16 +100,18 @@ fn main() -> Result<(), Box<dyn Error>> {
     spec_vec.sort_by(|a, b| b.1.cmp(a.1).then(a.0.cmp(b.0)));
 
     let mut wtr = Writer::from_writer(io::stdout());
-    wtr.write_record(&["spec_hash", "count"])?;
+    wtr.write_record(&["spec_hash", "count", "functions"])?;
     for (hash, count) in &spec_vec {
         // Only output specs with more than one use.
         if *count == &1 {
             continue;
         }
-        wtr.write_record(&[hash, &count.to_string()])?;
+        let fns = function_names.get(hash.as_str()).unwrap();
+        let fn_str = fns.join(" ");
+        wtr.write_record(&[hash, &count.to_string(), &fn_str])?;
     }
-    wtr.write_record(&["Total specs", &total_specs.to_string()])?;
-    wtr.write_record(&["Unique specs", &spec_counts.len().to_string()])?;
+    wtr.write_record(&["Total specs", &total_specs.to_string(), ""])?;
+    wtr.write_record(&["Unique specs", &spec_counts.len().to_string(), ""])?;
     wtr.flush()?;
 
     fs::create_dir_all("analysis/dupe-specs")?;
