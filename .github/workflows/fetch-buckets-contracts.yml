@@ -278,6 +278,10 @@ jobs:
         run: >
           cargo run --locked --release --manifest-path .scripts/dupe-section-analysis/Cargo.toml contracts/ > analysis/dupe-sections.csv
 
+      - name: Run dupe-spec-analysis
+        run: >
+          cargo run --locked --release --manifest-path .scripts/dupe-specs/Cargo.toml contracts/ > analysis/dupe-specs.csv
+
       - name: Commit contracts
         run: |
           git config --local user.email "action@github.com"

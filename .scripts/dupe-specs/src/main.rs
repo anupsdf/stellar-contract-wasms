@@ -1,10 +1,10 @@
 use csv::Writer;
 use sha2::{Digest, Sha256};
 use std::collections::HashMap;
-use std::io;
+use std::io::{self, Cursor};
 use std::path::Path;
 use std::{error::Error, fs};
-use stellar_xdr::curr::{Limited, Limits, ReadXdr, ScSpecEntry, StringM, WriteXdr};
+use stellar_xdr::curr::{Limited, Limits, ReadXdr, ScSpecEntry, WriteXdr};
 use wasmparser::Parser;
 
 fn main() -> Result<(), Box<dyn Error>> {
@@ -51,49 +51,25 @@ fn main() -> Result<(), Box<dyn Error>> {
                 continue;
             }
             let data = c.data();
-            let mut limited = Limited::new(std::io::Cursor::new(data), Limits::none());
-            let len = u32::read_xdr(&mut limited)
-                .map_err(|e| format!("Failed to read len for {}: {}", path.display(), e))?;
-            let mut entries = Vec::with_capacity(len as usize);
-            for _ in 0..len {
-                let entry = ScSpecEntry::read_xdr(&mut limited)
-                    .map_err(|e| format!("Failed to read entry for {}: {}", path.display(), e))?;
-                entries.push(entry);
-            }
+            let mut limited = Limited::new(Cursor::new(data), Limits::none());
+            let mut entries = ScSpecEntry::read_xdr_iter(&mut limited).collect::<Result<Vec<_>,_>>().unwrap();
 
-            let empty_doc = StringM::try_from("".to_string()).unwrap();
-            // Remove docs and prepare for canonical sorting
-            for entry in &mut entries {
-                match entry {
-                    ScSpecEntry::FunctionV0(ref mut f) => f.doc = empty_doc.clone(),
-                    ScSpecEntry::UdtStructV0(ref mut s) => s.doc = empty_doc.clone(),
-                    ScSpecEntry::UdtUnionV0(ref mut u) => u.doc = empty_doc.clone(),
-                    ScSpecEntry::UdtEnumV0(ref mut e) => e.doc = empty_doc.clone(),
-                    ScSpecEntry::UdtErrorEnumV0(ref mut ee) => ee.doc = empty_doc.clone(),
-                    ScSpecEntry::EventV0(ref mut ev) => ev.doc = empty_doc.clone(),
-                }
-            }
+            // Sort for canonical order
+            entries.sort();
 
             // Encode each entry to XDR bytes for sorting
-            let mut entry_bytes: Vec<Vec<u8>> = entries
+            let entry_bytes: Vec<Vec<u8>> = entries
                 .into_iter()
                 .map(|e| e.to_xdr(Limits::none()))
                 .collect::<Result<Vec<_>, _>>()
-                .map_err(|e| {
-                    format!("Failed to encode spec entry for {}: {}", path.display(), e)
-                })?;
-
-            // Sort the entry bytes for canonical order
-            entry_bytes.sort();
-
-            // Concatenate all bytes
-            let mut all_bytes = Vec::new();
-            for eb in entry_bytes {
-                all_bytes.extend(eb);
-            }
+                .unwrap();
 
             // Generate hash
-            let hash = Sha256::digest(&all_bytes);
+            let mut sha256 = Sha256::new();
+            for b in entry_bytes {
+                sha256.update(b);
+            }
+            let hash = sha256.finalize();
             let hash_str = format!("{:x}", hash);
 
             *spec_counts.entry(hash_str).or_insert(0) += 1;
@@ -123,3 +99,17 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     Ok(())
 }
+
+
+// let empty_doc = StringM::try_from("".to_string()).unwrap();
+// // Remove docs and prepare for canonical sorting
+// for entry in &mut entries {
+//     match entry {
+//         ScSpecEntry::FunctionV0(ref mut f) => f.doc = empty_doc.clone(),
+//         ScSpecEntry::UdtStructV0(ref mut s) => s.doc = empty_doc.clone(),
+//         ScSpecEntry::UdtUnionV0(ref mut u) => u.doc = empty_doc.clone(),
+//         ScSpecEntry::UdtEnumV0(ref mut e) => e.doc = empty_doc.clone(),
+//         ScSpecEntry::UdtErrorEnumV0(ref mut ee) => ee.doc = empty_doc.clone(),
+//         ScSpecEntry::EventV0(ref mut ev) => ev.doc = empty_doc.clone(),
+//     }
+// }
