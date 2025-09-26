@@ -27,8 +27,9 @@ fn main() -> Result<(), Box<dyn Error>> {
     paths.sort();
     let paths = paths;
 
-    let mut spec_counts: HashMap<String, u32> = HashMap::new();
     let mut total_specs = 0;
+    let mut spec_counts: HashMap<String, u32> = HashMap::new();
+    let mut spec_xdrs: HashMap<String, Vec<u8>> = HashMap::new();
 
     for path in paths {
         let Some(extension) = path.extension() else {
@@ -62,24 +63,22 @@ fn main() -> Result<(), Box<dyn Error>> {
             // Sort for canonical order
             entries.sort();
 
-            // Encode each entry to XDR bytes for sorting
-            let entry_bytes: Vec<Vec<u8>> = entries
+            // Encode each entry to XDR for hashing
+            let xdr: Vec<u8> = entries
                 .into_iter()
                 .map(|e| e.to_xdr(Limits::none()))
                 .collect::<Result<Vec<_>, _>>()
-                .unwrap();
+                .unwrap()
+                .concat();
 
             // Generate hash
-            let mut sha256 = Sha256::new();
-            for b in entry_bytes {
-                sha256.update(b);
-            }
-            let hash = sha256.finalize();
+            let hash = Sha256::digest(&xdr);
             let hash_str = format!("{:x}", hash);
 
-            *spec_counts.entry(hash_str).or_insert(0) += 1;
             total_specs += 1;
-            break; // Assuming only one contractspec per wasm
+            spec_xdrs.insert(hash_str.clone(), xdr);
+            *spec_counts.entry(hash_str).or_insert(0) += 1;
+            break; // Assume only one contractspec per wasm
         }
     }
 
@@ -91,9 +90,9 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     let mut wtr = Writer::from_writer(io::stdout());
     wtr.write_record(&["spec_hash", "count"])?;
-    for (hash, count) in spec_vec {
+    for (hash, count) in &spec_vec {
         // Only output specs with more than one use.
-        if count == &1 {
+        if *count == &1 {
             continue;
         }
         wtr.write_record(&[hash, &count.to_string()])?;
@@ -101,6 +100,13 @@ fn main() -> Result<(), Box<dyn Error>> {
     wtr.write_record(&["Total specs", &total_specs.to_string()])?;
     wtr.write_record(&["Unique specs", &spec_counts.len().to_string()])?;
     wtr.flush()?;
+
+    fs::create_dir_all("analysis/dupe-specs")?;
+    for (hash, _count) in &spec_vec {
+        let xdr = spec_xdrs.get(hash.as_str()).unwrap();
+        let path = format!("analysis/dupe-specs/{}.spec.xdr", hash);
+        fs::write(&path, xdr)?;
+    }
 
     Ok(())
 }
