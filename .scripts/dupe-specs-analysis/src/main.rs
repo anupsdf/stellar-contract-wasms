@@ -54,6 +54,11 @@ fn main() -> Result<(), Box<dyn Error>> {
             let mut limited = Limited::new(Cursor::new(data), Limits::none());
             let mut entries = ScSpecEntry::read_xdr_iter(&mut limited).collect::<Result<Vec<_>,_>>().unwrap();
 
+            // Clear all doc fields recursively
+            for entry in &mut entries {
+                clear_docs(entry);
+            }
+
             // Sort for canonical order
             entries.sort();
 
@@ -100,16 +105,48 @@ fn main() -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 
-
-// let empty_doc = StringM::try_from("".to_string()).unwrap();
-// // Remove docs and prepare for canonical sorting
-// for entry in &mut entries {
-//     match entry {
-//         ScSpecEntry::FunctionV0(ref mut f) => f.doc = empty_doc.clone(),
-//         ScSpecEntry::UdtStructV0(ref mut s) => s.doc = empty_doc.clone(),
-//         ScSpecEntry::UdtUnionV0(ref mut u) => u.doc = empty_doc.clone(),
-//         ScSpecEntry::UdtEnumV0(ref mut e) => e.doc = empty_doc.clone(),
-//         ScSpecEntry::UdtErrorEnumV0(ref mut ee) => ee.doc = empty_doc.clone(),
-//         ScSpecEntry::EventV0(ref mut ev) => ev.doc = empty_doc.clone(),
-//     }
-// }
+fn clear_docs(entry: &mut ScSpecEntry) {
+    use stellar_xdr::curr::*;
+    let empty_doc = StringM::try_from("".to_string()).unwrap();
+    match entry {
+        ScSpecEntry::FunctionV0(f) => {
+            f.doc = empty_doc.clone();
+            for input in &mut f.inputs {
+                input.doc = empty_doc.clone();
+            }
+        }
+        ScSpecEntry::UdtStructV0(s) => {
+            s.doc = empty_doc.clone();
+            for field in &mut s.fields {
+                field.doc = empty_doc.clone();
+            }
+        }
+        ScSpecEntry::UdtUnionV0(u) => {
+            u.doc = empty_doc.clone();
+            for case in &mut u.cases {
+                match case {
+                    ScSpecUdtUnionCaseV0::VoidV0(v) => v.doc = empty_doc.clone(),
+                    ScSpecUdtUnionCaseV0::TupleV0(t) => t.doc = empty_doc.clone(),
+                }
+            }
+        }
+        ScSpecEntry::UdtEnumV0(e) => {
+            e.doc = empty_doc.clone();
+            for case in &mut e.cases {
+                case.doc = empty_doc.clone();
+            }
+        }
+        ScSpecEntry::UdtErrorEnumV0(ee) => {
+            ee.doc = empty_doc.clone();
+            for case in &mut ee.cases {
+                case.doc = empty_doc.clone();
+            }
+        }
+        ScSpecEntry::EventV0(ev) => {
+            ev.doc = empty_doc.clone();
+            for param in &mut ev.params {
+                param.doc = empty_doc.clone();
+            }
+        }
+    }
+}
