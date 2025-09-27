@@ -4,7 +4,7 @@ use std::collections::HashMap;
 use std::io::{self, Cursor};
 use std::path::Path;
 use std::{error::Error, fs};
-use stellar_xdr::curr::{Limited, Limits, ReadXdr, ScSpecEntry, WriteXdr};
+use stellar_xdr::curr::{Limited, Limits, ReadXdr, ScSpecEntry};
 use wasmparser::Parser;
 
 fn main() -> Result<(), Box<dyn Error>> {
@@ -29,7 +29,6 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     let mut total_specs = 0;
     let mut spec_counts: HashMap<String, u32> = HashMap::new();
-    let mut spec_xdrs: HashMap<String, Vec<u8>> = HashMap::new();
     let mut function_names: HashMap<String, Vec<String>> = HashMap::new();
 
     for path in paths {
@@ -64,6 +63,14 @@ fn main() -> Result<(), Box<dyn Error>> {
                 }
             }).collect();
 
+            let mut sorted_fn_names = fn_names.clone();
+            sorted_fn_names.sort();
+            let fn_str = sorted_fn_names.join(" ");
+            let hash = Sha256::digest(fn_str.as_bytes());
+            let hash_str = format!("{:x}", hash);
+
+            function_names.insert(hash_str.clone(), fn_names);
+
             // Clear all doc fields recursively
             for entry in &mut entries {
                 clear_docs(entry);
@@ -72,22 +79,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             // Sort for canonical order
             entries.sort();
 
-            // Encode each entry to XDR for hashing
-            let xdr: Vec<u8> = entries
-                .into_iter()
-                .map(|e| e.to_xdr(Limits::none()))
-                .collect::<Result<Vec<_>, _>>()
-                .unwrap()
-                .concat();
-
-            // Generate hash
-            let hash = Sha256::digest(&xdr);
-            let hash_str = format!("{:x}", hash);
-
-            function_names.insert(hash_str.clone(), fn_names);
-
             total_specs += 1;
-            spec_xdrs.insert(hash_str.clone(), xdr);
             *spec_counts.entry(hash_str).or_insert(0) += 1;
             break; // Assume only one contractspec per wasm
         }
@@ -113,13 +105,6 @@ fn main() -> Result<(), Box<dyn Error>> {
     wtr.write_record(&["Total specs", &total_specs.to_string(), ""])?;
     wtr.write_record(&["Unique specs", &spec_counts.len().to_string(), ""])?;
     wtr.flush()?;
-
-    fs::create_dir_all("analysis/dupe-specs")?;
-    for (hash, _count) in &spec_vec {
-        let xdr = spec_xdrs.get(hash.as_str()).unwrap();
-        let path = format!("analysis/dupe-specs/{}.spec.xdr", hash);
-        fs::write(&path, xdr)?;
-    }
 
     Ok(())
 }
