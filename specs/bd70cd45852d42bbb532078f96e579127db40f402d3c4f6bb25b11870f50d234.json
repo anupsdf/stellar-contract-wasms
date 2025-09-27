@@ -1,0 +1,118 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "last_op",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Operation"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "all_op",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "Operation"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "sum",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "x",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "y",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "sub",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "x",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "y",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "mul",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "x",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "y",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "div",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "x",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "y",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "u64"
+      ]
+    }
+  }
+]

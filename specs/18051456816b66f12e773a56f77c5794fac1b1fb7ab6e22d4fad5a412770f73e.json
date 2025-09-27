@@ -1,0 +1,805 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "total_supply",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "allowance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "approve",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "expiration_ledger",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "balance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer_from",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "burn",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "burn_from",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "decimals",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "name",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "symbol",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AllowanceDataKey",
+      "fields": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AllowanceValue",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "expiration_ledger",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Allowance",
+            "type_": [
+              {
+                "udt": {
+                  "name": "AllowanceDataKey"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Balance",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TotalSupply"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DepositEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount_0",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_1",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "liquidity",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "new_reserve_0",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "new_reserve_1",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SwapEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount_0_in",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_0_out",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_1_in",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_1_out",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "WithdrawEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount_0",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_1",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "liquidity",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "new_reserve_0",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "new_reserve_1",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SyncEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "new_reserve_0",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "new_reserve_1",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SkimEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "skimmed_0",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "skimmed_1",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SoroswapPairError",
+      "cases": [
+        {
+          "doc": "SoroswapPair: already initialized",
+          "name": "InitializeAlreadyInitialized",
+          "value": 101
+        },
+        {
+          "doc": "SoroswapPair: not yet initialized",
+          "name": "NotInitialized",
+          "value": 102
+        },
+        {
+          "doc": "SoroswapPair: token_0 must be less than token_1 while initializing",
+          "name": "InitializeTokenOrderInvalid",
+          "value": 103
+        },
+        {
+          "doc": "SoroswapPair: insufficient amount of token 0 sent while doing deposit",
+          "name": "DepositInsufficientAmountToken0",
+          "value": 104
+        },
+        {
+          "doc": "SoroswapPair: insufficient amount of token 1 sent while doing deposit",
+          "name": "DepositInsufficientAmountToken1",
+          "value": 105
+        },
+        {
+          "doc": "SoroswapPair: insufficient first liquidity minted while doing deposit",
+          "name": "DepositInsufficientFirstLiquidity",
+          "value": 106
+        },
+        {
+          "doc": "SoroswapPair: insufficient liquidity minted while doing deposit",
+          "name": "DepositInsufficientLiquidityMinted",
+          "value": 107
+        },
+        {
+          "doc": "SoroswapPair: insufficient output amount while doing deposDepositit",
+          "name": "SwapInsufficientOutputAmount",
+          "value": 108
+        },
+        {
+          "doc": "SoroswapPair: negatives amounts out dont supported while doing swap",
+          "name": "SwapNegativesOutNotSupported",
+          "value": 109
+        },
+        {
+          "doc": "SoroswapPair: insufficient liquidity to do the swap",
+          "name": "SwapInsufficientLiquidity",
+          "value": 110
+        },
+        {
+          "doc": "SoroswapPair: invalid to to do the swap",
+          "name": "SwapInvalidTo",
+          "value": 111
+        },
+        {
+          "doc": "SoroswapPair: insufficient input amount while doing swap",
+          "name": "SwapInsufficientInputAmount",
+          "value": 112
+        },
+        {
+          "doc": "SoroswapPair: negatives amounts in dont supported while doing swap",
+          "name": "SwapNegativesInNotSupported",
+          "value": 113
+        },
+        {
+          "doc": "SoroswapPair: K constant is not met while doing swap",
+          "name": "SwapKConstantNotMet",
+          "value": 114
+        },
+        {
+          "doc": "SoroswapPair: liquidity was not initialized yet while doing withdraw",
+          "name": "WithdrawLiquidityNotInitialized",
+          "value": 115
+        },
+        {
+          "doc": "SoroswapPair: insufficient sent shares while doing withdraw",
+          "name": "WithdrawInsufficientSentShares",
+          "value": 116
+        },
+        {
+          "doc": "SoroswapPair: insufficient liquidity burned while doing withdraw",
+          "name": "WithdrawInsufficientLiquidityBurned",
+          "value": 117
+        },
+        {
+          "doc": "SoroswapPair: OVERFLOW while updating",
+          "name": "UpdateOverflow",
+          "value": 118
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initializes a new Soroswap pair by setting token addresses, factory, and initial reserves.\\n\\n# Arguments\\n* `e` - The runtime environment.\\n* `factory` - The address of the Soroswap factory contract.\\n* `token_0` - The address of the first token in the pair.\\n* `token_1` - The address of the second token in the pair.",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "factory",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_0",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_1",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SoroswapPairError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the address of the first token in the Soroswap pair.",
+      "name": "token_0",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the address of the second token in the Soroswap pair.",
+      "name": "token_1",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the address of the Soroswap factory contract.",
+      "name": "factory",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Deposits tokens into the Soroswap pair and mints LP tokens in return.\\n\\n# Arguments\\n* `e` - The runtime environment.\\n* `to` - The address where the minted LP tokens will be sent.\\n\\n# Returns\\nThe amount of minted LP tokens.\\nPossible errors:\\n- `SoroswapPairError::NotInitialized`: The Soroswap pair has not been initialized.\\n- `SoroswapPairError::DepositInsufficientAmountToken0`: Insufficient amount of token 0 sent.\\n- `SoroswapPairError::DepositInsufficientAmountToken1`: Insufficient amount of token 1 sent.\\n- `SoroswapPairError::DepositInsufficientFirstLiquidity`: Insufficient first liquidity minted.\\n- `SoroswapPairError::DepositInsufficientLiquidityMinted`: Insufficient liquidity minted.\\n- `SoroswapPairError::UpdateOverflow`: Overflow occurred during update.",
+      "name": "deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": {
+              "udt": {
+                "name": "SoroswapPairError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Executes a token swap within the Soroswap pair.\\n\\n# Arguments\\n* `e` - The runtime environment.\\n* `amount_0_out` - The desired amount of the first token to receive.\\n* `amount_1_out` - The desired amount of the second token to receive.\\n* `to` - The address where the swapped tokens will be sent.\\nReturns an error if the swap cannot be executed. Possible errors include:\\n- `SoroswapPairError::NotInitialized`\\n- `SoroswapPairError::SwapInsufficientOutputAmount`\\n- `SoroswapPairError::SwapNegativesOutNotSupported`\\n- `SoroswapPairError::SwapInsufficientLiquidity`\\n- `SoroswapPairError::SwapInvalidTo`\\n- `SoroswapPairError::SwapInsufficientInputAmount`\\n- `SoroswapPairError::SwapNegativesInNotSupported`\\n- `SoroswapPairError::SwapKConstantNotMet`: If the K constant condition is not met after the swap.",
+      "name": "swap",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount_0_out",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_1_out",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SoroswapPairError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Withdraws liquidity from the Soroswap pair, burning LP tokens and returning the corresponding tokens to the user.\\n\\n# Arguments\\n* `e` - The runtime environment.\\n* `to` - The address where the withdrawn tokens will be sent.\\n\\n# Returns\\nA tuple containing the amounts of token 0 and token 1 withdrawn from the pair.",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": [
+                  "i128",
+                  "i128"
+                ]
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SoroswapPairError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Skims excess tokens from reserves and sends them to the specified address.\\n\\n# Arguments\\n* `e` - The runtime environment.\\n* `to` - The address where the excess tokens will be sent.",
+      "name": "skim",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Forces reserves to match current balances.\\n\\n# Arguments\\n* `e` - The runtime environment.",
+      "name": "sync",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the current reserves and the last block timestamp.\\n\\n# Arguments\\n* `e` - The runtime environment.\\n\\n# Returns\\nA tuple containing the reserves of token 0 and token 1.",
+      "name": "get_reserves",
+      "inputs": [],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "i128",
+              "i128"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the value of the last product of reserves (`K`) stored in the contract.\\n\\n# Arguments\\n* `e` - The runtime environment.\\n\\n# Returns\\nThe value of the last product of reserves (`K`).",
+      "name": "k_last",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenMetadata",
+      "fields": [
+        {
+          "doc": "",
+          "name": "decimal",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FactoryError",
+      "cases": [
+        {
+          "doc": "SoroswapFactory: not yet initialized",
+          "name": "NotInitialized",
+          "value": 201
+        },
+        {
+          "doc": "SoroswapFactory: token_a and token_b have identical addresses",
+          "name": "CreatePairIdenticalTokens",
+          "value": 202
+        },
+        {
+          "doc": "SoroswapFactory: pair already exists between token_a and token_b",
+          "name": "CreatePairAlreadyExists",
+          "value": 203
+        },
+        {
+          "doc": "SoroswapFactory: already initialized",
+          "name": "InitializeAlreadyInitialized",
+          "value": 204
+        },
+        {
+          "doc": "SoroswapFactory: pair does not exist",
+          "name": "PairDoesNotExist",
+          "value": 205
+        },
+        {
+          "doc": "SoroswapFactory: index does not exist",
+          "name": "IndexDoesNotExist",
+          "value": 206
+        }
+      ]
+    }
+  }
+]

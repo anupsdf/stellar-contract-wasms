@@ -1,0 +1,577 @@
+[
+  {
+    "function_v0": {
+      "doc": "Initializes the contract and sets admin for it\\n\\n# Examples\\n\\n```\\n```",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "xlm",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "monthly_fee",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "CustomErrors"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the admin of the Fluxity contract\\n\\n# Examples\\n\\n```\\nlet admin = fluxity_client::get_admin();\\n```",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the address of the XLM token\\n\\n# Examples\\n\\n```\\nlet xlm_address = fluxity_client::get_xlm();\\n```",
+      "name": "get_xlm",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sets the monthly fee for lockups. Only the admin can call this\\n\\n# Examples\\n\\n```\\nlet id = fluxity_client::set_monthly_fee(200);\\n```",
+      "name": "set_monthly_fee",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the monthly fee for lockups\\n\\n# Examples\\n\\n```\\nlet fee = fluxity_client::get_monthly_fee();\\n```",
+      "name": "get_monthly_fee",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the latest lockup id\\n\\n# Examples\\n\\n```\\nlet id = fluxity_client::get_latest_stream_id();\\n```",
+      "name": "get_latest_lockup_id",
+      "inputs": [],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the fee calculated based on the start and end time of a lockup\\n\\n# Examples\\n\\n```\\nlet fee = fluxity_client::calculate_fee();\\n```",
+      "name": "calculate_fee",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "start_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "end_date",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns a lockup by id\\n\\n# Examples\\n\\n```\\nlet lockup_id = 20;\\n\\nfluxity_client::get_lockup(&stream_id);\\n```",
+      "name": "get_lockup",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "Lockup"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "CustomErrors"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Cancels a lockup\\n\\n# Examples\\n\\n```\\nlet lockup_id = 20;\\n\\nfluxity_client::cancel_lockup(&lockup_id);\\n```",
+      "name": "cancel_lockup",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": [
+                  "i128",
+                  "i128"
+                ]
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "CustomErrors"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Withdraws from a lockup, anyone call call this function even for others\\n\\n# Examples\\n\\n```\\nlet lockup_id = 20;\\nlet amount_to_withdraw = 30000000 // Represents 3 in a 7-decimal token\\n\\nfluxity_client::withdraw_lockup(&stream_id, &amount_to_withdraw);\\n```",
+      "name": "withdraw_lockup",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": {
+              "udt": {
+                "name": "CustomErrors"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Creates a lockup (stream/vesting)\\n\\n# Examples\\n\\n```\\nlet params = LockupInput {\\nsender: Address::random(&env),\\nreceiver: Address::random(&env),\\ntoken: Address::random(&env),\\namount: 20000000,\\nstart_date: now,\\ncancellable_date: now,\\ncliff_date: now + 100,\\nend_date: now + 1000,\\nrate: Rate::Daily,\\nis_vesting: true\\n};\\n\\nfluxity_client::create_lockup(&params);\\n```",
+      "name": "create_lockup",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "params",
+          "type_": {
+            "udt": {
+              "name": "LockupInput"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u64",
+            "error_type": {
+              "udt": {
+                "name": "CustomErrors"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Increases the duration and the amount of a lockup\\n\\n# Examples\\n\\n```\\nlet lockup_id = 56;\\nlet adding_amount = 700000000;\\n\\nfluxity_client::topup_lockup(lockup_id, adding_amount);\\n```",
+      "name": "topup_lockup",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "adding_amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": {
+              "udt": {
+                "name": "CustomErrors"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Xlm"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "MonthlyFee"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Lockup",
+            "type_": [
+              "u64"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "LatestLockupId"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CustomErrors",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InvalidAmount",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "InvalidReceiver",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "InvalidStartDate",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "InvalidCliffDate",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "InvalidCancellableDate",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "InvalidVestingDates",
+          "value": 15
+        },
+        {
+          "doc": "",
+          "name": "LockupNotStartedYet",
+          "value": 20
+        },
+        {
+          "doc": "",
+          "name": "LockupAlreadyCanceled",
+          "value": 21
+        },
+        {
+          "doc": "",
+          "name": "LockupAlreadySettled",
+          "value": 22
+        },
+        {
+          "doc": "",
+          "name": "LockupNotCancellableYet",
+          "value": 23
+        },
+        {
+          "doc": "",
+          "name": "LockupNotFound",
+          "value": 24
+        },
+        {
+          "doc": "",
+          "name": "LockupIsCanceled",
+          "value": 25
+        },
+        {
+          "doc": "",
+          "name": "SpecifiedAmountIsGreaterThanWithdrawable",
+          "value": 26
+        },
+        {
+          "doc": "",
+          "name": "AmountUnderflows",
+          "value": 27
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 30
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Rate",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Daily",
+          "value": 86400
+        },
+        {
+          "doc": "",
+          "name": "Weekly",
+          "value": 604800
+        },
+        {
+          "doc": "",
+          "name": "Monthly",
+          "value": 2592000
+        },
+        {
+          "doc": "",
+          "name": "Quarterly",
+          "value": 10368000
+        },
+        {
+          "doc": "",
+          "name": "Annually",
+          "value": 31536000
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LockupInput",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "cancellable_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "cliff_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "end_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "is_vesting",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "rate",
+          "type_": {
+            "udt": {
+              "name": "Rate"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "receiver",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "start_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Lockup",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "cancellable_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "cancelled_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "cliff_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "end_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "is_cancelled",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "is_vesting",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "rate",
+          "type_": {
+            "udt": {
+              "name": "Rate"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "receiver",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "start_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "withdrawn",
+          "type_": "i128"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,674 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "config",
+          "type_": {
+            "udt": {
+              "name": "CoreConfig"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "register",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "domain",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "tld",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "new_voting",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "participant_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "title",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "content",
+          "type_": "string"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "vote",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "participant_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "agree",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "exec",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "participant_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CoreConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "cooldown_period",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "creation_fee",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "gov_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "manager",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "min_votes",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "registry",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "voting_period",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CoreStats",
+      "fields": [
+        {
+          "doc": "",
+          "name": "participants",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "proposals",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "votes",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CoreDataKeys",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "CoreConfig"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "CoreStats"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Resolution",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Accepted"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Rejected"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Tied"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Cancelled"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "None"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ProposalType",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Vote"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Execution"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Proposal",
+      "fields": [
+        {
+          "doc": "",
+          "name": "creator",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "ends_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "executed",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "proposal_type",
+          "type_": {
+            "udt": {
+              "name": "ProposalType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "resolution",
+          "type_": {
+            "udt": {
+              "name": "Resolution"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "starts_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "title",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "votes_against",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "votes_for",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ProposalVote",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "agree",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "claimed",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "deposit",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "participant",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ProposalsDataKeys",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Proposal",
+            "type_": [
+              "u64"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ProposalContent",
+            "type_": [
+              "u64"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ProposalVote",
+            "type_": [
+              "u64",
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Participant",
+      "fields": [
+        {
+          "doc": "",
+          "name": "created_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "domain",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "tld",
+          "type_": "bytes"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ParticipantStats",
+      "fields": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "last_participation",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "messages",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "participation",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "votes",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ParticipantDataKeys",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Participant",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ParticipantStats",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractErrors",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyStarted",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "ContractNotStarted",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "UnAuthorized",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "FailedToPayCreationFee",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "ProposalIsStillActive",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "ProposalDoesNotExist",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "ProposalIsNotActive",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "AlreadyVoted",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "DomainRecordDoesntExist",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "ProposalVoteDoesNotExist",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "ProposalVoteAlreadyClaimed",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "ProposalVoterAddressIncorrect",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "ParticipantAlreadyRegistered",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "ParticipantDoesNotExist",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "TitleExceedsItsMaxLength",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "NotEnoughGovernanceBalance",
+          "value": 15
+        },
+        {
+          "doc": "",
+          "name": "CanNotExecuteYet",
+          "value": 16
+        }
+      ]
+    }
+  }
+]

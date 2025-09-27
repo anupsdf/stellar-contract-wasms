@@ -1,0 +1,230 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Action",
+      "fields": [
+        {
+          "doc": "",
+          "name": "a0",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "a1",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "alt_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "in_idx",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "min_out",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "out_idx",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "protocol",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Signature",
+      "fields": [
+        {
+          "doc": "",
+          "name": "pub_key",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "signature",
+          "type_": {
+            "bytes_n": {
+              "n": 64
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AtomicRouterError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InsufficientFunds",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "InsufficientProfit",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 3
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "\\nNOTE: Calling `require_auth` more than once for the **same** `Address`\\n*after* a nested contract call violates the authorization\\xe2\\x80\\x91tree rules\\nand triggers `Error(Auth,\\xe2\\x80\\xafExistingValue)`\\xe2\\x80\\x82:contentReference[oaicite:1]{index=1}.\\nWe therefore collect **one** authorization up\\xe2\\x80\\x91front that covers the\\nwhole route.",
+      "name": "execute",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "actions",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Action"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "max_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "min_profit",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__check_auth",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "_payload",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "_sigs",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Signature"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "_invocs",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Context"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  }
+]

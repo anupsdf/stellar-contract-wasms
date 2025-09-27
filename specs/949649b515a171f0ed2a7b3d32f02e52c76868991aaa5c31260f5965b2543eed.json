@@ -1,0 +1,113 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "Constant keys for storage.",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TokenAddress"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "DepositCounter"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Deposit",
+            "type_": [
+              "u64"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initializes the contract storage by setting the token contract address\\nand initializing the deposit counter to zero.",
+      "name": "init",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Deposits tokens into escrow.\\nThis transfers tokens from the sender\\xe2\\x80\\x99s account to the escrow contract\\xe2\\x80\\x99s account,\\nand records the deposit amount using a deposit counter.",
+      "name": "deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sends tokens from the escrow contract\\xe2\\x80\\x99s account to a specified recipient.\\nThis transfers tokens from the escrow (i.e. the contract's own address)\\nto the recipient\\xe2\\x80\\x99s address.",
+      "name": "send",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sends tokens from the escrow contract\\xe2\\x80\\x99s account to multiple recipients.\\nAccepts a vector of recipient addresses and a vector of token amounts.\\nBoth vectors must be of the same length.",
+      "name": "send_multiple",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "recipients",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "amounts",
+          "type_": {
+            "vec": {
+              "element_type": "i128"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

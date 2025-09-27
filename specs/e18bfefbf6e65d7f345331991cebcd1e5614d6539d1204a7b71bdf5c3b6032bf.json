@@ -1,0 +1,847 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ContractInfo"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Launch",
+            "type_": [
+              "address",
+              "u64"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "LaunchBalance",
+            "type_": [
+              "address",
+              "u64",
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "SpaceMission",
+            "type_": [
+              "address"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "native_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "slz_fee",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "slz_fee_destination",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "space_fee",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "space_missions",
+          "type_": {
+            "map": {
+              "key_type": "u32",
+              "value_type": {
+                "udt": {
+                  "name": "SpaceMissionData"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "stability_check_duration",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "stellarbucks_contract",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Launch",
+      "fields": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "dev",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "funds_claimed",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "funds_recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "info",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "max_price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "max_supply",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "pool_balance",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "stability_check",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "stability_check_end",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "stellarbucks",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "supply",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "tokens_claimed",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SpaceMissionData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "guaranteed_success_funding",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "reward",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Initialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "NotAuthorized",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "ZeroMinPrice",
+          "value": 100
+        },
+        {
+          "doc": "",
+          "name": "ZeroMaxPrice",
+          "value": 101
+        },
+        {
+          "doc": "",
+          "name": "MinPriceGreaterMax",
+          "value": 102
+        },
+        {
+          "doc": "",
+          "name": "ZeroMaxSupply",
+          "value": 103
+        },
+        {
+          "doc": "",
+          "name": "MaxSupplyTooBig",
+          "value": 104
+        },
+        {
+          "doc": "",
+          "name": "MaxPriceTooBig",
+          "value": 105
+        },
+        {
+          "doc": "",
+          "name": "LaunchNotFound",
+          "value": 200
+        },
+        {
+          "doc": "",
+          "name": "LaunchInProgress",
+          "value": 201
+        },
+        {
+          "doc": "",
+          "name": "LaunchEnded",
+          "value": 202
+        },
+        {
+          "doc": "",
+          "name": "PriceChanged",
+          "value": 203
+        },
+        {
+          "doc": "",
+          "name": "InsufficientBalance",
+          "value": 204
+        },
+        {
+          "doc": "",
+          "name": "LaunchSoldOut",
+          "value": 205
+        },
+        {
+          "doc": "",
+          "name": "LaunchFundsClaimed",
+          "value": 206
+        },
+        {
+          "doc": "",
+          "name": "InvalidMissionDifficulty",
+          "value": 300
+        },
+        {
+          "doc": "",
+          "name": "ExasiveFunding",
+          "value": 301
+        },
+        {
+          "doc": "",
+          "name": "MissionRewardChanged",
+          "value": 302
+        },
+        {
+          "doc": "",
+          "name": "MissionRewardZero",
+          "value": 303
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "stability_check_duration",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "space_fee",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "slz_fee",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "slz_fee_destination",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "stellarbucks_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "native_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "space_missions_odds",
+          "type_": {
+            "map": {
+              "key_type": "u32",
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "change_contract_info",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "stability_check_duration",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "space_fee",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "slz_fee",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "slz_fee_destination",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "space_missions_odds",
+          "type_": {
+            "map": {
+              "key_type": "u32",
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "start_space_mission",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "funding",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "difficulty",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "min_mission_reward",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "bool",
+              "i128"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_space_missions_reward",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "funds",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reward_difficulty",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "new_launch",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "dev",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "funds_recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "info",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "max_supply",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "max_price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "launch_index",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "cancel_launch",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "launch_key",
+          "type_": {
+            "tuple": {
+              "value_types": [
+                "address",
+                "u64"
+              ]
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "buy",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "launch_key",
+          "type_": {
+            "tuple": {
+              "value_types": [
+                "address",
+                "u64"
+              ]
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "sending",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_receive",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "sell",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "launch_key",
+          "type_": {
+            "tuple": {
+              "value_types": [
+                "address",
+                "u64"
+              ]
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "sending",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_receive",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim_launch_funds",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "launch_key",
+          "type_": {
+            "tuple": {
+              "value_types": [
+                "address",
+                "u64"
+              ]
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim_launch_balance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "launch_key",
+          "type_": {
+            "tuple": {
+              "value_types": [
+                "address",
+                "u64"
+              ]
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "calculate_buy",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "launch_key",
+          "type_": {
+            "tuple": {
+              "value_types": [
+                "address",
+                "u64"
+              ]
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "sending",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "i128",
+              "i128",
+              "i128",
+              "i128",
+              "i128"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "calculate_sell",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "launch_key",
+          "type_": {
+            "tuple": {
+              "value_types": [
+                "address",
+                "u64"
+              ]
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "sending",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "i128",
+              "i128",
+              "i128",
+              "i128",
+              "i128"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_launch_data",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "launch_key",
+          "type_": {
+            "tuple": {
+              "value_types": [
+                "address",
+                "u64"
+              ]
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Launch"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_contract_info",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "ContractInfo"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_launch_balance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "launch_key",
+          "type_": {
+            "tuple": {
+              "value_types": [
+                "address",
+                "u64"
+              ]
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "version",
+      "inputs": [],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "u32",
+              "u32",
+              "u32"
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

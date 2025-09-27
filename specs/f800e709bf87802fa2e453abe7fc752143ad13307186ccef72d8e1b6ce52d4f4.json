@@ -1,0 +1,708 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ClientDataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Credit"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "CreditManager"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PoolStorage"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "credit",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "credit_manager",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_storage",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_contract_addrs",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "credit",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "credit_manager",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_credit_config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "credit_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "cc",
+          "type_": {
+            "udt": {
+              "name": "CreditConfig"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_credit_record",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "credit_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "cr",
+          "type_": {
+            "udt": {
+              "name": "CreditRecord"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_due_detail",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "credit_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "dd",
+          "type_": {
+            "udt": {
+              "name": "DueDetail"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_borrower",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "credit_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "addr",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_credit_hash",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "borrower",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "bytes_n": {
+            "n": 32
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_credit_config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "credit_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "CreditConfig"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_credit_record",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "credit_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "CreditRecord"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_due_detail",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "credit_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "DueDetail"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_borrower",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "credit_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "require_borrower",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "borrower",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "bytes_n": {
+            "n": 32
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CreditStorageError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "BorrowerRequired",
+          "value": 501
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CreditDataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "CreditConfig",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "CreditRecord",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "DueDetail",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Borrower",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PayPeriodDuration",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Monthly"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Quarterly"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "SemiAnnually"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CalendarError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "StartDateLaterThanEndDate",
+          "value": 801
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CommonError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "ProtocolIsPausedOrPoolIsNotOn",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "PoolOwnerOrHumaOwnerRequired",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "PoolOperatorRequired",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "AuthorizedContractCallerRequired",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "UnsupportedFunction",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "ZeroAmountProvided",
+          "value": 7
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "BillRefreshedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "credit_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "new_due_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "next_due",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "total_past_due",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CreditState",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Deleted"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Approved"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "GoodStanding"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Delayed"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Defaulted"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CreditConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "committed_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "credit_limit",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "num_periods",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "pay_period_duration",
+          "type_": {
+            "udt": {
+              "name": "PayPeriodDuration"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "revolving",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "yield_bps",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CreditRecord",
+      "fields": [
+        {
+          "doc": "",
+          "name": "missed_periods",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "next_due",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "next_due_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "remaining_periods",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "state",
+          "type_": {
+            "udt": {
+              "name": "CreditState"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "total_past_due",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "unbilled_principal",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "yield_due",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DueDetail",
+      "fields": [
+        {
+          "doc": "",
+          "name": "accrued",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "committed",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "late_fee",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "late_fee_updated_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "paid",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "principal_past_due",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "yield_past_due",
+          "type_": "u128"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,459 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "vault_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "deposit_asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "treasury",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "min_deposit",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "deposit_cap",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "dist",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "tuple": {
+                  "value_types": [
+                    "address",
+                    "u128"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "router_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "workers",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_dist",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "dist",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "tuple": {
+                  "value_types": [
+                    "address",
+                    "u128"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "exec",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "worker",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "allowed",
+          "type_": "bool"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "harvest",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "farmed_asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "route",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "tuple": {
+                  "value_types": [
+                    "u32",
+                    "u32",
+                    "u32",
+                    "u32"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "u128",
+              "u128"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "take_fee",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u128",
+            "error_type": {
+              "udt": {
+                "name": "VaultInterfaceErrors"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "r_deposits_value",
+      "inputs": [],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "vault_stats",
+      "inputs": [],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "u128",
+              "u128"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "tokens",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VaultErrors",
+      "cases": [
+        {
+          "doc": "",
+          "name": "PoolDepositFailed",
+          "value": 200
+        },
+        {
+          "doc": "",
+          "name": "PoolBorrowFailed",
+          "value": 201
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StorageKeys",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Distribution"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Router"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Workers"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VaultInterfaceErrors",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyStarted",
+          "value": 100
+        },
+        {
+          "doc": "",
+          "name": "DepositAboveCap",
+          "value": 101
+        },
+        {
+          "doc": "",
+          "name": "DepositBelowMin",
+          "value": 102
+        },
+        {
+          "doc": "",
+          "name": "DepositFailed",
+          "value": 103
+        },
+        {
+          "doc": "",
+          "name": "WithdrawBelowMin",
+          "value": 104
+        },
+        {
+          "doc": "",
+          "name": "WithdrawDepositFailed",
+          "value": 105
+        },
+        {
+          "doc": "",
+          "name": "WithdrawFailed",
+          "value": 106
+        },
+        {
+          "doc": "",
+          "name": "CantTakeFee",
+          "value": 110
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VaultInterfaceAddress",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "VaultToken"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "DepositAsset"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Treasury"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VaultInterfaceValue",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "LastFeeAccruedAt"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "VaultFee"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "MinDepositAmount"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "MinWithdrawValue"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "DepositCap"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TotalVaultValue"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TotalTokens"
+          }
+        }
+      ]
+    }
+  }
+]

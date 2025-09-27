@@ -1,0 +1,328 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_yield_adapter_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "register_adapter",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "yield_type",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "protocol",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "adapter_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_adapter",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "yield_type",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "protocol",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_adapter",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "yield_type",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "protocol",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_support_for_asset",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "yield_type",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "protocol",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "asset_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_support_for_asset",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "yield_type",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "protocol",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "asset_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_supported_asset",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "yield_type",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "protocol",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "asset_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_adapters",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "yield_type",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_adapters_with_assets",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "yield_type",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "tuple": {
+                "value_types": [
+                  "address",
+                  {
+                    "vec": {
+                      "element_type": "address"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "YieldAdapterRegistryMap",
+      "fields": [
+        {
+          "doc": "",
+          "name": "registry_map",
+          "type_": {
+            "map": {
+              "key_type": "symbol",
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "supported_assets",
+          "type_": {
+            "map": {
+              "key_type": "symbol",
+              "value_type": {
+                "map": {
+                  "key_type": "address",
+                  "value_type": "bool"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "yield_type",
+          "type_": "symbol"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Owner"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "Error codes for the cusd_manager contract. Common errors are codes that match up with the built-in\\nYieldAdapterRegistry error reporting. YieldAdapterRegistry specific errors start at 400",
+      "lib": "",
+      "name": "YieldAdapterRegistryError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InternalError",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitializedError",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "UnauthorizedError",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "NegativeAmountError",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "BalanceError",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "OverflowError",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "InvalidYieldAdapter",
+          "value": 1100
+        }
+      ]
+    }
+  }
+]

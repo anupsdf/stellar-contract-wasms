@@ -1,0 +1,114 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Managers"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "BridgeContract"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ReceptacleId",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "OperatorList"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ReceptaclesList"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ConsensusThreshold"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ConsensusCount",
+            "type_": [
+              "bytes"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ChainOracle",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "IsSuportedChain",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ChainIdList"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "TokenSupportedChains",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "DestinationChainToken",
+            "type_": [
+              "address",
+              "u32"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "SoroswapContract"
+          }
+        }
+      ]
+    }
+  }
+]

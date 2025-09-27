@@ -1,0 +1,356 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "The offer is already created.",
+          "name": "OfferAlreadyCreated",
+          "value": 1
+        },
+        {
+          "doc": "The offer is not created yet.",
+          "name": "OfferNotCreated",
+          "value": 2
+        },
+        {
+          "doc": "The price is too low.",
+          "name": "PriceTooHigh",
+          "value": 3
+        },
+        {
+          "doc": "The price is zero.",
+          "name": "ZeroPrice",
+          "value": 4
+        },
+        {
+          "doc": "The token transfer failed.",
+          "name": "TokenTransferFailed",
+          "value": 5
+        },
+        {
+          "doc": "The token amount is zero.",
+          "name": "ZeroTokenAmount",
+          "value": 6
+        },
+        {
+          "doc": "No redeem request found.",
+          "name": "NoRedeemRequest",
+          "value": 7
+        },
+        {
+          "doc": "Epoch haven't setled yet.",
+          "name": "EpochNotSetled",
+          "value": 8
+        },
+        {
+          "doc": "Negative redeem amount",
+          "name": "NegativeRedeemAmount",
+          "value": 9
+        },
+        {
+          "doc": "Invalid epoch id",
+          "name": "InvalidEpochId",
+          "value": 10
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RedeemRequest",
+      "fields": [
+        {
+          "doc": "",
+          "name": "epoch_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "shares_amount",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Offer",
+      "fields": [
+        {
+          "doc": "",
+          "name": "buy_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "sell_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "seller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "treasury",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Request",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "RedeemRate",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Offer"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TotalRedeem"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "EpochId"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "seller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "treasury",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "sell_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "buy_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "initial_price",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "buyer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "buy_token_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_sell_token_amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "updt_price",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_price",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "redeem_request",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "cancel_request",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim_request",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "setle_epoch",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_offer",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Offer"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_request",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "RedeemRequest"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_epoch_id",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_total_redeem",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_redeem_rate",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "epoch_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u64"
+      ]
+    }
+  }
+]

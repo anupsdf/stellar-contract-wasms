@@ -1,0 +1,1596 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "ListingNotFound",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "ListingNotAvailable",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "ListingTypeMismatch",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "InvalidNftOwner",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "MissingMarketplaceContractId",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "AgreementNotFound",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "AgreementNotActive",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "AgreementNotOwnedByCaller",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "StateNotAlreadySet",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "InsufficientBalance",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "InsufficientShares",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "InsufficientSharesForPurchase",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "CurrencyNotSupported",
+          "value": 15
+        },
+        {
+          "doc": "",
+          "name": "CannotModifyShareStructure",
+          "value": 16
+        },
+        {
+          "doc": "",
+          "name": "InvalidSharesDistribution",
+          "value": 17
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Listing",
+      "fields": [
+        {
+          "doc": "",
+          "name": "agreement_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "allow_purchase",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "allow_rent",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "available_shares",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "creator",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "duration",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "metadata_uri",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reference_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "reserved_shares",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "ListingStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "total_shares",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AssetType",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Gear",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "Courses",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "Studios",
+          "value": 3
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PurchaseType",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Rent",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "Buy",
+          "value": 2
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ListingStatus",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Available",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "Rented",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "Leased",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "Purchased",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "Unavailable",
+          "value": 5
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Listing",
+            "type_": [
+              "u64"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ListingCount"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserListings",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "OwnershipShares",
+            "type_": [
+              "u64"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Currency",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "NGNG"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "USDC"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "XLM"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Owner",
+      "fields": [
+        {
+          "doc": "",
+          "name": "owner_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "share",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "nft_ca",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "agreement_ca",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "escrow_ca",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "price_feed_ca",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "reflector_ca",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "payment_token",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "version",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_state",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "state_key",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "state_value",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_payment_token",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_addr",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_currency",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "currency",
+          "type_": {
+            "udt": {
+              "name": "Currency"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_listing",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "creator",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "reference_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "metadata_uri",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "duration",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "allow_purchase",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "allow_rent",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "total_shares",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "reserved_shares",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u64",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_listing_shares",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "creator",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "listing_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "shares_to_add",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "reserved_shares",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_listing",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "listing_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "reference_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "new_duration",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "allow_purchase",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "allow_rent",
+          "type_": "bool"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_listing",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "listing_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Listing"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_all_listings",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "Listing"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_listing_count",
+      "inputs": [],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_listing_count",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "count",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_listing",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "listing_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "change_listing_status",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "listing_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "ListingStatus"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_listing_current_price",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "listing_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_usdc_amount",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_usdc_price",
+      "inputs": [],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "i128",
+              "u32"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "rent",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "listing_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "renter",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "duration",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u64",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "purchase",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "listing_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "buyer",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u64",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "purchase_and_confirm",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "listing_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "buyer",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u64",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "purchase_shares",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "buyer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "seller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "listing_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "shares_to_buy",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u64",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "confirm_receipt",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "renter_or_buyer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "listing_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "is_rental",
+          "type_": "bool"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "cancel_sale_or_rental",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "seller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "listing_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "reclaim_or_return",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "seller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "listing_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "ListingNotFound",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "ListingNotAvailable",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "ListingTypeMismatch",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "InvalidNftOwner",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "MissingMarketplaceContractId",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "AgreementNotFound",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "AgreementNotActive",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "AgreementNotOwnedByCaller",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "AgreementIsAlreadyActive",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "StateNotAlreadySet",
+          "value": 11
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Agreement",
+            "type_": [
+              "u64"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "AgreementCount"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserAgreements",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ListingAgreements",
+            "type_": [
+              "u64"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Agreement",
+      "fields": [
+        {
+          "doc": "",
+          "name": "agreement_type",
+          "type_": {
+            "udt": {
+              "name": "AgreementType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "duration",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "end_time",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "listing_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "shares",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "AgreementStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AgreementType",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Lease"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Purchase"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AgreementStatus",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Created",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "Active",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "Completed",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "Terminated",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "Paused",
+          "value": 5
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "EscrowError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "StateNotAlreadySet",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "EscrowNotActive",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "EscrowNotFound",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 4
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Escrow",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "buyer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "seller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "EscrowStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "EscrowStatus",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Active"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Completed"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Refunded"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "EscrowDataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Escrow",
+            "type_": [
+              "u64"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "ListingNotFound",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "ListingNotAvailable",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "ListingTypeMismatch",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "InvalidNftOwner",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "MissingMarketplaceContractId",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "AgreementNotFound",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "AgreementNotActive",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "AgreementNotOwnedByCaller",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "StateNotAlreadySet",
+          "value": 11
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ContractName"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ContractSymbol"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "TokenMetadata",
+            "type_": [
+              "u64"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "TokenOwnership",
+            "type_": [
+              "u64"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "TemporaryControl",
+            "type_": [
+              "u64"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Token",
+      "fields": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "metadata",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenMetadata",
+      "fields": [
+        {
+          "doc": "",
+          "name": "token_uri",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "total_shares",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OracleError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "InvalidPrice",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "MinimumUpdateInterval",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "MaximumUpdateInterval",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "StalePrice",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "StateNotAlreadySet",
+          "value": 8
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PriceData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "rate",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "valid_period",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OracleConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "max_price_change",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_update_interval",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "updaters",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ]
+    }
+  }
+]

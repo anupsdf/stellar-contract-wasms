@@ -1,0 +1,21 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "say_hi",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

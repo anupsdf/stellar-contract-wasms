@@ -1,0 +1,201 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "s",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "a",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "u",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "h",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "w",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "b",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "a",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "i",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "tuple": {
+                  "value_types": [
+                    "u32",
+                    "address"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "b",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "m",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "n",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "l",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "tuple": {
+                  "value_types": [
+                    "u32",
+                    "u32",
+                    "u32",
+                    "u32"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "c",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "f",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "t",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "m",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "n",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "l",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "tuple": {
+                  "value_types": [
+                    "u32",
+                    "u32",
+                    "u32",
+                    "u32"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TA",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "M",
+            "type_": [
+              "u32"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SCE",
+      "cases": [
+        {
+          "doc": "",
+          "name": "A",
+          "value": 77
+        },
+        {
+          "doc": "",
+          "name": "B",
+          "value": 79
+        },
+        {
+          "doc": "",
+          "name": "C",
+          "value": 81
+        }
+      ]
+    }
+  }
+]

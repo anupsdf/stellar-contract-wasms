@@ -1,0 +1,51 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "swap",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "b",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount_a",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_b_for_a",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_b",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_a_for_b",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

@@ -1,0 +1,597 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Vesting",
+      "fields": [
+        {
+          "doc": "",
+          "name": "claimed_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "cliff_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "cliff_release_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "deactivation_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "end_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "initial_unlock",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "linear_vest_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "release_interval_secs",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "start_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "timelock",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CreateVestingBatchParams",
+      "fields": [
+        {
+          "doc": "",
+          "name": "cliff_amounts",
+          "type_": {
+            "vec": {
+              "element_type": "i128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "cliff_release_timestamps",
+          "type_": {
+            "vec": {
+              "element_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "end_timestamps",
+          "type_": {
+            "vec": {
+              "element_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "initial_unlocks",
+          "type_": {
+            "vec": {
+              "element_type": "i128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "linear_vest_amounts",
+          "type_": {
+            "vec": {
+              "element_type": "i128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "recipients",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "release_interval_secs",
+          "type_": {
+            "vec": {
+              "element_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "start_timestamps",
+          "type_": {
+            "vec": {
+              "element_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "timelocks",
+          "type_": {
+            "vec": {
+              "element_type": "u64"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initialization function.",
+      "name": "init",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "factory_caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Adds a new admin or remove an existing one for the Token Vesting Manager contract.",
+      "name": "set_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "is_enabled",
+          "type_": "bool"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the number of admins for the Token Vesting Manager contract.",
+      "name": "get_admins_count",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns true if the given address is an admin, false otherwise.",
+      "name": "is_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Creates a vesting schedule for a recipient and returns a vesting ID.",
+      "name": "create_vesting",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "start_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "end_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "timelock",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "initial_unlock",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "cliff_release_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "cliff_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "release_interval_secs",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "linear_vest_amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Creates vesting schedules in batch for multiple recipients.",
+      "name": "create_vesting_batch",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "create_vesting_batch_params",
+          "type_": {
+            "udt": {
+              "name": "CreateVestingBatchParams"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "u64"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Allows a recipient to claim their vested tokens.",
+      "name": "claim",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "vesting_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Revokes a vesting arrangement before it has been fully claimed.",
+      "name": "revoke_vesting",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "vesting_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Calculates the vested amount for a given Vesting, at a given timestamp.",
+      "name": "calculate_vested_amount",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "vesting",
+          "type_": {
+            "udt": {
+              "name": "Vesting"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "reference_timestamp",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Allows the admin to withdraw ERC20 tokens not locked in vesting.",
+      "name": "withdraw_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount_requested",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Withdraws other ERC20 tokens accidentally sent to the contract's address.",
+      "name": "withdraw_other_token",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "other_token_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the amount of tokens that are available for the admin to withdraw.",
+      "name": "amount_to_withdraw_by_admin",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves information about a specific vesting arrangement.",
+      "name": "get_vesting_info",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "vesting_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Vesting"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns all recipient addresses which have at least one vesting schedule set.",
+      "name": "get_all_recipients",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the list of recipients in a specific range, `from` being inclusive and `to` being exclusive.",
+      "name": "get_all_recipients_sliced",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the number of recipients.",
+      "name": "get_all_recipients_len",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the list of vestings for the recipient.",
+      "name": "get_all_recipient_vestings",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "u64"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the list of vestings for the recipient in a specific range, `from` being inclusive and\\n`to` being exclusive.",
+      "name": "get_all_recipient_vesting_sliced",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "u64"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the length of all vestings for the recipient.",
+      "name": "get_all_recipient_vestings_len",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if a given address is a recipient of any vesting schedule.",
+      "name": "is_recipient",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the address of the token used in the vesting contract.",
+      "name": "get_token_address",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the amount of token reserved for vesting in the contract.",
+      "name": "get_tokens_reserved_for_vesting",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  }
+]

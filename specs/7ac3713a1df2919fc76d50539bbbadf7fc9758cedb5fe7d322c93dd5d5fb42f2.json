@@ -1,0 +1,211 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "A WebAuthn credential.",
+      "lib": "",
+      "name": "WebAuthnCredential",
+      "fields": [
+        {
+          "doc": "The authenticator data is a base64url encoded string.",
+          "name": "authenticator_data",
+          "type_": "bytes"
+        },
+        {
+          "doc": "The client data JSON is a base64url encoded string.",
+          "name": "client_data_json",
+          "type_": "bytes"
+        },
+        {
+          "doc": "The signature over the authenticator data and client data JSON hash.",
+          "name": "signature",
+          "type_": {
+            "bytes_n": {
+              "n": 64
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Signer"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Recovery"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AccountContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "MissingSigner",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "WebAuthnInvalidClientData",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "WebAuthnInvalidType",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "WebAuthnUserNotPresent",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "WebAuthnUserNotVerified",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "WebAuthnInvalidChallenge",
+          "value": 5
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RecoveryError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "RecoveryNotSet",
+          "value": 1000
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "public_key",
+          "type_": {
+            "bytes_n": {
+              "n": 65
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "recovery",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "rotate_signer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_signer",
+          "type_": {
+            "bytes_n": {
+              "n": 65
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "RecoveryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__check_auth",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "signature_payload",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "signatures",
+          "type_": {
+            "udt": {
+              "name": "WebAuthnCredential"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "_auth_contexts",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Context"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  }
+]

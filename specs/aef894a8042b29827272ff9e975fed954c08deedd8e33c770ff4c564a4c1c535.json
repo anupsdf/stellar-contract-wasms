@@ -1,0 +1,270 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Trigger",
+      "fields": [
+        {
+          "doc": "",
+          "name": "is_mandatory",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "is_triggered",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "params_hash",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "phase",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "river_basin",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "source",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "title",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "trigger_type",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TriggerEvent",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Added",
+            "type_": [
+              "string",
+              {
+                "udt": {
+                  "name": "Trigger"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Triggered",
+            "type_": [
+              "string",
+              {
+                "udt": {
+                  "name": "Trigger"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Updated",
+            "type_": [
+              "string",
+              {
+                "udt": {
+                  "name": "Trigger"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TriggerError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "TriggerAlreadyExists",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "TriggerNotFound",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "InvalidTriggerState",
+          "value": 3
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_trigger",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "trigger_type",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "phase",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "title",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "source",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "river_basin",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "params_hash",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "is_mandatory",
+          "type_": "bool"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "TriggerError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_trigger",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "Trigger"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_trigger_params",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "new_params_hash",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "new_source",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "is_triggered",
+          "type_": {
+            "option": {
+              "value_type": "bool"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "TriggerError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,64 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "No pails provided in invocation",
+          "name": "NoPailsProvided",
+          "value": 1
+        },
+        {
+          "doc": "Harvesting all pails results in 0 reward",
+          "name": "NoHarvestablePails",
+          "value": 2
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "farm",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Harvest multiple pails available for your KALE farmer.\\n\\n# Arguments\\n- `farmer` - address of the farmer to harvest on behalf of\\n- `pails` - vector of pails which should be harvested\\n\\n# Panics\\n- If the `pails` vector is empty\\n- If no pails result in a non-zero reward",
+      "name": "harvest",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "farmer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pails",
+          "type_": {
+            "vec": {
+              "element_type": "u32"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "i128"
+          }
+        }
+      ]
+    }
+  }
+]

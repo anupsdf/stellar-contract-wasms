@@ -1,0 +1,159 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "No pails provided in invocation",
+          "name": "NoPailsProvided",
+          "value": 61
+        },
+        {
+          "doc": "Harvesting all pails results in 0 reward",
+          "name": "NoHarvestablePails",
+          "value": 62
+        },
+        {
+          "doc": "No farmers provided in invocation",
+          "name": "NoFarmersProvided",
+          "value": 63
+        },
+        {
+          "doc": "Mismatch in vector sizes for batch operation",
+          "name": "VectorSizeMismatch",
+          "value": 64
+        },
+        {
+          "doc": "No planting operations succeeded",
+          "name": "NoSuccessfulPlants",
+          "value": 65
+        },
+        {
+          "doc": "No work operations succeeded",
+          "name": "NoSuccessfulWork",
+          "value": 66
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "farm",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Harvest for multiple farmers with a single pail\\n\\n# Arguments\\n- `farmers` - vector of farmer addresses\\n- `pail` - the single pail index to harvest for all farmers\\n\\n# Panics\\n- If the `farmers` vector is empty\\n- If all farmers have 0 rewards",
+      "name": "harvest",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "farmers",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "pail",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "i128"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Plant for multiple farmers with a single amount\\nRequires authentication from each farmer\\n\\n# Arguments\\n- `farmers` - vector of farmer addresses\\n- `amount` - the amount to plant for each farmer\\n\\n# Returns\\n- Vector of booleans indicating success for each planting operation\\n\\n# Panics\\n- If the `farmers` vector is empty\\n- If no planting operations succeed",
+      "name": "plant",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "farmers",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "bool"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Work for multiple farmers with corresponding hashes and nonces\\n\\n# Arguments\\n- `farmers` - vector of farmer addresses\\n- `hashes` - vector of hashes, one per farmer\\n- `nonces` - vector of nonces, one per farmer\\n\\n# Panics\\n- If the `farmers` vector is empty\\n- If vector sizes don't match\\n- If no work operations succeed (all result in 0 block indices)",
+      "name": "work",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "farmers",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "hashes",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "nonces",
+          "type_": {
+            "vec": {
+              "element_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "u32"
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "exec",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "invocations",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "tuple": {
+                  "value_types": [
+                    "address",
+                    "symbol",
+                    {
+                      "vec": {
+                        "element_type": "val"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "val"
+          }
+        }
+      ]
+    }
+  }
+]

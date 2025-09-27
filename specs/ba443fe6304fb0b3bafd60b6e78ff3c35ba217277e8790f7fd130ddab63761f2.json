@@ -1,0 +1,156 @@
+[
+  {
+    "function_v0": {
+      "doc": "Set the details for an admin transfer. Also sets the admin of the pool to this contract.\\nMust be called by the current admin of the pool.\\n\\n### Arguments\\n* `pool` - The address of the pool the admin transfer is for\\n* `cur_admin` - The current admin of the pool\\n* `new_admin` - The new admin of the pool\\n\\n### Panics\\n* `AdminTransferExists` - If the contract has already been initialized",
+      "name": "set_admin_transfer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "cur_admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the new admin for an admin transfer\\n\\n### Arguments\\n* `pool` - The address of the pool the admin transfer is for",
+      "name": "get_admin_transfer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "TransferData"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Transfer the admin of a pool from the current admin to the new admin\\n\\n### Arguments\\n* `pool` - The address of the pool the admin transfer is for\\n\\n### Panics\\n* `NoAdminTransferExists` - If no admin transfer exists for the pool",
+      "name": "transfer_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Cancel an admin transfer. Must be called by the creator of the admin transfer.\\n\\n### Arguments\\n* `pool` - The address of the pool the admin transfer is for",
+      "name": "cancel_admin_transfer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "The error codes for the contract.",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InternalError",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitializedError",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "UnauthorizedError",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "NegativeAmountError",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "AllowanceError",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "BalanceError",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "OverflowError",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "AdminTransferExists",
+          "value": 100
+        },
+        {
+          "doc": "",
+          "name": "NoAdminTransferExists",
+          "value": 101
+        },
+        {
+          "doc": "",
+          "name": "AdminTransferComplete",
+          "value": 102
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TransferData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "cur_admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ]
+    }
+  }
+]

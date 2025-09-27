@@ -1,0 +1,142 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AtomicRouterError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InsufficientFunds",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "InsufficientProfit",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 3
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Only the owner may initialize",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Execute a chain of swaps across different AMMs",
+      "name": "execute",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "actions",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "vec": {
+                  "element_type": "val"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "max_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "min_profit",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Owner-only withdraw",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Allow all self-auths (host already enforced root auth).",
+      "name": "__check_auth",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "_payload",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "_sigs",
+          "type_": {
+            "vec": {
+              "element_type": "val"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "_invocs",
+          "type_": {
+            "vec": {
+              "element_type": "val"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  }
+]

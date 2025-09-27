@@ -1,0 +1,287 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "BadgeId",
+      "fields": [
+        {
+          "doc": "",
+          "name": "issuer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Contract constructor\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `scorer_creator` - The address of the contract creator who will be the initial manager\\n* `scorer_badges` - The initial set of badges for the contract\\n* `name` - The name of the scorer\\n* `description` - The description of the scorer\\n* `icon` - The icon URL or identifier for the scorer\\n\\n# Panics\\n* When the contract is already initialized\\n* When any of the required string arguments are empty\\n* When the scorer_creator fails authentication",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "scorer_creator",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "scorer_badges",
+          "type_": {
+            "map": {
+              "key_type": {
+                "udt": {
+                  "name": "BadgeId"
+                }
+              },
+              "value_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "icon",
+          "type_": "string"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the current version of the contract\\n\\n# Returns\\n* `u32` - The version number (currently 1)",
+      "name": "contract_version",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Upgrades the contract's WASM code to a new version\\n\\n# Arguments\\n* `env` - The environment object providing access to the contract's storage\\n* `new_wasm_hash` - The hash of the new WASM code to upgrade to (32 bytes)\\n\\n# Authorization\\n* Only the contract admin (scorer_creator) can perform the upgrade\\n\\n# Panics\\n* If the caller is not the admin\\n* If the admin address cannot be found in storage",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Adds a new manager to the contract\\n\\n# Arguments\\n* `env` - The environment object providing access to the contract's storage\\n* `sender` - The address of the account attempting to add the manager\\n* `new_manager` - The address of the new manager to be added\\n\\n# Panics\\n* If the sender is not the scorer creator (`Error::Unauthorized`)\\n* If the manager already exists (`Error::ManagerAlreadyExists`)",
+      "name": "add_manager",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_manager",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Removes a manager from the contract\\n\\n# Arguments\\n* `env` - The environment object providing access to the contract's storage\\n* `sender` - The address of the account attempting to remove the manager\\n* `manager_to_remove` - The address of the manager to be removed\\n\\n# Panics\\n* If the sender is not the scorer creator (`Error::Unauthorized`)\\n* If the manager does not exist (`Error::ManagerNotFound`)",
+      "name": "remove_manager",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "manager_to_remove",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Adds a new user to the contract's user registry\\n\\n# Arguments\\n* `env` - The environment object providing access to the contract's storage\\n* `user` - The address of the user to be added\\n\\n# Authorization\\n* Requires authorization from the user being added\\n\\n# Panics\\n* If the user already exists and is active (`Error::UserAlreadyExist`)",
+      "name": "add_user",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Removes a user from the contract's user registry\\n\\n# Arguments\\n* `env` - The environment object providing access to the contract's storage\\n* `user` - The address of the user to be removed\\n\\n# Authorization\\n* Requires authorization from the user\\n\\n# Panics\\n* If the user does not exist or is already inactive (`Error::UserDoesNotExist`)",
+      "name": "remove_user",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the complete map of users and their status\\n\\n# Arguments\\n* `env` - The environment object providing access to the contract's storage\\n\\n# Returns\\n* `Map<Address, bool>` - A map where:\\n- Key: User's address\\n- Value: User's status (true = active, false = inactive)",
+      "name": "get_users",
+      "inputs": [],
+      "outputs": [
+        {
+          "map": {
+            "key_type": "address",
+            "value_type": "bool"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves all scorer badges from the contract's storage\\n\\n# Arguments\\n* `env` - The environment object providing access to the contract's storage\\n\\n# Returns\\n* `Map<BadgeId, u32>` - A map where:\\n- Key: Badge ID (BadgeId struct)\\n- Value: Badge score value",
+      "name": "get_badges",
+      "inputs": [],
+      "outputs": [
+        {
+          "map": {
+            "key_type": {
+              "udt": {
+                "name": "BadgeId"
+              }
+            },
+            "value_type": "u32"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves all the managers from the contract.\\n\\n# Arguments\\n* `env` - The environment object providing access to the contract's storage\\n\\n# Returns\\n* `Vec<Address>` - A vector of all manager addresses\\n\\n# Panics\\n* When the managers vector cannot be found in storage (`Error::ManagersNotFound`)",
+      "name": "get_managers",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the address of the contract creator.\\n\\n# Arguments\\n* `env` - The environment object providing access to the contract's storage\\n\\n# Returns\\n* `Address` - The address of the scorer creator\\n\\n# Panics\\n* When the creator's address is not found in storage (`Error::ScorerCreatorDoesNotExist`)",
+      "name": "get_contract_owner",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Adds a new badge to the contract\\n\\n# Arguments\\n* `env` - The environment object providing access to the contract's storage\\n* `sender` - The address of the account attempting to add the badge\\n* `name` - The name of the badge\\n* `issuer` - The issuer of the badge\\n* `score` - The score value of the badge\\n\\n# Panics\\n* If the sender is not a manager (`Error::Unauthorized`)\\n* If a badge with the given name and issuer already exists (`Error::BadgeAlreadyExists`)\\n* If the badge name is empty (`Error::EmptyArg`)\\n* If the badge score is invalid (greater than 10000) (`Error::InvalidScoreRange`)",
+      "name": "add_badge",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "issuer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "score",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Removes a badge from the contract\\n\\n# Arguments\\n* `env` - The environment object providing access to the contract's storage\\n* `sender` - The address of the account attempting to remove the badge\\n* `name` - The name of the badge to remove\\n* `issuer` - The issuer of the badge to remove\\n\\n# Panics\\n* If the sender is not a manager (`Error::Unauthorized`)\\n* If the badge with the given name and issuer doesn't exist (`Error::BadgeNotFound`)",
+      "name": "remove_badge",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "issuer",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves contract metadata (name, description, icon)\\n\\n# Arguments\\n* `env` - The environment object providing access to the contract's storage\\n\\n# Returns\\n* `(String, String, String)` - A tuple containing:\\n- name: Contract name\\n- description: Contract description\\n- icon: Contract icon",
+      "name": "get_metadata",
+      "inputs": [],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "string",
+              "string",
+              "string"
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

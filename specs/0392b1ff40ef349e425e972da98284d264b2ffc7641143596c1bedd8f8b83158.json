@@ -1,0 +1,844 @@
+[
+  {
+    "function_v0": {
+      "doc": "Initialize Wallet",
+      "name": "init",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "bls_pubkeys",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "bytes_n": {
+                  "n": 96
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "platform",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "social_username",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "web_pubkey",
+          "type_": {
+            "bytes_n": {
+              "n": 77
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "master_contract_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "dapp_router_contract_id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Set Allowance Expiration",
+      "name": "update_allowance_expiration",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "expiration_ledger",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "tx_signature",
+          "type_": {
+            "option": {
+              "value_type": {
+                "bytes_n": {
+                  "n": 192
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Set User's External Wallet",
+      "name": "set_owner_address",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user_account_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "tx_signature",
+          "type_": {
+            "option": {
+              "value_type": {
+                "bytes_n": {
+                  "n": 192
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Set User's External Wallet",
+      "name": "reset_bls_key",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "bls_pubkeys",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "bytes_n": {
+                  "n": 96
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "tx_signature",
+          "type_": {
+            "option": {
+              "value_type": {
+                "bytes_n": {
+                  "n": 192
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Update Master Wallet Contract",
+      "name": "update_master_contract",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "master_contract_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "tx_signature",
+          "type_": {
+            "option": {
+              "value_type": {
+                "bytes_n": {
+                  "n": 192
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Update dApp Router Contract",
+      "name": "update_dapp_router_contract",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "dapp_router_contract_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "tx_signature",
+          "type_": {
+            "option": {
+              "value_type": {
+                "bytes_n": {
+                  "n": 192
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Deposit Tokens",
+      "name": "deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Withdraw Tokens",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "tx_signature",
+          "type_": {
+            "option": {
+              "value_type": {
+                "bytes_n": {
+                  "n": 192
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Dapp Invocation",
+      "name": "dapp_invocation",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "contract_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "func",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "args",
+          "type_": {
+            "option": {
+              "value_type": {
+                "map": {
+                  "key_type": "string",
+                  "value_type": "val"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "auth_params",
+          "type_": {
+            "option": {
+              "value_type": {
+                "vec": {
+                  "element_type": {
+                    "vec": {
+                      "element_type": {
+                        "map": {
+                          "key_type": "string",
+                          "value_type": "val"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "tx_signature",
+          "type_": {
+            "option": {
+              "value_type": {
+                "bytes_n": {
+                  "n": 192
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Approve Spender Allowance",
+      "name": "approve",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "tx_signature",
+          "type_": {
+            "option": {
+              "value_type": {
+                "bytes_n": {
+                  "n": 192
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Spend",
+      "name": "spend",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get Token Details",
+      "name": "get_token_list",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "map": {
+                "key_type": "address",
+                "value_type": {
+                  "udt": {
+                    "name": "TokenDetails"
+                  }
+                }
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get Spender Allowances",
+      "name": "get_spender_allowances",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "map": {
+                "key_type": "address",
+                "value_type": {
+                  "udt": {
+                    "name": "AllowanceDetails"
+                  }
+                }
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get Passkey",
+      "name": "get_web_keys",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "WebKeyDetails"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get Spender Allowance",
+      "name": "get_allowance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get Current Nonce",
+      "name": "get_nonce",
+      "inputs": [],
+      "outputs": [
+        {
+          "bytes_n": {
+            "n": 32
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get Token Balance",
+      "name": "get_balance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Upgrade Contract",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "tx_signature",
+          "type_": {
+            "option": {
+              "value_type": {
+                "bytes_n": {
+                  "n": 192
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "UserAccountId"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "MasterContractId"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "DappRouterId"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "BlsPublicKey"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "WebKey"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Allowance",
+            "type_": [
+              "address",
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PrimarySocialProfile"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "AllowanceExpiration"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "SmartAllowance",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Balance",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TokenList"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Nonce"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Dst"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TransactionNonce"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "SoroswapContract"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PairContract"
+          }
+        }
+      ]
+    }
+  }
+]

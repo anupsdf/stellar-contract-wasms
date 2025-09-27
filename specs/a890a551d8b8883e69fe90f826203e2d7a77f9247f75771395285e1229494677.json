@@ -1,0 +1,1877 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PaymentType",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ERC20"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PeriodType",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ONETIME"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "MINUTES"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "HOURS"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "DAYS"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "WEEK"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "MONTH"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "YEAR"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "App",
+      "fields": [
+        {
+          "doc": "",
+          "name": "name",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Token",
+      "fields": [
+        {
+          "doc": "",
+          "name": "first_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Payment",
+      "fields": [
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "limit_period",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "loading_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "payment_tokens",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Token"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "payment_type",
+          "type_": {
+            "udt": {
+              "name": "PaymentType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "period_type",
+          "type_": {
+            "udt": {
+              "name": "PeriodType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "trial_period",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TimePeriod",
+      "fields": [
+        {
+          "doc": "",
+          "name": "limit_period",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "n_time_paid",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Subscription",
+      "fields": [
+        {
+          "doc": "",
+          "name": "active",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "active_trial",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "final_pay",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "next_payment_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "payee_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "payment_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "period_multiplier",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "period_type",
+          "type_": {
+            "udt": {
+              "name": "PeriodType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "renew_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "start_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "time_period",
+          "type_": {
+            "udt": {
+              "name": "TimePeriod"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_address",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OneTimePayment",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "payee_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "payment_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "payment_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_address",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "NewAppEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "NewPaymentEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "payment_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenTransferEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PaymentCreatedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "payment_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PaymentDeletedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "payment_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PaymentUpdatedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "payment_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PaymentTypeUpdateEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "new_type",
+          "type_": {
+            "udt": {
+              "name": "PaymentType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "payment_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OneTimePaymentEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "one_time_payment_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "payment_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AppOwnershipTransferredEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "new_owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "old_owner",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initializes the contract with admin and reserve addresses\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `admin` - The address of the admin\\n* `reserve` - The address of the reserve\\n\\n# Panics\\n* If the contract is already initialized",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "reserve",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets the admin address\\n\\n# Arguments\\n* `env` - The Soroban environment\\n\\n# Returns\\n* The admin address\\n\\n# Panics\\n* If admin is not initialized",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets the reserve address\\n\\n# Arguments\\n* `env` - The Soroban environment\\n\\n# Returns\\n* The reserve address\\n\\n# Panics\\n* If reserve is not initialized",
+      "name": "get_reserve",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets the protocol default fee\\n\\n# Arguments\\n* `env` - The Soroban environment\\n\\n# Returns\\n* The fee percentage (in basis points)",
+      "name": "get_subs_fee",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Updates the protocol fee\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `fee` - The new fee percentage (in basis points)\\n\\n# Panics\\n* If the caller is not the admin",
+      "name": "update_fee",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Updates the reserve address\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `reserve` - The new reserve address\\n\\n# Panics\\n* If the caller is not the admin",
+      "name": "update_reserve",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "reserve",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Updates the app fee for a specific app\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `caller` - The address of the caller\\n* `app_id` - The ID of the app\\n* `fee` - The new fee percentage (in basis points)\\n\\n# Panics\\n* If the caller is not authorized",
+      "name": "update_app_fees",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets the total number of apps\\n\\n# Arguments\\n* `env` - The Soroban environment\\n\\n# Returns\\n* The total number of apps",
+      "name": "total_apps",
+      "inputs": [],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets a specific app by ID\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `app_id` - The ID of the app to get\\n\\n# Returns\\n* Option containing the app if found, None otherwise",
+      "name": "get_app",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "App"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets the fee for a specific app\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `app_id` - The ID of the app\\n\\n# Returns\\n* The app's fee percentage (in basis points)",
+      "name": "get_app_fee",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets the owner of a specific app\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `app_id` - The ID of the app\\n\\n# Returns\\n* Option containing the owner address if found, None otherwise",
+      "name": "get_app_owner",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets all apps owned by a user\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `user` - The address of the user\\n\\n# Returns\\n* Option containing a vector of app IDs if found, None otherwise",
+      "name": "get_user_apps",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "vec": {
+                "element_type": "u64"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets the number of apps owned by an address\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `owner` - The address of the owner\\n\\n# Returns\\n* The number of apps owned",
+      "name": "get_owner_app_count",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets a specific payment for an app\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `app_id` - The ID of the app\\n* `payment_id` - The ID of the payment\\n\\n# Returns\\n* Option containing the payment if found, None otherwise",
+      "name": "get_app_payment",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "payment_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "Payment"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets all payments for an app\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `app_id` - The ID of the app\\n\\n# Returns\\n* Option containing a vector of payment IDs if found, None otherwise",
+      "name": "get_app_payments",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "vec": {
+                "element_type": {
+                  "bytes_n": {
+                    "n": 32
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets a specific subscription\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `subs_id` - The ID of the subscription\\n\\n# Returns\\n* Option containing the subscription if found, None otherwise",
+      "name": "get_subscription",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "subs_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "Subscription"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets all subscriptions for a user\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `user` - The address of the user\\n\\n# Returns\\n* Option containing a vector of subscription IDs if found, None otherwise",
+      "name": "get_user_subscriptions",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "vec": {
+                "element_type": {
+                  "bytes_n": {
+                    "n": 32
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets all subscribers for a specific payment in an app\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `app_id` - The ID of the app\\n* `payment_id` - The ID of the payment\\n\\n# Returns\\n* Option containing a vector of subscriber addresses if found, None otherwise",
+      "name": "get_app_subscribers",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "payment_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "vec": {
+                "element_type": "address"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets all subscriptions for an app\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `app_id` - The ID of the app\\n\\n# Returns\\n* Option containing a vector of subscription IDs if found, None otherwise",
+      "name": "get_app_subscriptions",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "vec": {
+                "element_type": {
+                  "bytes_n": {
+                    "n": 32
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if a subscription is canceled\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `subs_id` - The ID of the subscription\\n\\n# Returns\\n* True if the subscription is canceled, false otherwise",
+      "name": "get_cancel_subscription",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "subs_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if a user has already used their trial period for an app\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `user` - The address of the user\\n* `app_id` - The ID of the app\\n\\n# Returns\\n* True if the user has used their trial, false otherwise",
+      "name": "get_already_trial_subscribed",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets a specific one-time payment\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `otp_id` - The ID of the one-time payment\\n\\n# Returns\\n* Option containing the one-time payment if found, None otherwise",
+      "name": "get_one_time_payment",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "otp_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "OneTimePayment"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets all users who have made a specific one-time payment\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `payment_id` - The ID of the payment\\n\\n# Returns\\n* Option containing a vector of user addresses if found, None otherwise",
+      "name": "get_one_time_payment_users",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "payment_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "vec": {
+                "element_type": "address"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if a user is already subscribed to a payment\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `user` - The address of the user\\n* `app_id` - The ID of the app\\n* `payment_id` - The ID of the payment\\n\\n# Returns\\n* True if the user is subscribed, false otherwise",
+      "name": "get_already_subscribed",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "payment_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Creates a new app with the specified name and payments\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `name` - The name of the app\\n* `payments` - Vector of payment configurations\\n* `creatoraddress` - The address of the app creator\\n\\n# Returns\\n* The ID of the newly created app\\n\\n# Panics\\n* If the payments vector is empty\\n* If a payment with the same name already exists",
+      "name": "createapp",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "name",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "payments",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Payment"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "creatoraddress",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_payment",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "payments",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Payment"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets the allowance for a user's tokens\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `user` - The address of the user\\n* `tokenaddress` - The address of the token contract\\n\\n# Returns\\n* The amount of tokens allowed",
+      "name": "get_allowance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "tokenaddress",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Calculates the required amount for a subscription\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `subscription_id` - The ID of the subscription\\n\\n# Returns\\n* The amount required for the subscription\\n\\n# Panics\\n* If the subscription is not found",
+      "name": "require_amount",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "subscription_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Computes the required amount for a token payment\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `token` - The address of the token\\n* `limit_period` - The limit period for the payment\\n* `token_price` - The price of the token\\n* `user` - The address of the user\\n* `first_amount` - The first payment amount\\n\\n# Returns\\n* The computed required amount",
+      "name": "compute_required_amount",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "limit_period",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "token_price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "first_amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets the required amount for a payment\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `token` - The address of the token\\n* `payment_id` - The ID of the payment\\n* `app_id` - The ID of the app\\n* `user` - The address of the user\\n* `choosenperiod` - The chosen period for the payment\\n\\n# Returns\\n* Tuple containing whether the token is supported and the required amount\\n\\n# Panics\\n* If the payment is not found",
+      "name": "get_required_amount",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "payment_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "choosenperiod",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "bool",
+              "i128"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets the index of a token in a payment's token list\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `app_id` - The ID of the app\\n* `payment_id` - The ID of the payment\\n* `token` - The address of the token\\n\\n# Returns\\n* The index of the token in the payment's token list\\n\\n# Panics\\n* If the payment is not found\\n* If the token is not found in the payment",
+      "name": "index_of_token_payment",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "payment_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if a user requires more allowance for a payment\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `token` - The address of the token\\n* `payment_id` - The ID of the payment\\n* `app_id` - The ID of the app\\n* `user` - The address of the user\\n* `choosenperiod` - The chosen period for the payment\\n\\n# Returns\\n* True if the user needs more allowance, false otherwise",
+      "name": "require_allowance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "payment_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "choosenperiod",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Creates a new subscription\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `app_id` - The ID of the app\\n* `payment_id` - The ID of the payment\\n* `token` - The address of the token\\n* `choosenperiod` - The chosen period for the subscription\\n* `user` - The address of the user\\n\\n# Panics\\n* If the payment is not found\\n* If the user is already subscribed\\n* If the token is not supported",
+      "name": "create_subscription",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "payment_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "choosenperiod",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "bytes_n": {
+            "n": 32
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "payment_due",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "subscription_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "bool",
+              "bool"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "automate_payment",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user_subs",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Cancels a subscription\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `subscription_id` - The ID of the subscription\\n* `app_id` - The ID of the app\\n\\n# Panics\\n* If the subscription is not found\\n* If the caller is not the subscription owner",
+      "name": "cancel_subscription",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "subscription_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Processes a subscription payment\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `subscription_id` - The ID of the subscription\\n\\n# Panics\\n* If the subscription is not found\\n* If the payment is not due",
+      "name": "process_subscription",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "subscription_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Deletes a specific payment from an app\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `app_id` - The ID of the app containing the payment\\n* `payment_id` - The ID of the payment to delete\\n\\n# Panics\\n* If the caller is not the app owner\\n* If the payment is not found",
+      "name": "delete_payment",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "payment_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Deletes all payments associated with an app\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `app_id` - The ID of the app whose payments will be deleted\\n\\n# Panics\\n* If the caller is not the app owner",
+      "name": "delete_all_payments",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Changes a token payment configuration\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `app_id` - The ID of the app containing the payment\\n* `payment_id` - The ID of the payment to modify\\n* `old_token` - The current token address\\n* `new_token` - The new token address\\n* `new_price` - The new price for the token\\n* `first_amount` - The new first payment amount\\n\\n# Panics\\n* If the caller is not the app owner\\n* If the payment is not found\\n* If the new token already exists in the payment",
+      "name": "change_token_payment",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "payment_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "old_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "first_amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Modifies a payment's configuration\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `app_id` - The ID of the app containing the payment\\n* `payment_id` - The ID of the payment to modify\\n* `name` - The new name for the payment\\n* `owner` - The new owner address\\n* `fee` - The new fee percentage (in basis points)\\n* `trial_period` - The new trial period duration\\n* `loading_time` - The new loading time\\n\\n# Panics\\n* If the caller is not the app owner\\n* If the payment is not found",
+      "name": "modify_payment",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "payment_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "trial_period",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "loading_time",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Adds a new token to an existing payment\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `app_id` - The ID of the app containing the payment\\n* `payment_id` - The ID of the payment to modify\\n* `new_token` - The address of the token to add\\n* `price` - The price for the token\\n* `first_amount` - The first payment amount\\n\\n# Panics\\n* If the caller is not the app owner\\n* If the payment is not found\\n* If the token already exists in the payment",
+      "name": "add_token_payment_to_my_app",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "payment_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "new_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "first_amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Removes a token from an existing payment\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `app_id` - The ID of the app containing the payment\\n* `payment_id` - The ID of the payment to modify\\n* `token` - The address of the token to remove\\n\\n# Panics\\n* If the caller is not the app owner\\n* If the payment is not found\\n* If the token is not found in the payment",
+      "name": "remove_token_payment_from_my_app",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "payment_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Pays the remaining amount for a subscription period\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `subscription_id` - The ID of the subscription\\n\\n# Panics\\n* If the subscription is not found\\n* If the caller is not the subscription owner",
+      "name": "refund_subscription",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "subscription_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Migrates a subscription to a new payment method\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `subscription_id` - The ID of the subscription to migrate\\n* `new_payment_id` - The ID of the new payment method\\n* `new_token` - The address of the new token\\n\\n# Panics\\n* If the subscription is not found\\n* If the caller is not the subscription owner\\n* If the new payment is not found\\n* If the new token is not supported\\n* If trying to migrate to the same payment\\n* If the period multiplier is invalid\\n* If the user doesn't have sufficient allowance",
+      "name": "migrate_to_new_payment",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "subscription_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "new_payment_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "new_token",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Manually renews a subscription\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `subscription_id` - The ID of the subscription to renew\\n\\n# Panics\\n* If the subscription is not found\\n* If the caller is not the subscription owner\\n* If the subscription is not active",
+      "name": "renew_subscription",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "subscription_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if a user is subscribed to an app\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `app_id` - The ID of the app\\n* `user` - The address of the user to check\\n\\n# Returns\\n* Tuple containing:\\n- Whether the user is subscribed\\n- Whether the user is in trial period\\n- The payment ID\\n- The subscription ID",
+      "name": "is_my_subscriber",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "bool",
+              "bool",
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              },
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Deletes an app and its associated data\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `app_id` - The ID of the app to delete\\n\\n# Panics\\n* If the caller is not the app owner\\n* If the app is not found",
+      "name": "delete_app",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets all apps owned by a specific address\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `owner` - The address of the owner\\n\\n# Returns\\n* Option containing a vector of app IDs if found, None otherwise",
+      "name": "get_app_by_owner",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "vec": {
+                "element_type": "u64"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Transfers ownership of an app to a new owner\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `app_id` - The ID of the app\\n* `new_owner` - The address of the new owner\\n\\n# Panics\\n* If the caller is not the current app owner\\n* If the new owner is the zero address\\n* If the new owner is the same as the current owner\\n* If the app is not found",
+      "name": "transfer_app_ownership",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "new_owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Renounces ownership of an app\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `app_id` - The ID of the app\\n\\n# Panics\\n* If the caller is not the current app owner\\n* If the app is not found",
+      "name": "renounce_app_ownership",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "app_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

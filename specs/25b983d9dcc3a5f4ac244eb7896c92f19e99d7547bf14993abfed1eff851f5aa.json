@@ -1,0 +1,465 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "init",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "manager",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "reward_asset",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_manager",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "deposit_asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "lock_period",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "min_deposit",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "clone_pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "existing_asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_asset",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "toggle_pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "deposit_asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": "bool"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "deposit_asset",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "migrate_deposits",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "old_asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "depositors",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "deposit_asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "deposit_asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "distribute",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "deposit_asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractErrors",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotStarted",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "PoolDoesntExist",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "InvalidDepositAmount",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "DepositAlreadyExists",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "FundsDepositFailed",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "DepositDoesntExist",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "DepositIsStillLocked",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "RewardsWithdrawFailed",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "FundsWithdrawFailed",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "CantDistributeReward",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "RewardsDepositFailed",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "PoolDoesntAcceptDeposits",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "PoolAlreadyExists",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "PoolCanNotBeDeleted",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "AlreadyStarted",
+          "value": 14
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CoreDataKeys",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Manager"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "RewardsAsset"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Deposit",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "snapshot",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "unlocks_at",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DepositsStorageKeys",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Deposit",
+            "type_": [
+              {
+                "tuple": {
+                  "value_types": [
+                    "address",
+                    "address"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Pool",
+      "fields": [
+        {
+          "doc": "",
+          "name": "active",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "balance",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "deposits",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "factor",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "lock_period",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "min_deposit",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolDataKeys",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Pool",
+            "type_": [
+              "address"
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

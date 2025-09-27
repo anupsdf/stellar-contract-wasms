@@ -1,0 +1,28 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_with",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "x",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "y",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  }
+]

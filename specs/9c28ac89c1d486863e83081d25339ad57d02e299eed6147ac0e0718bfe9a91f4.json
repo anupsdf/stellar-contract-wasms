@@ -1,0 +1,162 @@
+[
+  {
+    "function_v0": {
+      "doc": "Initialize the backstop manager\\n\\n### Arguments\\n* owner - The address of the owner of the funds\\n* manager - The address of the manager of the funds\\n* emitter - The address of the emitter contract\\n* backstop_token - The address of the backstop token the manager can interact with. This is fixed\\nas the backstop manager only supports the BLND-USDC LP token as the backstop token.\\n* backstop - The addresses of the backstops the manager can interact with initially\\n* pool - The addresses of the pools the manager can interact with initially\\n\\n### Errors\\n* AlreadyInitializedError - The contract has already been initialized",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "manager",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "emitter",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "backstop_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "backstop",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Only Owner) Transfer tokens from the manager contract to another address\\n\\n### Arguments\\n* `token` - The address of the token to transfer\\n* `to` - The address to transfer the tokens to\\n* `amount` - The amount of tokens to transfer",
+      "name": "transfer_token",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Only Owner) Set the manager for the contract\\n\\n### Arguments\\n* `manager` - The address of the manager",
+      "name": "set_manager",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "manager",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "* (Manager) Deposit and invoke emitter swap in one go\\n     *\\n     * ### Arguments\\n     * * `amount` - The amount of tokens to deposit\\n     * * `max_amounts_in` - The maximum amounts of tokens to swap in",
+      "name": "deposit_swap",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "max_amounts_in",
+          "type_": {
+            "vec": {
+              "element_type": "i128"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Manager) Claim backstop deposit emissions from a list of pools for the contract\\n\\nReturns the amount of BLND emissions claimed\\n\\n### Arguments\\n* `min_lp_tokens_out` - The minimum amount of backstop tokens to mint with emissions\\n\\n### Errors\\nIf an invalid pool address is included",
+      "name": "claim",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "min_lp_tokens_out",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Manager) Queue deposited pool shares from the contract for withdraw from a backstop of a pool\\n\\nReturns the created queue for withdrawal\\n\\n### Arguments\\n* `amount` - The amount of shares to queue for withdraw",
+      "name": "queue_withdrawal",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Manager) Dequeue a currently queued pool share withdraw for the contract from the backstop of a pool\\n\\n### Arguments\\n* `amount` - The amount of shares to dequeue",
+      "name": "dequeue_withdrawal",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Manager) Withdraw shares from the contract's withdraw queue for a backstop of a pool\\n\\nReturns the amount of tokens returned\\n\\n### Arguments\\n* `amount` - The amount of shares to withdraw",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  }
+]

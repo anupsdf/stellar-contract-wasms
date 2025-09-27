@@ -1,0 +1,1029 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ThreePool",
+      "fields": [
+        {
+          "doc": "",
+          "name": "a",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "acc_rewards_per_share_p",
+          "type_": {
+            "udt": {
+              "name": "SizedU128Array"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "admin_fee_amount",
+          "type_": {
+            "udt": {
+              "name": "SizedU128Array"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "admin_fee_share_bp",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "fee_share_bp",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "token_balances",
+          "type_": {
+            "udt": {
+              "name": "SizedU128Array"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "tokens",
+          "type_": {
+            "udt": {
+              "name": "SizedAddressArray"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "tokens_decimals",
+          "type_": {
+            "udt": {
+              "name": "SizedDecimalsArray"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "total_lp_amount",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ThreeToken",
+      "cases": [
+        {
+          "doc": "",
+          "name": "A",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "B",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "C",
+          "value": 2
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "a",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "tokens",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "fee_share_bp",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "admin_fee_share_bp",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amounts",
+          "type_": {
+            "vec": {
+              "element_type": "u128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "min_lp_amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "lp_amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "swap",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount_in",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "receive_amount_min",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "token_from",
+          "type_": {
+            "udt": {
+              "name": "ThreeToken"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_to",
+          "type_": {
+            "udt": {
+              "name": "ThreeToken"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim_admin_fee",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_admin_fee_share",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin_fee_share_bp",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_fee_share",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "fee_share_bp",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "pending_reward",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": "u128"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_pool",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "ThreePool"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user_deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "UserDeposit"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_d",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_receive_amount",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "input",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "token_from",
+          "type_": {
+            "udt": {
+              "name": "ThreeToken"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_to",
+          "type_": {
+            "udt": {
+              "name": "ThreeToken"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": "u128"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_send_amount",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "output",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "token_from",
+          "type_": {
+            "udt": {
+              "name": "ThreeToken"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_to",
+          "type_": {
+            "udt": {
+              "name": "ThreeToken"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": "u128"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_withdraw_amount",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "lp_amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "WithdrawAmountView"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_deposit_amount",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amounts",
+          "type_": {
+            "vec": {
+              "element_type": "u128"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Swapped",
+      "fields": [
+        {
+          "doc": "token precision",
+          "name": "fee",
+          "type_": "u128"
+        },
+        {
+          "doc": "token precision",
+          "name": "from_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "from_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "token precision",
+          "name": "to_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "to_token",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Deposit",
+      "fields": [
+        {
+          "doc": "token precision",
+          "name": "amounts",
+          "type_": {
+            "vec": {
+              "element_type": "u128"
+            }
+          }
+        },
+        {
+          "doc": "system precision",
+          "name": "lp_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Withdraw",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amounts",
+          "type_": {
+            "vec": {
+              "element_type": "u128"
+            }
+          }
+        },
+        {
+          "doc": "token precision",
+          "name": "fees",
+          "type_": {
+            "vec": {
+              "element_type": "u128"
+            }
+          }
+        },
+        {
+          "doc": "system precision",
+          "name": "lp_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RewardsClaimed",
+      "fields": [
+        {
+          "doc": "token precision",
+          "name": "rewards",
+          "type_": {
+            "vec": {
+              "element_type": "u128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "WithdrawAmountView",
+      "fields": [
+        {
+          "doc": "system precision",
+          "name": "amounts",
+          "type_": {
+            "vec": {
+              "element_type": "u128"
+            }
+          }
+        },
+        {
+          "doc": "token precision",
+          "name": "fees",
+          "type_": {
+            "vec": {
+              "element_type": "u128"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SizedAddressArray",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SizedU128Array",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": {
+            "vec": {
+              "element_type": "u128"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SizedDecimalsArray",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": {
+            "vec": {
+              "element_type": "u32"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UserDeposit",
+      "fields": [
+        {
+          "doc": "",
+          "name": "lp_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "reward_debts",
+          "type_": {
+            "udt": {
+              "name": "SizedU128Array"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Unimplemented",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Initialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "Uninitialized",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "InvalidArg",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "BrokenAddress",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "NotFound",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "Forbidden",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "CastFailed",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "TokenInsufficientBalance",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "U256Overflow",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "UnexpectedVecSize",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "ZeroAmount",
+          "value": 100
+        },
+        {
+          "doc": "",
+          "name": "PoolOverflow",
+          "value": 101
+        },
+        {
+          "doc": "",
+          "name": "ZeroChanges",
+          "value": 102
+        },
+        {
+          "doc": "",
+          "name": "NotEnoughAmount",
+          "value": 103
+        },
+        {
+          "doc": "",
+          "name": "InsufficientReceivedAmount",
+          "value": 104
+        },
+        {
+          "doc": "",
+          "name": "Slippage",
+          "value": 105
+        },
+        {
+          "doc": "",
+          "name": "InvalidFirstDeposit",
+          "value": 106
+        },
+        {
+          "doc": "",
+          "name": "PoolExist",
+          "value": 200
+        },
+        {
+          "doc": "",
+          "name": "IdenticalAddresses",
+          "value": 201
+        },
+        {
+          "doc": "",
+          "name": "MaxPoolsNumReached",
+          "value": 202
+        },
+        {
+          "doc": "",
+          "name": "InvalidNumberOfTokens",
+          "value": 203
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Admin",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": "address"
+        }
+      ]
+    }
+  }
+]

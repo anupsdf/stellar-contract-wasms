@@ -1,0 +1,150 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "sum",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "operand1",
+          "type_": "i32"
+        },
+        {
+          "doc": "",
+          "name": "operand2",
+          "type_": "i32"
+        }
+      ],
+      "outputs": [
+        "i32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "sub",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "operand1",
+          "type_": "i32"
+        },
+        {
+          "doc": "",
+          "name": "operand2",
+          "type_": "i32"
+        }
+      ],
+      "outputs": [
+        "i32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "mul",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "operand1",
+          "type_": "i32"
+        },
+        {
+          "doc": "",
+          "name": "operand2",
+          "type_": "i32"
+        }
+      ],
+      "outputs": [
+        "i32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "div",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "operand1",
+          "type_": "i32"
+        },
+        {
+          "doc": "",
+          "name": "operand2",
+          "type_": "i32"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "i32"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "all_op",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "Operation"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_op",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "Operation"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "last_op",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "Operation"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+]

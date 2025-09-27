@@ -1,0 +1,171 @@
+[
+  {
+    "function_v0": {
+      "doc": "Extends the time-to-live (TTL) of the contract instance and its data",
+      "name": "extend_ttl",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initializes a new campaign with the provided data\\n\\n# Arguments\\n* `e` - The environment\\n* `sender` - The address of the sender who must be authorized\\n* `campaign_data` - The campaign configuration data\\n\\n# Panics\\n* If the campaign is already initialized\\n* If the start date is in the past",
+      "name": "init",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "campaign_data",
+          "type_": {
+            "udt": {
+              "name": "CampaignData"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Claims a reward for completing a task\\n\\n# Arguments\\n* `e` - The environment\\n* `influencer` - The address of the influencer claiming the reward\\n* `task_id` - The ID of the completed task\\n* `reward` - The amount of reward to claim\\n\\n# Panics\\n* If the campaign hasn't started\\n* If the task ID is invalid\\n* If the total reward would exceed campaign limit\\n* If the reward amount is invalid",
+      "name": "claim_reward",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "influencer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "task_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "reward",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets the reward claimed for a specific task",
+      "name": "get_task_reward",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "task_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets the remaining reward that can still be claimed",
+      "name": "get_remaining_reward",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets the campaign data",
+      "name": "campaign_data",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "CampaignData"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "Campaign",
+      "lib": "",
+      "name": "CampaignDataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "CampaignData"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "TaskReward",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TotalReward"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CampaignData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "advertiser",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "duration",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "start_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "task_number",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "total_reward",
+          "type_": "i128"
+        }
+      ]
+    }
+  }
+]

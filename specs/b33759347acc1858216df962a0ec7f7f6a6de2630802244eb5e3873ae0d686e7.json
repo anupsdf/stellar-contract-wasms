@@ -1,0 +1,1002 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "network_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "fee_handler",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "upgrade_authority",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "swap",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "order",
+          "type_": {
+            "udt": {
+              "name": "SwapOrder"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "fill",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "order",
+          "type_": {
+            "udt": {
+              "name": "SwapOrder"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "solver_address",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "cancel",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "recv_message",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "src_network",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "conn_sn",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "msg",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_fee_handler",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_protocol_fee",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_upgrade_authority",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_order",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "SwapOrder"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_finished_order",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "bytes",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "bool",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_receipt",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "network_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "conn_sn",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_upgrade_authority",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_nid",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "string",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_protocol_fee",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u128",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_fee_handler",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_deposit_id",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u128",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "version",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "OnlyAdmin",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "Uninitialized",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "InsufficientFund",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "DuplicateMessage",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "NetworkNotSupported",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "OrderNotFound",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "OrderAlreadyFilled",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "OrderMismatched",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "InvalidNetwork",
+          "value": 10
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Emitted when a new swap intent is created",
+      "lib": "",
+      "name": "SwapIntent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "creator",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "destinationAddress",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "dstNID",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "emitter",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "srcNID",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "toAmount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "toToken",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OrderFilled",
+      "fields": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "srcNID",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OrderCancelled",
+      "fields": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "srcNID",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OrderClosed",
+      "fields": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Emitted when a cross-chain message is sent",
+      "lib": "",
+      "name": "Message",
+      "fields": [
+        {
+          "doc": "",
+          "name": "msg",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "sn",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "targetNetwork",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Cancel",
+      "fields": [
+        {
+          "doc": "Encoded order data",
+          "name": "order_bytes",
+          "type_": "bytes"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OrderFill",
+      "fields": [
+        {
+          "doc": "ID of the order being filled",
+          "name": "id",
+          "type_": "u128"
+        },
+        {
+          "doc": "Encoded order data",
+          "name": "order_bytes",
+          "type_": "bytes"
+        },
+        {
+          "doc": "Address of the solver filling the order",
+          "name": "solver",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "MessageType",
+      "cases": [
+        {
+          "doc": "",
+          "name": "FILL",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "CANCEL",
+          "value": 2
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OrderMessage",
+      "fields": [
+        {
+          "doc": "Encoded message data",
+          "name": "message",
+          "type_": "bytes"
+        },
+        {
+          "doc": "Type of message (Fill or Cancel)",
+          "name": "message_type",
+          "type_": {
+            "udt": {
+              "name": "MessageType"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StorageKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "DepositId"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Nid"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "NativeToken"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ProtocolFee"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "FeeHandler"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "UpgradeAuthority"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Version"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ConnSn"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Orders",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "PendingOrderAmount",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "PendingFills",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "FinishedOrders",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Receipts",
+            "type_": [
+              "string",
+              "u128"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SwapOrder",
+      "fields": [
+        {
+          "doc": "Amount of the token to be swapped",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "Address of the user who created the swap order",
+          "name": "creator",
+          "type_": "string"
+        },
+        {
+          "doc": "Additional data for the swap",
+          "name": "data",
+          "type_": "bytes"
+        },
+        {
+          "doc": "Address where the swapped token should be sent",
+          "name": "destination_address",
+          "type_": "string"
+        },
+        {
+          "doc": "Netword ID of the destination chain",
+          "name": "dst_nid",
+          "type_": "string"
+        },
+        {
+          "doc": "Address of emitter contract",
+          "name": "emitter",
+          "type_": "string"
+        },
+        {
+          "doc": "Unique identifier for each order",
+          "name": "id",
+          "type_": "u128"
+        },
+        {
+          "doc": "Network ID of the source chain",
+          "name": "src_nid",
+          "type_": "string"
+        },
+        {
+          "doc": "Amount of `to_token` expected to be received",
+          "name": "to_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "Address of the token to receive on the destination chain",
+          "name": "to_token",
+          "type_": "string"
+        },
+        {
+          "doc": "Address of the token to be swapped",
+          "name": "token",
+          "type_": "string"
+        }
+      ]
+    }
+  }
+]

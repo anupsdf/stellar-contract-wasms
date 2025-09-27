@@ -1,0 +1,517 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "init",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "adm",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "node_rate",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "col_asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "min_duration",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "allowed_tlds",
+          "type_": {
+            "vec": {
+              "element_type": "bytes"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_tlds",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "tlds",
+          "type_": {
+            "vec": {
+              "element_type": "bytes"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_record",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "domain",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "tld",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "duration",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_address",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "key",
+          "type_": {
+            "udt": {
+              "name": "RecordKeys"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_sub",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sub",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "parent",
+          "type_": {
+            "udt": {
+              "name": "RecordKeys"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "record",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "key",
+          "type_": {
+            "udt": {
+              "name": "RecordKeys"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "Record"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "parse_domain",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "domain",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "tld",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "bytes_n": {
+            "n": 32
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "key",
+          "type_": {
+            "udt": {
+              "name": "RecordKeys"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "burn_record",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "key",
+          "type_": {
+            "udt": {
+              "name": "RecordKeys"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CoreData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "adm",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "allowed_tlds",
+          "type_": {
+            "vec": {
+              "element_type": "bytes"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "col_asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "min_duration",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "node_rate",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CoreDataKeys",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "CoreData"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Domain",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "collateral",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "exp_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "node",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "snapshot",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SubDomain",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "node",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "parent",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "snapshot",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Record",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Domain",
+            "type_": [
+              {
+                "udt": {
+                  "name": "Domain"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "SubDomain",
+            "type_": [
+              {
+                "udt": {
+                  "name": "SubDomain"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RecordKeys",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Record",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "SubRecord",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractErrors",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyStarted",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "RecordAlreadyExist",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "InvalidDuration",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "UnsupportedTLD",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "RecordDoesntExist",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "InvalidDomain",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "ExpiredDomain",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "InvalidParent",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "OutdatedSub",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "InvalidTransfer",
+          "value": 10
+        }
+      ]
+    }
+  }
+]

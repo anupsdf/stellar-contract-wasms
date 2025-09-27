@@ -1,0 +1,1328 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "msg",
+          "type_": {
+            "udt": {
+              "name": "InitializeMsg"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_upgrade_authority",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_protocol_fee",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_protocol_fee_handler",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_default_connection",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "nid",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "send_call",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "tx_origin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "envelope",
+          "type_": {
+            "udt": {
+              "name": "Envelope"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u128",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "handle_message",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from_nid",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "msg",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "handle_error",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "sequence_no",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "execute_call",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "req_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "execute_rollback",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sequence_no",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_upgrade_authority",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_network_address",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "string",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_fee",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "nid",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "rollback",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "sources",
+          "type_": {
+            "option": {
+              "value_type": {
+                "vec": {
+                  "element_type": "string"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u128",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_protocol_fee",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u128",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_protocol_fee_handler",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_default_connection",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "nid",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "verify_success",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sn",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "extend_instance_storage",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Uninitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "NoDefaultConnection",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "MaxRollbackSizeExceeded",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "MaxDataSizeExceeded",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "InsufficientFunds",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "RollbackNotPossible",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "RollbackNotEnabled",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "ProtocolsMismatch",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "InvalidRequestId",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "DataMismatch",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "MessageTypeNotSupported",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "InvalidType",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "CallRequestNotFound",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "InvalidReplyReceived",
+          "value": 15
+        },
+        {
+          "doc": "",
+          "name": "InvalidRlpLength",
+          "value": 16
+        },
+        {
+          "doc": "",
+          "name": "NoRollbackData",
+          "value": 17
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CallMsgSentEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "sn",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CallMsgEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "reqId",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "sn",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ResponseMsgEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "code",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "sn",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CallExecutedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "code",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "msg",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "reqId",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RollbackMsgEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "sn",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RollbackExecutedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "sn",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CSMessageType",
+      "cases": [
+        {
+          "doc": "",
+          "name": "CSMessageRequest",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "CSMessageResult",
+          "value": 2
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CSMessage",
+      "fields": [
+        {
+          "doc": "",
+          "name": "message_type",
+          "type_": {
+            "udt": {
+              "name": "CSMessageType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "payload",
+          "type_": "bytes"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "InitializeMsg",
+      "fields": [
+        {
+          "doc": "",
+          "name": "native_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "network_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "upgrade_authority",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CSMessageRequest",
+      "fields": [
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "msg_type",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "protocols",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "sequence_no",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CSResponseType",
+      "cases": [
+        {
+          "doc": "",
+          "name": "CSResponseFailure",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "CSResponseSuccess",
+          "value": 1
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CSMessageResult",
+      "fields": [
+        {
+          "doc": "",
+          "name": "message",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "response_code",
+          "type_": {
+            "udt": {
+              "name": "CSResponseType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "sequence_no",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Rollback",
+      "fields": [
+        {
+          "doc": "",
+          "name": "enabled",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "protocols",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "rollback",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StorageKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Config"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "FeeHandler"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ProtocolFee"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "DefaultConnections",
+            "type_": [
+              "string"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "SuccessfulResponses",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Sn"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Rollback",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ProxyRequest",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "PendingRequests",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "PendingResponses",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "LastReqId"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "UpgradeAuthority"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Config",
+      "fields": [
+        {
+          "doc": "",
+          "name": "native_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "network_id",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CallMessage",
+      "fields": [
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CallMessagePersisted",
+      "fields": [
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CallMessageWithRollback",
+      "fields": [
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "rollback",
+          "type_": "bytes"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Envelope",
+      "fields": [
+        {
+          "doc": "",
+          "name": "destinations",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "message",
+          "type_": {
+            "udt": {
+              "name": "AnyMessage"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "sources",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "MessageType",
+      "cases": [
+        {
+          "doc": "",
+          "name": "CallMessage",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "CallMessageWithRollback",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "CallMessagePersisted",
+          "value": 2
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AnyMessage",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "CallMessage",
+            "type_": [
+              {
+                "udt": {
+                  "name": "CallMessage"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "CallMessageWithRollback",
+            "type_": [
+              {
+                "udt": {
+                  "name": "CallMessageWithRollback"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "CallMessagePersisted",
+            "type_": [
+              {
+                "udt": {
+                  "name": "CallMessagePersisted"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "NetworkAddress",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": "string"
+        }
+      ]
+    }
+  }
+]

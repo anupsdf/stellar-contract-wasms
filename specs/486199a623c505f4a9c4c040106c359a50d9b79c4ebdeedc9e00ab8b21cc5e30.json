@@ -1,0 +1,585 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "entity_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "bool",
+            "error_type": {
+              "udt": {
+                "name": "WhitelistError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_signer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "authority",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "bool",
+            "error_type": {
+              "udt": {
+                "name": "WhitelistError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_signer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "authority",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "bool",
+            "error_type": {
+              "udt": {
+                "name": "WhitelistError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_address_to_whitelist",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "authority",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "bool",
+            "error_type": {
+              "udt": {
+                "name": "WhitelistError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_address_from_whitelist",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "authority",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "bool",
+            "error_type": {
+              "udt": {
+                "name": "WhitelistError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_entity_id",
+      "inputs": [],
+      "outputs": [
+        {
+          "bytes_n": {
+            "n": 32
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_owner",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_whitelist_status",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_signer_count",
+      "inputs": [],
+      "outputs": [
+        "i32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_address_signer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PaymentRequests",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "payload_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "to_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "transaction_execution_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PaymentStorageKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Initialized"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "EntityId"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Owner"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "WhitelistModule"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "CentralPauseModule"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ExecutionRegistry",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "WhitelistStorageKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Initialized"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "EntityId"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Owner"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "SignerCount"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "WhitelistRegistry",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "SignerRegistry",
+            "type_": [
+              "address"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FactoryStorageKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Initialized"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PaymentContractWasmHash"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "WhitelistContractWasmHash"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "CentralPauseModule"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "DeploymentSigner"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "EntityPaymentContracts",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "EntityWhitelistContracts",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CentralPauseStorageKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Initialized"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "EntityId"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Owner"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PaymentError",
+      "cases": [
+        {
+          "doc": "Indicates contract already initialized",
+          "name": "AlreadyInitialized",
+          "value": 500
+        },
+        {
+          "doc": "Indicates the transaction with executionId has already been executed",
+          "name": "TransactionAlreadyExecuted",
+          "value": 505
+        },
+        {
+          "doc": "Indicates an attempt to transfer to invalid recipient address",
+          "name": "ZeroAddressNotAllowed",
+          "value": 405
+        },
+        {
+          "doc": "Indicates an invalid value of transfer amount",
+          "name": "ZeroAmountTransfer",
+          "value": 406
+        },
+        {
+          "doc": "Indicates an attempt to transfer to non-whitelisted address",
+          "name": "AddressNotWhitelisted",
+          "value": 407
+        },
+        {
+          "doc": "Indicates the central pause is active",
+          "name": "CentralPauseActive",
+          "value": 408
+        },
+        {
+          "doc": "Indicates caller is not the owner",
+          "name": "CallerIsNotOwner",
+          "value": 409
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "WhitelistError",
+      "cases": [
+        {
+          "doc": "Indicates contract already initialized",
+          "name": "AlreadyInitialized",
+          "value": 500
+        },
+        {
+          "doc": "Indicates the caller is not a signer",
+          "name": "CallerIsNotSigner",
+          "value": 409
+        },
+        {
+          "doc": "Indicates address is already a signer",
+          "name": "AddressAlreadyASigner",
+          "value": 410
+        },
+        {
+          "doc": "Indicates address is not a signer",
+          "name": "AddressNotASigner",
+          "value": 411
+        },
+        {
+          "doc": "Indicates an attempt to remove all signers",
+          "name": "AtleastOneSignerRequired",
+          "value": 412
+        },
+        {
+          "doc": "Indicates an attempt to whitelist zero address",
+          "name": "ZeroAddressNotAllowed",
+          "value": 413
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FactoryError",
+      "cases": [
+        {
+          "doc": "Indicates contract already initialized",
+          "name": "AlreadyInitialized",
+          "value": 500
+        },
+        {
+          "doc": "Indicates a duplicate attempt to deploy contracts for entity",
+          "name": "EntityAlreadyHasContract",
+          "value": 501
+        },
+        {
+          "doc": "",
+          "name": "DeployError",
+          "value": 600
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CentralPauseError",
+      "cases": [
+        {
+          "doc": "Indicates contract already initialized",
+          "name": "AlreadyInitialized",
+          "value": 500
+        },
+        {
+          "doc": "Indicates caller is not the owner",
+          "name": "CallerIsNotOwner",
+          "value": 409
+        }
+      ]
+    }
+  }
+]

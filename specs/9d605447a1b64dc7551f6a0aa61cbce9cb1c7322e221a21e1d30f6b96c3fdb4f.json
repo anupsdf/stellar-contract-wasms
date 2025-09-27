@@ -1,0 +1,82 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_minterminos",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "email",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "cantidad_minterminos",
+          "type_": "i32"
+        },
+        {
+          "doc": "",
+          "name": "cantidad_assets",
+          "type_": "i32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_minterminos",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "email",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "delete_email",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "email",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "subtract_minterminos",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "_token",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "email",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "cantidad_minterminos",
+          "type_": "i32"
+        }
+      ],
+      "outputs": [
+        "string"
+      ]
+    }
+  }
+]

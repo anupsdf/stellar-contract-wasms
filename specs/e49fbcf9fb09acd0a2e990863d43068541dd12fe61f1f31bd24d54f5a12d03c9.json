@@ -1,0 +1,210 @@
+[
+  {
+    "function_v0": {
+      "doc": "Initializes the ScorerFactory contract with the initial manager (scorer_creator)\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `scorer_creator` - The address that will be set as both the factory creator and initial manager\\n* `scorer_wasm_hash` - The hash of the Wasm binary for the scorer contract\\n\\n# Panics\\n* When the contract is already initialized\\n* When the scorer_creator fails authentication",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "scorer_creator",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "scorer_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if the contract has been initialized\\n\\n# Arguments\\n* `env` - The Soroban environment\\n\\n# Returns\\n* `bool` - True if the contract is initialized, false otherwise",
+      "name": "is_initialized",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Verifies if the provided address is the scorer factory creator\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `address` - The address to check\\n\\n# Returns\\n* `bool` - True if the address is the scorer factory creator, false otherwise\\n\\n# Panics\\n* When the factory creator address is not found in storage",
+      "name": "is_scorer_factory_creator",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if the provided address is a manager\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `address` - The address to check\\n\\n# Returns\\n* `bool` - True if the address is a manager, false otherwise",
+      "name": "is_manager",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Deploy a new scorer contract\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `deployer` - The address that will deploy the scorer contract\\n* `salt` - A unique value to ensure unique contract addresses\\n* `init_fn` - The initialization function name to call on the deployed contract\\n* `init_args` - Arguments to pass to the initialization function, must include:\\n- Argument at index (len-3): scorer_name (String)\\n- Argument at index (len-2): scorer_description (String)\\n- Argument at index (len-1): scorer_icon (String)\\n\\n# Returns\\n* `Address` - The address of the newly deployed scorer contract\\n\\n# Panics\\n* When the deployer is not the current contract and fails authentication\\n* When the deployer is not a registered manager (`Error::Unauthorized`)\\n* When init_args has fewer than 3 arguments (`Error::InvalidInitArgs`)",
+      "name": "create_scorer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "deployer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "salt",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "init_fn",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "init_args",
+          "type_": {
+            "vec": {
+              "element_type": "val"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns a map of all scorer contracts created by this factory\\n\\n# Arguments\\n* `env` - The Soroban environment\\n\\n# Returns\\n* `Map<Address, (String, String, String)>` - A map where keys are scorer contract addresses and values are tuples containing\\n(scorer_name, scorer_description, scorer_icon)\\n\\n# Panics\\n* When the scorers map cannot be found in storage (`Error::ScorersWereNotFound`)",
+      "name": "get_scorers",
+      "inputs": [],
+      "outputs": [
+        {
+          "map": {
+            "key_type": "address",
+            "value_type": {
+              "tuple": {
+                "value_types": [
+                  "string",
+                  "string",
+                  "string"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Adds a new manager to the contract\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `caller` - The address that will authenticate the addition of the new manager\\n* `manager` - The address to be added as a manager\\n\\n# Panics\\n* When the caller is not the scorer factory creator or a manager (`Error::Unauthorized`)\\n* When the manager already exists (`Error::ManagerAlreadyExists`)",
+      "name": "add_manager",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "manager",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Removes a manager from the contract\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `caller` - The address that will authenticate the removal of the manager\\n* `manager` - The address to be removed as a manager\\n\\n# Panics\\n* When the caller is not the scorer factory creator or a manager (`Error::Unauthorized`)\\n* When the manager to be removed is not found (`Error::ManagerNotFound`)\\n* When attempting to remove the last manager (`Error::CannotRemoveLastManager`)",
+      "name": "remove_manager",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "manager",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves all the managers from the contract.\\n\\n# Arguments\\n* `env` - The Soroban environment\\n\\n# Returns\\n* `Vec<Address>` - A vector of all manager addresses\\n\\n# Panics\\n* When the managers vector cannot be found in storage (`Error::ManagersNotFound`)",
+      "name": "get_managers",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the address of the contract creator.\\n\\n# Arguments\\n* `env` - The Soroban environment\\n\\n# Returns\\n* `Address` - The address of the scorer factory creator\\n\\n# Panics\\n* When the creator's address is not found in storage (`Error::ContractCreatorNotFound`)",
+      "name": "get_contract_creator",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Removes a scorer contract from the factory's registry\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `caller` - The address that will authenticate the removal of the scorer\\n* `scorer_address` - The address of the scorer contract to be removed\\n\\n# Returns\\n* `()` - Returns unit type on success\\n\\n# Panics\\n* When the caller is not a registered manager (`Error::Unauthorized`)\\n* When the scorer address is not found in the registry (`Error::ScorerNotFound`)",
+      "name": "remove_scorer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "scorer_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

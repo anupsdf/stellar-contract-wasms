@@ -1,0 +1,41 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "farm",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "harvest",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "farmer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pails",
+          "type_": {
+            "vec": {
+              "element_type": "u32"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  }
+]

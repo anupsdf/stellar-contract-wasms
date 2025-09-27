@@ -1,0 +1,321 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Index"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Entries",
+            "type_": [
+              "string"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Network"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Entry",
+      "fields": [
+        {
+          "doc": "",
+          "name": "apr",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "escrow",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "share_since",
+          "type_": {
+            "map": {
+              "key_type": "address",
+              "value_type": "i128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "shares",
+          "type_": {
+            "map": {
+              "key_type": "address",
+              "value_type": "i128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "tvl",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "withdrawn_earnings",
+          "type_": {
+            "map": {
+              "key_type": "address",
+              "value_type": "i128"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Stores or replaces an `Entry` by id and appends the id to the global\\nindex. Only callable by `Admin`.",
+      "name": "set_entry",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "entry",
+          "type_": {
+            "udt": {
+              "name": "Entry"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Removes an `Entry` by id and updates the global index. Only callable\\nby `Admin`. Panics if the entry does not exist.",
+      "name": "remove_entry",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns an `Entry` by id. Panics if the entry does not exist.",
+      "name": "get_entry",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Entry"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Bumps when contract logic changes in a way that clients may care about.",
+      "name": "version",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "One-time initialization of admin, network, and optional entry ids.\\n\\n- `admin`: Address with privileged rights (set/remove/upgrade).\\n- `network`: Must be \"public\" or \"testnet\".\\n- `ids`: Optional seed list of entry ids to create with zeroed values.\\n\\nPanics if called more than once or if network is invalid.",
+      "name": "init",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "network",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "ids",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Upgrades the contract code. Only callable by `Admin`.",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Invest tokens into an entry.\\n\\nBehavior:\\n- Transfers `amount` from `user` to the contract.\\n- Always increases `escrow` by `amount`.\\n- If `amount` > `download_amount` threshold, increases user equity\\nshares and `tvl` by `amount`.\\n- Recomputes APR.\\n- Lazily creates the entry if it does not exist, and ensures it\\xe2\\x80\\x99s\\nlisted in the global index.",
+      "name": "invest",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Claim the caller's proportional earnings for an entry.\\n\\nEarnings are defined as `escrow - tvl` when positive. The user's\\nproportional share is `(user_shares / tvl) * total_earnings`, adjusted\\nby previously withdrawn amounts. Transfers the claimable amount to the\\nuser and persists updated accounting. Returns the claimed amount.",
+      "name": "claim_earnings",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sell a portion of the caller's equity shares for an entry.\\n\\nBehavior:\\n- Requires the caller to have at least `amount` shares.\\n- Decreases user's shares and entry `tvl` by `amount`.\\n- Does NOT change this entry's `escrow`.\\n- Computes commission based on holding duration and distributes the commission to\\nother entries' `escrow` (entries with `tvl > 0`), proportionally to their `tvl`.\\n- Transfers (amount - commission) to the user from the contract balance.\\n- Recomputes APR for all affected entries.\\n- Returns the amount paid out to the user.",
+      "name": "sell_shares",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Merge one entry into another. Admin-only.\\n\\nBehavior:\\n- Sums `tvl` and `escrow` from `from_id` into `to_id`.\\n- Merges `shares` and `withdrawn_earnings` maps by summing per-user values.\\n- Recomputes APR for the destination entry.\\n- Deletes the source entry and updates the global index accordingly.",
+      "name": "merge_entries",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "to_id",
+          "type_": "string"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Remove legacy entries that have both tvl = 0 and escrow = 0.\\nAdmin-only. Cleans `Index` and `EligibleIndex` accordingly.",
+      "name": "clean_empty_entries",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Batched variant: remove up to `limit` legacy entries with tvl=0 and escrow=0.\\nReturns the number of entries removed in this batch.",
+      "name": "clean_empty_entries_batch",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "limit",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  }
+]

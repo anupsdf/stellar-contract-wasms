@@ -1,0 +1,267 @@
+[
+  {
+    "function_v0": {
+      "doc": "Initializes the contract with a public key for signature verification and an owner address\\n\\n# Arguments\\n* `public_key` - The public key used to verify signatures for withdrawals\\n* `owner` - The address of the contract owner who has administrative privileges",
+      "name": "constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "public_key",
+          "type_": {
+            "bytes_n": {
+              "n": 65
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Changes the contract owner to a new address\\n\\n# Arguments\\n* `owner` - The new owner address",
+      "name": "set_owner",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Allows the owner to withdraw tokens from the contract\\n\\n# Arguments\\n* `amount` - The amount of tokens to withdraw\\n* `token` - The token address to withdraw from",
+      "name": "owner_withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Extends the contract instance TTL to prevent expiration",
+      "name": "increase_instance_ttl",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Removes a deposit record from storage\\n\\n# Arguments\\n* `nonce` - The nonce of the deposit to clear",
+      "name": "clear_deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "nonce",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Updates the public key used for signature verification\\n\\n# Arguments\\n* `public_key` - The new public key to set",
+      "name": "set_public_key",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "public_key",
+          "type_": {
+            "bytes_n": {
+              "n": 65
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Processes a withdrawal request after verifying the signature\\n\\n# Arguments\\n* `amount` - The amount to withdraw\\n* `nonce` - A unique identifier for this withdrawal\\n* `token` - The token address to withdraw\\n* `receiver` - The address to receive the tokens\\n* `signature` - The signature authorizing this withdrawal",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "nonce",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "receiver",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "signature",
+          "type_": {
+            "bytes_n": {
+              "n": 65
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Processes a deposit from Stellar to another chain\\n\\n# Arguments\\n* `sender_id` - The address sending the tokens\\n* `amount` - The amount of tokens to deposit\\n* `token` - The token address being deposited\\n* `receiver_id` - The recipient address on the target chain\\n* `client_timestamp` - Timestamp used as nonce\\n\\n# Returns\\n* The nonce used for this deposit",
+      "name": "deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "receiver_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "nonce",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves deposit data by nonce\\n\\n# Arguments\\n* `nonce` - The nonce of the deposit to retrieve\\n\\n# Returns\\n* The deposit data as bytes",
+      "name": "get_deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "nonce",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "bytes"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets the current ledger timestamp\\n\\n# Returns\\n* The current ledger timestamp",
+      "name": "get_timestamp",
+      "inputs": [],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the public key used for signature verification\\n\\n# Returns\\n* The public key as bytes",
+      "name": "get_public_key",
+      "inputs": [],
+      "outputs": [
+        {
+          "bytes_n": {
+            "n": 65
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if a withdrawal with the given nonce has been executed\\n\\n# Arguments\\n* `nonce` - The nonce to check\\n\\n# Returns\\n* True if the withdrawal has been executed, false otherwise",
+      "name": "is_executed",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "nonce",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets the contract owner address\\n\\n# Returns\\n* The owner address",
+      "name": "get_owner",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Verifies a hot omni bridge deposit\\n\\n# Arguments\\n* `wallet_id` - The wallet identifier\\n* `data` - The data to verify containing nonce and hash\\n\\n# Returns\\n* True if verification succeeds, false otherwise",
+      "name": "hot_verify",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "wallet_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": {
+            "bytes_n": {
+              "n": 48
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  }
+]

@@ -1,0 +1,1239 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AllowanceValue",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "expiration_ledger",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AllowanceDataKey",
+      "fields": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Allowance",
+            "type_": [
+              {
+                "udt": {
+                  "name": "AllowanceDataKey"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "UnderlyingAsset"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initializes the Stoken contract.\\n\\n# Arguments\\n\\n- name - The name of the token.\\n- symbol - The symbol of the token.\\n- pool - The address of the pool contract.\\n- underlying_asset - The address of the underlying asset associated with the token.\\n\\n# Panics\\n\\nPanics with if the specified decimal value exceeds the maximum value of u8.\\nPanics with if the contract has already been initialized.\\nPanics if name or symbol is empty\\n",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "underlying_asset",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "version",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the amount of tokens that the `spender` is allowed to withdraw from the `from` address.\\n\\n# Arguments\\n\\n- from - The address of the token owner.\\n- spender - The address of the spender.\\n\\n# Returns\\n\\nThe amount of tokens that the `spender` is allowed to withdraw from the `from` address.\\n",
+      "name": "allowance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Set the allowance for a spender to withdraw from the `from` address by a specified amount of tokens.\\n\\n# Arguments\\n\\n- from - The address of the token owner.\\n- spender - The address of the spender.\\n- amount - The amount of tokens to increase the allowance by.\\n- expiration_ledger - The time when allowance will be expired.\\n\\n# Panics\\n\\nPanics if the caller is not authorized.\\nPanics if the amount is negative.\\nPanics if the updated allowance exceeds the maximum value of i128.\\n",
+      "name": "approve",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "expiration_ledger",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the balance of tokens for a specified `id`.\\n\\n# Arguments\\n\\n- id - The address of the account.\\n\\n# Returns\\n\\nThe balance of tokens for the specified `id`.\\n",
+      "name": "balance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the spendable balance of tokens for a specified id.\\n\\n# Arguments\\n\\n- id - The address of the account.\\n\\n# Returns\\n\\nThe spendable balance of tokens for the specified id.\\n\\nCurrently the same as `balance(id)`",
+      "name": "spendable_balance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks whether a specified `id` is authorized.\\n\\n# Arguments\\n\\n- id - The address to check for authorization.\\n\\n# Returns\\n\\nReturns true if the id is authorized, otherwise returns false",
+      "name": "authorized",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Transfers a specified amount of tokens from one account (`from`) to another account (`to`).\\n\\n# Arguments\\n\\n- from - The address of the token sender.\\n- to - The address of the token recipient.\\n- amount - The amount of tokens to transfer.\\n\\n# Panics\\n\\nPanics if the caller (`from`) is not authorized.\\nPanics if the amount is negative.\\n",
+      "name": "transfer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Transfers a specified amount of tokens from the from account to the to account on behalf of the spender account.\\n\\n# Arguments\\n\\n- spender - The address of the account that is authorized to spend tokens.\\n- from - The address of the token sender.\\n- to - The address of the token recipient.\\n- amount - The amount of tokens to transfer.\\n\\n# Panics\\n\\nPanics if the spender is not authorized.\\nPanics if the spender is not allowed to spend `amount`.\\nPanics if the amount is negative.\\n",
+      "name": "transfer_from",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "burn_from",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "_spender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "_from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "_amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Clawbacks a specified amount of tokens from the from account.\\n\\n# Arguments\\n\\n- from - The address of the token holder to clawback tokens from.\\n- amount - The amount of tokens to clawback.\\n\\n# Panics\\n\\nPanics if the amount is negative.\\nPanics if the caller is not the pool associated with this token.\\nPanics if overflow happens\\n",
+      "name": "clawback",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sets the authorization status for a specified `id`.\\n\\n# Arguments\\n\\n- id - The address to set the authorization status for.\\n- authorize - A boolean value indicating whether to authorize (true) or deauthorize (false) the id.\\n\\n# Panics\\n\\nPanics if the caller is not the pool associated with this token.\\n",
+      "name": "set_authorized",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "authorize",
+          "type_": "bool"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Mints a specified amount of tokens for a given `id` and returns total supply\\n\\n# Arguments\\n\\n- id - The address of the user to mint tokens for.\\n- amount - The amount of tokens to mint.\\n\\n# Panics\\n\\nPanics if the amount is negative.\\nPanics if the caller is not the pool associated with this token.\\n",
+      "name": "mint",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Burns a specified amount of tokens from the from account and returns total supply\\n\\n# Arguments\\n\\n- from - The address of the token holder to burn tokens from.\\n- amount_to_burn - The amount of tokens to burn.\\n- amount_to_withdraw - The amount of underlying token to withdraw.\\n- to - The address who accepts underlying token.\\n\\n# Panics\\n\\nPanics if the amount_to_burn is negative.\\nPanics if the caller is not the pool associated with this token.\\n",
+      "name": "burn",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount_to_burn",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_to_withdraw",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the number of decimal places used by the token.\\n\\n# Returns\\n\\nThe number of decimal places used by the token.\\n",
+      "name": "decimals",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the name of the token.\\n\\n# Returns\\n\\nThe name of the token as a `soroban_sdk::Bytes` value.\\n",
+      "name": "name",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the symbol of the token.\\n\\n# Returns\\n\\nThe symbol of the token as a `soroban_sdk::Bytes` value.\\n",
+      "name": "symbol",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the total supply of tokens.\\n\\n# Returns\\n\\nThe total supply of tokens.\\n",
+      "name": "total_supply",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Transfers tokens during a liquidation.\\n\\n# Arguments\\n\\n- from - The address of the sender.\\n- to - The address of the recipient.\\n- amount - The amount of tokens to transfer.\\n\\n# Panics\\n\\nPanics if caller is not associated pool.\\n",
+      "name": "transfer_on_liquidation",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Transfers the underlying asset to the specified recipient.\\n\\n# Arguments\\n\\n- to - The address of the recipient.\\n- amount - The amount of underlying asset to transfer.\\n\\n# Panics\\n\\nPanics if the amount is negative.\\nPanics if caller is not associated pool.\\n",
+      "name": "transfer_underlying_to",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the address of the underlying asset.\\n\\n# Returns\\n\\nThe address of the underlying asset.\\n",
+      "name": "underlying_asset",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the address of the pool.\\n\\n# Returns\\n\\nThe address of the associated pool.\\n",
+      "name": "pool",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CommonDataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Balance",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "State",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Pool"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TotalSupply"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AccountPosition",
+      "fields": [
+        {
+          "doc": "",
+          "name": "debt",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "discounted_collateral",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "npv",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AssetBalance",
+      "fields": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "balance",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "BaseAssetConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "decimals",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Collateralization parameters",
+      "lib": "",
+      "name": "CollateralParamsInput",
+      "fields": [
+        {
+          "doc": "Specifies what fraction of the underlying asset counts toward\\nthe portfolio collateral value [0%, 100%].",
+          "name": "discount",
+          "type_": "u32"
+        },
+        {
+          "doc": "The total amount of an asset the protocol accepts into the market.",
+          "name": "liq_cap",
+          "type_": "i128"
+        },
+        {
+          "doc": "Liquidation order",
+          "name": "pen_order",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "util_cap",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Uninitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "NoPriceFeed",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "Paused",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "NoReserveExistForAsset",
+          "value": 100
+        },
+        {
+          "doc": "",
+          "name": "NoActiveReserve",
+          "value": 101
+        },
+        {
+          "doc": "",
+          "name": "ReserveFrozen",
+          "value": 102
+        },
+        {
+          "doc": "",
+          "name": "ReservesMaxCapacityExceeded",
+          "value": 103
+        },
+        {
+          "doc": "",
+          "name": "NoPriceForAsset",
+          "value": 104
+        },
+        {
+          "doc": "",
+          "name": "ReserveAlreadyInitialized",
+          "value": 105
+        },
+        {
+          "doc": "",
+          "name": "InvalidAssetPrice",
+          "value": 106
+        },
+        {
+          "doc": "",
+          "name": "BaseAssetNotInitialized",
+          "value": 107
+        },
+        {
+          "doc": "",
+          "name": "InitialHealthNotInitialized",
+          "value": 108
+        },
+        {
+          "doc": "",
+          "name": "LiquidationOrderMustBeUnique",
+          "value": 109
+        },
+        {
+          "doc": "",
+          "name": "NotFungible",
+          "value": 110
+        },
+        {
+          "doc": "",
+          "name": "UserConfigInvalidIndex",
+          "value": 200
+        },
+        {
+          "doc": "",
+          "name": "NotEnoughAvailableUserBalance",
+          "value": 201
+        },
+        {
+          "doc": "",
+          "name": "UserConfigNotExists",
+          "value": 202
+        },
+        {
+          "doc": "",
+          "name": "MustHaveDebt",
+          "value": 203
+        },
+        {
+          "doc": "",
+          "name": "MustNotHaveDebt",
+          "value": 204
+        },
+        {
+          "doc": "",
+          "name": "BorrowingNotEnabled",
+          "value": 300
+        },
+        {
+          "doc": "",
+          "name": "BelowInitialHealth",
+          "value": 301
+        },
+        {
+          "doc": "",
+          "name": "BadPosition",
+          "value": 302
+        },
+        {
+          "doc": "",
+          "name": "GoodPosition",
+          "value": 303
+        },
+        {
+          "doc": "",
+          "name": "InvalidAmount",
+          "value": 304
+        },
+        {
+          "doc": "",
+          "name": "ValidateBorrowMathError",
+          "value": 305
+        },
+        {
+          "doc": "",
+          "name": "CalcAccountDataMathError",
+          "value": 306
+        },
+        {
+          "doc": "",
+          "name": "LiquidateMathError",
+          "value": 309
+        },
+        {
+          "doc": "",
+          "name": "MustNotBeInCollateralAsset",
+          "value": 310
+        },
+        {
+          "doc": "",
+          "name": "UtilizationCapExceeded",
+          "value": 311
+        },
+        {
+          "doc": "",
+          "name": "LiqCapExceeded",
+          "value": 312
+        },
+        {
+          "doc": "",
+          "name": "FlashLoanReceiverError",
+          "value": 313
+        },
+        {
+          "doc": "",
+          "name": "MathOverflowError",
+          "value": 400
+        },
+        {
+          "doc": "",
+          "name": "MustBeLtePercentageFactor",
+          "value": 401
+        },
+        {
+          "doc": "",
+          "name": "MustBeLtPercentageFactor",
+          "value": 402
+        },
+        {
+          "doc": "",
+          "name": "MustBeGtPercentageFactor",
+          "value": 403
+        },
+        {
+          "doc": "",
+          "name": "MustBePositive",
+          "value": 404
+        },
+        {
+          "doc": "",
+          "name": "AccruedRateMathError",
+          "value": 500
+        },
+        {
+          "doc": "",
+          "name": "CollateralCoeffMathError",
+          "value": 501
+        },
+        {
+          "doc": "",
+          "name": "DebtCoeffMathError",
+          "value": 502
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FlashLoanAsset",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "borrow",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Interest rate parameters",
+      "lib": "",
+      "name": "IRParams",
+      "fields": [
+        {
+          "doc": "",
+          "name": "alpha",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "initial_rate",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "max_rate",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "scaling_coeff",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OracleAsset",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Stellar",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Other",
+            "type_": [
+              "symbol"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PriceFeed",
+      "fields": [
+        {
+          "doc": "",
+          "name": "feed",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "feed_asset",
+          "type_": {
+            "udt": {
+              "name": "OracleAsset"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "feed_decimals",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "timestamp_precision",
+          "type_": {
+            "udt": {
+              "name": "TimestampPrecision"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "twap_records",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PriceFeedConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "asset_decimals",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "feeds",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "PriceFeed"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PriceFeedConfigInput",
+      "fields": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "asset_decimals",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "feeds",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "PriceFeed"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ReserveConfiguration",
+      "fields": [
+        {
+          "doc": "",
+          "name": "borrowing_enabled",
+          "type_": "bool"
+        },
+        {
+          "doc": "Specifies what fraction of the underlying asset counts toward\\nthe portfolio collateral value [0%, 100%].",
+          "name": "discount",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "is_active",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "liquidity_cap",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "pen_order",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "util_cap",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ReserveData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "borrower_ar",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "borrower_ir",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "configuration",
+          "type_": {
+            "udt": {
+              "name": "ReserveConfiguration"
+            }
+          }
+        },
+        {
+          "doc": "The id of the reserve (position in the list of the active reserves).",
+          "name": "id",
+          "type_": {
+            "bytes_n": {
+              "n": 1
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "last_update_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "lender_ar",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "lender_ir",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reserve_type",
+          "type_": {
+            "udt": {
+              "name": "ReserveType"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ReserveType",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "Fungible reserve for which created sToken and debtToken",
+            "name": "Fungible",
+            "type_": [
+              "address",
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "RWA reserve",
+            "name": "RWA"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TimestampPrecision",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Msec"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Sec"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Implements the bitmap logic to handle the user configuration.\\nEven positions is collateral flags and uneven is borrowing flags.",
+      "lib": "",
+      "name": "UserConfiguration",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Asset",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Stellar",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Other",
+            "type_": [
+              "symbol"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PriceData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenMetadata",
+      "fields": [
+        {
+          "doc": "",
+          "name": "decimal",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        }
+      ]
+    }
+  }
+]

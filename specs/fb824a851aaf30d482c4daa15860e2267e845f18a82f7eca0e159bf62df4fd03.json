@@ -1,0 +1,1443 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "messenger",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "gas_oracle",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "native_token",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "swap_and_bridge",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "destination_chain_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "receive_token",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "nonce",
+          "type_": "u256"
+        },
+        {
+          "doc": "",
+          "name": "gas_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "fee_token_amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "receive_tokens",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "source_chain_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "receive_token",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "nonce",
+          "type_": "u256"
+        },
+        {
+          "doc": "",
+          "name": "receive_amount_min",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "extra_gas",
+          "type_": {
+            "option": {
+              "value_type": "u128"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "swap",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "receive_token",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "receive_amount_min",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "stop_swap",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "start_swap",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_gas_oracle",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_stop_authority",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "stop_authority",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_rebalancer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "rebalancer",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_messenger",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "messenger",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_gas_usage",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "chain_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "gas_usage",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "register_bridge",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "chain_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "bridge_address",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_bridge_token",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "chain_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "token_address",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_bridge_token",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "chain_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "token_address",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw_gas_tokens",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw_bridging_fee_in_tokens",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "has_processed_message",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "message",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "bool",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "has_received_message",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "message",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "bool",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_pool_address",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_address",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_config",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "Bridge"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_stop_authority",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_transaction_cost",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "chain_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_gas_usage",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "chain_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_gas_oracle",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_another_bridge",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "chain_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "AnotherBridge"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Swapped",
+      "fields": [
+        {
+          "doc": "",
+          "name": "receive_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "receive_token",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "send_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "send_token",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokensSent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "destination_chain_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "nonce",
+          "type_": "u256"
+        },
+        {
+          "doc": "",
+          "name": "receive_token",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokensReceived",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "message",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "nonce",
+          "type_": "u256"
+        },
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ReceiveFee",
+      "fields": [
+        {
+          "doc": "",
+          "name": "bridge_transaction_cost",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "extra_gas",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "message_transaction_cost",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "BridgingFeeFromTokens",
+      "fields": [
+        {
+          "doc": "",
+          "name": "fee_token_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "gas",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AnotherBridge",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "tokens",
+          "type_": {
+            "map": {
+              "key_type": {
+                "bytes_n": {
+                  "n": 32
+                }
+              },
+              "value_type": "bool"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Bridge",
+      "fields": [
+        {
+          "doc": "precomputed values of the scaling factor required for paying the bridging fee with stable tokens",
+          "name": "bridging_fee_conversion_factor",
+          "type_": {
+            "map": {
+              "key_type": "address",
+              "value_type": "u128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "can_swap",
+          "type_": "bool"
+        },
+        {
+          "doc": "precomputed values to divide by to change the precision from the Gas Oracle precision to the token precision",
+          "name": "from_gas_oracle_factor",
+          "type_": {
+            "map": {
+              "key_type": "address",
+              "value_type": "u128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "messenger",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pools",
+          "type_": {
+            "map": {
+              "key_type": {
+                "bytes_n": {
+                  "n": 32
+                }
+              },
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "rebalancer",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "OtherBridge",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "SentMessage",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ReceivedMessage",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Admin",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GasOracleAddress",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GasUsage",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": {
+            "map": {
+              "key_type": "u32",
+              "value_type": "u128"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "NativeToken",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StopAuthority",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Unimplemented",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Initialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "Uninitialized",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "InvalidArg",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "InvalidChainId",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "InvalidOtherChainId",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "GasUsageNotSet",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "BrokenAddress",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "NotFound",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "TokenInsufficientBalance",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "CastFailed",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "ZeroAmount",
+          "value": 103
+        },
+        {
+          "doc": "",
+          "name": "PoolOverflow",
+          "value": 104
+        },
+        {
+          "doc": "",
+          "name": "ZeroChanges",
+          "value": 105
+        },
+        {
+          "doc": "",
+          "name": "ReservesExhausted",
+          "value": 106
+        },
+        {
+          "doc": "",
+          "name": "InsufficientReceivedAmount",
+          "value": 107
+        },
+        {
+          "doc": "",
+          "name": "BalanceRatioExceeded",
+          "value": 108
+        },
+        {
+          "doc": "",
+          "name": "Forbidden",
+          "value": 109
+        },
+        {
+          "doc": "",
+          "name": "UnauthorizedStopAuthority",
+          "value": 203
+        },
+        {
+          "doc": "",
+          "name": "SwapProhibited",
+          "value": 204
+        },
+        {
+          "doc": "",
+          "name": "AmountTooLowForFee",
+          "value": 205
+        },
+        {
+          "doc": "",
+          "name": "BridgeToTheZeroAddress",
+          "value": 206
+        },
+        {
+          "doc": "",
+          "name": "EmptyRecipient",
+          "value": 207
+        },
+        {
+          "doc": "",
+          "name": "SourceNotRegistered",
+          "value": 208
+        },
+        {
+          "doc": "",
+          "name": "WrongDestinationChain",
+          "value": 209
+        },
+        {
+          "doc": "",
+          "name": "UnknownAnotherChain",
+          "value": 210
+        },
+        {
+          "doc": "",
+          "name": "TokensAlreadySent",
+          "value": 211
+        },
+        {
+          "doc": "",
+          "name": "MessageProcessed",
+          "value": 212
+        },
+        {
+          "doc": "",
+          "name": "NotEnoughFee",
+          "value": 214
+        },
+        {
+          "doc": "",
+          "name": "NoMessage",
+          "value": 215
+        },
+        {
+          "doc": "",
+          "name": "NoReceivePool",
+          "value": 216
+        },
+        {
+          "doc": "",
+          "name": "NoPool",
+          "value": 217
+        },
+        {
+          "doc": "",
+          "name": "UnknownAnotherToken",
+          "value": 218
+        },
+        {
+          "doc": "",
+          "name": "WrongByteLength",
+          "value": 300
+        },
+        {
+          "doc": "",
+          "name": "HasMessage",
+          "value": 301
+        },
+        {
+          "doc": "",
+          "name": "InvalidPrimarySignature",
+          "value": 302
+        },
+        {
+          "doc": "",
+          "name": "InvalidSecondarySignature",
+          "value": 303
+        },
+        {
+          "doc": "",
+          "name": "NoGasDataForChain",
+          "value": 400
+        }
+      ]
+    }
+  }
+]

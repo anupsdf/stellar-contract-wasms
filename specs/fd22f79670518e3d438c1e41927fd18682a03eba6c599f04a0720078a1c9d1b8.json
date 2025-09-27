@@ -1,0 +1,373 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "IAP categories for products.",
+      "lib": "",
+      "name": "IapCategory",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Consumable"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "NonConsumable"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "AutoRenewable"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Data structure for an IAP product.",
+      "lib": "",
+      "name": "IapProduct",
+      "fields": [
+        {
+          "doc": "",
+          "name": "currency",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "iap_category",
+          "type_": {
+            "udt": {
+              "name": "IapCategory"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "image_url",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "metadata",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "product_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "product_type",
+          "type_": "bytes"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Data structure for a purchase record.",
+      "lib": "",
+      "name": "PurchaseRecord",
+      "fields": [
+        {
+          "doc": "",
+          "name": "price_paid",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "product_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "Storage key definitions for contract state.",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Treasury"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Auth"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Product",
+            "type_": [
+              "bytes"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "NextPurchaseId",
+            "type_": [
+              "bytes"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Purchase",
+            "type_": [
+              "bytes",
+              "u32"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initialize the contract with admin, treasury, and auth addresses.\\nCan be called once by the deploying admin to set up roles.",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "treasury",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "auth",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Create a new IAP product (admin only).",
+      "name": "create_product",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "product_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "product_type",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "currency",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "image_url",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "metadata",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "iap_category",
+          "type_": {
+            "udt": {
+              "name": "IapCategory"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Update an existing IAP product (admin only).",
+      "name": "update_product",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "product_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "new_type",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "new_name",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "new_description",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "new_price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "new_currency",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "new_image_url",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "new_metadata",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "new_category",
+          "type_": {
+            "udt": {
+              "name": "IapCategory"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Delete an IAP product (admin only).",
+      "name": "delete_product",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "product_id",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieve IAP product details by productId.",
+      "name": "get_product",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "product_id",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "IapProduct"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Purchase an IAP product:\\n- Transfers XLM from the caller (buyer) to the treasury.\\n- Records the purchase under the user's ID.",
+      "name": "purchase",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "user_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "product_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

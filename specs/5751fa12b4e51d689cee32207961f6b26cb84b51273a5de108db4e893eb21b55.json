@@ -1,0 +1,959 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "vesting_token",
+          "type_": {
+            "udt": {
+              "name": "VestingTokenInfo"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "max_vesting_complexity",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize_with_minter",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "vesting_token",
+          "type_": {
+            "udt": {
+              "name": "VestingTokenInfo"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "max_vesting_complexity",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "minter_info",
+          "type_": {
+            "udt": {
+              "name": "MinterInfo"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_vesting_schedules",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "vesting_schedules",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "VestingSchedule"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "burn",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "mint",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_minter",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_minter",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_minter_capacity",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_capacity",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_balance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_vesting_info",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "VestingInfoResponse"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_all_vesting_info",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "VestingInfoResponse"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_token_info",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "VestingTokenInfo"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_minter",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "MinterInfo"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_vesting_contract_balance",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_available_to_claim",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "migrate_admin_key",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_new_key_to_storage",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Std",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "VestingNotFoundForAddress",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "AllowanceNotFoundForGivenPair",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "MinterNotFound",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "NoBalanceFoundForAddress",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "NoConfigFound",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "NoAdminFound",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "MissingBalance",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "VestingComplexityTooHigh",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "TotalVestedOverCapacity",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "InvalidTransferAmount",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "CantMoveVestingTokens",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "NotEnoughCapacity",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "NotAuthorized",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "NeverFullyVested",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "VestsMoreThanSent",
+          "value": 15
+        },
+        {
+          "doc": "",
+          "name": "InvalidBurnAmount",
+          "value": 16
+        },
+        {
+          "doc": "",
+          "name": "InvalidMintAmount",
+          "value": 17
+        },
+        {
+          "doc": "",
+          "name": "InvalidAllowanceAmount",
+          "value": 18
+        },
+        {
+          "doc": "",
+          "name": "DuplicateInitialBalanceAddresses",
+          "value": 19
+        },
+        {
+          "doc": "",
+          "name": "CurveError",
+          "value": 20
+        },
+        {
+          "doc": "",
+          "name": "NoWhitelistFound",
+          "value": 21
+        },
+        {
+          "doc": "",
+          "name": "NoTokenInfoFound",
+          "value": 22
+        },
+        {
+          "doc": "",
+          "name": "NoVestingComplexityValueFound",
+          "value": 23
+        },
+        {
+          "doc": "",
+          "name": "NoAddressesToAdd",
+          "value": 24
+        },
+        {
+          "doc": "",
+          "name": "NoEnoughtTokensToStart",
+          "value": 25
+        },
+        {
+          "doc": "",
+          "name": "NotEnoughBalance",
+          "value": 26
+        },
+        {
+          "doc": "",
+          "name": "VestingBothPresent",
+          "value": 27
+        },
+        {
+          "doc": "",
+          "name": "VestingNonePresent",
+          "value": 28
+        },
+        {
+          "doc": "",
+          "name": "CurveConstant",
+          "value": 29
+        },
+        {
+          "doc": "",
+          "name": "CurveSLNotDecreasing",
+          "value": 30
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 31
+        },
+        {
+          "doc": "",
+          "name": "AdminNotFound",
+          "value": 32
+        },
+        {
+          "doc": "",
+          "name": "ContractMathError",
+          "value": 33
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VestingTokenInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "decimals",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VestingSchedule",
+      "fields": [
+        {
+          "doc": "",
+          "name": "curve",
+          "type_": {
+            "udt": {
+              "name": "Curve"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VestingInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "balance",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "schedule",
+          "type_": {
+            "udt": {
+              "name": "Curve"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VestingCounterKey",
+      "fields": [
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "MinterInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "mint_capacity",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VestingInfoKey",
+      "fields": [
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VestingInfoResponse",
+      "fields": [
+        {
+          "doc": "",
+          "name": "balance",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "schedule",
+          "type_": {
+            "udt": {
+              "name": "Curve"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "Curve types",
+      "lib": "",
+      "name": "Curve",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "Constan curve, it will always have the same value",
+            "name": "Constant",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "Linear curve that grow linearly but later\\ntends to a constant saturated value.",
+            "name": "SaturatingLinear",
+            "type_": [
+              {
+                "udt": {
+                  "name": "SaturatingLinear"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "Curve with different slopes",
+            "name": "PiecewiseLinear",
+            "type_": [
+              {
+                "udt": {
+                  "name": "PiecewiseLinear"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Saturating Linear\\n$$f(x)=\\\\begin{cases}\\n[min(y) * amount],  & \\\\text{if x <= $x_1$ } \\\\\\\\\\\\\\\\\\n[y * amount],  & \\\\text{if $x_1$ >= x <= $x_2$ } \\\\\\\\\\\\\\\\\\n[max(y) * amount],  & \\\\text{if x >= $x_2$ }\\n\\\\end{cases}$$\\n\\nmin_y for all x <= min_x, max_y for all x >= max_x, linear in between",
+      "lib": "",
+      "name": "SaturatingLinear",
+      "fields": [
+        {
+          "doc": "time when curve has fully saturated",
+          "name": "max_x",
+          "type_": "u64"
+        },
+        {
+          "doc": "max value at saturated time",
+          "name": "max_y",
+          "type_": "u128"
+        },
+        {
+          "doc": "time when curve start",
+          "name": "min_x",
+          "type_": "u64"
+        },
+        {
+          "doc": "min value at start time",
+          "name": "min_y",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "This is a generalization of SaturatingLinear, steps must be arranged with increasing time [`u64`].\\nAny point before first step gets the first value, after last step the last value.\\nOtherwise, it is a linear interpolation between the two closest points.\\nVec of length 1 -> [`Constant`](Curve::Constant) .\\nVec of length 2 -> [`SaturatingLinear`] .",
+      "lib": "",
+      "name": "Step",
+      "fields": [
+        {
+          "doc": "",
+          "name": "time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PiecewiseLinear",
+      "fields": [
+        {
+          "doc": "steps",
+          "name": "steps",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Step"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenInitInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StakeInitInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "manager",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "max_complexity",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "min_bond",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_reward",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LiquidityPoolInitInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "default_slippage_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "fee_recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "max_allowed_slippage_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "max_allowed_spread_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "max_referral_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "stake_init_info",
+          "type_": {
+            "udt": {
+              "name": "StakeInitInfo"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "swap_fee_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "token_init_info",
+          "type_": {
+            "udt": {
+              "name": "TokenInitInfo"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolType",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Xyk",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Stable",
+          "value": 1
+        }
+      ]
+    }
+  }
+]

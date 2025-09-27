@@ -1,0 +1,922 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deploy",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "deployer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "salt",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "init_fn",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "init_args",
+          "type_": {
+            "vec": {
+              "element_type": "val"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "address",
+              "val"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize_escrow",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "escrow_properties",
+          "type_": {
+            "udt": {
+              "name": "Escrow"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "Escrow"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "fund_escrow",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "signer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount_to_deposit",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "release_funds",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "release_signer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "trustless_work_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_escrow",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "plataform_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "escrow_properties",
+          "type_": {
+            "udt": {
+              "name": "Escrow"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "Escrow"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_escrow",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "Escrow"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_escrow_by_contract_id",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "contract_id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "Escrow"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_multiple_escrow_balances",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "signer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "addresses",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": {
+                  "udt": {
+                    "name": "AddressBalance"
+                  }
+                }
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "change_milestone_status",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "milestone_index",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "new_status",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "new_evidence",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "service_provider",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "approve_milestone",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "milestone_index",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "new_flag",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "approver",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "resolve_dispute",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "dispute_resolver",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "approver_funds",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "receiver_funds",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "trustless_work_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "dispute_escrow",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "signer",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "EscrowNotFunded",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "AmountCannotBeZero",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "EscrowAlreadyInitialized",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "OnlySignerCanFundEscrow",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "EscrowAlreadyFunded",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "EscrowFullyFunded",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "SignerInsufficientFunds",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "NotEnoughAllowance",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "EscrowAlreadyCompleted",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "SignerInsufficientFundsToComplete",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "OnlySignerCanRequestRefund",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "NoFundsToRefund",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "ContractHasInsufficientBalance",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "EscrowNotFound",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "OnlyReleaseSignerCanReleaseEarnings",
+          "value": 15
+        },
+        {
+          "doc": "",
+          "name": "EscrowNotCompleted",
+          "value": 16
+        },
+        {
+          "doc": "",
+          "name": "EscrowBalanceNotEnoughToSendEarnings",
+          "value": 17
+        },
+        {
+          "doc": "",
+          "name": "ContractInsufficientFunds",
+          "value": 18
+        },
+        {
+          "doc": "",
+          "name": "OnlyPlatformAddressExecuteThisFunction",
+          "value": 19
+        },
+        {
+          "doc": "",
+          "name": "EscrowNotInitialized",
+          "value": 20
+        },
+        {
+          "doc": "",
+          "name": "OnlyServiceProviderChangeMilstoneStatus",
+          "value": 21
+        },
+        {
+          "doc": "",
+          "name": "NoMileStoneDefined",
+          "value": 22
+        },
+        {
+          "doc": "",
+          "name": "InvalidMileStoneIndex",
+          "value": 23
+        },
+        {
+          "doc": "",
+          "name": "OnlyApproverChangeMilstoneFlag",
+          "value": 24
+        },
+        {
+          "doc": "",
+          "name": "OnlyDisputeResolverCanExecuteThisFunction",
+          "value": 25
+        },
+        {
+          "doc": "",
+          "name": "EscrowAlreadyInDispute",
+          "value": 26
+        },
+        {
+          "doc": "",
+          "name": "EscrowNotInDispute",
+          "value": 27
+        },
+        {
+          "doc": "",
+          "name": "InsufficientFundsForResolution",
+          "value": 28
+        },
+        {
+          "doc": "",
+          "name": "InvalidState",
+          "value": 29
+        },
+        {
+          "doc": "",
+          "name": "EscrowOpenedForDisputeResolution",
+          "value": 30
+        },
+        {
+          "doc": "",
+          "name": "AmountToDepositGreatherThanEscrowAmount",
+          "value": 31
+        },
+        {
+          "doc": "",
+          "name": "Overflow",
+          "value": 32
+        },
+        {
+          "doc": "",
+          "name": "Underflow",
+          "value": 33
+        },
+        {
+          "doc": "",
+          "name": "DivisionError",
+          "value": 34
+        },
+        {
+          "doc": "",
+          "name": "AdminNotFound",
+          "value": 35
+        },
+        {
+          "doc": "",
+          "name": "InsufficientApproverFundsForCommissions",
+          "value": 36
+        },
+        {
+          "doc": "",
+          "name": "InsufficientServiceProviderFundsForCommissions",
+          "value": 37
+        },
+        {
+          "doc": "",
+          "name": "MilestoneApprovedCantChangeEscrowProperties",
+          "value": 38
+        },
+        {
+          "doc": "",
+          "name": "EscrowHasFunds",
+          "value": 39
+        },
+        {
+          "doc": "",
+          "name": "EscrowAlreadyResolved",
+          "value": 40
+        },
+        {
+          "doc": "",
+          "name": "TooManyEscrowsRequested",
+          "value": 41
+        },
+        {
+          "doc": "",
+          "name": "UnauthorizedToChangeDisputeFlag",
+          "value": 42
+        },
+        {
+          "doc": "",
+          "name": "ArgumentConversionFailed",
+          "value": 43
+        },
+        {
+          "doc": "",
+          "name": "TooManyMilestones",
+          "value": 44
+        },
+        {
+          "doc": "",
+          "name": "ReceiverAndApproverFundsNotEqual",
+          "value": 45
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Escrow",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "engagement_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "flags",
+          "type_": {
+            "udt": {
+              "name": "Flags"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "milestones",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Milestone"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "platform_fee",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "receiver_memo",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "roles",
+          "type_": {
+            "udt": {
+              "name": "Roles"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "title",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "trustline",
+          "type_": {
+            "udt": {
+              "name": "Trustline"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Milestone",
+      "fields": [
+        {
+          "doc": "",
+          "name": "approved",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "evidence",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Roles",
+      "fields": [
+        {
+          "doc": "",
+          "name": "approver",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "dispute_resolver",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "platform_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "receiver",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "release_signer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "service_provider",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Flags",
+      "fields": [
+        {
+          "doc": "",
+          "name": "disputed",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "released",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "resolved",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Trustline",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "decimals",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AddressBalance",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "balance",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "trustline_decimals",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Escrow"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Balance",
+            "type_": [
+              "address"
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

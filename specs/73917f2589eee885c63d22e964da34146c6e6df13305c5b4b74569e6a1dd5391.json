@@ -1,0 +1,4781 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_owner",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_owner",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "ttl_bump",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "threshold",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "extend_to",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize_bond",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "factory_regulation_data",
+          "type_": {
+            "udt": {
+              "name": "FactoryRegulationData"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "proxy_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "salt",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "decimal",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "isin",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "bond_data",
+          "type_": {
+            "udt": {
+              "name": "BondData"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize_equity",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "factory_regulation_data",
+          "type_": {
+            "udt": {
+              "name": "FactoryRegulationData"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "proxy_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "salt",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "decimal",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "isin",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "equity_data",
+          "type_": {
+            "udt": {
+              "name": "EquityData"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_proxy_address",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_proxy_address",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_proxy",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_update_state",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "state",
+          "type_": "bool"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_implementation",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_security_regulation_data",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "SecurityRegulationData"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_erc20_metadata",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Erc20Metadata"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_bond_details",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "BondDetailsData"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_coupon",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_coupon",
+          "type_": {
+            "udt": {
+              "name": "Coupon"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_coupon_details",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "CouponDetailsData"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_coupon",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "coupon_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "RegisteredCoupon"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_coupon_for",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "coupon_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "CouponFor"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_coupon_count",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_equity_details",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "EquityDetailsData"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_dividends",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_dividend",
+          "type_": {
+            "udt": {
+              "name": "Dividend"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_dividends",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "dividend_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "RegisteredDividend"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_dividends_for",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "dividend_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "DividendFor"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_dividends_count",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_voting",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_voting",
+          "type_": {
+            "udt": {
+              "name": "Voting"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_voting",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "voting_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "RegisteredVoting"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_voting_for",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "voting_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "VotingFor"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_voting_count",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "trigger_pending_scheduled_snaps",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "u32"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "trigger_scheduled_snapshots",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "max",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "u32"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_scheduled_snapshots",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "page_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "page_length",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "ScheduledSnapshot"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "scheduled_snapshot_count",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer_and_lock",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "expiration_timestamp",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer_and_lock_by_partition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "expiration_timestamp",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "protected_trf_and_lock_by_part",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "expiration_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "nonce",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "deadline",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "protected_transfer_and_lock",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "expiration_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "nonce",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "deadline",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_corporate_action",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "action_type",
+          "type_": {
+            "udt": {
+              "name": "ActionType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "u32",
+              "u32"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_corporate_action",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "corporate_action_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              {
+                "udt": {
+                  "name": "ActionType"
+                }
+              },
+              "bytes"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_corporate_action_count",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_corporate_action_ids",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "page_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "page_length",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "u32"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_corp_action_count_by_type",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "action_type",
+          "type_": {
+            "udt": {
+              "name": "ActionType"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_corporate_action_ids_by_type",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "page_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "page_length",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "action_type",
+          "type_": {
+            "udt": {
+              "name": "ActionType"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "u32"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "take_snapshot",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "balance_of_at_snapshot",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "snapshot_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "balance_of_at_snapshot_by_part",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "snapshot_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "partitions_of_at_snapshot",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "page_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "page_length",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "snapshot_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "u32"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "total_supply_at_snapshot",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "snapshot_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_max_supply",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "u128"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_max_supply",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "max_supply",
+          "type_": {
+            "option": {
+              "value_type": "u128"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_max_supply_by_partition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "u128"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_max_supply_by_partition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "max_supply",
+          "type_": {
+            "option": {
+              "value_type": "u128"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "pause",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "unpause",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_paused",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_to_control_list",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_from_control_list",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_control_list_type",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_in_control_list",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_control_list_count",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_control_list_members",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "page_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "page_length",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer_with_data",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer_from_with_data",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "issue",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "redeem",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "redeem_from",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_issuable",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer_by_partition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "balance_of",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "balance_of_by_partition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "partitions_of",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "page_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "page_length",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "u32"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "total_supply",
+      "inputs": [],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "total_supply_by_partition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_multi_partition",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "controller_transfer_by_partition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "operator_data",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "controller_redeem_by_partition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "operator_data",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "operator_transfer_by_partition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "operator_data",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "authorize_operator",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "operator",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "revoke_operator",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "operator",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "authorize_operator_by_partition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "operator",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "revoke_operator_by_partition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "operator",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_operator",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "operator",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_operator_for_partition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "operator",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "redeem_by_partition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "operator_redeem_by_partition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "operator_data",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "issue_by_partition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "protect_redeem_from_by_partiti",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "nonce",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "deadline",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "protect_transfer_from_by_partiti",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "nonce",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "deadline",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "controller_transfer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "operator_data",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "controller_redeem",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "operator_data",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_controllable",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "finalize_controllable",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "allowance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "approve",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "expiration_ledger",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "balance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer_from",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "burn",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "burn_from",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "decimals",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "name",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "symbol",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_document",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Document"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_all_documents",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "page_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "page_length",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "symbol"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_document",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_document",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "uri",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "document_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "grant_role",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "role",
+          "type_": {
+            "udt": {
+              "name": "RoleLabel"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "revoke_role",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "role",
+          "type_": {
+            "udt": {
+              "name": "RoleLabel"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "has_role",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "role",
+          "type_": {
+            "udt": {
+              "name": "RoleLabel"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "apply_roles",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "roles",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "RoleLabel"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "actives",
+          "type_": {
+            "vec": {
+              "element_type": "bool"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "renounce_role",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "role",
+          "type_": {
+            "udt": {
+              "name": "RoleLabel"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_role_count_for",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_roles_for",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "page_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "page_length",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "RoleLabel"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_role_member_count",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "role",
+          "type_": {
+            "udt": {
+              "name": "RoleLabel"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_role_members",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "page_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "page_length",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "role",
+          "type_": {
+            "udt": {
+              "name": "RoleLabel"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "lock_by_partition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "expiration_timestamp",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "release_by_partition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "lock_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_locked_amount_for_by_part",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_lock_count_for_by_partition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_locks_id_for_by_partition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "page_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "page_length",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "u32"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_lock_for_by_partition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "lock_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Lock"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "lock",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "expiration_timestamp",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "release",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "lock_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_locked_amount_for",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_lock_count_for",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_locks_id_for",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "page_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "page_length",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "u32"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_lock_for",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_holder",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "lock_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Lock"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "protect_partitions",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "unprotect_partitions",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "are_partitions_protected",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_participant",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "participant",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_participant",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "participant",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "renounce_participant",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_participants_of_partition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "page_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "page_length",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "participants_of_partition_count",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_partitions_of_participant",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "page_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "page_length",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "participant",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "u32"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "partitions_of_participant_count",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "participant",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_participant_of_partition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "participant",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "partition",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_nonce_for",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenMetadataBusiness",
+      "fields": [
+        {
+          "doc": "",
+          "name": "isin",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "security_type",
+          "type_": {
+            "udt": {
+              "name": "SecurityType"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "RolesOfUser",
+            "type_": [
+              "address",
+              {
+                "udt": {
+                  "name": "RoleLabel"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "UsersWRole"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "IsPausedState"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ControlListIsWhitelist"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "IsInControlList",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ControlListMembers"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "BusinessMetadata"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "IsIssuableState"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "IsMultiPartitionState"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ArePartitionsProtected"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "IsParticipantOfPartition",
+            "type_": [
+              "address",
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ParticipantsOfPartition",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "PartitionsOfParticipant",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "MaxCap"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "PartitionMaxCap",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "IsOperatorOfAccount",
+            "type_": [
+              "address",
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "IsOperatorOfAccountInPartition",
+            "type_": [
+              "u32",
+              "address",
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "IsControllable"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ControlProxyEntry"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "CurrentNonce",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "IsUpgradeState"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OwnerError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "OnlyOwner",
+          "value": 1001
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RoleLabel",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Admin",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "Issuer",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "Controller",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "Pauser",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "ControlList",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "CorporateAction",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "Documenter",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "Snapshot",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "Locker",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "Cap",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "ProtectedPartitions",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "WildCard",
+          "value": 13
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Coupon",
+      "fields": [
+        {
+          "doc": "",
+          "name": "execution_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "rate",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "record_date",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RegisteredCoupon",
+      "fields": [
+        {
+          "doc": "",
+          "name": "coupon",
+          "type_": {
+            "udt": {
+              "name": "Coupon"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "snapshot_id",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CouponFor",
+      "fields": [
+        {
+          "doc": "",
+          "name": "execution_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "rate",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "record_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "record_date_reached",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "token_balance",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ActionType",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Dividend",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "Voting",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "Coupon",
+          "value": 3
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CorporateActionData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "action_type",
+          "type_": {
+            "udt": {
+              "name": "ActionType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Document",
+      "fields": [
+        {
+          "doc": "",
+          "name": "document_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "last_modified",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "uri",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Dividend",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "execution_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "record_date",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RegisteredDividend",
+      "fields": [
+        {
+          "doc": "",
+          "name": "dividend",
+          "type_": {
+            "udt": {
+              "name": "Dividend"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "snapshot_id",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DividendFor",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "execution_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "record_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "record_date_reached",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "token_balance",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Voting",
+      "fields": [
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "record_date",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RegisteredVoting",
+      "fields": [
+        {
+          "doc": "",
+          "name": "snapshot_id",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "voting",
+          "type_": {
+            "udt": {
+              "name": "Voting"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VotingFor",
+      "fields": [
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "record_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "record_date_reached",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "token_balance",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AppError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "DocumentEmptyName",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "DocumentEmptyURI",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "DocumentEmptyHash",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "DocumentDoesNotExist",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "WrongISIN",
+          "value": 15
+        },
+        {
+          "doc": "",
+          "name": "NewMaxSupplyTooLow",
+          "value": 16
+        },
+        {
+          "doc": "",
+          "name": "NewMaxSupplyForPartitionTooLow",
+          "value": 17
+        },
+        {
+          "doc": "",
+          "name": "AccountHasNoRole",
+          "value": 18
+        },
+        {
+          "doc": "",
+          "name": "TokenIsUnpaused",
+          "value": 19
+        },
+        {
+          "doc": "",
+          "name": "TokenIsPaused",
+          "value": 20
+        },
+        {
+          "doc": "",
+          "name": "MaxSupplyReached",
+          "value": 21
+        },
+        {
+          "doc": "",
+          "name": "IssuanceIsClosed",
+          "value": 22
+        },
+        {
+          "doc": "",
+          "name": "NotAllowedInMultiPartitionMode",
+          "value": 23
+        },
+        {
+          "doc": "",
+          "name": "MaxSupplyReachedForPartition",
+          "value": 24
+        },
+        {
+          "doc": "",
+          "name": "ListedAccount",
+          "value": 25
+        },
+        {
+          "doc": "",
+          "name": "UnlistedAccount",
+          "value": 26
+        },
+        {
+          "doc": "",
+          "name": "AccountIsBlocked",
+          "value": 27
+        },
+        {
+          "doc": "",
+          "name": "InvalidPartition",
+          "value": 28
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 29
+        },
+        {
+          "doc": "",
+          "name": "TokenIsNotControllable",
+          "value": 30
+        },
+        {
+          "doc": "",
+          "name": "LockExpirationNotReached",
+          "value": 31
+        },
+        {
+          "doc": "",
+          "name": "WrongExpirationTimestamp",
+          "value": 32
+        },
+        {
+          "doc": "",
+          "name": "WrongLockId",
+          "value": 33
+        },
+        {
+          "doc": "",
+          "name": "InsufficientBalance",
+          "value": 34
+        },
+        {
+          "doc": "",
+          "name": "InsufficientAllowance",
+          "value": 35
+        },
+        {
+          "doc": "",
+          "name": "NegativeAmountNotSupported",
+          "value": 36
+        },
+        {
+          "doc": "",
+          "name": "InvalidAllowanceExpiration",
+          "value": 37
+        },
+        {
+          "doc": "",
+          "name": "DecimalsGreaterThan18",
+          "value": 38
+        },
+        {
+          "doc": "",
+          "name": "RolesAndActivesLengthMismatch",
+          "value": 39
+        },
+        {
+          "doc": "",
+          "name": "ApplyRoleContradiction",
+          "value": 40
+        },
+        {
+          "doc": "",
+          "name": "CouponFirstDateWrong",
+          "value": 41
+        },
+        {
+          "doc": "",
+          "name": "CouponFrequencyWrong",
+          "value": 42
+        },
+        {
+          "doc": "",
+          "name": "WrongDates",
+          "value": 43
+        },
+        {
+          "doc": "",
+          "name": "WrongTimestamp",
+          "value": 44
+        },
+        {
+          "doc": "",
+          "name": "WrongIndexForAction",
+          "value": 45
+        },
+        {
+          "doc": "",
+          "name": "RegulationTypeAndSubTypeForbidden",
+          "value": 46
+        },
+        {
+          "doc": "",
+          "name": "PartitionsAreProtectedAndNoRole",
+          "value": 47
+        },
+        {
+          "doc": "",
+          "name": "PartitionsAreUnProtected",
+          "value": 48
+        },
+        {
+          "doc": "",
+          "name": "WrongNonce",
+          "value": 49
+        },
+        {
+          "doc": "",
+          "name": "ExpiredDeadline",
+          "value": 50
+        },
+        {
+          "doc": "",
+          "name": "IsNotInUpgradeState",
+          "value": 51
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Partition",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Lock",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "expiration_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ScheduledSnapshot",
+      "fields": [
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "scheduled_timestamp",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SecurityType",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Bond"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Equity"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RegulationType",
+      "cases": [
+        {
+          "doc": "",
+          "name": "None",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "RegS",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "RegD",
+          "value": 2
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RegulationSubType",
+      "cases": [
+        {
+          "doc": "",
+          "name": "None",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "RegD506B",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "RegD506C",
+          "value": 2
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AccreditedInvestors",
+      "cases": [
+        {
+          "doc": "",
+          "name": "None",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "AccreditationRequired",
+          "value": 1
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ManualInvestorVerification",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NothingToVerify",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "VerificationInvestorsFinancialDocumentsRequired",
+          "value": 2
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "InternationalInvestors",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotAllowed",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Allowed",
+          "value": 1
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ResaleHoldPeriod",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotApplicable",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "ApplicableFrom6MothsTo1Year",
+          "value": 1
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RegulationData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "accredited_investors",
+          "type_": {
+            "udt": {
+              "name": "AccreditedInvestors"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "deal_size",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "international_investors",
+          "type_": {
+            "udt": {
+              "name": "InternationalInvestors"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "manual_investor_verification",
+          "type_": {
+            "udt": {
+              "name": "ManualInvestorVerification"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "max_non_accredited_investors",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "regulation_sub_type",
+          "type_": {
+            "udt": {
+              "name": "RegulationSubType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "regulation_type",
+          "type_": {
+            "udt": {
+              "name": "RegulationType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "resale_hold_period",
+          "type_": {
+            "udt": {
+              "name": "ResaleHoldPeriod"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DividendType",
+      "cases": [
+        {
+          "doc": "",
+          "name": "None",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Preferred",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "Common",
+          "value": 2
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "EquityDetailsData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "conversion_right",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "currency",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "dividend_right",
+          "type_": {
+            "udt": {
+              "name": "DividendType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "information_right",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "liquidation_right",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "nominal_value",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "put_right",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "redemption_right",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "subscription_right",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "voting_right",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AdditionalSecurityData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "countries_control_list_type",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "info",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "list_of_countries",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SecurityRegulationData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "additional_security_data",
+          "type_": {
+            "udt": {
+              "name": "AdditionalSecurityData"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "regulation_data",
+          "type_": {
+            "udt": {
+              "name": "RegulationData"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FactoryRegulationData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "additional_security_data",
+          "type_": {
+            "udt": {
+              "name": "AdditionalSecurityData"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "regulation_sub_type",
+          "type_": {
+            "udt": {
+              "name": "RegulationSubType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "regulation_type",
+          "type_": {
+            "udt": {
+              "name": "RegulationType"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SecurityData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "are_partitions_protected",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "is_controllable",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "is_multi_partition",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "is_white_list",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "max_supply",
+          "type_": {
+            "option": {
+              "value_type": "u128"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "EquityData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "equity_details",
+          "type_": {
+            "udt": {
+              "name": "EquityDetailsData"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "security",
+          "type_": {
+            "udt": {
+              "name": "SecurityData"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CouponDetailsData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "coupon_frequency",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "coupon_rate",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "first_coupon_date",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "BondDetailsData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "currency",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "maturity_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "nominal_value",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "starting_date",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "BondData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "bond_details_data",
+          "type_": {
+            "udt": {
+              "name": "BondDetailsData"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "coupon_details",
+          "type_": {
+            "udt": {
+              "name": "CouponDetailsData"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "security",
+          "type_": {
+            "udt": {
+              "name": "SecurityData"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Erc20Metadata",
+      "fields": [
+        {
+          "doc": "",
+          "name": "decimal",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "isin",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "security_type",
+          "type_": {
+            "udt": {
+              "name": "SecurityType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Snapshot",
+      "fields": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PartitionSnapshot",
+      "fields": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": {
+            "vec": {
+              "element_type": "u32"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenMetadata",
+      "fields": [
+        {
+          "doc": "",
+          "name": "decimal",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        }
+      ]
+    }
+  }
+]

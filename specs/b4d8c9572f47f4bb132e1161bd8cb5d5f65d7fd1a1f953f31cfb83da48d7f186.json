@@ -1,0 +1,75 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GuardError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "ResultsMismatch",
+          "value": 101
+        },
+        {
+          "doc": "",
+          "name": "UnsupportedType",
+          "value": 102
+        },
+        {
+          "doc": "",
+          "name": "InvalidValue",
+          "value": 103
+        },
+        {
+          "doc": "",
+          "name": "TypesMismatch",
+          "value": 104
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "assert_result",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "auth_users",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "fn_name",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "args",
+          "type_": {
+            "vec": {
+              "element_type": "val"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "expected_result",
+          "type_": "val"
+        }
+      ],
+      "outputs": [
+        "val"
+      ]
+    }
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "s",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "a",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "u",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "h",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "w",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "b",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "b",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "m",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "n",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "l",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "TT"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TT",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "A",
+            "type_": [
+              {
+                "tuple": {
+                  "value_types": [
+                    "address",
+                    "address",
+                    "address"
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "B",
+            "type_": [
+              {
+                "tuple": {
+                  "value_types": [
+                    "address",
+                    "address",
+                    "address"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SCE",
+      "cases": [
+        {
+          "doc": "",
+          "name": "A",
+          "value": 77
+        },
+        {
+          "doc": "",
+          "name": "B",
+          "value": 79
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "function_v0": {
+      "doc": "Create a greeting and return it as a vector. This function will receive\\na `to` argument, and return a Vec made up of \"Hello\" and the supplied\\n`to` value.\\n\\n# Arguments\\n\\n* `to` - The name to be greeted in the returned vector.",
+      "name": "hello",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "symbol"
+          }
+        }
+      ]
+    }
+  }
+]

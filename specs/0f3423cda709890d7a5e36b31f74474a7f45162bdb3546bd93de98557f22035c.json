@@ -1,0 +1,527 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "init",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "supply",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "initial_price",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "initial_seller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "collection_currency",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "metadata_uri",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "royalties",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Royalty"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "version",
+      "inputs": [],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "balance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "buy",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "buyer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "item_number",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "sell",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "item_number",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "item",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "number",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Item"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "item_number",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "mint",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "item_number",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "decimals",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "name",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "symbol",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "metadata_uri",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "royalties",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "Royalty"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "supply",
+      "inputs": [],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "core_data",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "CoreData"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "token_metadata",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "TokenMetadata"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SCErrors",
+      "cases": [
+        {
+          "doc": "",
+          "name": "UnexpectedError",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "ItemHasNotBeenMinted",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "ItemNumberIsInvalid",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "ItemIsNotForSale",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "ItemWasAlreadyMinted",
+          "value": 5
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "BalancesDataKeys",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Balance",
+            "type_": [
+              "address"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenMetadata",
+      "fields": [
+        {
+          "doc": "The Asset Metadata is a URI where the metadata is hosted, this returns an String",
+          "name": "metadata_uri",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CoreData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "collection_currency",
+          "type_": "address"
+        },
+        {
+          "doc": "The initial price is set at the initialization of the contract along with the accepted asset,\\nonce set this can not be changed.",
+          "name": "initial_price",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "initial_seller",
+          "type_": "address"
+        },
+        {
+          "doc": "Once minted, there won't be more than the specified supply. Supply is a u64 value",
+          "name": "supply",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CoreDataKeys",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "CoreData"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "The Token Metadata is compatible with the metadata defined from the soroban-token-sdk",
+            "name": "TokenMetadata"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Each collectible contract has Items, each Item has only one owner while a user can have many Items.",
+      "lib": "",
+      "name": "Item",
+      "fields": [
+        {
+          "doc": "",
+          "name": "for_sale",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "number",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ItemsDataKeys",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Item",
+            "type_": [
+              "u64"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Royalty",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "first_sale",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "percentage",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RoyaltiesDataKeys",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "The Royalties defined for the collectible, this returns a Map<Royalty>\\nThis value isn't kept as part of the instance storage and instead is defined as permanent",
+            "name": "Royalties"
+          }
+        }
+      ]
+    }
+  }
+]

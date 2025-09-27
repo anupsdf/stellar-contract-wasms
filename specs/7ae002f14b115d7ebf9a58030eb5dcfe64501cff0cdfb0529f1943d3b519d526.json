@@ -1,0 +1,1103 @@
+[
+  {
+    "function_v0": {
+      "doc": "Initializes the contract with name, symbol, decimal, and roles.\\n\\n# Arguments\\n- `name` - the token name\\n- `symbol` - the token symbol\\n- `decimal` - the token decimals\\n- `admin` - address of the admin\\n- `supply_controller` - address of the supply controller\\n- `pauser` - address of the pauser\\n- `asset_protector` - address of the asset protector\\n- `rebase_admin` - address of the rebase admin\\n- `rebaser` - address of the rebaser",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "decimal",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "supply_controller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pauser",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "asset_protector",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "rebase_admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "rebaser",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the total rebase shares in the contract.",
+      "name": "get_total_rebase_shares",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the total fixed shares in the contract.",
+      "name": "get_total_fixed_shares",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the multiplier effective before the increase time.",
+      "name": "get_before_multiplier",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the multiplier effective after the increase time.",
+      "name": "get_after_multiplier",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the time at which the multiplier changes from before_incr_mult to after_incr_mult.",
+      "name": "get_mult_incr_time",
+      "inputs": [],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the rebasing period to increment mult_incr_time.",
+      "name": "get_rebase_period",
+      "inputs": [],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the max rate increase between before_incr_mult -> after_incr_mult.",
+      "name": "get_max_rebase_rate",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the active rebase multiplier.",
+      "name": "get_active_multiplier",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the total supply of the token.",
+      "name": "get_total_supply",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the rebase shares of the address.\\n\\n# Arguments\\n- `addr` - address to get the shares for",
+      "name": "get_rebase_shares",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "addr",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the fixed shares of the address.\\n\\n# Arguments\\n- `addr` - address to get the shares for",
+      "name": "get_fixed_shares",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "addr",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns true if the address is blocked.\\nA blocked address cannot submit approvals or transfers (from & to).\\nA blocked address will not receive rebase payouts.\\n\\n# Arguments\\n- `addr` - address to check",
+      "name": "is_addr_blocked",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "addr",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns true if the address is blocked from receiving the token.\\nAn address blocked from receiving will still receive rebase payouts.\\n\\n# Arguments\\n- `addr` - address to check",
+      "name": "is_addr_blocked_from_receiving",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "addr",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Increases the total supply by minting the specified number of tokens.\\nConverts to underlying rebase shares and checks if results in overflow for total supply.\\nRestricted to SUPPLY_CONTROLLER role.\\n\\n# Arguments\\n- `minter` - address of the minter\\n- `to` - address to mint the tokens to\\n- `amount` - amount of tokens to mint",
+      "name": "mint",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "minter",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sets the rebase period.\\nRestricted to REBASE_ADMIN role.\\n\\n# Arguments\\n- `rebase_admin` - address of the rebase admin\\n- `rebase_period` - rebase period to set",
+      "name": "set_rebase_period",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "rebase_admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "rebase_period",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sets the max rebase rate.\\nRestricted to REBASE_ADMIN role.\\n\\n# Arguments\\n- `rebase_admin` - address of the rebase admin\\n- `max_rebase_rate` - max rebase rate to set",
+      "name": "set_max_rebase_rate",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "rebase_admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "max_rebase_rate",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sets the next rebase multiplier and increase time.\\nRestricted to REBASE_ADMIN role.\\nUsed in the following scenarios:\\n1. corrective actions when a pending increase is set, i.e. mult_incr_time is in future.\\na. The before_incr_mult should be active in this case and should not change.\\n2. explicitly setting the next multiplier & increase time.\\na. The after_incr_mult should be active in this case and roll to before_incr_mult.\\n\\n# Arguments\\n- `rebase_admin` - address of the rebase admin\\n- `next_multiplier` - next multiplier to set\\n- `mult_incr_time` - increase time to set\\n- `expected_total_supply` - expected total supply after the multiplier change",
+      "name": "set_next_multiplier",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "rebase_admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "next_multiplier",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "mult_incr_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "expected_total_supply",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Increases the next multiplier and sets the increase time.\\nRestricted to REBASE role.\\n\\n# Arguments\\n- `rebaser` - address of the rebaser\\n- `rebase_rate` - rate of increase for the multiplier\\n- `expected_total_supply` - expected total supply after the multiplier change",
+      "name": "increase_rebase_multiplier",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "rebaser",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "rebase_rate",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "expected_total_supply",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Restricted to ASSET_PROTECTION role.\\nThis function intentionally does not include the require_no_pending_multiplier() check\\nsince blocking addresses is a critical operation and should not be delayed.\\nAs a result, the overall payout amount would be less than originally expected\\nfor a pending multiplier since the blocked addresses would not receive the payout.\\n\\n# Arguments\\n- `asset_protector` - address of the asset protector\\n- `addrs` - addresses to block",
+      "name": "block_addrs",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset_protector",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "addrs",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Blocks multiple addresses at once from receiving funds.\\nRestricted to ASSET_PROTECTION role.\\n\\n# Arguments\\n- `asset_protector` - address of the asset protector\\n- `addrs` - addresses to block",
+      "name": "block_addrs_from_receiving",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset_protector",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "addrs",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Batch unblock addresses.\\nRestricted to ASSET_PROTECTION role.\\n\\n# Arguments\\n- `asset_protector` - address of the asset protector\\n- `addrs` - addresses to unblock",
+      "name": "unblock_addrs",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset_protector",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "addrs",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Batch unblock addresses, to enable receiving the token.\\nRestricted to ASSET_PROTECTION role.\\n\\n# Arguments\\n- `asset_protector` - address of the asset protector\\n- `addrs` - addresses to unblock",
+      "name": "unblock_addrs_from_receiving",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset_protector",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "addrs",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Wipes the balance of a blocked address, and burns the tokens.\\nRestricted to ASSET_PROTECTION role.\\n\\n# Arguments\\n- `asset_protector` - address of the asset protector\\n- `addrs` - blocked address to wipe.",
+      "name": "wipe_blocked_addr",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset_protector",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "addr",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Upgrade the contract with the new wasm hash.\\nRestricted to the admin.\\n\\n# Arguments\\n- `new_wasm_hash` - new wasm hash to upgrade to",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "allowance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "approve",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "expiration_ledger",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "balance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "addr",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer_from",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "burn",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "burn_from",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "supply_controller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "decimals",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "name",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "symbol",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "admin",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "pending_admin",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "grant_role",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "role",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "revoke_role",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "role",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "has_role",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "role",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "start_admin_transfer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "accept_admin_transfer",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "pause",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pauser",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "unpause",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pauser",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_paused",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "RebaseShares",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "FixedShares",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TotalRebaseShares"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TotalFixedShares"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "YbsContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NegativeAmount",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "DecimalLessThan18",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "BurnFromNotAuthorized",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "InsufficientBalance",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "AccountNotBlocked",
+          "value": 100
+        },
+        {
+          "doc": "",
+          "name": "BlockedAccount",
+          "value": 101
+        },
+        {
+          "doc": "",
+          "name": "ZeroSharesFromValue",
+          "value": 200
+        },
+        {
+          "doc": "",
+          "name": "InvalidMaxRebaseRate",
+          "value": 201
+        },
+        {
+          "doc": "",
+          "name": "InvalidRebaseMultiplier",
+          "value": 202
+        },
+        {
+          "doc": "",
+          "name": "InvalidRebaseRate",
+          "value": 203
+        },
+        {
+          "doc": "",
+          "name": "NextIncreaseAlreadySet",
+          "value": 204
+        },
+        {
+          "doc": "",
+          "name": "RetroactiveRebase",
+          "value": 205
+        },
+        {
+          "doc": "",
+          "name": "UnexpectedTotalSupply",
+          "value": 206
+        },
+        {
+          "doc": "",
+          "name": "CannotChangeRebaseSharesWithPendingMultiplier",
+          "value": 207
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PendingAdmin"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AdminRoleNotSet",
+          "value": 500
+        },
+        {
+          "doc": "",
+          "name": "NoPendingAdmin",
+          "value": 501
+        },
+        {
+          "doc": "",
+          "name": "MissingRole",
+          "value": 502
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Tag",
+            "type_": [
+              "address"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AllowanceDataKey",
+      "fields": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AllowanceValue",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "expiration_ledger",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Allowance",
+            "type_": [
+              {
+                "udt": {
+                  "name": "AllowanceDataKey"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InsufficientAllowance",
+          "value": 600
+        },
+        {
+          "doc": "",
+          "name": "InvalidExpirationLedger",
+          "value": 601
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Paused"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "ExpectedPause",
+          "value": 800
+        },
+        {
+          "doc": "",
+          "name": "EnforcedPause",
+          "value": 801
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenMetadata",
+      "fields": [
+        {
+          "doc": "",
+          "name": "decimal",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        }
+      ]
+    }
+  }
+]

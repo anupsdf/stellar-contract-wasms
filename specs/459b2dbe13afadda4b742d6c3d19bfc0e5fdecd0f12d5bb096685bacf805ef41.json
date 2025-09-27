@@ -1,0 +1,73 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotFound",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "NotEmpty",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "DIDIncorrectLength",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "DIDIncorrectScheme",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "DIDIncorrectMethod",
+          "value": 5
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "register_did",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "invoker",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "did",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "check_authorize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "did",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  }
+]

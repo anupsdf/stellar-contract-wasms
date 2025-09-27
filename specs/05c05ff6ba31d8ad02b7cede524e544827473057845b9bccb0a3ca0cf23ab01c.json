@@ -1,0 +1,412 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "DeadlineShouldBeFuture",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "CampaignNotExist",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "AmountMustNonZero",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "TargetReached",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "AmountExceedTargetLimit",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "CampaignAlreadyExist",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "IdCampaignMustNonZero",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "LowAmountForSplitter",
+          "value": 8
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Campaign",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount_collected",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "category",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "deadline",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "donations",
+          "type_": {
+            "vec": {
+              "element_type": "i128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "donators",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "image",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "main_location",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "metadata",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "target",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "title",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "DevAccount"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "LaunchpadAccount"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ArtyToken"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TokenAdmin"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "dev_acc",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "launchpad_acc",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "arty_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_campaign",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner_addr",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "title_cmp",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "desc_cmp",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "category_cmp",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "main_location_cmp",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "metadata_cmp",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "image_cmp",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "target_cmp",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "deadline_cmp",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "Campaign"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_campaigns",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "Campaign"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_campaign",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "campaign_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Campaign"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "donate_to_campaign",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "donor_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": [
+                  "i128",
+                  "i128",
+                  "i128"
+                ]
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_donators",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": "address"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_dev_acc",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_launchpad_acc",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_arty_token",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_token_admin",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  }
+]

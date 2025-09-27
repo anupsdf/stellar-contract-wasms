@@ -1,0 +1,77 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotAllowed",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "AlreadySponsored",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "InvalidArguments",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "WalletTooNew",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "DailySponsorshipLimitReached",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "ContactNotFound",
+          "value": 6
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "policy__",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "_source",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "signer",
+          "type_": {
+            "udt": {
+              "name": "SignerKey"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "contexts",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Context"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

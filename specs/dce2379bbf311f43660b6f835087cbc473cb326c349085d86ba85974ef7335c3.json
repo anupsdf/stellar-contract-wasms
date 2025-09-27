@@ -1,0 +1,235 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Op",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Sum"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Sub"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Mul"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Div"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Operation",
+      "fields": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "op",
+          "type_": {
+            "udt": {
+              "name": "Op"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "x",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "y",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "z",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Adiciona uma opera\\xc3\\xa7\\xc3\\xa3o ao log.",
+      "name": "add_operation",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "operation",
+          "type_": {
+            "udt": {
+              "name": "Operation"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "sum",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "x",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "y",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Subtrai dois n\\xc3\\xbameros, garantindo que o resultado n\\xc3\\xa3o seja negativo.",
+      "name": "sub",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "x",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "y",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Multiplica dois n\\xc3\\xbameros.",
+      "name": "mul",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "x",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "y",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Divide dois n\\xc3\\xbameros, tratando a divis\\xc3\\xa3o por zero.",
+      "name": "div",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "x",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "y",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retorna a \\xc3\\xbaltima opera\\xc3\\xa7\\xc3\\xa3o realizada.",
+      "name": "last_op",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "Operation"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retorna a opera\\xc3\\xa7\\xc3\\xa3o com o ID especificado.",
+      "name": "get_op",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "Operation"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retorna todas as opera\\xc3\\xa7\\xc3\\xb5es armazenadas.",
+      "name": "all_op",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "Operation"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+]

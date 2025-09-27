@@ -1,0 +1,2276 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "token_b_amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "u128",
+              "u128"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "swap",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "direction",
+          "type_": {
+            "udt": {
+              "name": "SwapDirection"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "in_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "out_min",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "estimate_swap",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "direction",
+          "type_": {
+            "udt": {
+              "name": "SwapDirection"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "in_amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "u128",
+              "i128"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "share_amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_privileged_addrs",
+      "inputs": [],
+      "outputs": [
+        {
+          "map": {
+            "key_type": "symbol",
+            "value_type": {
+              "vec": {
+                "element_type": "address"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_info",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "map": {
+            "key_type": "symbol",
+            "value_type": "val"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "share_id",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_total_shares",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_reserves",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "u128"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_fee_fraction",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_insurance_coverage",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_liquidity",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "u256"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_liquidity_calculator",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "version",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "commit_upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "apply_upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "bytes_n": {
+            "n": 32
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "revert_upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_emergency_mode",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "emergency_admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "bool"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_emergency_mode",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "init_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_privileged_addrs",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "rewards_admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "operations_admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pause_admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "emergency_pause_admins",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_liquidity_calculator",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "calculator",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_lp_token_hash",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_pool_hash",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_reward_token",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "reward_token",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_oracle_registry",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "oracle_registry",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_incentives_config",
+      "inputs": [],
+      "outputs": [
+        {
+          "map": {
+            "key_type": "symbol",
+            "value_type": "i128"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_tokens_for_reward",
+      "inputs": [],
+      "outputs": [
+        {
+          "map": {
+            "key_type": "symbol",
+            "value_type": {
+              "tuple": {
+                "value_types": [
+                  "bool",
+                  "u256"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_total_liquidity",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "u256"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "config_global_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "reward_tps",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "expired_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "assets",
+          "type_": {
+            "vec": {
+              "element_type": "symbol"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "fill_liquidity",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "config_pool_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_incentives_info",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "map": {
+            "key_type": "symbol",
+            "value_type": "i128"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user_reward",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user_fees",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_total_accumulated_reward",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_total_configured_reward",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_total_claimed_reward",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_total_outstanding_reward",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "distribute_outstanding_reward",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "init_pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "assets",
+          "type_": {
+            "tuple": {
+              "value_types": [
+                "symbol",
+                "symbol"
+              ]
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "synthetic_sac_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "lp_token_info",
+          "type_": {
+            "tuple": {
+              "value_types": [
+                "string",
+                "string"
+              ]
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "fee_fraction",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "tier",
+          "type_": {
+            "udt": {
+              "name": "PoolTier"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "quote_max_insurance",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_pool_details",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "PoolInfo"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_all_pools_details",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "PoolInfo"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_pools",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_pools_plane",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "plane",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_plane",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "commit_transfer_ownership",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "role_name",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "new_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "apply_transfer_ownership",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "role_name",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "revert_transfer_ownership",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "role_name",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_future_address",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "role_name",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolRouterError",
+      "cases": [
+        {
+          "doc": "PoolRouterError: PoolNotFound",
+          "name": "PoolNotFound",
+          "value": 301
+        },
+        {
+          "doc": "",
+          "name": "BadFee",
+          "value": 302
+        },
+        {
+          "doc": "",
+          "name": "PathIsEmpty",
+          "value": 307
+        },
+        {
+          "doc": "",
+          "name": "TokensAreNotForReward",
+          "value": 308
+        },
+        {
+          "doc": "",
+          "name": "LiquidityNotFilled",
+          "value": 309
+        },
+        {
+          "doc": "",
+          "name": "LiquidityAlreadyFilled",
+          "value": 310
+        },
+        {
+          "doc": "",
+          "name": "LiquidityCalculationError",
+          "value": 312
+        },
+        {
+          "doc": "",
+          "name": "RewardsNotConfigured",
+          "value": 313
+        },
+        {
+          "doc": "",
+          "name": "RewardsAlreadyConfigured",
+          "value": 314
+        },
+        {
+          "doc": "",
+          "name": "DuplicatesNotAllowed",
+          "value": 315
+        },
+        {
+          "doc": "",
+          "name": "TokensNotSorted",
+          "value": 2002
+        },
+        {
+          "doc": "",
+          "name": "InMaxNotSatisfied",
+          "value": 2020
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GlobalRewardsConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "expired_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "tps",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolRewardInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "processed",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "total_liquidity",
+          "type_": "u256"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolError",
+      "cases": [
+        {
+          "doc": "PoolError",
+          "name": "PoolAlreadyExists",
+          "value": 401
+        },
+        {
+          "doc": "",
+          "name": "PoolNotFound",
+          "value": 404
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AccessControlError",
+      "cases": [
+        {
+          "doc": "AccessControlError",
+          "name": "RoleNotFound",
+          "value": 101
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 102
+        },
+        {
+          "doc": "",
+          "name": "AdminAlreadySet",
+          "value": 103
+        },
+        {
+          "doc": "",
+          "name": "BadRoleUsage",
+          "value": 104
+        },
+        {
+          "doc": "",
+          "name": "AnotherActionActive",
+          "value": 2906
+        },
+        {
+          "doc": "",
+          "name": "NoActionActive",
+          "value": 2907
+        },
+        {
+          "doc": "",
+          "name": "ActionNotReadyYet",
+          "value": 2908
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RewardsError",
+      "cases": [
+        {
+          "doc": "RewardsError",
+          "name": "PastTimeNotAllowed",
+          "value": 701
+        },
+        {
+          "doc": "",
+          "name": "SameIncentivesConfig",
+          "value": 702
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolIncentiveConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "reward_expired_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "reward_tps",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolIncentiveData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "accumulated_rewards",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "block",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "claimed_rewards",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "fee_growth_per_lp",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "rewards_last_time",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UserIncentiveData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "fee_checkpoint",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "last_block",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "pool_accumulated_rewards",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "rewards_to_claim",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UpgradeError",
+      "cases": [
+        {
+          "doc": "UpgradeError",
+          "name": "AnotherActionActive",
+          "value": 2906
+        },
+        {
+          "doc": "",
+          "name": "NoActionActive",
+          "value": 2907
+        },
+        {
+          "doc": "",
+          "name": "ActionNotReadyYet",
+          "value": 2908
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "MathError",
+      "cases": [
+        {
+          "doc": "MathError: NumberOverflow",
+          "name": "NumberOverflow",
+          "value": 510
+        },
+        {
+          "doc": "",
+          "name": "MathError",
+          "value": 511
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OracleError",
+      "cases": [
+        {
+          "doc": "OracleError: OracleNonPositive",
+          "name": "OracleNonPositive",
+          "value": 601
+        },
+        {
+          "doc": "",
+          "name": "OracleTooVolatile",
+          "value": 602
+        },
+        {
+          "doc": "",
+          "name": "OracleStaleForPool",
+          "value": 603
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StorageError",
+      "cases": [
+        {
+          "doc": "StorageError",
+          "name": "ValueNotInitialized",
+          "value": 501
+        },
+        {
+          "doc": "",
+          "name": "ValueMissing",
+          "value": 502
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ValidationError",
+      "cases": [
+        {
+          "doc": "ValidationError",
+          "name": "InvalidToken",
+          "value": 801
+        },
+        {
+          "doc": "",
+          "name": "InvalidPercentage",
+          "value": 802
+        },
+        {
+          "doc": "",
+          "name": "Reentrancy",
+          "value": 803
+        },
+        {
+          "doc": "",
+          "name": "ZeroAmount",
+          "value": 804
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PrivilegedAddresses",
+      "fields": [
+        {
+          "doc": "",
+          "name": "emergency_admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "emergency_pause_admins",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "operations_admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pause_admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "rewards_admin",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OraclePriceData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "delay",
+          "type_": {
+            "udt": {
+              "name": "Delay"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OracleInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "decimals",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "frozen",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "last_updated",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "sanitize_clamp_denominator",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "MutableOracleInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "decimals",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "frozen",
+          "type_": {
+            "option": {
+              "value_type": "bool"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "sanitize_clamp_denominator",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "NormalAction",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PoolInit"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "AddLiquidity"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "RemoveLiquidity"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Swap"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "UpdateTwap"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Rebalance"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ClaimInsurance"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PriceDivergenceGuardRails",
+      "fields": [
+        {
+          "doc": "",
+          "name": "oracle_twap_percent_divergence",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ValidityGuardRails",
+      "fields": [
+        {
+          "doc": "",
+          "name": "seconds_before_stale_for_pool",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "too_volatile_ratio",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OracleGuardRails",
+      "fields": [
+        {
+          "doc": "",
+          "name": "price_divergence",
+          "type_": {
+            "udt": {
+              "name": "PriceDivergenceGuardRails"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "validity",
+          "type_": {
+            "udt": {
+              "name": "ValidityGuardRails"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OracleValidity",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "NonPositive"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TooVolatile"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "StaleForPool"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Frozen"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Valid"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "HistoricalOracleData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "last_oracle_price",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "last_oracle_price_twap",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "last_oracle_price_twap_ts",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Pool",
+      "fields": [
+        {
+          "doc": "",
+          "name": "base_asset",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "expiry_price",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "expiry_ts",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "fee_fraction",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "insurance_claim",
+          "type_": {
+            "udt": {
+              "name": "InsuranceClaim"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "liquidity_max_imbalance",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "quote_asset",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "PoolStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "tier",
+          "type_": {
+            "udt": {
+              "name": "PoolTier"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolStatus",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Initialized"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Active"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Frozen"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ReduceOnly"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Settlement"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Delisted"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolTier",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "A"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "B"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "C"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Speculative"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "HighlySpeculative"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Isolated"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "InsuranceClaim",
+      "fields": [
+        {
+          "doc": "",
+          "name": "last_revenue_withdraw_ts",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "quote_max_insurance",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "quote_settled_insurance",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "rev_withdraw_since_last_settle",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolResponse",
+      "fields": [
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": {
+            "udt": {
+              "name": "Pool"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": {
+            "udt": {
+              "name": "AddressAndAmount"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": {
+            "udt": {
+              "name": "AddressAndAmount"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_share",
+          "type_": {
+            "udt": {
+              "name": "AddressAndAmount"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "pool_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_response",
+          "type_": {
+            "udt": {
+              "name": "PoolResponse"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RewardConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "reward_token",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "InitializeParams",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "assets",
+          "type_": {
+            "tuple": {
+              "value_types": [
+                "symbol",
+                "symbol"
+              ]
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "fee_fraction",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "lp_token_info",
+          "type_": {
+            "udt": {
+              "name": "TokenInitInfo"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "oracle_registry",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "privileged_addrs",
+          "type_": {
+            "udt": {
+              "name": "PrivilegedAddresses"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "quote_max_insurance",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "router",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "synthetic_sac_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "tier",
+          "type_": {
+            "udt": {
+              "name": "PoolTier"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "InitializeAllParams",
+      "fields": [
+        {
+          "doc": "",
+          "name": "base",
+          "type_": {
+            "udt": {
+              "name": "InitializeParams"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "plane",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "reward_config",
+          "type_": {
+            "udt": {
+              "name": "RewardConfig"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SwapDirection",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Buy"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Sell"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenInitInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "token_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AddressAndAmount",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Delay",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": "u64"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,957 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "signers",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Signer"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "plugins",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_signer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "signer",
+          "type_": {
+            "udt": {
+              "name": "Signer"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_signer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "signer",
+          "type_": {
+            "udt": {
+              "name": "Signer"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "revoke_signer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "signer_key",
+          "type_": {
+            "udt": {
+              "name": "SignerKey"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "install_plugin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "plugin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "uninstall_plugin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "plugin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_plugin_installed",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "plugin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_deployed",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Custom authorization function invoked by the Soroban runtime.\\n\\nThis function implements the account's authorization logic with optimizations for Stellar costs:\\n1. Verifies that all provided signatures are cryptographically valid\\n2. Checks that at least one authorized signer has approved each operation\\n3. Ensures signers have the required permissions for the requested operations\\n\\n\\n# Arguments\\n* `env` - The contract environment\\n* `signature_payload` - Hash of the data that was signed\\n* `auth_payloads` - Map of signer keys to their signature proofs\\n* `auth_contexts` - List of operations being authorized\\n\\n# Returns\\n* `Ok(())` if authorization succeeds\\n* `Err(Error)` if authorization fails for any reason",
+      "name": "__check_auth",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "signature_payload",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "auth_payloads",
+          "type_": {
+            "udt": {
+              "name": "SignatureProofs"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "auth_contexts",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Context"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SignerPolicy",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "TimeWindowPolicy",
+            "type_": [
+              {
+                "udt": {
+                  "name": "TimeBasedPolicy"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ExternalValidatorPolicy",
+            "type_": [
+              {
+                "udt": {
+                  "name": "ExternalPolicy"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SignerRole",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Standard",
+            "type_": [
+              {
+                "vec": {
+                  "element_type": {
+                    "udt": {
+                      "name": "SignerPolicy"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ExternalPolicy",
+      "fields": [
+        {
+          "doc": "",
+          "name": "policy_address",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TimeBasedPolicy",
+      "fields": [
+        {
+          "doc": "",
+          "name": "not_after",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "not_before",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Secp256r1Signature",
+      "fields": [
+        {
+          "doc": "",
+          "name": "authenticator_data",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "client_data_json",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "signature",
+          "type_": {
+            "bytes_n": {
+              "n": 64
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SignerProof",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Ed25519",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 64
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Secp256r1",
+            "type_": [
+              {
+                "udt": {
+                  "name": "Secp256r1Signature"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SignatureProofs",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": {
+            "map": {
+              "key_type": {
+                "udt": {
+                  "name": "SignerKey"
+                }
+              },
+              "value_type": {
+                "udt": {
+                  "name": "SignerProof"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SignerKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Ed25519",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Secp256r1",
+            "type_": [
+              "bytes"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Signer",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Ed25519",
+            "type_": [
+              {
+                "udt": {
+                  "name": "Ed25519Signer"
+                }
+              },
+              {
+                "udt": {
+                  "name": "SignerRole"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Secp256r1",
+            "type_": [
+              {
+                "udt": {
+                  "name": "Secp256r1Signer"
+                }
+              },
+              {
+                "udt": {
+                  "name": "SignerRole"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Ed25519 signer implementation",
+      "lib": "",
+      "name": "Ed25519Signer",
+      "fields": [
+        {
+          "doc": "",
+          "name": "public_key",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Secp256r1Signer",
+      "fields": [
+        {
+          "doc": "",
+          "name": "key_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "public_key",
+          "type_": {
+            "bytes_n": {
+              "n": 65
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "Contract has already been initialized",
+          "name": "AlreadyInitialized",
+          "value": 0
+        },
+        {
+          "doc": "Contract has not been initialized yet",
+          "name": "NotInitialized",
+          "value": 1
+        },
+        {
+          "doc": "Contract initialization failed",
+          "name": "AccountInitializationFailed",
+          "value": 2
+        },
+        {
+          "doc": "Storage entry was not found",
+          "name": "StorageEntryNotFound",
+          "value": 10
+        },
+        {
+          "doc": "Storage entry already exists",
+          "name": "StorageEntryAlreadyExists",
+          "value": 11
+        },
+        {
+          "doc": "No signers are configured for the account",
+          "name": "NoSigners",
+          "value": 20
+        },
+        {
+          "doc": "Signer already exists in the account",
+          "name": "SignerAlreadyExists",
+          "value": 21
+        },
+        {
+          "doc": "Signer was not found in the account",
+          "name": "SignerNotFound",
+          "value": 22
+        },
+        {
+          "doc": "Signer has expired and is no longer valid",
+          "name": "SignerExpired",
+          "value": 23
+        },
+        {
+          "doc": "",
+          "name": "CannotRevokeAdminSigner",
+          "value": 24
+        },
+        {
+          "doc": "",
+          "name": "CannotDowngradeLastAdmin",
+          "value": 25
+        },
+        {
+          "doc": "",
+          "name": "MaxSignersReached",
+          "value": 26
+        },
+        {
+          "doc": "No matching signature found for the given criteria",
+          "name": "MatchingSignatureNotFound",
+          "value": 40
+        },
+        {
+          "doc": "Signature verification failed during authentication",
+          "name": "SignatureVerificationFailed",
+          "value": 41
+        },
+        {
+          "doc": "Invalid proof type provided",
+          "name": "InvalidProofType",
+          "value": 42
+        },
+        {
+          "doc": "No proofs found in the authentication entry",
+          "name": "NoProofsInAuthEntry",
+          "value": 43
+        },
+        {
+          "doc": "Client data JSON challenge incorrect",
+          "name": "ClientDataJsonIncorrectChallenge",
+          "value": 44
+        },
+        {
+          "doc": "JSON parse error",
+          "name": "InvalidWebauthnClientDataJson",
+          "value": 45
+        },
+        {
+          "doc": "Insufficient permissions to perform the requested operation",
+          "name": "InsufficientPermissions",
+          "value": 60
+        },
+        {
+          "doc": "Insufficient permissions during account creation",
+          "name": "InsufficientPermissionsOnCreation",
+          "value": 61
+        },
+        {
+          "doc": "Invalid policy configuration",
+          "name": "InvalidPolicy",
+          "value": 80
+        },
+        {
+          "doc": "Invalid time range specified in policy",
+          "name": "InvalidTimeRange",
+          "value": 81
+        },
+        {
+          "doc": "Invalid not-after time specified",
+          "name": "InvalidNotAfterTime",
+          "value": 82
+        },
+        {
+          "doc": "Policy client error",
+          "name": "PolicyClientInitializationError",
+          "value": 83
+        },
+        {
+          "doc": "Plugin not found",
+          "name": "PluginNotFound",
+          "value": 100
+        },
+        {
+          "doc": "Plugin already exists",
+          "name": "PluginAlreadyInstalled",
+          "value": 101
+        },
+        {
+          "doc": "Plugin initialization failed",
+          "name": "PluginInitializationFailed",
+          "value": 102
+        },
+        {
+          "doc": "Plugin authentication failed",
+          "name": "PluginOnAuthFailed",
+          "value": 103
+        },
+        {
+          "doc": "Requested resource was not found",
+          "name": "NotFound",
+          "value": 1000
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SignerAddedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "signer",
+          "type_": {
+            "udt": {
+              "name": "Signer"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "signer_key",
+          "type_": {
+            "udt": {
+              "name": "SignerKey"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SignerUpdatedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "new_signer",
+          "type_": {
+            "udt": {
+              "name": "Signer"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "signer_key",
+          "type_": {
+            "udt": {
+              "name": "SignerKey"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SignerRevokedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "revoked_signer",
+          "type_": {
+            "udt": {
+              "name": "Signer"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "signer_key",
+          "type_": {
+            "udt": {
+              "name": "SignerKey"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PluginInstalledEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "plugin",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PluginUninstalledEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "plugin",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PluginUninstallFailedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "plugin",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PluginAuthFailedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "error",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "plugin",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PolicyCallbackFailedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "policy_address",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StorageType",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Persistent"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Instance"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StorageOperation",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Store"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Update"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Delete"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StorageChangeEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "operation",
+          "type_": {
+            "udt": {
+              "name": "StorageOperation"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "storage_type",
+          "type_": {
+            "udt": {
+              "name": "StorageType"
+            }
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "hello",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  }
+]

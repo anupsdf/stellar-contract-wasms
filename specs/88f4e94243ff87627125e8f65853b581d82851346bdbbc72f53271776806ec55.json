@@ -1,0 +1,1288 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ContractInfo"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "User",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "TokenLock",
+            "type_": [
+              "address",
+              "u64"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "TokenVesting",
+            "type_": [
+              "address",
+              "u64"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "StakingCampaign",
+            "type_": [
+              "address",
+              "u64"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "StakingData",
+            "type_": [
+              "address",
+              "u64",
+              "address",
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "AirdropCampaign",
+            "type_": [
+              "address",
+              "u64"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "AirdropParticipant",
+            "type_": [
+              "address",
+              "u64",
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ReferralCampaign",
+            "type_": [
+              "address",
+              "u64"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "stk_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "stk_lp_contract",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "User",
+      "fields": [
+        {
+          "doc": "",
+          "name": "claimed_staking_points",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "stake_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "staked_lp_shares",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenLock",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "token_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_type",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "unlock_timestamp",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenVesting",
+      "fields": [
+        {
+          "doc": "",
+          "name": "claimed_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "duration",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "token_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_type",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "total_amount",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StakingCampaign",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "claimed_rewards",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "end",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "r_asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "referral_program",
+          "type_": {
+            "udt": {
+              "name": "ReferralProgram"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "s_asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "s_asset_type",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "start",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "tiers",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "StakingTier"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "total_rewards",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ReferralProgram",
+      "fields": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "reward_per_invite",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reward_pool",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StakingTier",
+      "fields": [
+        {
+          "doc": "",
+          "name": "claimed_rewards",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "daily_r_per_s",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "price_update_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "sp_daily_price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_rewards",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "unstaking_duration",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StakingData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "referred_by",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "stake_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "staked",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_claimed",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "unclaimed",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "unlocked_until",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AirdropCampaign",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "airdrop_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "end",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "max_participants",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "sp_price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "start",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_claimed",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_participants",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "vesting_duration",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Initialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "TokenLockNotExist",
+          "value": 100
+        },
+        {
+          "doc": "",
+          "name": "TokenLockKeyExist",
+          "value": 101
+        },
+        {
+          "doc": "",
+          "name": "TokenLockInProgress",
+          "value": 102
+        },
+        {
+          "doc": "",
+          "name": "TokenVestingNotExist",
+          "value": 200
+        },
+        {
+          "doc": "",
+          "name": "TokenVestingKeyExist",
+          "value": 201
+        },
+        {
+          "doc": "",
+          "name": "SPInvalidShareAmount",
+          "value": 300
+        },
+        {
+          "doc": "",
+          "name": "SPInsufficientBalance",
+          "value": 301
+        },
+        {
+          "doc": "",
+          "name": "SPInvalidLockPeriod",
+          "value": 302
+        },
+        {
+          "doc": "",
+          "name": "StakingCampaignInvalid",
+          "value": 400
+        },
+        {
+          "doc": "",
+          "name": "StakingCampaignNotExist",
+          "value": 401
+        },
+        {
+          "doc": "",
+          "name": "StakingCampaignKeyExist",
+          "value": 402
+        },
+        {
+          "doc": "",
+          "name": "StakingCampaignMaxTiersLimit",
+          "value": 403
+        },
+        {
+          "doc": "",
+          "name": "StakingCampaignPaidTierRequired",
+          "value": 404
+        },
+        {
+          "doc": "",
+          "name": "StakingCampaignInvalidTier",
+          "value": 405
+        },
+        {
+          "doc": "",
+          "name": "StakingCampaignInvalidUpdateInterval",
+          "value": 406
+        },
+        {
+          "doc": "",
+          "name": "StakingCampaignNotStarted",
+          "value": 407
+        },
+        {
+          "doc": "",
+          "name": "StakingCampaignEnded",
+          "value": 408
+        },
+        {
+          "doc": "",
+          "name": "StakingCampaignActive",
+          "value": 409
+        },
+        {
+          "doc": "",
+          "name": "StakingCampaignInvalidReferralData",
+          "value": 410
+        },
+        {
+          "doc": "",
+          "name": "StakingDataInvalid",
+          "value": 500
+        },
+        {
+          "doc": "",
+          "name": "StakingDataNotExist",
+          "value": 501
+        },
+        {
+          "doc": "",
+          "name": "StakingDataExist",
+          "value": 502
+        },
+        {
+          "doc": "",
+          "name": "StakingDataMaxTierUnlockLimit",
+          "value": 503
+        },
+        {
+          "doc": "",
+          "name": "StakingDataMaxPriceLimit",
+          "value": 504
+        },
+        {
+          "doc": "",
+          "name": "StakingDataMinStakeLimit",
+          "value": 505
+        },
+        {
+          "doc": "",
+          "name": "StakingDataInvalidUnstakeAmount",
+          "value": 506
+        },
+        {
+          "doc": "",
+          "name": "AirdropCampaignInvalid",
+          "value": 600
+        },
+        {
+          "doc": "",
+          "name": "AirdropCampaignNotExist",
+          "value": 601
+        },
+        {
+          "doc": "",
+          "name": "AirdropCampaignKeyExist",
+          "value": 602
+        },
+        {
+          "doc": "",
+          "name": "AirdropCampaignNotStarted",
+          "value": 603
+        },
+        {
+          "doc": "",
+          "name": "AirdropCampaignEnded",
+          "value": 604
+        },
+        {
+          "doc": "",
+          "name": "AirdropCampaignActive",
+          "value": 605
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "contract_info",
+          "type_": {
+            "udt": {
+              "name": "ContractInfo"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "version",
+      "inputs": [],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "u32",
+              "u32",
+              "u32"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              {
+                "udt": {
+                  "name": "User"
+                }
+              },
+              "i128"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "lock_tokens",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "lock_key",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "token_lock",
+          "type_": {
+            "udt": {
+              "name": "TokenLock"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "unlock_tokens",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "lock_key",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim_vested",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "vesting_key",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "sp_stake",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "sp_unstake",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "sp_lock_shares",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "period",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "lock_key",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "staking_new_campaign",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "campaign_key",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "staking_campaign",
+          "type_": {
+            "udt": {
+              "name": "StakingCampaign"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "staking_change_tier_price",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "campaign_key",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "tiers",
+          "type_": {
+            "vec": {
+              "element_type": "i128"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "staking_unlock_tier",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "campaign_key",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "referred_by",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "tier_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "period",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "max_price",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "staking_extend_tier",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "campaign_key",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "tier_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "period",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "max_price",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "staking_stake",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "campaign_key",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "tier_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "staking_unstake",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "campaign_key",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "tier_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "lock_key",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "staking_claim",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "campaign_key",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "tier_index",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "staking_claim_remaining_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "campaign_key",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "staking_get_campaign",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "campaign_key",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              {
+                "udt": {
+                  "name": "StakingCampaign"
+                }
+              },
+              {
+                "vec": {
+                  "element_type": {
+                    "option": {
+                      "value_type": {
+                        "udt": {
+                          "name": "StakingData"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "airdrop_new_campaign",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "campaign_key",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "airdrop_campaign",
+          "type_": {
+            "udt": {
+              "name": "AirdropCampaign"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "airdrop_participate",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "campaign_key",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "airdrop_claim",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "campaign_key",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "vesting_key",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "airdrop_get_campaign",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "campaign_key",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              {
+                "udt": {
+                  "name": "AirdropCampaign"
+                }
+              },
+              {
+                "option": {
+                  "value_type": "bool"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

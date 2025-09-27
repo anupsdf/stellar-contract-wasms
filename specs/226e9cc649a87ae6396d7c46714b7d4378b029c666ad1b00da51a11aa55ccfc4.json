@@ -1,0 +1,16 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "run",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "_nft_dest",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

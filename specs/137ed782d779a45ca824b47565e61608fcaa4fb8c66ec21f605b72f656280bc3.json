@@ -1,0 +1,1493 @@
+[
+  {
+    "function_v0": {
+      "doc": "Hello function (compatibilidade com credit-demand-contract usando String)",
+      "name": "hello",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "string"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Storage b\\xc3\\xa1sico que funciona",
+      "name": "set_value",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "key",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_value",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "key",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "symbol"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Upgrade que sabemos que funciona",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Inicializa o contrato com dados b\\xc3\\xa1sicos",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "issuer",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "volume",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Inicializa o contrato com sistema de roles (OpenZeppelin Stellar)",
+      "name": "initialize_with_roles",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "issuer",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "volume",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "operator",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Verificar se o contrato foi inicializado",
+      "name": "is_initialized",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obt\\xc3\\xa9m o ID da demanda de cr\\xc3\\xa9dito",
+      "name": "get_id",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "symbol"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obt\\xc3\\xa9m o issuer da demanda de cr\\xc3\\xa9dito",
+      "name": "get_issuer",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "symbol"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obt\\xc3\\xa9m o volume da demanda de cr\\xc3\\xa9dito (compatibilidade com credit-demand-contract)",
+      "name": "get_volume",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Fun\\xc3\\xa7\\xc3\\xa3o protegida por OPERATOR role para testes",
+      "name": "operator_only_function",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "message",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Adicionar d\\xc3\\xa9bito com detalhes financeiros completos\\nEquivalente ao addDebit do Solidity com onlyRole(OPERATOR_ROLE)",
+      "name": "add_debit_detailed",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "debit_id",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "total_debit",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amortization",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "success_fee",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "due_date",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Editar d\\xc3\\xa9bito existente\\nEquivalente ao editDebit do Solidity com onlyRole(OPERATOR_ROLE)",
+      "name": "edit_debit_detailed",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "debit_id",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "total_debit",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amortization",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "success_fee",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "due_date",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter valor de um d\\xc3\\xa9bito",
+      "name": "get_debit_amount",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "debit_id",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Verificar se d\\xc3\\xa9bito existe",
+      "name": "debit_exists",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "debit_id",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Verificar se h\\xc3\\xa1 pagamentos em atraso (equivalente ao hasPaymentLate do Solidity)",
+      "name": "has_payment_late",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "current_time",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "symbol"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Deletar todos os d\\xc3\\xa9bitos do contrato\\nEquivalente ao deleteAllDebits do Solidity com onlyRole(OPERATOR_ROLE)",
+      "name": "delete_all_debits",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter total de d\\xc3\\xa9bitos",
+      "name": "get_total_debit",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter total pago",
+      "name": "get_total_paid",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter saldo restante",
+      "name": "get_remaining_balance",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter contagem de d\\xc3\\xa9bitos",
+      "name": "get_debit_count",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter amortiza\\xc3\\xa7\\xc3\\xa3o de um d\\xc3\\xa9bito espec\\xc3\\xadfico",
+      "name": "get_debit_amortization",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "debit_id",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter fee de um d\\xc3\\xa9bito espec\\xc3\\xadfico",
+      "name": "get_debit_fee",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "debit_id",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter success fee de um d\\xc3\\xa9bito espec\\xc3\\xadfico",
+      "name": "get_debit_success_fee",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "debit_id",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter data de vencimento de um d\\xc3\\xa9bito (vers\\xc3\\xa3o Option como no contract)",
+      "name": "get_debit_due_date",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "debit_id",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "u64"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Verificar se d\\xc3\\xa9bito foi pago",
+      "name": "is_debit_paid",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "debit_id",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Pagar d\\xc3\\xa9bito com detalhes financeiros\\nEquivalente ao payDebit do Solidity com onlyRole(OPERATOR_ROLE)",
+      "name": "pay_debit_detailed",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "debit_id",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "amortization_payment",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "fee_payment",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "success_fee_payment",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "payment_date",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Verificar se d\\xc3\\xa9bito est\\xc3\\xa1 atrasado",
+      "name": "is_debit_overdue",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "debit_id",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "current_time",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter detalhes completos do d\\xc3\\xa9bito (vers\\xc3\\xa3o Vec como no contract)",
+      "name": "get_debit_detailed",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "debit_id",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "symbol"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Vers\\xc3\\xa3o original que retorna tupla (mantida para compatibilidade)",
+      "name": "get_debit_detailed_tuple",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "debit_id",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "i128",
+              "i128",
+              "i128",
+              "i128",
+              "u64",
+              "bool"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Adicionar relat\\xc3\\xb3rio financeiro\\nEquivalente ao addFinantialReport do Solidity com onlyRole(OPERATOR_ROLE)",
+      "name": "add_financial_report",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "report",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Adicionar relat\\xc3\\xb3rio de monitoramento\\nEquivalente ao addMonitorReport do Solidity com onlyRole(OPERATOR_ROLE)",
+      "name": "add_monitor_report",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "report",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter \\xc3\\xbaltimo relat\\xc3\\xb3rio financeiro",
+      "name": "get_last_financial_report",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "string"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter \\xc3\\xbaltimo relat\\xc3\\xb3rio de monitoramento",
+      "name": "get_last_monitor_report",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "string"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter relat\\xc3\\xb3rio financeiro por \\xc3\\xadndice",
+      "name": "get_financial_report",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "string"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter relat\\xc3\\xb3rio de monitoramento por \\xc3\\xadndice",
+      "name": "get_monitor_report",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "string"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter contagem de relat\\xc3\\xb3rios financeiros",
+      "name": "get_financial_reports_count",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter contagem de relat\\xc3\\xb3rios de monitoramento",
+      "name": "get_monitor_reports_count",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Definir links de documentos (an\\xc3\\xa1lise de risco, garantia, contrato)\\nEquivalente ao Solidity - deveria ter prote\\xc3\\xa7\\xc3\\xa3o de role para consist\\xc3\\xaancia",
+      "name": "set_document_links",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "risk_analysis_link",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "collateral_link",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "contract_link",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter link de an\\xc3\\xa1lise de risco",
+      "name": "get_risk_analysis_link",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "string"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter link de garantia",
+      "name": "get_collateral_link",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "string"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter link do contrato",
+      "name": "get_contract_link",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "string"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Definir \\xc3\\xbaltimo pagamento",
+      "name": "set_last_payment",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "payment_id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter \\xc3\\xbaltimo pagamento",
+      "name": "get_last_payment",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "string"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Atualizar endere\\xc3\\xa7o do pool proxy",
+      "name": "update_proxy_pool_address",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_proxy_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter endere\\xc3\\xa7o do pool proxy",
+      "name": "get_proxy_pool_address",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Verificar se pool proxy foi configurado",
+      "name": "has_pool_proxy_configured",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Definir informa\\xc3\\xa7\\xc3\\xb5es do pool",
+      "name": "set_pool_info",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_name",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter informa\\xc3\\xa7\\xc3\\xb5es do pool",
+      "name": "get_pool_info",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "string"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter nome do emissor",
+      "name": "get_issuer_name",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "symbol"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter d\\xc3\\xa9bitos em aberto",
+      "name": "get_open_debits",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter valor acumulado total",
+      "name": "get_accumulate",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter amortiza\\xc3\\xa7\\xc3\\xa3o acumulada total",
+      "name": "get_amortization_accumulate",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter taxas acumuladas total",
+      "name": "get_fee_accumulate",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter total de taxas pagas",
+      "name": "get_total_fee_paid",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter total de amortiza\\xc3\\xa7\\xc3\\xa3o paga",
+      "name": "get_total_amortization_paid",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter total pago de um d\\xc3\\xa9bito espec\\xc3\\xadfico",
+      "name": "get_debit_total_paid",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "debit_id",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter data de pagamento de um d\\xc3\\xa9bito espec\\xc3\\xadfico",
+      "name": "get_debit_paid_date",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "debit_id",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Configurar endere\\xc3\\xa7o da pool para distribui\\xc3\\xa7\\xc3\\xa3o de rendimentos\\nDeve ser chamada ap\\xc3\\xb3s o deploy para conectar credit-demand \\xc3\\xa0 pool",
+      "name": "set_pool_address",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Obter endere\\xc3\\xa7o da pool configurada",
+      "name": "get_pool_address",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Verificar se pool foi configurada",
+      "name": "is_pool_configured",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "has_role",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "role",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "u32"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_role_member_count",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "role",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_role_member",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "role",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_role_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "role",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "symbol"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "grant_role",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "role",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "revoke_role",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "role",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "renounce_role",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "role",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "renounce_admin",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer_admin_role",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "live_until_ledger",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "accept_admin_transfer",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_role_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "role",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "admin_role",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Storage key for enumeration of accounts per role.",
+      "lib": "",
+      "name": "RoleAccountKey",
+      "fields": [
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "role",
+          "type_": "symbol"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "Storage keys for the data associated with the access control",
+      "lib": "",
+      "name": "AccessControlStorageKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "RoleAccounts",
+            "type_": [
+              {
+                "udt": {
+                  "name": "RoleAccountKey"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "HasRole",
+            "type_": [
+              "address",
+              "symbol"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "RoleAccountsCount",
+            "type_": [
+              "symbol"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "RoleAdmin",
+            "type_": [
+              "symbol"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PendingAdmin"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AccessControlError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 1210
+        },
+        {
+          "doc": "",
+          "name": "AdminNotSet",
+          "value": 1211
+        },
+        {
+          "doc": "",
+          "name": "IndexOutOfBounds",
+          "value": 1212
+        },
+        {
+          "doc": "",
+          "name": "AdminRoleNotFound",
+          "value": 1213
+        },
+        {
+          "doc": "",
+          "name": "RoleCountIsNotZero",
+          "value": 1214
+        },
+        {
+          "doc": "",
+          "name": "RoleNotFound",
+          "value": 1215
+        },
+        {
+          "doc": "",
+          "name": "AdminAlreadySet",
+          "value": 1216
+        },
+        {
+          "doc": "",
+          "name": "RoleNotHeld",
+          "value": 1217
+        },
+        {
+          "doc": "",
+          "name": "RoleIsEmpty",
+          "value": 1218
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "Storage keys for `Ownable` utility.",
+      "lib": "",
+      "name": "OwnableStorageKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Owner"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PendingOwner"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OwnableError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "OwnerNotSet",
+          "value": 1220
+        },
+        {
+          "doc": "",
+          "name": "TransferInProgress",
+          "value": 1221
+        },
+        {
+          "doc": "",
+          "name": "OwnerAlreadySet",
+          "value": 1222
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RoleTransferError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NoPendingTransfer",
+          "value": 1200
+        },
+        {
+          "doc": "",
+          "name": "InvalidLiveUntilLedger",
+          "value": 1201
+        },
+        {
+          "doc": "",
+          "name": "InvalidPendingAccount",
+          "value": 1202
+        }
+      ]
+    }
+  }
+]

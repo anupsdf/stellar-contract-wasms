@@ -1,0 +1,569 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "factory",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "swap",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "operations",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Swap"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "max_spread_bps",
+          "type_": {
+            "option": {
+              "value_type": "i64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "pool_type",
+          "type_": {
+            "udt": {
+              "name": "PoolType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "deadline",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "max_allowed_fee_bps",
+          "type_": {
+            "option": {
+              "value_type": "i64"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "simulate_swap",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "operations",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Swap"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "pool_type",
+          "type_": {
+            "udt": {
+              "name": "PoolType"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "SimulateSwapResponse"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "simulate_reverse_swap",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "operations",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Swap"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "pool_type",
+          "type_": {
+            "udt": {
+              "name": "PoolType"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "SimulateReverseSwapResponse"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "OperationsEmpty",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "IncorrectAssetSwap",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "AdminNotSet",
+          "value": 4
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Swap",
+      "fields": [
+        {
+          "doc": "",
+          "name": "ask_asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "ask_asset_min_amount",
+          "type_": {
+            "option": {
+              "value_type": "i128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "offer_asset",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Pair",
+      "fields": [
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "PairKey",
+            "type_": [
+              {
+                "udt": {
+                  "name": "Pair"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "FactoryKey"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Initialized"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Asset",
+      "fields": [
+        {
+          "doc": "Address of the asset",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "The total amount of those tokens in the pool",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SimulateSwapResponse",
+      "fields": [
+        {
+          "doc": "",
+          "name": "ask_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "tuple of ask_asset denom and commission amount for the swap",
+          "name": "commission_amounts",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "tuple": {
+                  "value_types": [
+                    "string",
+                    "i128"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "spread_amount",
+          "type_": {
+            "vec": {
+              "element_type": "i128"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SimulateReverseSwapResponse",
+      "fields": [
+        {
+          "doc": "tuple of offer_asset denom and commission amount for the swap",
+          "name": "commission_amounts",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "tuple": {
+                  "value_types": [
+                    "string",
+                    "i128"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "offer_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "spread_amount",
+          "type_": {
+            "vec": {
+              "element_type": "i128"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "This struct is used to return a query result with the total amount of LP tokens and assets in a specific pool.",
+      "lib": "",
+      "name": "PoolResponse",
+      "fields": [
+        {
+          "doc": "The asset A in the pool together with asset amounts",
+          "name": "asset_a",
+          "type_": {
+            "udt": {
+              "name": "Asset"
+            }
+          }
+        },
+        {
+          "doc": "The asset B in the pool together with asset amounts",
+          "name": "asset_b",
+          "type_": {
+            "udt": {
+              "name": "Asset"
+            }
+          }
+        },
+        {
+          "doc": "The total amount of LP tokens currently issued",
+          "name": "asset_lp_share",
+          "type_": {
+            "udt": {
+              "name": "Asset"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenInitInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StakeInitInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "manager",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "max_complexity",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "min_bond",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_reward",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LiquidityPoolInitInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "default_slippage_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "fee_recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "max_allowed_slippage_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "max_allowed_spread_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "max_referral_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "stake_init_info",
+          "type_": {
+            "udt": {
+              "name": "StakeInitInfo"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "swap_fee_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "token_init_info",
+          "type_": {
+            "udt": {
+              "name": "TokenInitInfo"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolType",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Xyk",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Stable",
+          "value": 1
+        }
+      ]
+    }
+  }
+]

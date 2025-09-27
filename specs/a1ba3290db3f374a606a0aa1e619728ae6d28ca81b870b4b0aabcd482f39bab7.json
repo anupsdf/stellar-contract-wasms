@@ -1,0 +1,47 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "batch",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "auth_users",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "batch",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "tuple": {
+                  "value_types": [
+                    "address",
+                    "symbol",
+                    {
+                      "vec": {
+                        "element_type": "val"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "val"
+          }
+        }
+      ]
+    }
+  }
+]

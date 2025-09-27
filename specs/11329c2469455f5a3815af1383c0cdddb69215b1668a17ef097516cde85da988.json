@@ -1,0 +1,494 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StrategyReserves",
+      "fields": [
+        {
+          "doc": "The reserve's last bRate",
+          "name": "b_rate",
+          "type_": "i128"
+        },
+        {
+          "doc": "The total bToken deposits owned by the strategy depositors.",
+          "name": "total_b_tokens",
+          "type_": "i128"
+        },
+        {
+          "doc": "The total deposited amount of the underlying asset",
+          "name": "total_shares",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Config",
+      "fields": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "blend_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "claim_ids",
+          "type_": {
+            "vec": {
+              "element_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "reserve_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "reward_threshold",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "router",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Config"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Reserves"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "VaultPos",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Keeper"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initializes the contract with the necessary configuration parameters.\\n\\n# Arguments\\n\\n* `e` - The execution environment, provided automatically when the contract is invoked.\\n* `asset` - The address of the asset managed by the contract.\\n* `init_args` - A vector of initialization arguments required for configuration.\\n\\n# Parameters in `init_args`\\n\\nThe `init_args` vector must contain the following, in order:\\n\\n1. `blend_pool_address: Address` - The address of the Blend pool where assets are deposited.\\n2. `blend_token: Address` - The address of the reward token (e.g., BLND) issued by the Blend pool.\\n3. `soroswap_router: Address` - The address of the Soroswap AMM router for asset swaps.\\n4. `reward_threshold: i128` - The minimum reward amount that triggers reinvestment.\\n5. `keeper: Address` - The address of the account that will be allowed to do harvest.\\n\\n# Behavior\\n\\nThis function:\\n- Fetches the `reserve_id` from the Blend pool for the given `asset`.\\n- Calculates `claim_ids` for the asset bTokens.\\n- Stores all paramete",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "init_args",
+          "type_": {
+            "vec": {
+              "element_type": "val"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the asset address from the contract's stored configuration.\\n\\nThis function extends the contract's TTL and returns the asset address stored in the configuration.\\nIt returns a `Result<Address, StrategyError>` where `Ok` contains the asset address and `Err` indicates an error.\\n\\n# Arguments\\n* `e: Env` - The execution environment.\\n\\n# Returns\\n* `Result<Address, StrategyError>` - The asset address or an error.",
+      "name": "asset",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "StrategyError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Deposits a specified amount of the underlying asset into the strategy.\\n\\nThis function transfers the specified amount of the underlying asset from the `from` address\\nto the strategy contract, supplies it to the Blend pool, and mints shares representing the\\ndeposited amount.\\n\\n# Arguments\\n\\n* `e: Env` - The execution environment.\\n* `amount: i128` - The amount of the underlying asset to deposit.\\n* `from: Address` - The address from which the asset is being transferred.\\n\\n# Returns\\n\\n* `Result<i128, StrategyError>` - The underlying balance of the vault (caller) after the deposit or an error.",
+      "name": "deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": {
+              "udt": {
+                "name": "StrategyError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Harvests rewards from the Blend pool and reinvests them into the strategy.\\n\\nThis function claims rewards from the Blend pool and reinvests them if the balance\\nexceeds the reward threshold. It also emits a harvest event upon completion.\\n\\nTo comply with the Strategy Crate, this function requires a `from` argument,\\nwhich is not strictly necessary in this context. However, the function enforces\\nthat the caller (keeper) provides their own address for authorization.\\n\\n# Arguments\\n\\n* `e: Env` - The execution environment.\\n* `from: Address` - The address initiating the harvest (must be the keeper).\\n\\n# Returns\\n\\n* `Result<(), StrategyError>` - Returns `Ok(())` on success or a `StrategyError` on failure.",
+      "name": "harvest",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": {
+            "option": {
+              "value_type": "bytes"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "StrategyError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Withdraws a specified amount of the underlying asset from the strategy.\\n\\nThis function transfers the specified amount of the underlying asset from the strategy contract\\nto the `to` address, burns the corresponding bTokens, and updates the reserves.\\n\\n# Arguments\\n\\n* `e: Env` - The execution environment.\\n* `amount: i128` - The amount of the underlying asset to withdraw.\\n* `from: Address` - The address from which the asset is being withdrawn.\\n* `to: Address` - The address to which the asset is being transferred.\\n\\n# Returns\\n\\n* `Result<i128, StrategyError>` - The remaining balance of the vault (caller) after the withdrawal or an error.",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": {
+              "udt": {
+                "name": "StrategyError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the balance of the underlying asset for a given address.\\n\\nThis function calculates the balance of the underlying asset for the specified 'from' address\\nby converting the 'from' shares to the underlying asset amount.\\n\\n# Arguments\\n\\n* `e: Env` - The execution environment.\\n* `from: Address` - The address for which the balance is being queried.\\n\\n# Returns\\n\\n* `Result<i128, StrategyError>` - The balance of the underlying asset or an error.\\n",
+      "name": "balance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": {
+              "udt": {
+                "name": "StrategyError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sets a new keeper address for the strategy.\\n\\nThis function updates the keeper address stored in the contract's storage.\\nOnly the current keeper can authorize this change.\\n\\n# Arguments\\n\\n* `e: Env` - The execution environment.\\n* `new_keeper: Address` - The new keeper address to set.\\n\\n# Returns\\n\\n* `Result<(), StrategyError>` - An empty result or an error.",
+      "name": "set_keeper",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_keeper",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "StrategyError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the current keeper address.\\n\\n# Arguments\\n\\n* `e: Env` - The execution environment.\\n\\n# Returns\\n\\n* `Result<Address, StrategyError>` - The current keeper address or an error.",
+      "name": "get_keeper",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "StrategyError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StrategyError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 401
+        },
+        {
+          "doc": "",
+          "name": "NegativeNotAllowed",
+          "value": 410
+        },
+        {
+          "doc": "",
+          "name": "InvalidArgument",
+          "value": 411
+        },
+        {
+          "doc": "",
+          "name": "InsufficientBalance",
+          "value": 412
+        },
+        {
+          "doc": "",
+          "name": "UnderflowOverflow",
+          "value": 413
+        },
+        {
+          "doc": "",
+          "name": "ArithmeticError",
+          "value": 414
+        },
+        {
+          "doc": "",
+          "name": "DivisionByZero",
+          "value": 415
+        },
+        {
+          "doc": "",
+          "name": "InvalidSharesMinted",
+          "value": 416
+        },
+        {
+          "doc": "",
+          "name": "OnlyPositiveAmountAllowed",
+          "value": 417
+        },
+        {
+          "doc": "",
+          "name": "NotAuthorized",
+          "value": 418
+        },
+        {
+          "doc": "",
+          "name": "ProtocolAddressNotFound",
+          "value": 420
+        },
+        {
+          "doc": "",
+          "name": "DeadlineExpired",
+          "value": 421
+        },
+        {
+          "doc": "",
+          "name": "ExternalError",
+          "value": 422
+        },
+        {
+          "doc": "",
+          "name": "SoroswapPairError",
+          "value": 423
+        },
+        {
+          "doc": "",
+          "name": "AmountBelowMinDust",
+          "value": 451
+        },
+        {
+          "doc": "",
+          "name": "UnderlyingAmountBelowMin",
+          "value": 452
+        },
+        {
+          "doc": "",
+          "name": "BTokensAmountBelowMin",
+          "value": 453
+        },
+        {
+          "doc": "",
+          "name": "InternalSwapError",
+          "value": 454
+        },
+        {
+          "doc": "",
+          "name": "SupplyNotFound",
+          "value": 455
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DepositEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "HarvestEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "price_per_share",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "WithdrawEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        }
+      ]
+    }
+  }
+]

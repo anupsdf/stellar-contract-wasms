@@ -1,0 +1,241 @@
+[
+  {
+    "function_v0": {
+      "doc": "Initialize the contract\\n\\n### Arguments\\n* `token` - The token to distribute\\n* `deadline` - The deadline ledger sequence number of the distribution\\n* `admin` - The admin of the contract\\n\\n### Panics\\n* `AlreadyInitializedError` - If the contract has already been initialized\\n* `DeadlineError` - If the deadline is not withing [30, 90] days of ledgers in the future\\nassuming 5s a ledger",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "deadline",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Fetch it a user has claimed their distribution",
+      "name": "get_claimed",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Fetch the deadline ledger sequence for the distribution",
+      "name": "get_deadline",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Fetch the admin of the contract",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Fetch the token being distributed",
+      "name": "get_token",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Admin Only) Set the distribution for users\\n\\n### Arguments\\n* `distributions` - The distributions to set\\n\\n### Panics\\n* `AlreadyFinalizedError` - If the contract has already been finalized",
+      "name": "set_distribution",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "distributions",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "tuple": {
+                  "value_types": [
+                    "address",
+                    "i128"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Admin Only) Finalize the distribution\\n\\n### Panics\\n* `AlreadyFinalizedError` - If the contract has already been finalized",
+      "name": "finalize",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Admin Only) Set the admin of the contract\\n\\n### Arguments\\n* `admin` - The new admin of the contract",
+      "name": "set_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Claim the distribution\\n\\n### Arguments\\n* `user` - The user to claim the distribution for\\n\\n### Panics\\n* `NotFinalizedError` - If the contract has not been finalized\\n* `AlreadyClaimedError` - If the user has already claimed their distribution\\n* `DeadlineError` - If the deadline has passed\\n* `NoDistributionError` - If the user has no distribution to claim",
+      "name": "claim",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Refund the remaining balance to the admin\\n\\n### Panics\\n* `DeadlineError` - If the deadline has not passed",
+      "name": "refund",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "The error codes for the contract.",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InternalError",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitializedError",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "UnauthorizedError",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "NegativeAmountError",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "AllowanceError",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "BalanceError",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "OverflowError",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "DeadlineError",
+          "value": 100
+        },
+        {
+          "doc": "",
+          "name": "NotFinalizedError",
+          "value": 101
+        },
+        {
+          "doc": "",
+          "name": "AlreadyClaimedError",
+          "value": 102
+        },
+        {
+          "doc": "",
+          "name": "AlreadyFinalizedError",
+          "value": 103
+        },
+        {
+          "doc": "",
+          "name": "NoDistributionError",
+          "value": 104
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DistributorKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Claim",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Dist",
+            "type_": [
+              "address"
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

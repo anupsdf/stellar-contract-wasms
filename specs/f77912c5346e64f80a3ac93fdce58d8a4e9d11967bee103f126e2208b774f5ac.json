@@ -1,0 +1,16 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "init",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

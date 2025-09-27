@@ -1,0 +1,217 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Operation",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Sum"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Sub"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Mul"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Div"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OperationRecord",
+      "fields": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "op",
+          "type_": {
+            "udt": {
+              "name": "Operation"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "x",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "y",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "z",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Soma dois n\\xc3\\xbameros `x` e `y`, armazena a opera\\xc3\\xa7\\xc3\\xa3o e retorna o resultado.",
+      "name": "sum",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "x",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "y",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Subtrai `y` de `x`, armazena a opera\\xc3\\xa7\\xc3\\xa3o e retorna o resultado.\\nRetorna o valor absoluto da subtra\\xc3\\xa7\\xc3\\xa3o, sempre positivo.",
+      "name": "sub",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "x",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "y",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Multiplica `x` por `y`, armazena a opera\\xc3\\xa7\\xc3\\xa3o e retorna o resultado.",
+      "name": "mul",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "x",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "y",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Divide `x` por `y`, armazena a opera\\xc3\\xa7\\xc3\\xa3o e retorna o resultado.\\nSe `y` for 0, retorna o valor m\\xc3\\xa1ximo para `u32` como indicativo de erro.",
+      "name": "div",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "x",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "y",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Recupera a \\xc3\\xbaltima opera\\xc3\\xa7\\xc3\\xa3o realizada.\\nRetorna `None` se n\\xc3\\xa3o houver opera\\xc3\\xa7\\xc3\\xb5es registradas.",
+      "name": "last_op",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "OperationRecord"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Recupera uma opera\\xc3\\xa7\\xc3\\xa3o pelo `id`.\\nRetorna `None` se a opera\\xc3\\xa7\\xc3\\xa3o com o `id` especificado n\\xc3\\xa3o for encontrada.",
+      "name": "get_op",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "OperationRecord"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Recupera todas as opera\\xc3\\xa7\\xc3\\xb5es registradas em uma lista.\\nRetorna um vetor com todas as opera\\xc3\\xa7\\xc3\\xb5es.",
+      "name": "all_op",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "OperationRecord"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+]

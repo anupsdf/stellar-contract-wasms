@@ -1,0 +1,235 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Action",
+      "fields": [
+        {
+          "doc": "",
+          "name": "a0",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "a1",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "in_idx",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "min_out",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "out_idx",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "0 = Aquarius, 1 = Soroswap",
+          "name": "protocol",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "token_in",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Signature",
+      "fields": [
+        {
+          "doc": "",
+          "name": "pub_key",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "signature",
+          "type_": {
+            "bytes_n": {
+              "n": 64
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AtomicRouterError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InsufficientFunds",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "InsufficientProfit",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "ZeroOutput",
+          "value": 4
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Execute a pre\\xe2\\x80\\x91built route returned by the off\\xe2\\x80\\x91chain path\\xe2\\x80\\x91finder.\\n* `actions` \\xe2\\x80\\x91 serialized route description (see `Action`)\\n* `max_amount` \\xe2\\x80\\x91 cap on input the router may deploy\\n* `min_profit` \\xe2\\x80\\x91 minimum acceptable profit (slippage guard)\\n\\nThe caller **must** be the owner and signs one authorization that\\ncovers the tuple `(actions, max_amount, min_profit)`.",
+      "name": "execute",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "actions",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Action"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "max_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "min_profit",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__check_auth",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "_payload",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "_sigs",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Signature"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "_invocs",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Context"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  }
+]

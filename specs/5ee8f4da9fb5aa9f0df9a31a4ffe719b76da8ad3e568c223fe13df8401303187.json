@@ -1,0 +1,212 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SCErrors",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyStarted",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "DeadlineReached",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "InvalidDomain",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "AlreadyExists",
+          "value": 4
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CoreData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "deadline",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "last",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "registry",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CoreDataKeys",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "CoreData"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Record",
+      "fields": [
+        {
+          "doc": "",
+          "name": "domain",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "lat_frc",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "lat_int",
+          "type_": "i32"
+        },
+        {
+          "doc": "",
+          "name": "lng_frc",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "lng_int",
+          "type_": "i32"
+        },
+        {
+          "doc": "",
+          "name": "node",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RecordKeys",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Record",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "RecordIndex",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "init",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "deadline",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "registry",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "write",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "lat_int",
+          "type_": "i32"
+        },
+        {
+          "doc": "",
+          "name": "lat_frc",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "lng_int",
+          "type_": "i32"
+        },
+        {
+          "doc": "",
+          "name": "lng_frc",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

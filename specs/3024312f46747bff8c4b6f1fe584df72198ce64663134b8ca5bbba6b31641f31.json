@@ -1,0 +1,27 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_sbt",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "circuit_id",
+          "type_": "u256"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "SBT"
+          }
+        }
+      ]
+    }
+  }
+]

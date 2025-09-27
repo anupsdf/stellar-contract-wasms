@@ -1,0 +1,403 @@
+[
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Admin",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "TokenShare",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "RewardedToken1",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "RewardedToken2",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "AllocatedRewards1",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "AllocatedRewards2",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "PoolMap",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "PoolCounter",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "UserMap",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "Maturity",
+          "value": 9
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FarmError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InvalidAmount",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "NotAuthorized",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "PoolNotActive",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "WithdrawError",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "InsufficientRewards",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "PoolNotFound",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "UserNotFound",
+          "value": 8
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Pool",
+      "fields": [
+        {
+          "doc": "",
+          "name": "reward_ratio1",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reward_ratio2",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "start_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UserData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "accrued_rewards1",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "accrued_rewards2",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "deposit_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "deposited",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "rewarded_token1",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "rewarded_token2",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "maturity",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "string",
+            "error_type": {
+              "udt": {
+                "name": "FarmError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "start_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "reward_ratio1",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reward_ratio2",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u32",
+            "error_type": {
+              "udt": {
+                "name": "FarmError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "depositor",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": {
+              "udt": {
+                "name": "FarmError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "withdrawer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": {
+              "udt": {
+                "name": "FarmError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "string",
+            "error_type": {
+              "udt": {
+                "name": "FarmError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_receipt_token_id",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "FarmError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw_unallocated_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": [
+                  "i128",
+                  "i128"
+                ]
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "FarmError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+]

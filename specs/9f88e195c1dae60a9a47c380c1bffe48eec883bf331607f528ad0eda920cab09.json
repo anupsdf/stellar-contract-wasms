@@ -1,0 +1,1505 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolManagerAddressesChangedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_storage",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolStorageAddressesChangedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "credit",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_manager",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ClientDataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "HumaConfig"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PoolStorage"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Pool"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolOperatorAddedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "operator",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolOperatorRemovedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "operator",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "HumaConfigChangedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "huma_config",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "huma_owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "sentinel",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TrancheAddressesChangedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "junior_addr",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "senior_addr",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "JuniorTrancheAddressChangedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "junior_addr",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pool_name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "huma_config",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_storage",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_huma_config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "huma_config",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_contract_addrs",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_storage",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_storage_contract_addrs",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_manager",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "credit",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_pool_name",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_pool_owner",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "addr",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_pool_owner_treasury",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "addr",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_evaluation_agent",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "addr",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_tranche_addresses",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "junior_addr",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "senior_addr",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_admin_rnr",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_owner_reward_rate",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "pool_owner_liquidity_rate",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "ea_reward_rate",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "ea_liquidity_rate",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_pool_settings",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "max_credit_line",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "min_deposit_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "pay_period_duration",
+          "type_": {
+            "udt": {
+              "name": "PayPeriodDuration"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "late_payment_grace_period_days",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "default_grace_period_days",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "principal_only_payment_allowed",
+          "type_": "bool"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_lp_config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "liquidity_cap",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "max_senior_junior_ratio",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "fixed_senior_yield_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "tranches_risk_adjustment_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "withdrawal_lockout_period_days",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_fee_structure",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "yield_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "late_fee_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "front_loading_fee_flat",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "front_loading_fee_bps",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_tranches_policy_type",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "policy_type",
+          "type_": {
+            "udt": {
+              "name": "TranchesPolicyType"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_pool_operator",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "addr",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_pool_operator",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "addr",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "enable_pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "disable_pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "close_pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "close_epoch",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw_protocol_fees",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw_pool_owner_fees",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw_ea_fees",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "NewEpochStartedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "end_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "epoch_id",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "EpochClosedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "epoch_id",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "EpochProcessedAfterPoolClosureEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "epoch_id",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RedemptionRequestsProcessedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "junior_tranche_assets",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "junior_tranche_price",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "senior_tranche_assets",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "senior_tranche_price",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "unprocessed_amount",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolManagerError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "PoolOwnerOrEARequired",
+          "value": 301
+        },
+        {
+          "doc": "",
+          "name": "AdminRewardRateTooHigh",
+          "value": 302
+        },
+        {
+          "doc": "",
+          "name": "MinDepositAmountTooLow",
+          "value": 303
+        },
+        {
+          "doc": "",
+          "name": "LatePaymentGracePeriodTooLong",
+          "value": 304
+        },
+        {
+          "doc": "",
+          "name": "InsufficientAmountForRequest",
+          "value": 305
+        },
+        {
+          "doc": "",
+          "name": "InvalidBasisPointHigherThan10000",
+          "value": 306
+        },
+        {
+          "doc": "",
+          "name": "EpochClosedTooEarly",
+          "value": 307
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolEnabledEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "by",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolDisabledEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "by",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolClosedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "by",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolOwnerChangedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "pool_owner",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolOwnerTreasuryChangedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "treasury",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "EvaluationAgentChangedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "ea",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TranchesPolicyTypeChangedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "policy_type",
+          "type_": {
+            "udt": {
+              "name": "TranchesPolicyType"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolSettingsChangedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "default_grace_period_days",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "late_payment_grace_period_days",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "max_credit_line",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "min_deposit_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "pay_period_duration",
+          "type_": {
+            "udt": {
+              "name": "PayPeriodDuration"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "principal_only_payment_allowed",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LPConfigChangedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "fixed_senior_yield_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "liquidity_cap",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "max_senior_junior_ratio",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "tranches_risk_adjustment_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "withdrawal_lockout_period_days",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FeeStructureChangedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "front_loading_fee_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "front_loading_fee_flat",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "late_fee_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "yield_bps",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AdminRnRChangedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "ea_liquidity_rate",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "ea_reward_rate",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "pool_owner_liquidity_rate",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "pool_owner_reward_rate",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolNameChangedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ProtocolRewardsWithdrawnEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "receiver",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolRewardsWithdrawnEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "receiver",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolRewardsWithdrawalFailedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "receiver",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "EvaluationAgentRewardsWithdrawnEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "receiver",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "EARewardsWithdrawalFailedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "receiver",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PayPeriodDuration",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Monthly"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Quarterly"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "SemiAnnually"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CalendarError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "StartDateLaterThanEndDate",
+          "value": 801
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CommonError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "ProtocolIsPausedOrPoolIsNotOn",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "PoolOwnerOrHumaOwnerRequired",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "PoolOperatorRequired",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "AuthorizedContractCallerRequired",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "UnsupportedFunction",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "ZeroAmountProvided",
+          "value": 7
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TranchesPolicyType",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "FixedSeniorYield"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "RiskAdjusted"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolSettings",
+      "fields": [
+        {
+          "doc": "",
+          "name": "default_grace_period_days",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "late_payment_grace_period_days",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "max_credit_line",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "min_deposit_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "pay_period_duration",
+          "type_": {
+            "udt": {
+              "name": "PayPeriodDuration"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "principal_only_payment_allowed",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LPConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "fixed_senior_yield_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "liquidity_cap",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "max_senior_junior_ratio",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "tranches_risk_adjustment_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "withdrawal_lockout_period_days",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FeeStructure",
+      "fields": [
+        {
+          "doc": "",
+          "name": "front_loading_fee_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "front_loading_fee_flat",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "late_fee_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "yield_bps",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolStatus",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Off"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "On"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Closed"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Epoch",
+      "fields": [
+        {
+          "doc": "",
+          "name": "end_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AdminRnR",
+      "fields": [
+        {
+          "doc": "",
+          "name": "liquidity_rate_bps_ea",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "liquidity_rate_bps_pool_owner",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "reward_rate_bps_ea",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "reward_rate_bps_pool_owner",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TrancheAddresses",
+      "fields": [
+        {
+          "doc": "",
+          "name": "addrs",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "option": {
+                  "value_type": "address"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TrancheAssets",
+      "fields": [
+        {
+          "doc": "",
+          "name": "assets",
+          "type_": {
+            "vec": {
+              "element_type": "u128"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "EpochRedemptionSummary",
+      "fields": [
+        {
+          "doc": "",
+          "name": "epoch_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_amount_processed",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "total_shares_processed",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "total_shares_requested",
+          "type_": "u128"
+        }
+      ]
+    }
+  }
+]

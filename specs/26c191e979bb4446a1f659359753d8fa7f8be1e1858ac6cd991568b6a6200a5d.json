@@ -1,0 +1,724 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "votes",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "settings",
+          "type_": {
+            "udt": {
+              "name": "GovernorSettings"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "settings",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "GovernorSettings"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "propose",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "creator",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "title",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "action",
+          "type_": {
+            "udt": {
+              "name": "ProposalAction"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_proposal",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "proposal_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "Proposal"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "close",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "proposal_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "execute",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "proposal_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "cancel",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "proposal_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "vote",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "voter",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "proposal_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "support",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_vote",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "voter",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "proposal_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "u32"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_proposal_votes",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "proposal_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "VoteCount"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "The error codes for the contract.",
+      "lib": "",
+      "name": "GovernorError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InternalError",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitializedError",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "UnauthorizedError",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "NegativeAmountError",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "AllowanceError",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "BalanceError",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "OverflowError",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "InvalidSettingsError",
+          "value": 200
+        },
+        {
+          "doc": "",
+          "name": "NonExistentProposalError",
+          "value": 201
+        },
+        {
+          "doc": "",
+          "name": "ProposalClosedError",
+          "value": 202
+        },
+        {
+          "doc": "",
+          "name": "InvalidProposalSupportError",
+          "value": 203
+        },
+        {
+          "doc": "",
+          "name": "VotePeriodNotFinishedError",
+          "value": 204
+        },
+        {
+          "doc": "",
+          "name": "ProposalNotExecutableError",
+          "value": 205
+        },
+        {
+          "doc": "",
+          "name": "TimelockNotMetError",
+          "value": 206
+        },
+        {
+          "doc": "",
+          "name": "ProposalVotePeriodStartedError",
+          "value": 207
+        },
+        {
+          "doc": "",
+          "name": "InsufficientVotingUnitsError",
+          "value": 208
+        },
+        {
+          "doc": "",
+          "name": "AlreadyVotedError",
+          "value": 209
+        },
+        {
+          "doc": "",
+          "name": "InvalidProposalType",
+          "value": 210
+        },
+        {
+          "doc": "",
+          "name": "ProposalAlreadyOpenError",
+          "value": 211
+        },
+        {
+          "doc": "",
+          "name": "OutsideOfVotePeriodError",
+          "value": 212
+        },
+        {
+          "doc": "",
+          "name": "InvalidProposalActionError",
+          "value": 213
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VoterStatusKey",
+      "fields": [
+        {
+          "doc": "",
+          "name": "proposal_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "voter",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GovernorDataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Config",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Data",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "VoterSup",
+            "type_": [
+              {
+                "udt": {
+                  "name": "VoterStatusKey"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Votes",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Open",
+            "type_": [
+              "address"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "The governor settings for managing proposals",
+      "lib": "",
+      "name": "GovernorSettings",
+      "fields": [
+        {
+          "doc": "The address of the security council that can cancel proposals during the vote delay period. If the DAO does not\\nhave a council, this should be set to the zero address.",
+          "name": "council",
+          "type_": "address"
+        },
+        {
+          "doc": "Determine which votes to count against the quorum out of for, against, and abstain. The value is encoded\\nsuch that only the last 3 bits are considered, and follows the structure `MSB...{against}{for}{abstain}`,\\nsuch that any value != 0 means that type of vote is counted in the quorum. For example, consider\\n5 == `0x0...0101`, this means that votes \"against\" and \"abstain\" are included in the quorum, but votes\\n\"for\" are not.",
+          "name": "counting_type",
+          "type_": "u32"
+        },
+        {
+          "doc": "The time (in ledgers) the proposal has to be executed before it expires. This starts after the timelock.",
+          "name": "grace_period",
+          "type_": "u32"
+        },
+        {
+          "doc": "The votes required to create a proposal.",
+          "name": "proposal_threshold",
+          "type_": "i128"
+        },
+        {
+          "doc": "The percentage of votes (expressed in BPS) needed of the total available votes to consider a vote successful.",
+          "name": "quorum",
+          "type_": "u32"
+        },
+        {
+          "doc": "The time (in ledgers) the proposal will have to wait between vote period closing and execution.",
+          "name": "timelock",
+          "type_": "u32"
+        },
+        {
+          "doc": "The delay (in ledgers) from the proposal creation to when the voting period begins. The voting\\nperiod start time will be the checkpoint used to account for all votes for the proposal.",
+          "name": "vote_delay",
+          "type_": "u32"
+        },
+        {
+          "doc": "The time (in ledgers) the proposal will be open to vote against.",
+          "name": "vote_period",
+          "type_": "u32"
+        },
+        {
+          "doc": "The percentage of votes \"yes\" (expressed in BPS) needed to consider a vote successful.",
+          "name": "vote_threshold",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Object for storing call data",
+      "lib": "",
+      "name": "Calldata",
+      "fields": [
+        {
+          "doc": "",
+          "name": "args",
+          "type_": {
+            "vec": {
+              "element_type": "val"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "auths",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Calldata"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "contract_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "function",
+          "type_": "symbol"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "The proposal object",
+      "lib": "",
+      "name": "Proposal",
+      "fields": [
+        {
+          "doc": "",
+          "name": "config",
+          "type_": {
+            "udt": {
+              "name": "ProposalConfig"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": {
+            "udt": {
+              "name": "ProposalData"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "The configuration for a proposal. Set by the proposal creator.",
+      "lib": "",
+      "name": "ProposalConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "action",
+          "type_": {
+            "udt": {
+              "name": "ProposalAction"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "title",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "The action to be taken by a proposal.\\n\\n### Calldata\\nThe proposal will execute the calldata from the governor contract on execute.\\n\\n### Upgrade\\nThe proposal will upgrade the governor contract to the new WASM hash on execute.\\n\\n### Settings\\nThe proposal will update the governor settings on execute.\\n\\n### Snapshot\\nThere is no action to be taken by the proposal.",
+      "lib": "",
+      "name": "ProposalAction",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Calldata",
+            "type_": [
+              {
+                "udt": {
+                  "name": "Calldata"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Upgrade",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Settings",
+            "type_": [
+              {
+                "udt": {
+                  "name": "GovernorSettings"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Snapshot"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "The data for a proposal",
+      "lib": "",
+      "name": "ProposalData",
+      "fields": [
+        {
+          "doc": "The address of the account creating the proposal",
+          "name": "creator",
+          "type_": "address"
+        },
+        {
+          "doc": "The ledger sequence when the proposal will be executed, or zero if no execution has been scheduled",
+          "name": "eta",
+          "type_": "u32"
+        },
+        {
+          "doc": "Whether the proposal is executable",
+          "name": "executable",
+          "type_": "bool"
+        },
+        {
+          "doc": "The status of the proposal",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "ProposalStatus"
+            }
+          }
+        },
+        {
+          "doc": "The ledger sequence when the voting period ends",
+          "name": "vote_end",
+          "type_": "u32"
+        },
+        {
+          "doc": "The ledger sequence when the voting period begins",
+          "name": "vote_start",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VoteCount",
+      "fields": [
+        {
+          "doc": "",
+          "name": "_for",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "abstain",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "against",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ProposalStatus",
+      "cases": [
+        {
+          "doc": "The proposal exists and voting has not been closed",
+          "name": "Open",
+          "value": 0
+        },
+        {
+          "doc": "The proposal was voted for. If the proposal is executable, the timelock begins once this state is reached.",
+          "name": "Successful",
+          "value": 1
+        },
+        {
+          "doc": "The proposal was voted against",
+          "name": "Defeated",
+          "value": 2
+        },
+        {
+          "doc": "The proposal did not reach quorum before the voting period ended, or was stalled out during the grace period.",
+          "name": "Expired",
+          "value": 3
+        },
+        {
+          "doc": "The proposal has been executed",
+          "name": "Executed",
+          "value": 4
+        },
+        {
+          "doc": "The proposal has been canceled",
+          "name": "Canceled",
+          "value": 5
+        }
+      ]
+    }
+  }
+]

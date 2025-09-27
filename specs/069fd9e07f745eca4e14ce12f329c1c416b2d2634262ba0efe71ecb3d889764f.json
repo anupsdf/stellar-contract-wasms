@@ -1,0 +1,37 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_stellar_asset_contract",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset_xdr",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Token",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ]
+    }
+  }
+]

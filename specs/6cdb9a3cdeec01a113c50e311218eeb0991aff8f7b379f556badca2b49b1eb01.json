@@ -1,0 +1,497 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StandardReferenceError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotInitializedError",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "NoRefDataError",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "ArithmeticError",
+          "value": 2
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "init",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin_addr",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "instance_threshold",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "instance_ttl",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "temporary_threshold",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "temporary_tll",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "version",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "current_admin",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "current_ttl_config",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "TTLConfig"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_ttl_config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "instance_threshold",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "instance_ttl",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "temporary_threshold",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "temporary_ttl",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_relayer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_relayers",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "addresses",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_relayers",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "addresses",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "relay",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "symbol_rates",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "tuple": {
+                  "value_types": [
+                    "symbol",
+                    "u64"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "resolve_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "request_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "force_relay",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "symbol_rates",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "tuple": {
+                  "value_types": [
+                    "symbol",
+                    "u64"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "resolve_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "request_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "delist",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "symbols",
+          "type_": {
+            "vec": {
+              "element_type": "symbol"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_ref_data",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "symbols",
+          "type_": {
+            "vec": {
+              "element_type": "symbol"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": {
+                  "udt": {
+                    "name": "RefDatum"
+                  }
+                }
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "StandardReferenceError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_reference_data",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "symbol_pairs",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "tuple": {
+                  "value_types": [
+                    "symbol",
+                    "symbol"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": {
+                  "udt": {
+                    "name": "ReferenceDatum"
+                  }
+                }
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "StandardReferenceError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ReferenceDatum",
+      "fields": [
+        {
+          "doc": "",
+          "name": "last_updated_base",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "last_updated_quote",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "rate",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TTLConfig"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Relayer",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "RefData",
+            "type_": [
+              "symbol"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TTLConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "instance_threshold",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "instance_ttl",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "temporary_threshold",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "temporary_ttl",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RefDatum",
+      "fields": [
+        {
+          "doc": "",
+          "name": "rate",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "request_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "resolve_time",
+          "type_": "u64"
+        }
+      ]
+    }
+  }
+]

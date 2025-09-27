@@ -1,0 +1,440 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "plant",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "farmer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "work",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "farmer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "nonce",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "harvest",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "farmer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "farmer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "pause",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "unpause",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_block",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__check_auth",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "_signature_payload",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "_signatures",
+          "type_": {
+            "option": {
+              "value_type": {
+                "vec": {
+                  "element_type": "val"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "_auth_contexts",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Context"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "Errors"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Errors",
+      "cases": [
+        {
+          "doc": "",
+          "name": "HomesteadExists",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "HomesteadMissing",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "FarmBlockMissing",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "FarmPaused",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "FarmNotPaused",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "PlantAmountTooLow",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "ZeroCountTooLow",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "PailExists",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "PailMissing",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "WorkMissing",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "BlockMissing",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "BlockInvalid",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "HashInvalid",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "HarvestNotReady",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "GapCountTooLow",
+          "value": 15
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Block",
+      "fields": [
+        {
+          "doc": "",
+          "name": "entropy",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "max_gap",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "max_stake",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "max_zeros",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "min_gap",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "min_stake",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_zeros",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "normalized_total",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "staked_total",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Pail",
+      "fields": [
+        {
+          "doc": "",
+          "name": "gap",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "sequence",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "stake",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "zeros",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Storage",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Homesteader"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "HomesteadAsset"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "FarmIndex"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "FarmBlock"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "FarmPaused"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Block",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Pail",
+            "type_": [
+              "address",
+              "u32"
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

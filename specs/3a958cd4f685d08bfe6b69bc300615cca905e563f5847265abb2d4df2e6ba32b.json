@@ -1,0 +1,517 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "did_method",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "context",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "verification_methods",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "VerificationMethodEntry"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "services",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Service"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "DIDDocument"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_did",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "context",
+          "type_": {
+            "option": {
+              "value_type": {
+                "vec": {
+                  "element_type": "string"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "verification_methods",
+          "type_": {
+            "option": {
+              "value_type": {
+                "vec": {
+                  "element_type": {
+                    "udt": {
+                      "name": "VerificationMethodEntry"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "services",
+          "type_": {
+            "option": {
+              "value_type": {
+                "vec": {
+                  "element_type": {
+                    "udt": {
+                      "name": "Service"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "DIDDocument"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_did",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "DIDDocument"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "version",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DIDDocument",
+      "fields": [
+        {
+          "doc": "",
+          "name": "assertion_method",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "authentication",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "capability_delegation",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "capability_invocation",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "context",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "key_agreement",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "service",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Service"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "verification_method",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "VerificationMethod"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "EmptyContext",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "EmptyVerificationMethods",
+          "value": 3
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ServiceType",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "LinkedDomains"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "DIDComm"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "DIDCommMessaging"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "CredentialRegistry"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "OID4VCI"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "OID4VP"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Service",
+      "fields": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "service_endpoint",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "type_",
+          "type_": {
+            "udt": {
+              "name": "ServiceType"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "DIDDocument"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VerificationRelationship",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Authentication"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "AssertionMethod"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "KeyAgreement"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "CapabilityInvocation"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "CapabilityDelegation"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VerificationMethodType",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Ed25519VerificationKey2020"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "X25519KeyAgreementKey2020"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VerificationMethod",
+      "fields": [
+        {
+          "doc": "",
+          "name": "controller",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "public_key_multibase",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "type_",
+          "type_": {
+            "udt": {
+              "name": "VerificationMethodType"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VerificationMethodEntry",
+      "fields": [
+        {
+          "doc": "",
+          "name": "controller",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "public_key_multibase",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "type_",
+          "type_": {
+            "udt": {
+              "name": "VerificationMethodType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "verification_relationships",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "VerificationRelationship"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+]

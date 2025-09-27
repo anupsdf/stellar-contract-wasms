@@ -1,0 +1,565 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotFound",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "AlreadyExists",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "MissingContext",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "SignerExpired",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "FailedSignerLimits",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "FailedPolicySignerLimits",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "SignatureKeyValueMismatch",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "ClientDataJsonChallengeIncorrect",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "JsonParseError",
+          "value": 9
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SignerExpiration",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SignerLimits",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": {
+            "option": {
+              "value_type": {
+                "map": {
+                  "key_type": "address",
+                  "value_type": {
+                    "option": {
+                      "value_type": {
+                        "vec": {
+                          "element_type": {
+                            "udt": {
+                              "name": "SignerKey"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SignerStorage",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Persistent"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Temporary"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Signer",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Policy",
+            "type_": [
+              "address",
+              {
+                "udt": {
+                  "name": "SignerExpiration"
+                }
+              },
+              {
+                "udt": {
+                  "name": "SignerLimits"
+                }
+              },
+              {
+                "udt": {
+                  "name": "SignerStorage"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Ed25519",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              },
+              {
+                "udt": {
+                  "name": "SignerExpiration"
+                }
+              },
+              {
+                "udt": {
+                  "name": "SignerLimits"
+                }
+              },
+              {
+                "udt": {
+                  "name": "SignerStorage"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Secp256r1",
+            "type_": [
+              "bytes",
+              {
+                "bytes_n": {
+                  "n": 65
+                }
+              },
+              {
+                "udt": {
+                  "name": "SignerExpiration"
+                }
+              },
+              {
+                "udt": {
+                  "name": "SignerLimits"
+                }
+              },
+              {
+                "udt": {
+                  "name": "SignerStorage"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SignerKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Policy",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Ed25519",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Secp256r1",
+            "type_": [
+              "bytes"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SignerVal",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Policy",
+            "type_": [
+              {
+                "udt": {
+                  "name": "SignerExpiration"
+                }
+              },
+              {
+                "udt": {
+                  "name": "SignerLimits"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Ed25519",
+            "type_": [
+              {
+                "udt": {
+                  "name": "SignerExpiration"
+                }
+              },
+              {
+                "udt": {
+                  "name": "SignerLimits"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Secp256r1",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 65
+                }
+              },
+              {
+                "udt": {
+                  "name": "SignerExpiration"
+                }
+              },
+              {
+                "udt": {
+                  "name": "SignerLimits"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Secp256r1Signature",
+      "fields": [
+        {
+          "doc": "",
+          "name": "authenticator_data",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "client_data_json",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "signature",
+          "type_": {
+            "bytes_n": {
+              "n": 64
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Signature",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Policy"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Ed25519",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 64
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Secp256r1",
+            "type_": [
+              {
+                "udt": {
+                  "name": "Secp256r1Signature"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Signatures",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": {
+            "map": {
+              "key_type": {
+                "udt": {
+                  "name": "SignerKey"
+                }
+              },
+              "value_type": {
+                "udt": {
+                  "name": "Signature"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "signer",
+          "type_": {
+            "udt": {
+              "name": "Signer"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_signer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "signer",
+          "type_": {
+            "udt": {
+              "name": "Signer"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_signer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "signer",
+          "type_": {
+            "udt": {
+              "name": "Signer"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_signer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "signer_key",
+          "type_": {
+            "udt": {
+              "name": "SignerKey"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_contract_code",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__check_auth",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "signature_payload",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "signatures",
+          "type_": {
+            "udt": {
+              "name": "Signatures"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "auth_contexts",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Context"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  }
+]

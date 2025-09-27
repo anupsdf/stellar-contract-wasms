@@ -1,0 +1,592 @@
+[
+  {
+    "function_v0": {
+      "doc": "Initialize the contract with token metadata.",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sytemap_name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "sytemap_symbol",
+          "type_": "string"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "safe_mint_new_property_info",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "payload",
+          "type_": {
+            "udt": {
+              "name": "PropertyInfoPayload"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SytemapRegistryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "change_property_price_by_owner",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "property_verification_no",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "new_price",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SytemapRegistryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_property_info_details_by_pvn",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "property_verification_no",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "PropertyInfo"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SytemapRegistryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_property_info_by_nft_address",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "nft_address",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "PropertyInfo"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SytemapRegistryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_no_of_property_by_address",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u64",
+            "error_type": {
+              "udt": {
+                "name": "SytemapRegistryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_number_of_property_minted",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u64",
+            "error_type": {
+              "udt": {
+                "name": "SytemapRegistryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_owner_of_pvn",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "property_verification_no",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "SytemapRegistryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_all_property_by_owner",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": {
+                  "udt": {
+                    "name": "PropertyInfo"
+                  }
+                }
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SytemapRegistryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_all_minted_property_details",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": {
+                  "udt": {
+                    "name": "PropertyInfo"
+                  }
+                }
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SytemapRegistryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SytemapRegistryError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyMinted",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "PropertyAlreadyExists",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "InvalidPrice",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "PropertyNotFound",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "NftAddressAlreadyInUse",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 6
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SytemapDataKeys",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "PropertyVerificationNoToTokenId",
+            "type_": [
+              "u64"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "NftAddressToTokenId",
+            "type_": [
+              "string"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "PvnToPropertyInfo",
+            "type_": [
+              "u64"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "NftAddressToPropertyInfo",
+            "type_": [
+              "string"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "SystemName"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "SystemSymbol"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "TokenOwner",
+            "type_": [
+              "u64"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Minted",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "URI",
+            "type_": [
+              "u64"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "TokenIdPropertyInfo",
+            "type_": [
+              "u64"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TokenMetadata"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "AllProperties"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "NextTokenId"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Object for storing token meta data",
+      "lib": "",
+      "name": "TokenMetadata",
+      "fields": [
+        {
+          "doc": "",
+          "name": "sytemap_name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "sytemap_symbol",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Object for storing property info data",
+      "lib": "",
+      "name": "PropertyInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "buyer_wallet_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "coordinate_of_plot",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "date_of_allocation",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "estate_company_name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "estate_name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "nft_address",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "plot_no",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "plot_url",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "price_of_plot",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "property_verification_no",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "size_of_plot",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "token_url",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Object for storing property info data",
+      "lib": "",
+      "name": "PropertyInfoPayload",
+      "fields": [
+        {
+          "doc": "",
+          "name": "buyer_wallet_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "coordinate_of_plot",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "date_of_allocation",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "estate_company_name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "estate_name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "nft_address",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "plot_no",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "plot_url",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "price_of_plot",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "property_verification_no",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "size_of_plot",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "token_url",
+          "type_": "string"
+        }
+      ]
+    }
+  }
+]

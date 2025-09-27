@@ -1,0 +1,774 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "auction_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "auction_creation_fee",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_auction",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "item_info",
+          "type_": {
+            "udt": {
+              "name": "ItemInfo"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "seller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "duration",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "Auction"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "place_bid",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "auction_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "bidder",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "bid_amount",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "finalize_auction",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "auction_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "buy_now",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "auction_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "buyer",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "pause",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "auction_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "unpause",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "auction_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_auction",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "auction_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "Auction"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_active_auctions",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "start_index",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "limit",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": {
+                  "udt": {
+                    "name": "Auction"
+                  }
+                }
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_auctions_by_seller",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "seller",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": {
+                  "udt": {
+                    "name": "Auction"
+                  }
+                }
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_highest_bid",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "auction_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "HighestBid"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "AuctionNotFound",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "IDMissmatch",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "BidNotEnough",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "AuctionNotFinished",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "NotEnoughBalance",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "InvalidInputs",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "AuctionNotActive",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "MinPriceNotReached",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "MissingHighestBid",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "AuctionNotPaused",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "PaymentProcessingFailed",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "NoBuyNowOption",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "InvalidBidder",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "AdminNotFound",
+          "value": 15
+        },
+        {
+          "doc": "",
+          "name": "NoBidFound",
+          "value": 16
+        },
+        {
+          "doc": "",
+          "name": "ConfigNotFound",
+          "value": 17
+        },
+        {
+          "doc": "",
+          "name": "AuctionCreationFeeNotCovered",
+          "value": 18
+        },
+        {
+          "doc": "",
+          "name": "KeyNotFound",
+          "value": 19
+        },
+        {
+          "doc": "",
+          "name": "BidderNotFound",
+          "value": 20
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "IsInitialized"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "AuctionId"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "AllAuctions"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "HighestBid",
+            "type_": [
+              "u64"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Config"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ItemInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "buy_now_price",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "collection_addr",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "item_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "minimum_price",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Auction",
+      "fields": [
+        {
+          "doc": "",
+          "name": "auction_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "end_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "highest_bid",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "item_info",
+          "type_": {
+            "udt": {
+              "name": "ItemInfo"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "seller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "AuctionStatus"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "HighestBid",
+      "fields": [
+        {
+          "doc": "",
+          "name": "bid",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "bidder",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AuctionStatus",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Active"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Ended"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Cancelled"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Paused"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Config",
+      "fields": [
+        {
+          "doc": "",
+          "name": "auction_creation_fee",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "auction_token",
+          "type_": "address"
+        }
+      ]
+    }
+  }
+]

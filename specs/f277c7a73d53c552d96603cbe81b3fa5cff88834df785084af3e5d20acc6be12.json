@@ -1,0 +1,76 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "run",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "aqua_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "fxdao_data",
+          "type_": {
+            "tuple": {
+              "value_types": [
+                "address",
+                "symbol",
+                {
+                  "udt": {
+                    "name": "OptionalVaultKey"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "asset_contracts",
+          "type_": {
+            "tuple": {
+              "value_types": [
+                "address",
+                "address",
+                "address"
+              ]
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "pool_indexes",
+          "type_": {
+            "tuple": {
+              "value_types": [
+                {
+                  "bytes_n": {
+                    "n": 32
+                  }
+                },
+                {
+                  "bytes_n": {
+                    "n": 32
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "amount_in",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

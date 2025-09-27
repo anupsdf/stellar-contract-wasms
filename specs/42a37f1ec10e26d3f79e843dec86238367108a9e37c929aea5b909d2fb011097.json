@@ -1,0 +1,488 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "two_pool_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "three_pool_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "deployer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "a",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "tokens",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "fee_share_bp",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "admin_fee_share_bp",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "tokens",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "pools",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "map": {
+                "key_type": "address",
+                "value_type": {
+                  "vec": {
+                    "element_type": "address"
+                  }
+                }
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_two_pool_wasm_hash",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "bytes_n": {
+                "n": 32
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_three_pool_wasm_hash",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "bytes_n": {
+                "n": 32
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_two_pool_wasm_hash",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_three_pool_wasm_hash",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FactoryInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "pools",
+          "type_": {
+            "map": {
+              "key_type": {
+                "vec": {
+                  "element_type": "address"
+                }
+              },
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "three_pool_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "two_pool_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Unimplemented",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Initialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "Uninitialized",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "InvalidArg",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "BrokenAddress",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "NotFound",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "Forbidden",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "CastFailed",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "TokenInsufficientBalance",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "U256Overflow",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "UnexpectedVecSize",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "ZeroAmount",
+          "value": 100
+        },
+        {
+          "doc": "",
+          "name": "PoolOverflow",
+          "value": 101
+        },
+        {
+          "doc": "",
+          "name": "ZeroChanges",
+          "value": 102
+        },
+        {
+          "doc": "",
+          "name": "NotEnoughAmount",
+          "value": 103
+        },
+        {
+          "doc": "",
+          "name": "InsufficientReceivedAmount",
+          "value": 104
+        },
+        {
+          "doc": "",
+          "name": "Slippage",
+          "value": 105
+        },
+        {
+          "doc": "",
+          "name": "InvalidFirstDeposit",
+          "value": 106
+        },
+        {
+          "doc": "",
+          "name": "PoolExist",
+          "value": 200
+        },
+        {
+          "doc": "",
+          "name": "IdenticalAddresses",
+          "value": 201
+        },
+        {
+          "doc": "",
+          "name": "MaxPoolsNumReached",
+          "value": 202
+        },
+        {
+          "doc": "",
+          "name": "InvalidNumberOfTokens",
+          "value": 203
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Admin",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": "address"
+        }
+      ]
+    }
+  }
+]

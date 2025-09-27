@@ -1,0 +1,898 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "fee_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "mine_multiplier",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner_address",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_address",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "fee_address",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "max_entry_lifetime",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "max_payment_count",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "mine_multiplier",
+          "type_": {
+            "option": {
+              "value_type": "i128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "minter_royalty_rate",
+          "type_": {
+            "option": {
+              "value_type": "i128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "miner_royalty_rate",
+          "type_": {
+            "option": {
+              "value_type": "i128"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "colors_mine",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "source",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "colors",
+          "type_": {
+            "map": {
+              "key_type": "u32",
+              "value_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "miner",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "colors_transfer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "colors",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "tuple": {
+                  "value_types": [
+                    "address",
+                    "u32",
+                    "u32"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "color_balance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "color",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "miner",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "glyph_mint",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "minter",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "colors",
+          "type_": {
+            "map": {
+              "key_type": "address",
+              "value_type": {
+                "map": {
+                  "key_type": "u32",
+                  "value_type": {
+                    "vec": {
+                      "element_type": "u32"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "width",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "bytes_n": {
+                "n": 32
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "glyph_transfer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "hash_type",
+          "type_": {
+            "udt": {
+              "name": "HashType"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "glyph_scrape",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "to",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "hash_type",
+          "type_": {
+            "udt": {
+              "name": "HashType"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "glyph_get",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "hash_type",
+          "type_": {
+            "udt": {
+              "name": "HashType"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "GlyphType"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "offer_post",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sell",
+          "type_": {
+            "udt": {
+              "name": "Offer"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "buy",
+          "type_": {
+            "udt": {
+              "name": "Offer"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "offer_delete",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sell",
+          "type_": {
+            "udt": {
+              "name": "Offer"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "buy",
+          "type_": {
+            "option": {
+              "value_type": {
+                "udt": {
+                  "name": "Offer"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "offers_get",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sell",
+          "type_": {
+            "udt": {
+              "name": "Offer"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "buy",
+          "type_": {
+            "option": {
+              "value_type": {
+                "udt": {
+                  "name": "Offer"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotFound",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "NotEmpty",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "NotAuthorized",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "NotPermitted",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "MissingWidth",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "MissingId",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "MissingAddress",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "MissingBuy",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 9
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StorageKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "OwnerAddress"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TokenAddress"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "FeeAddress"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "MaxEntryLifetime"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "MaxPaymentCount"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "MineMultiplier"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "MinterRoyaltyRate"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "MinerRoyaltyRate"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Color",
+            "type_": [
+              "address",
+              "address",
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Colors",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Glyph",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "GlyphOwner",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "GlyphMinter",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "GlyphOffer",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "AssetOffer",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              },
+              "address",
+              "i128"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "HashType",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Colors",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Glyph",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GlyphType",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Colors",
+            "type_": [
+              {
+                "map": {
+                  "key_type": "address",
+                  "value_type": {
+                    "map": {
+                      "key_type": "u32",
+                      "value_type": {
+                        "vec": {
+                          "element_type": "u32"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Glyph",
+            "type_": [
+              {
+                "udt": {
+                  "name": "Glyph"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Glyph",
+      "fields": [
+        {
+          "doc": "",
+          "name": "colors",
+          "type_": {
+            "map": {
+              "key_type": "address",
+              "value_type": {
+                "map": {
+                  "key_type": "u32",
+                  "value_type": {
+                    "vec": {
+                      "element_type": "u32"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "length",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "width",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OfferCreate",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Glyph",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              },
+              {
+                "udt": {
+                  "name": "Offer"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Asset",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              },
+              "address",
+              "address",
+              "i128"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Offer",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Glyph",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Asset",
+            "type_": [
+              "address",
+              "i128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "AssetSell",
+            "type_": [
+              "address",
+              "address",
+              "i128"
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

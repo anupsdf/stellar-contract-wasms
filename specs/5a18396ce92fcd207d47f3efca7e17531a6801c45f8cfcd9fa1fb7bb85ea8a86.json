@@ -1,0 +1,326 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "desired_a",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "desired_b",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "LiquidityPoolError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "user_balance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_pools",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "tokens",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "map": {
+                "key_type": {
+                  "bytes_n": {
+                    "n": 32
+                  }
+                },
+                "value_type": "address"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "LiquidityPoolError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "balance_of",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "contract",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "hello",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "symbol"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Counter"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TotalUsdcDeposit"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PoolShare"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserTokenBalance",
+            "type_": [
+              "address",
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "RouterPoolId"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "PoolAlreadyExists",
+          "value": 401
+        },
+        {
+          "doc": "",
+          "name": "PoolNotFound",
+          "value": 404
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LiquidityPoolRouterError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "PoolNotFound",
+          "value": 301
+        },
+        {
+          "doc": "",
+          "name": "BadFee",
+          "value": 302
+        },
+        {
+          "doc": "",
+          "name": "StableswapHashMissing",
+          "value": 303
+        },
+        {
+          "doc": "",
+          "name": "PoolsOverMax",
+          "value": 305
+        },
+        {
+          "doc": "",
+          "name": "LiquidityCalculationError",
+          "value": 312
+        },
+        {
+          "doc": "",
+          "name": "RewardsAlreadyConfigured",
+          "value": 314
+        },
+        {
+          "doc": "",
+          "name": "InsufficientBalanceA",
+          "value": 315
+        },
+        {
+          "doc": "",
+          "name": "InsufficientBalanceB",
+          "value": 316
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LiquidityPoolError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InsufficientTokenABalance",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "InsufficientTokenBBalance",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "OutMinNotSatisfied",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "TransferFailed",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "StorageError",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "ContractInvocation",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "InvalidArguments",
+          "value": 7
+        }
+      ]
+    }
+  }
+]

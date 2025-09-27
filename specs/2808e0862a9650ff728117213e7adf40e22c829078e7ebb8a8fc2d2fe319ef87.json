@@ -1,0 +1,315 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "InitializedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "protocol_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "protocol_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "state",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SwapEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount_in",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "path",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initializes the contract and sets the Aqua multihop address.\\n\\n# Arguments\\n\\n* `e` - The contract environment.\\n* `protocol_id` - The identifier for the protocol.\\n* `protocol_address` - The address associated with the protocol.\\n\\n# Errors\\n\\nReturns an error if the contract is already initialized (`AdapterError::AlreadyInitialized`).",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "protocol_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "protocol_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "AdapterError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "swap_exact_tokens_for_tokens",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount_in",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_out_min",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "path",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "_deadline",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "bytes",
+          "type_": {
+            "option": {
+              "value_type": {
+                "vec": {
+                  "element_type": {
+                    "bytes_n": {
+                      "n": 32
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": "i128"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "AdapterError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "swap_tokens_for_exact_tokens",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount_out",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_in_max",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "path",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "_deadline",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "bytes",
+          "type_": {
+            "option": {
+              "value_type": {
+                "vec": {
+                  "element_type": {
+                    "bytes_n": {
+                      "n": 32
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": "i128"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "AdapterError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_protocol_id",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "string",
+            "error_type": {
+              "udt": {
+                "name": "AdapterError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_protocol_address",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "AdapterError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AdapterError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 401
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 402
+        },
+        {
+          "doc": "",
+          "name": "NegativeNotAllowed",
+          "value": 403
+        },
+        {
+          "doc": "",
+          "name": "ProtocolAddressNotFound",
+          "value": 404
+        },
+        {
+          "doc": "",
+          "name": "DeadlineExpired",
+          "value": 405
+        },
+        {
+          "doc": "",
+          "name": "MissingPoolHashes",
+          "value": 406
+        },
+        {
+          "doc": "",
+          "name": "WrongMinimumPathLength",
+          "value": 407
+        },
+        {
+          "doc": "",
+          "name": "WrongPoolHashesLength",
+          "value": 408
+        }
+      ]
+    }
+  }
+]

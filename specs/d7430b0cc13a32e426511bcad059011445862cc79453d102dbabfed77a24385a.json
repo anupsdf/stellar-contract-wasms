@@ -1,0 +1,611 @@
+[
+  {
+    "function_v0": {
+      "doc": "Initialize the backstop manager\\n\\n### Arguments\\n* owner - The address of the owner of the funds\\n* manager - The address of the manager of the funds\\n* bootstrapper - The address of the backstop bootstrapper contract\\n* backstop_token - The address of the backstop token the manager can interact with. This is fixed\\nas the backstop manager only supports the BLND-USDC LP token as the backstop token.\\n* backstops - The addresses of the backstops the manager can interact with initially\\n* pools - The addresses of the pools the manager can interact with initially\\n\\n### Errors\\n* AlreadyInitializedError - The contract has already been initialized",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "manager",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "admin_scope",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "bootstrapper",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "backstop_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "backstops",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "pools",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get owner",
+      "name": "owner",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get manager",
+      "name": "manager",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Manager"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the backstop bootstrapper contract",
+      "name": "backstop_bootstrapper",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the backstops this contract can interact with",
+      "name": "backstops",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the pools this contract can interact with",
+      "name": "pools",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Only Owner) Transfer tokens from the manager contract to another address\\n\\n### Arguments\\n* `token` - The address of the token to transfer\\n* `to` - The address to transfer the tokens to\\n* `amount` - The amount of tokens to transfer",
+      "name": "transfer_token",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Only Owner) Set the manager for the contract\\n\\n### Arguments\\n* `manager` - The address of the manager\\n* `scope` - The scope of the manager. 0 = None, 1 = Low, 2 = High",
+      "name": "set_manager",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "manager",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "scope",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Only Owner) Set the backstop bootstrapper contract\\n\\n### Arguments\\n* `bootstrapper` - The address of the backstop bootstrapper contract",
+      "name": "set_backstop_bootstrapper",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "bootstrapper",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Only Owner) Set the list of valid backstops\\n\\n### Arguments\\n* `backstops` - The addresses of the backstops the manager can interact with",
+      "name": "set_backstops",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "backstops",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Only Owner) Set the list of valid pools\\n\\n### Arguments\\n* `pools` - The addresses of the backstops the manager can interact with",
+      "name": "set_pools",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pools",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Manager, Low) Transfer tokens from the contract back to the owner\\n\\n### Arguments\\n* `token` - The address of the token to transfer\\n* `to` - The address to transfer the tokens to\\n* `amount` - The amount of tokens to transfer",
+      "name": "refund_token",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Manager, Low) Claim backstop deposit emissions from a list of pools for the contract\\n\\nReturns the amount of BLND emissions claimed\\n\\n### Arguments\\n* `from` - The caller of the function\\n* `backstop` - The address of the backstop contract\\n* `pool_address` - The address of the pool to claim from\\n* `min_lp_tokens_out` - The minimum amount of backstop tokens to mint with emissions\\n\\n### Errors\\nIf an invalid pool address is included",
+      "name": "b_claim",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "backstop",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "min_lp_tokens_out",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Manger, Medium) Deposit \"amount\" backstop tokens from the contract into the backstop for \"pool_address\"\\n\\nReturns the number of backstop pool shares minted\\n\\n### Arguments\\n* `from` - The caller of the function\\n* `backstop` - The address of the backstop contract\\n* `pool_address` - The address of the pool\\n* `amount` - The amount of tokens to deposit",
+      "name": "b_deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "backstop",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Manager, Medium) Queue deposited pool shares from the contract for withdraw from a backstop of a pool\\n\\nReturns the created queue for withdrawal\\n\\n### Arguments\\n* `from` - The address of the backstop contract\\n* `backstop` - The address of the backstop contract\\n* `pool_address` - The address of the pool\\n* `amount` - The amount of shares to queue for withdraw",
+      "name": "b_queue_withdrawal",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "backstop",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Manager, Medium) Dequeue a currently queued pool share withdraw for the contract from the backstop of a pool\\n\\n### Arguments\\n* `from` - The caller of the function\\n* `backstop` - The address of the backstop contract\\n* `pool_address` - The address of the pool\\n* `amount` - The amount of shares to dequeue",
+      "name": "b_dequeue_withdrawal",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "backstop",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Manager, High) Withdraw shares from the contract's withdraw queue for a backstop of a pool\\n\\nReturns the amount of tokens returned\\n\\n### Arguments\\n* `from` - The caller of the function\\n* `backstop` - The address of the backstop contract\\n* `pool_address` - The address of the pool\\n* `amount` - The amount of shares to withdraw",
+      "name": "b_withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "backstop",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Manager, High) Join the BLND-USDC LP.\\n\\n### Arguments\\n* `from` - The caller of the function\\n* `backstop_token` - The address of the backstop token\\n* `pool_amount_out` - The amount of pool shares to mint\\n* `max_amounts_in` - The maximum amount of tokens to deposit",
+      "name": "c_join_pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_amount_out",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "max_amounts_in",
+          "type_": {
+            "vec": {
+              "element_type": "i128"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Manager, High) Exit a backstop token's liquidity pool.\\n\\n### Arguments\\n* `from` - The caller of the function\\n* `burn_amount` - The amount of pool shares to burn\\n* `min_amounts_out` - The minimum amount of tokens to receive",
+      "name": "c_exit_pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "burn_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_amounts_out",
+          "type_": {
+            "vec": {
+              "element_type": "i128"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Manager, Low) Claims the proceeds of a backstop bootstrapping\\n\\n### Arguments\\n* `from` - The caller of the function\\n* `bootstrap_id` - The id of the bootstrapper\\n* `backstop` - The address of the backstop the bootstrap is for",
+      "name": "bb_claim_bootstrap",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "bootstrap_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "backstop",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Manager, Low) Refunds a cancelled backstop bootstrapping\\n\\n### Arguments\\n* `from` - The caller of the function\\n* `bootstrap_id` - The id of the bootstrapper",
+      "name": "bb_refund_bootstrap",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "bootstrap_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Manager, High) Creates a Backstop Bootstrapping with BLND\\n\\n### Arguments\\n* `from` - The caller of the function\\n* `bootstrap_token` - The address of the bootstrap token\\n* `bootstrap_amount` - The amount of tokens to bootstrap\\n* `pair_min` - The minimum amount of pool shares to mint\\n* `duration` - The duration of the bootstrapping period\\n* `pool_address` - The address of the pool",
+      "name": "bb_start_bootstrap",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "bootstrap_token_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "bootstrap_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "pair_min",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "duration",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "pool_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "The error codes for the contract.",
+      "lib": "",
+      "name": "BackstopManagerErrors",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InternalError",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitializedError",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "UnauthorizedError",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "NegativeAmountError",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "AllowanceError",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "BalanceError",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "OverflowError",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "ContractListOverMax",
+          "value": 100
+        },
+        {
+          "doc": "",
+          "name": "InvalidContractAddress",
+          "value": 101
+        },
+        {
+          "doc": "",
+          "name": "InvalidScope",
+          "value": 102
+        },
+        {
+          "doc": "",
+          "name": "InvalidTokenIndex",
+          "value": 103
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Manager",
+      "fields": [
+        {
+          "doc": "The address of the manager",
+          "name": "id",
+          "type_": "address"
+        },
+        {
+          "doc": "The scope of the manager\\n0 -> Low\\n1 -> Medium\\n2 -> High",
+          "name": "scope",
+          "type_": "u32"
+        }
+      ]
+    }
+  }
+]

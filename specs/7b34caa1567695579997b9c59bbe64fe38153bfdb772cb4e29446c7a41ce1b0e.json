@@ -1,0 +1,26 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "write",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "string"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_latest",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  }
+]

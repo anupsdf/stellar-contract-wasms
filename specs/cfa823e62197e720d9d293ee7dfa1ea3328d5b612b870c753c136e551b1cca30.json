@@ -1,0 +1,1009 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "chain_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "native_token_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "other_chain_ids",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "gas_oracle_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "primary_validator_key",
+          "type_": {
+            "bytes_n": {
+              "n": 65
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "secondary_validator_keys",
+          "type_": {
+            "map": {
+              "key_type": {
+                "bytes_n": {
+                  "n": 65
+                }
+              },
+              "value_type": "bool"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "send_message",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "message",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "receive_message",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "message",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "primary_signature",
+          "type_": {
+            "bytes_n": {
+              "n": 64
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "primary_recovery_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "secondary_signature",
+          "type_": {
+            "bytes_n": {
+              "n": 64
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "secondary_recovery_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_gas_usage",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "chain_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "gas_usage",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_secondary_validator",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "validator_address",
+          "type_": {
+            "bytes_n": {
+              "n": 65
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_secondary_validator",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "validator_address",
+          "type_": {
+            "bytes_n": {
+              "n": 65
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_primary_validator",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "validator_address",
+          "type_": {
+            "bytes_n": {
+              "n": 65
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_gas_oracle",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_other_chain_ids",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "other_chain_ids",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw_gas_tokens",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_config",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "Config"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "has_sent_message",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "message",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "bool",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "has_received_message",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "message",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "bool",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_sent_message_sequence",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "message",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u32",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_gas_usage",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "chain_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_transaction_cost",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "chain_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_gas_oracle",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "MessageSent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "message",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "MessageReceived",
+      "fields": [
+        {
+          "doc": "",
+          "name": "message",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SecondaryValidatorsSet",
+      "fields": [
+        {
+          "doc": "",
+          "name": "new_validators",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "old_validators",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Config",
+      "fields": [
+        {
+          "doc": "",
+          "name": "chain_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "other_chain_ids",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "primary_validator_key",
+          "type_": {
+            "bytes_n": {
+              "n": 65
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "secondary_validator_keys",
+          "type_": {
+            "map": {
+              "key_type": {
+                "bytes_n": {
+                  "n": 65
+                }
+              },
+              "value_type": "bool"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "SentMessage",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ReceivedMessage",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Admin",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GasOracleAddress",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GasUsage",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": {
+            "map": {
+              "key_type": "u32",
+              "value_type": "u128"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "NativeToken",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StopAuthority",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Unimplemented",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Initialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "Uninitialized",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "InvalidArg",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "InvalidChainId",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "InvalidOtherChainId",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "GasUsageNotSet",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "BrokenAddress",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "NotFound",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "TokenInsufficientBalance",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "CastFailed",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "ZeroAmount",
+          "value": 103
+        },
+        {
+          "doc": "",
+          "name": "PoolOverflow",
+          "value": 104
+        },
+        {
+          "doc": "",
+          "name": "ZeroChanges",
+          "value": 105
+        },
+        {
+          "doc": "",
+          "name": "ReservesExhausted",
+          "value": 106
+        },
+        {
+          "doc": "",
+          "name": "InsufficientReceivedAmount",
+          "value": 107
+        },
+        {
+          "doc": "",
+          "name": "BalanceRatioExceeded",
+          "value": 108
+        },
+        {
+          "doc": "",
+          "name": "Forbidden",
+          "value": 109
+        },
+        {
+          "doc": "",
+          "name": "UnauthorizedStopAuthority",
+          "value": 203
+        },
+        {
+          "doc": "",
+          "name": "SwapProhibited",
+          "value": 204
+        },
+        {
+          "doc": "",
+          "name": "AmountTooLowForFee",
+          "value": 205
+        },
+        {
+          "doc": "",
+          "name": "BridgeToTheZeroAddress",
+          "value": 206
+        },
+        {
+          "doc": "",
+          "name": "EmptyRecipient",
+          "value": 207
+        },
+        {
+          "doc": "",
+          "name": "SourceNotRegistered",
+          "value": 208
+        },
+        {
+          "doc": "",
+          "name": "WrongDestinationChain",
+          "value": 209
+        },
+        {
+          "doc": "",
+          "name": "UnknownAnotherChain",
+          "value": 210
+        },
+        {
+          "doc": "",
+          "name": "TokensAlreadySent",
+          "value": 211
+        },
+        {
+          "doc": "",
+          "name": "MessageProcessed",
+          "value": 212
+        },
+        {
+          "doc": "",
+          "name": "NotEnoughFee",
+          "value": 214
+        },
+        {
+          "doc": "",
+          "name": "NoMessage",
+          "value": 215
+        },
+        {
+          "doc": "",
+          "name": "NoReceivePool",
+          "value": 216
+        },
+        {
+          "doc": "",
+          "name": "NoPool",
+          "value": 217
+        },
+        {
+          "doc": "",
+          "name": "UnknownAnotherToken",
+          "value": 218
+        },
+        {
+          "doc": "",
+          "name": "WrongByteLength",
+          "value": 300
+        },
+        {
+          "doc": "",
+          "name": "HasMessage",
+          "value": 301
+        },
+        {
+          "doc": "",
+          "name": "InvalidPrimarySignature",
+          "value": 302
+        },
+        {
+          "doc": "",
+          "name": "InvalidSecondarySignature",
+          "value": 303
+        },
+        {
+          "doc": "",
+          "name": "NoGasDataForChain",
+          "value": 400
+        }
+      ]
+    }
+  }
+]

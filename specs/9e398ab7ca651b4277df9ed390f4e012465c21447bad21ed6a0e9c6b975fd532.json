@@ -1,0 +1,819 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "lp_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "min_bond",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_reward",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "manager",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "max_complexity",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "bond",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "tokens",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "unbond",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "stake_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "stake_timestamp",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_distribution_flow",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "distribute_rewards",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "fund_distribution",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "start_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "distribution_duration",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "token_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_config",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "ConfigResponse"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_admin",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_staked",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "StakedResponse"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_total_staked",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_annualized_rewards",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "AnnualizedRewardsResponse"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_withdrawable_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "WithdrawableRewardsResponse"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_distributed_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_undistributed_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "WithdrawAdjustmentKey",
+      "fields": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DistributionDataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Curve",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Distribution",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "WithdrawAdjustment",
+            "type_": [
+              {
+                "udt": {
+                  "name": "WithdrawAdjustmentKey"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Distribution",
+      "fields": [
+        {
+          "doc": "Bonus per staking day",
+          "name": "bonus_per_day_bps",
+          "type_": "u64"
+        },
+        {
+          "doc": "Total rewards distributed by this contract.",
+          "name": "distributed_total",
+          "type_": "u128"
+        },
+        {
+          "doc": "Max bonus for staking after 60 days",
+          "name": "max_bonus_bps",
+          "type_": "u64"
+        },
+        {
+          "doc": "Shares which were not fully distributed on previous distributions, and should be redistributed",
+          "name": "shares_leftover",
+          "type_": "u64"
+        },
+        {
+          "doc": "How many shares is single point worth",
+          "name": "shares_per_point",
+          "type_": "u128"
+        },
+        {
+          "doc": "Total rewards not yet withdrawn.",
+          "name": "withdrawable_total",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "WithdrawAdjustment",
+      "fields": [
+        {
+          "doc": "Represents a correction to the reward points for the user. This can be positive or negative.\\nA positive value indicates that the user should receive additional points (e.g., from a bonus or an error correction),\\nwhile a negative value signifies a reduction (e.g., due to a penalty or an adjustment for past over-allocations).",
+          "name": "shares_correction",
+          "type_": "i128"
+        },
+        {
+          "doc": "Represents the total amount of rewards that the user has withdrawn so far.\\nThis value ensures that a user doesn't withdraw more than they are owed and is used to\\ncalculate the net rewards a user can withdraw at any given time.",
+          "name": "withdrawn_rewards",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "InvalidMinBond",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "InvalidMinReward",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "InvalidBond",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "MinRewardNotEnough",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "RewardsInvalid",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "StakeNotFound",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "InvalidTime",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "DistributionExists",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "InvalidRewardAmount",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "InvalidMaxComplexity",
+          "value": 12
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ConfigResponse",
+      "fields": [
+        {
+          "doc": "",
+          "name": "config",
+          "type_": {
+            "udt": {
+              "name": "Config"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StakedResponse",
+      "fields": [
+        {
+          "doc": "",
+          "name": "stakes",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Stake"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AnnualizedReward",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AnnualizedRewardsResponse",
+      "fields": [
+        {
+          "doc": "",
+          "name": "rewards",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "AnnualizedReward"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "WithdrawableReward",
+      "fields": [
+        {
+          "doc": "",
+          "name": "reward_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "reward_amount",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "WithdrawableRewardsResponse",
+      "fields": [
+        {
+          "doc": "Amount of rewards assigned for withdrawal from the given address.",
+          "name": "rewards",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "WithdrawableReward"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Config",
+      "fields": [
+        {
+          "doc": "",
+          "name": "lp_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "manager",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "max_complexity",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "min_bond",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_reward",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Stake",
+      "fields": [
+        {
+          "doc": "The amount of staked tokens",
+          "name": "stake",
+          "type_": "i128"
+        },
+        {
+          "doc": "The timestamp when the stake was made",
+          "name": "stake_timestamp",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "BondingInfo",
+      "fields": [
+        {
+          "doc": "Last time when user has claimed rewards",
+          "name": "last_reward_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "The rewards debt is a mechanism to determine how much a user has already been credited in terms of staking rewards.\\nWhenever a user deposits or withdraws staked tokens to the pool, the rewards for the user is updated based on the\\naccumulated rewards per share, and the difference is stored as reward debt. When claiming rewards, this reward debt\\nis used to determine how much rewards a user can actually claim.",
+          "name": "reward_debt",
+          "type_": "u128"
+        },
+        {
+          "doc": "Vec of stakes sorted by stake timestamp",
+          "name": "stakes",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Stake"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "Total amount of staked tokens",
+          "name": "total_stake",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "Curve types",
+      "lib": "",
+      "name": "Curve",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "Constan curve, it will always have the same value",
+            "name": "Constant",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "Linear curve that grow linearly but later\\ntends to a constant saturated value.",
+            "name": "SaturatingLinear",
+            "type_": [
+              {
+                "udt": {
+                  "name": "SaturatingLinear"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "Curve with different slopes",
+            "name": "PiecewiseLinear",
+            "type_": [
+              {
+                "udt": {
+                  "name": "PiecewiseLinear"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Saturating Linear\\n$$f(x)=\\\\begin{cases}\\n[min(y) * amount],  & \\\\text{if x <= $x_1$ } \\\\\\\\\\\\\\\\\\n[y * amount],  & \\\\text{if $x_1$ >= x <= $x_2$ } \\\\\\\\\\\\\\\\\\n[max(y) * amount],  & \\\\text{if x >= $x_2$ }\\n\\\\end{cases}$$\\n\\nmin_y for all x <= min_x, max_y for all x >= max_x, linear in between",
+      "lib": "",
+      "name": "SaturatingLinear",
+      "fields": [
+        {
+          "doc": "time when curve has fully saturated",
+          "name": "max_x",
+          "type_": "u64"
+        },
+        {
+          "doc": "max value at saturated time",
+          "name": "max_y",
+          "type_": "u128"
+        },
+        {
+          "doc": "time when curve start",
+          "name": "min_x",
+          "type_": "u64"
+        },
+        {
+          "doc": "min value at start time",
+          "name": "min_y",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "This is a generalization of SaturatingLinear, steps must be arranged with increasing time [`u64`].\\nAny point before first step gets the first value, after last step the last value.\\nOtherwise, it is a linear interpolation between the two closest points.\\nVec of length 1 -> [`Constant`](Curve::Constant) .\\nVec of length 2 -> [`SaturatingLinear`] .",
+      "lib": "",
+      "name": "Step",
+      "fields": [
+        {
+          "doc": "",
+          "name": "time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PiecewiseLinear",
+      "fields": [
+        {
+          "doc": "steps",
+          "name": "steps",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Step"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+]

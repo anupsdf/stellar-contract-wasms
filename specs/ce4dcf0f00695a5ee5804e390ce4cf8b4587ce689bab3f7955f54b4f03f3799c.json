@@ -1,0 +1,505 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotAuthor",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "NotFoundStory",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "NotFoundStoryNft",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "StoryNftSoldOut",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "NotFoundStoryTask",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "StoryTaskDone",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "NotFoundTaskSubmit",
+          "value": 7
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Story",
+      "fields": [
+        {
+          "doc": "",
+          "name": "author",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "cid",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "next_task_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "story_id",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Task",
+      "fields": [
+        {
+          "doc": "",
+          "name": "cid",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "creator",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "next_submit_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "nft_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "reward_nfts",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Submit",
+      "fields": [
+        {
+          "doc": "",
+          "name": "cid",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "creator",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StoryFactory",
+      "fields": [
+        {
+          "doc": "",
+          "name": "next_sid",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "stories",
+          "type_": {
+            "map": {
+              "key_type": "u64",
+              "value_type": {
+                "udt": {
+                  "name": "Story"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "story_task",
+          "type_": {
+            "map": {
+              "key_type": "string",
+              "value_type": {
+                "udt": {
+                  "name": "Task"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "task_submit",
+          "type_": {
+            "map": {
+              "key_type": "string",
+              "value_type": {
+                "udt": {
+                  "name": "Submit"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Processing",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "publish_story",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "cid",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u64",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_story",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "story_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "cid",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u64",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_task",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "story_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "cid",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "nft_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "reward_nfts",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u64",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_task",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "story_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "task_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "cid",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u64",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "cancel_task",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "story_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "task_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u64",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_task_submit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "story_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "task_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "cid",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u64",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw_task_submit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "story_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "task_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "submit_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u64",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "mark_task_done",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "story_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "task_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "submit_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u64",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_state",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "StoryFactory"
+          }
+        }
+      ]
+    }
+  }
+]

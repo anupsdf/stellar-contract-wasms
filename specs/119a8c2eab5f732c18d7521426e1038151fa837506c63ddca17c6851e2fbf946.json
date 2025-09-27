@@ -1,0 +1,1294 @@
+[
+  {
+    "function_v0": {
+      "doc": "Initializes the token contract with provided parameters.\\n\\n# Parameters\\n- `params`: A vector containing 20 parameters in order:\\n- `[0]`: `admin` (`Address`)\\n- `[1]`: `decimal` (`u32`)\\n- `[2]`: `name` (`String`)\\n- `[3]`: `symbol` (`String`)\\n- `[4]`: `tax_address` (`Address`)\\n- `[5]`: `initial_supply` (`i128`)\\n- `[6]`: `max_token_amount` (`i128`)\\n- `[7]`: `document_uri` (`String`)\\n- `[8]`: `tax_bps` (`u32`)\\n- `[9]`: `deflation_bps` (`u32`)\\n- `[10-19]`: `bool` flags for token features\\n\\n# Returns\\n- `Ok(())` if successful.\\n- `Err(ContractError)` if an error occurs.",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "params",
+          "type_": {
+            "vec": {
+              "element_type": "val"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Mints new tokens to a specified address.\\n\\n# Parameters\\n- `to`: The address that will receive the minted tokens.\\n- `amount`: The amount of tokens to mint (must be a non-negative integer).\\n\\n# Returns\\n- `Ok(())` if the minting operation is successful.\\n- `Err(ContractError)` if an error occurs during minting.\\n\\n# Events\\n\\nEmits an event with topics `[\"mint\", from: Address, to: Address], data = amount:\\ni128`\\n\\n# Errors\\n- `NegativeAmount`: If the `amount` is negative.\\n- `ContractPaused`: If the contract is currently paused and does not allow minting.\\n- `MintingNotEnabled`: If minting is disabled in the contract configuration.\\n- `DestBalanceExceedsMaxAllowed`: If the recipient's balance plus the `amount` exceeds the maximum allowed per address.\\n- `RecipientBlacklisted`: If the recipient address is blacklisted and cannot receive tokens.\\n- `RecipientNotWhitelisted`: If whitelisting is enabled and the recipient is not whitelisted.",
+      "name": "mint",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Updates the administrator address for the contract.\\n\\n# Parameters\\n- `new_admin`: The new administrator address to be set for the contract.\\n\\n# Returns\\n- `Ok(())` if the administrator is successfully updated.\\n- `Err(ContractError)` if an error occurs during the update process.\\n\\n# Events\\n\\nEmits an event with topics `[\"set_admin\", admin: Address, new_admin: Address]\\n\\n# Errors\\n- `ContractPaused`: Thrown if the contract is paused, preventing administrative actions during this state.",
+      "name": "set_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Allows the current administrator to renounce ownership of the contract, removing the administrator address.\\n\\n# Returns\\n- `Ok(())` if the administrator is successfully removed.\\n- `Err(ContractError)` if an error occurs during the renouncement process.\\n\\n# Events\\n\\nEmits an event with topics `[\"owner_renounced\"]\\n\\n# Errors\\n- `Unauthorized`: Thrown if the caller is not the current administrator, ensuring only the administrator can renounce ownership.\\n- `ContractPaused`: Thrown if the contract is paused, preventing administrative actions during this state.",
+      "name": "renounce_ownership",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the initial token owner address set during contract initialization.\\n\\n# Returns\\n- `Address`: The address of the initial token owner.",
+      "name": "get_init_token_owner",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the current administrator (owner) of the contract.\\n\\n# Returns\\n- `Address` : The address of the current administrator.\\n- `Err(ContractError)` if an error occurs during the get_owner process.\\n\\n# Errors\\n- `OwnerNotFound`: If the owner does not exist or has been renounced.",
+      "name": "get_owner",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the address where tax tokens are sent.\\n\\n# Returns\\n- `Address`: The tax address.",
+      "name": "get_tax_address",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the tax basis points (bps) configured for the token.\\n\\n# Returns\\n- `u32`: The tax basis points.",
+      "name": "get_tax_bps",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the deflation basis points (bps) configured for the token.\\n\\n# Returns\\n- `u32`: The deflation basis points.",
+      "name": "get_deflation_bps",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the initial document URI set during contract initialization.\\n\\n# Returns\\n- `String`: The initial document URI.",
+      "name": "get_initial_document_uri",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the current document URI.\\n\\n# Returns\\n- `String`: The current document URI.",
+      "name": "get_document_uri",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the initial supply of tokens that was set during contract initialization.\\n\\n# Returns\\n- `i128`: The initial token supply.",
+      "name": "get_init_supply",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the current total supply of tokens.\\n\\n# Returns\\n- `i128`: The total supply of tokens.",
+      "name": "get_total_supply",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if the contract is currently paused.\\n\\n# Returns\\n- `bool`: `true` if the contract is paused, `false` otherwise.",
+      "name": "get_is_paused",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the maximum token amount allowed per address.\\n\\n# Returns\\n- `i128`: The maximum token amount per address.",
+      "name": "get_max_token_amount_per_addr",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if the token is mintable.\\n\\n# Returns\\n- `bool`: `true` if minting is enabled, `false` otherwise.",
+      "name": "get_is_mintable",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if the token is burnable.\\n\\n# Returns\\n- `bool`: `true` if burning is enabled, `false` otherwise.",
+      "name": "get_is_burnable",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if the contract is pausable.\\n\\n# Returns\\n- `bool`: `true` if pausing is enabled, `false` otherwise.",
+      "name": "get_is_pausable",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if blacklisting is enabled for the token.\\n\\n# Returns\\n- `bool`: `true` if blacklisting is enabled, `false` otherwise.",
+      "name": "get_is_blacklist_enabled",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if whitelisting is enabled for the token.\\n\\n# Returns\\n- `bool`: `true` if whitelisting is enabled, `false` otherwise.",
+      "name": "get_is_whitelist_enabled",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if modifying the document URI is allowed.\\n\\n# Returns\\n- `bool`: `true` if document URI modification is allowed, `false` otherwise.",
+      "name": "get_is_document_allowed",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if a maximum token amount per address is set.\\n\\n# Returns\\n- `bool`: `true` if a maximum token amount is set, `false` otherwise.",
+      "name": "get_is_max_amount_of_tokens_set",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if force transfers are allowed.\\n\\n# Returns\\n- `bool`: `true` if force transfers are allowed, `false` otherwise.",
+      "name": "get_is_force_transfer_allowed",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if the token is taxable.\\n\\n# Returns\\n- `bool`: `true` if taxation is enabled, `false` otherwise.",
+      "name": "get_is_taxable",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if the token is deflationary.\\n\\n# Returns\\n- `bool`: `true` if deflation is enabled, `false` otherwise.",
+      "name": "get_is_deflationary",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sets the document URI for the contract.\\n\\n# Parameters\\n- `document_uri`: The new document URI to be set for the contract.\\n\\n# Returns\\n- `Ok(())` if the document URI is successfully updated.\\n- `Err(ContractError)` if an error occurs during the update process.\\n\\n# Errors\\n- `ContractPaused`: Thrown if the contract is currently paused, preventing any administrative actions.\\n- `DocumentUriNotAllowed`: Thrown if modifying the document URI is not permitted by the contract's configuration.",
+      "name": "set_document_uri",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "document_uri",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sets a new maximum token amount allowed per address for the contract.\\n\\n# Parameters\\n- `new_max_token_amount`: The new maximum token amount per address to be set.\\n\\n# Returns\\n- `Ok(())` if the maximum token amount per address is successfully updated.\\n- `Err(ContractError)` if an error occurs during the update process.\\n# Events\\n\\nEmits an event with topics `[\"max_token_amount_per_addr_set\"], data = new_max_token_amount:\\ni128`\\n\\n# Errors\\n- `ContractPaused`: Thrown if the contract is currently paused, preventing any administrative actions.\\n- `MaxTokenAmountNotAllowed`: Thrown if modifying the maximum token amount per address is not allowed by the contract's configuration.\\n- `MaxTokenAmountPerAddrLtPrev`: Thrown if the new maximum token amount is less than or equal to the current maximum, as it must be strictly greater to update.",
+      "name": "set_max_token_amount_per_address",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_max_token_amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sets the tax configuration for the contract, including the tax address and tax basis points (bps).\\n\\n# Parameters\\n- `new_tax_address`: The new address where tax tokens will be sent.\\n- `new_tax_bps`: The new tax basis points to be set, which determine the percentage of tax.\\n\\n# Returns\\n- `Ok(())` if the tax configuration is successfully updated.\\n- `Err(ContractError)` if an error occurs during the update process.\\n# Events\\n\\nEmits an event with topics `[\"tax_config_set\", new_tax_address: Address], data = new_tax_bps:\\nu32`\\n\\n# Errors\\n- `ContractPaused`: Thrown if the contract is currently paused, preventing any administrative actions.\\n- `TokenIsNotTaxable`: Thrown if the contract's configuration does not allow taxation.\\n- `InvalidTaxBPS`: Thrown if `new_tax_bps` exceeds the maximum allowed basis points, ensuring the tax rate remains within valid limits.",
+      "name": "set_tax_config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_tax_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_tax_bps",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sets the deflation configuration for the contract, including the deflation basis points (bps).\\n\\n# Parameters\\n- `new_deflation_bps`: The new deflation basis points to be set, which determine the percentage of deflation.\\n\\n# Returns\\n- `Ok(())` if the deflation configuration is successfully updated.\\n- `Err(ContractError)` if an error occurs during the update process.\\n\\n# Events\\n\\nEmits an event with topics `[\"deflation_config_set\"], data = new_deflation_bps:\\nu32`\\n\\n# Errors\\n- `ContractPaused`: Thrown if the contract is currently paused, preventing any administrative actions.\\n- `TokenIsNotDeflationary`: Thrown if the contract\\xe2\\x80\\x99s configuration does not allow deflation.\\n- `InvalidDeflationBPS`: Thrown if `new_deflation_bps` exceeds the maximum allowed basis points, ensuring the deflation rate remains within valid limits.",
+      "name": "set_deflation_config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_deflation_bps",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Pauses the contract, preventing certain actions until it is resumed.\\n\\n# Returns\\n- `Ok(())` if the contract is successfully paused.\\n- `Err(ContractError)` if an error occurs during the pausing process.\\n\\n# Events\\n\\nEmits an event with topics `[\"contract_paused\"]\\n\\n# Errors\\n- `PausingNotEnabled`: Thrown if the contract configuration does not allow pausing.",
+      "name": "pause",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Unpauses the contract, allowing actions to be resumed after a pause.\\n\\n# Returns\\n- `Ok(())` if the contract is successfully unpaused.\\n- `Err(ContractError)` if an error occurs during the unpausing process.\\n\\n# Events\\n\\nEmits an event with topics `[\"contract_unpaused\"]\\n\\n# Errors\\n- `PausingNotEnabled`: Thrown if the contract configuration does not allow pausing and unpausing.",
+      "name": "unpause",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if an address is whitelisted.\\n\\n# Returns\\n- `bool`: `true` if the address is whitelisted, `false` otherwise.",
+      "name": "is_whitelisted",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "addr",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Adds an address to the blacklist, preventing it from participating in certain contract actions.\\n\\n# Parameters\\n- `addr`: The address to be blacklisted.\\n\\n# Returns\\n- `Ok(())` if the address is successfully blacklisted.\\n- `Err(ContractError)` if an error occurs during the blacklisting process.\\n\\n# Events\\n\\nEmits an event with topics `[\"user_blacklisted\"], data = addr:\\nAddress`\\n\\n# Errors\\n- `ContractPaused`: Thrown if the contract is currently paused, preventing any administrative actions.\\n- `BlacklistNotEnabled`: Thrown if the contract configuration does not allow blacklisting.\\n- `AddrAlreadyBlacklisted`: Thrown if the address is already blacklisted.\\n- `CannotBlacklistWhitelistedAddr`: Thrown if the address is currently whitelisted, preventing it from being blacklisted.",
+      "name": "blacklist",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "addr",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Removes an address from the blacklist, allowing it to participate in contract actions again.\\n\\n# Parameters\\n- `addr`: The address to be removed from the blacklist.\\n\\n# Returns\\n- `Ok(())` if the address is successfully removed from the blacklist.\\n- `Err(ContractError)` if an error occurs during the removal process.\\n\\n# Events\\n\\nEmits an event with topics `[\"user_unblacklisted\"], data = addr:\\nAddress`\\n\\n# Errors\\n- `ContractPaused`: Thrown if the contract is currently paused, preventing any administrative actions.\\n- `BlacklistNotEnabled`: Thrown if the contract configuration does not allow blacklisting.\\n- `AddrAlreadyUnblacklisted`: Thrown if the address is not currently blacklisted.",
+      "name": "remove_from_blacklist",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "addr",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns all the whitelisted addresses.\\n\\n# Returns\\n- `Vec<Address>`: A vector of addresses representing the whitelisted addresses.",
+      "name": "get_all_whitelisted_addresses",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Removes an address from the whitelist, revoking any special permissions it had in the contract.\\n\\n# Parameters\\n- `address`: The address to be removed from the whitelist.\\n\\n# Returns\\n- `Ok(())` if the address is successfully removed from the whitelist.\\n- `Err(ContractError)` if an error occurs during the removal process.\\n\\n# Events\\n\\nEmits an event with topics `[\"user_unwhitelisted\"], data = address:\\nAddress`\\n\\n# Errors\\n- `ContractPaused`: Thrown if the contract is currently paused, preventing any administrative actions.\\n- `WhitelistNotEnabled`: Thrown if the contract configuration does not allow whitelisting.",
+      "name": "remove_address_from_whitelist",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Clears all addresses from the whitelist, removing any special permissions associated with whitelisted addresses.\\n\\n# Returns\\n- `Ok(())` if the whitelist is successfully cleared.\\n- `Err(ContractError)` if an error occurs during the clearing process.\\n\\n# Events\\n\\nEmits an event with topics `[\"whitelist_cleared\"]\\n\\n# Errors\\n- `ContractPaused`: Thrown if the contract is currently paused, preventing any administrative actions.\\n- `WhitelistNotEnabled`: Thrown if the contract configuration does not allow whitelisting.",
+      "name": "clear_whitelist",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Adds multiple addresses to the whitelist, granting them any special permissions associated with whitelisted addresses.\\n\\n# Parameters\\n- `new_addresses`: A vector of addresses to be added to the whitelist.\\n\\n# Returns\\n- `Ok(())` if the addresses are successfully added to the whitelist.\\n- `Err(ContractError)` if an error occurs during the addition process.\\n\\n# Events\\n\\nEmits an event with topics `[\"users_whitelisted\"], data = new_addresses:\\nVec<Address>`\\n\\n# Errors\\n- `ContractPaused`: Thrown if the contract is currently paused, preventing any administrative actions.\\n- `WhitelistNotEnabled`: Thrown if the contract configuration does not allow whitelisting.",
+      "name": "add_addresses_to_whitelist",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_addresses",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the allowance amount that a spender is authorized to use on behalf of a given address.\\n\\n# Parameters\\n- `from`: The address that has granted the allowance.\\n- `spender`: The address authorized to spend on behalf of `from`.\\n\\n# Returns\\n- `i128`: The amount of tokens the spender is allowed to use.",
+      "name": "allowance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sets the allowance amount that a spender is authorized to use on behalf of a given address, with an expiration ledger.\\n\\n# Parameters\\n- `from`: The address granting the allowance.\\n- `spender`: The address authorized to spend on behalf of `from`.\\n- `amount`: The allowance amount being granted. Must be non-negative.\\n- `expiration_ledger`: The ledger number at which the allowance expires.\\n# Events\\n\\nEmits an event with topics `[\"approve\", from: Address,\\nspender: Address], data = [amount: i128, expiration_ledger: u32]`",
+      "name": "approve",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "expiration_ledger",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the balance of `id`.\\n\\n# Arguments\\n\\n* `id` - The address for which a balance is being queried. If the\\naddress has no existing balance, returns 0.",
+      "name": "balance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Transfers a specified amount of tokens from one address to another, applying any applicable tax and deflation adjustments.\\nThe method also checks if the any address is blacklisted, or if whitelist is enabled, if all participants are whitelisted.\\nIf a max amount of tokens is set per address, the method checks the balance of the receiver to not exceed that amount.\\n\\n# Parameters\\n- `from`: The address sending the tokens.\\n- `to`: The address receiving the tokens.\\n- `amount`: The amount of tokens to be transferred. Must be non-negative.\\n\\n# Events\\nEmits an event with topics `[\"transfer\", from: Address, to: Address],\\ndata = amount: i128`",
+      "name": "transfer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Transfer `amount` from `from` to `to`, consuming the allowance of\\n`spender`. Authorized by spender (`spender.require_auth()`).\\nThe method also checks if the any address is blacklisted, or if whitelist is enabled, if all participants are whitelisted.\\nIf a max amount of tokens is set per address, the method checks the balance of the receiver to not exceed that amount.\\n\\n# Parameters\\n- `spender`: The address authorized to spend tokens on behalf of `from`.\\n- `from`: The address sending the tokens.\\n- `to`: The address receiving the tokens.\\n- `amount`: The amount of tokens to be transferred. Must be non-negative.\\n\\n# Events\\nEmits an event with topics `[\"transfer\", from: Address, to: Address],\\ndata = amount: i128`",
+      "name": "transfer_from",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Burn `amount` from `from`. Only the owner can burn tokens.\\nThe method works only if burning is enabled, and contract is not paused.\\n\\n# Parameters\\n- `from`: The address from which tokens are to be burned. Must be the contract owner.\\n- `amount`: The amount of tokens to burn. Must be non-negative.\\n\\n# Events\\nEmits an event with topics `[\"burn\", from: Address], data = amount:\\ni128`",
+      "name": "burn",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Burn `amount` from `from`, consuming the allowance of `spender`.\\n\\n# Parameters\\n\\n- `spender`: The address authorizing the burn, and having its allowance\\nconsumed during the burn.\\n- `from`: The address from which tokens are to be burned. Must be the contract owner.\\n- `amount`: The amount of tokens to burn. Must be non-negative.\\n\\n# Events\\n\\nEmits an event with topics `[\"burn\", from: Address], data = amount:\\ni128`",
+      "name": "burn_from",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the number of decimals used to represent amounts of this token.",
+      "name": "decimals",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the name for this token.",
+      "name": "name",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the symbol for this token.",
+      "name": "symbol",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AllowanceDataKey",
+      "fields": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AllowanceValue",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "expiration_ledger",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Allowance",
+            "type_": [
+              {
+                "udt": {
+                  "name": "AllowanceDataKey"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Balance",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Nonce",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "State",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Blacklisted",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Whitelist"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "WhitelistedAddressesVec"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ContractState"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TokenConfigProps"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractState",
+      "fields": [
+        {
+          "doc": "",
+          "name": "deflation_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "document_uri",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "init_supply",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "init_token_owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "initial_document_uri",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "is_paused",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "max_token_amount_per_addr",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "tax_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "tax_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "total_supply",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenConfigProps",
+      "fields": [
+        {
+          "doc": "",
+          "name": "is_blacklist_enabled",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "is_burnable",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "is_deflationary",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "is_document_allowed",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "is_force_transfer_allowed",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "is_max_amount_of_tokens_set",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "is_mintable",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "is_pausable",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "is_taxable",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "is_whitelist_enabled",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InvalidMaxTokenAmount",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "InvalidDecimals",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "MaxTokenAmountPerAddrLtPrev",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "BlacklistNotEnabled",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "AddrAlreadyBlacklisted",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "AddrAlreadyUnblacklisted",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "CannotBlacklistWhitelistedAddr",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "RecipientBlacklisted",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "SenderBlacklisted",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "RecipientNotWhitelisted",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "SenderNotWhitelisted",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "DestBalanceExceedsMaxAllowed",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "MintingNotEnabled",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "BurningNotEnabled",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "PausingNotEnabled",
+          "value": 15
+        },
+        {
+          "doc": "",
+          "name": "WhitelistNotEnabled",
+          "value": 16
+        },
+        {
+          "doc": "",
+          "name": "CannotWhitelistBlacklistedAddr",
+          "value": 17
+        },
+        {
+          "doc": "",
+          "name": "DocumentUriNotAllowed",
+          "value": 18
+        },
+        {
+          "doc": "",
+          "name": "MaxTokenAmountNotAllowed",
+          "value": 19
+        },
+        {
+          "doc": "",
+          "name": "TokenIsNotTaxable",
+          "value": 20
+        },
+        {
+          "doc": "",
+          "name": "TokenIsNotDeflationary",
+          "value": 21
+        },
+        {
+          "doc": "",
+          "name": "InvalidTaxBPS",
+          "value": 22
+        },
+        {
+          "doc": "",
+          "name": "InvalidDeflationBPS",
+          "value": 23
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 24
+        },
+        {
+          "doc": "",
+          "name": "ContractPaused",
+          "value": 25
+        },
+        {
+          "doc": "",
+          "name": "InvalidParamsLength",
+          "value": 26
+        },
+        {
+          "doc": "",
+          "name": "MissingParam",
+          "value": 27
+        },
+        {
+          "doc": "",
+          "name": "InvalidParamType",
+          "value": 28
+        },
+        {
+          "doc": "",
+          "name": "OwnerNotFound",
+          "value": 29
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenMetadata",
+      "fields": [
+        {
+          "doc": "",
+          "name": "decimal",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,164 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "sum",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "x",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "y",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "sub",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "x",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "y",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "mul",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "x",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "y",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "div",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "x",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "y",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "last_op",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "tuple": {
+                "value_types": [
+                  "u32",
+                  "u32",
+                  "u32",
+                  "u32",
+                  "u32"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_op",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "tuple": {
+                "value_types": [
+                  "u32",
+                  "u32",
+                  "u32",
+                  "u32",
+                  "u32"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "all_op",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "tuple": {
+                "value_types": [
+                  "u32",
+                  "u32",
+                  "u32",
+                  "u32",
+                  "u32"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+]

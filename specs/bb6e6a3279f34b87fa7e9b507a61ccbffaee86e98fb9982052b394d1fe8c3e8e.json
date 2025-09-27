@@ -1,0 +1,179 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Init"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Deployer"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "LockHash",
+            "type_": [
+              "bytes"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LockEventData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "dest_chain",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "dest_token",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "from_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "in_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "recipient_address",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "swapped_amount",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LockHashStatus",
+      "fields": [
+        {
+          "doc": "",
+          "name": "processed",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initialize the contract with admin address. Can be called by deployer to set/update admin.",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "deployer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "lock",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "dest_token",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "in_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "dest_chain",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "recipient_address",
+          "type_": "string"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the current admin address",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the deployer address",
+      "name": "get_deployer",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Check if contract is initialized",
+      "name": "is_initialized",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  }
+]

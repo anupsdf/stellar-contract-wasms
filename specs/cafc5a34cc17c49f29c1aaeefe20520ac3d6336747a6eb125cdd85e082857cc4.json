@@ -1,0 +1,917 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "Represents a sell offer in the marketplace.\\n\\nAn offer is created when a seller wants to exchange USDC for KES. The seller deposits\\nUSDC into the contract as escrow, and the offer becomes available for buyers to trade against.\\n\\n# Design Decisions\\n- Seller address identifies who created the offer and owns the escrowed USDC\\n- USDC amount is stored with 6 decimal precision (Stellar USDC standard)\\n- KES amount represents the off-chain currency amount expected in return\\n- No expiration field yet - could be added in future versions\\n- No partial fulfillment support - offers are atomic (all-or-nothing)\\n\\n# Business Logic\\n- One offer per seller (enforced by contract logic)\\n- USDC is held in escrow until trade completion or offer cancellation\\n- Exchange rate is implicitly defined by usdc_amount / kes_amount ratio",
+      "lib": "",
+      "name": "Offer",
+      "fields": [
+        {
+          "doc": "Amount of KES (Kenyan Shillings) expected in return\\nThis is settled off-chain through traditional payment methods\\nThe ratio usdc_amount/kes_amount defines the exchange rate\\nExample: 150_000 = 150 KES (assuming 3 decimal precision)",
+          "name": "kes_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "The address of the seller who created this offer\\nThis address owns the escrowed USDC and will receive KES payment off-chain",
+          "name": "seller",
+          "type_": "address"
+        },
+        {
+          "doc": "Amount of USDC being offered for sale (with 6 decimal places)\\nThis amount is held in escrow by the contract until trade completion\\nExample: 1_000_000 = 1 USDC, 500_000 = 0.5 USDC",
+          "name": "usdc_amount",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Represents an active trade between a buyer and seller.\\n\\nA trade is initiated when a buyer chooses to trade against an existing offer.\\nThe trade tracks the progress through various states until completion or cancellation.\\n\\n# Trade Lifecycle\\n1. Initiated: Trade created, waiting for payment confirmations\\n2. PaymentConfirmed: Both parties confirmed payment, USDC ready for release\\n3. Completed: USDC released to buyer, trade successful\\n4. Cancelled: Trade cancelled, USDC returned to seller\\n5. Disputed: Conflict raised, requires admin intervention\\n\\n# Security Features\\n- Start time enables expiration checking to prevent indefinite escrow\\n- Separate confirmation flags prevent single-party manipulation\\n- Status tracking ensures proper state transitions\\n- Immutable offer_id links trade to specific offer terms",
+      "lib": "",
+      "name": "Trade",
+      "fields": [
+        {
+          "doc": "The address of the buyer initiating this trade\\nThis address will receive the USDC upon successful completion",
+          "name": "buyer",
+          "type_": "address"
+        },
+        {
+          "doc": "Whether the buyer has confirmed sending KES payment off-chain\\nBuyer sets this to true after sending KES via traditional payment methods\\nPart of the dual-confirmation system for trade completion",
+          "name": "buyer_confirmed_payment",
+          "type_": "bool"
+        },
+        {
+          "doc": "The ID of the offer this trade is executing against\\nLinks this trade to specific offer terms (amounts, seller, etc.)",
+          "name": "offer_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "Whether the seller has confirmed receiving KES payment off-chain\\nSeller sets this to true after receiving and verifying KES payment\\nWhen both buyer and seller confirm, USDC is automatically released",
+          "name": "seller_confirmed_payment",
+          "type_": "bool"
+        },
+        {
+          "doc": "Timestamp when the trade was initiated (in seconds since epoch)\\nUsed for calculating trade expiration and timeout handling\\nPrevents trades from staying active indefinitely",
+          "name": "start_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "Current status of the trade in its lifecycle\\nDetermines what operations are allowed and what happens next",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "TradeStatus"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "Represents the current state of a trade in its lifecycle.\\n\\nThe status determines which operations are allowed and guides the trade flow.\\nState transitions are carefully controlled to prevent invalid operations.\\n\\n# State Transition Rules\\n- Initiated \\xe2\\x86\\x92 PaymentConfirmed (when both parties confirm)\\n- Initiated \\xe2\\x86\\x92 Cancelled (by participant request or expiration)\\n- Initiated \\xe2\\x86\\x92 Disputed (when conflicts arise)\\n- PaymentConfirmed \\xe2\\x86\\x92 Completed (automatic USDC release)\\n- Disputed \\xe2\\x86\\x92 Completed or Cancelled (by admin resolution)\\n\\n# Security Considerations\\n- Final states (Completed, Cancelled) prevent further modifications\\n- Disputed state requires admin intervention to resolve\\n- State changes are irreversible to maintain audit trail",
+      "lib": "",
+      "name": "TradeStatus",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "Trade has been created and is waiting for payment confirmations\\nBoth buyer and seller can still cancel at this stage\\nTrade will expire if confirmations don't happen within time limit",
+            "name": "Initiated"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "Both buyer and seller have confirmed payment completion\\nUSDC is ready to be released to buyer automatically\\nThis is a brief transitional state before Completed",
+            "name": "PaymentConfirmed"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "Trade has been successfully completed\\nUSDC has been transferred to buyer, fees collected\\nThis is a final state - no further changes allowed",
+            "name": "Completed"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "Trade has been cancelled by participants or due to expiration\\nUSDC has been returned to seller\\nThis is a final state - no further changes allowed",
+            "name": "Cancelled"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "A dispute has been raised and requires admin intervention\\nNo automatic operations can occur until admin resolves the dispute\\nAdmin can choose to complete trade or cancel it",
+            "name": "Disputed"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "Represents admin's decision when resolving a disputed trade.\\n\\nWhen trades are disputed, only the admin can resolve them by choosing\\none of two outcomes based on off-chain investigation.\\n\\n# Resolution Logic\\n- ReleaseToBuyer: Admin determined payment was successful, complete the trade\\n- RefundToSeller: Admin determined payment failed or was fraudulent, cancel trade\\n\\n# Fee Handling\\n- ReleaseToBuyer: Normal fees are collected as if trade completed normally\\n- RefundToSeller: No fees collected, full amount returned to seller",
+      "lib": "",
+      "name": "DisputeResolution",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "Release escrowed USDC to buyer (minus fees)\\nUsed when admin determines the trade should complete successfully\\nFees are collected normally as this counts as a successful trade",
+            "name": "ReleaseToBuyer"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "Refund full USDC amount to seller (no fees)\\nUsed when admin determines the trade should be cancelled\\nNo fees collected as this is treated as a failed/fraudulent trade",
+            "name": "RefundToSeller"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "Comprehensive error types for all possible failure scenarios in the marketplace.\\n\\nEach error is assigned a unique numeric code for easy identification in logs\\nand client applications. Error codes are grouped logically by function area.\\n\\n# Error Code Ranges\\n- 1-5: Entity not found errors\\n- 6-10: Authorization and access control errors\\n- 11-15: Business logic and validation errors\\n- 16-20: Technical and system errors\\n\\n# Design Principles\\n- Descriptive names that clearly indicate the problem\\n- Unique numeric codes for programmatic handling\\n- Comprehensive coverage of all failure scenarios\\n- Grouped by logical categories for maintainability",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "Requested offer ID does not exist in the marketplace\\nThis can happen if offer was never created, already cancelled, or completed",
+          "name": "OfferNotFound",
+          "value": 1
+        },
+        {
+          "doc": "Requested trade ID does not exist in the marketplace\\nThis can happen if trade was never created or ID is invalid",
+          "name": "TradeNotFound",
+          "value": 2
+        },
+        {
+          "doc": "Seller already has an active offer and cannot create another\\nBusiness rule: one active offer per seller to prevent liquidity fragmentation",
+          "name": "AlreadyHasActiveOffer",
+          "value": 3
+        },
+        {
+          "doc": "Trade has exceeded its time limit and is no longer valid\\nTrades expire to prevent indefinite escrow situations",
+          "name": "TradeExpired",
+          "value": 4
+        },
+        {
+          "doc": "Operation is not allowed for the current trade status\\nEach trade status has specific allowed operations",
+          "name": "InvalidTradeStatus",
+          "value": 5
+        },
+        {
+          "doc": "Caller is not authorized to perform this operation\\nUsed for access control and participant validation",
+          "name": "Unauthorized",
+          "value": 6
+        },
+        {
+          "doc": "Offer already has an active trade and cannot accept another\\nBusiness rule: one trade per offer to maintain order",
+          "name": "TradeAlreadyInitiated",
+          "value": 7
+        },
+        {
+          "doc": "Contract is paused and trading operations are disabled\\nEmergency mechanism for maintenance or security issues",
+          "name": "ContractPaused",
+          "value": 8
+        },
+        {
+          "doc": "Trade has not yet expired (opposite of TradeExpired)\\nUsed when trying to resolve non-expired trades",
+          "name": "TradeNotExpired",
+          "value": 9
+        },
+        {
+          "doc": "Seller has insufficient USDC balance or hasn't approved contract spending\\nCommon when seller doesn't have enough tokens or hasn't called approve()",
+          "name": "InsufficientAllowance",
+          "value": 10
+        },
+        {
+          "doc": "Input amount is invalid (negative, zero, or outside allowed ranges)\\nUsed for all amount validation throughout the contract",
+          "name": "InvalidAmount",
+          "value": 11
+        },
+        {
+          "doc": "Token transfer operation failed for technical reasons\\nCould indicate network issues, token contract problems, or insufficient gas",
+          "name": "TokenTransferFailed",
+          "value": 12
+        },
+        {
+          "doc": "Provided token address is not a valid token contract\\nUsed during initialization to validate USDC token address",
+          "name": "InvalidTokenAddress",
+          "value": 13
+        },
+        {
+          "doc": "User has exceeded rate limits for operations\\nAnti-spam mechanism to prevent abuse (future enhancement)",
+          "name": "RateLimitExceeded",
+          "value": 14
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initializes the P2P marketplace contract with essential configuration.\\nThis function can only be called once and sets up the foundational parameters.\\n\\n# Arguments\\n* `admin` - The address that will have administrative privileges (pause, fees, disputes)\\n* `usdc_token_id` - The contract address of the USDC token to be traded\\n* `fee_collector` - The address that will receive trading fees\\n\\n# Security Considerations\\n- Validates that USDC token address is a valid token contract\\n- Uses persistent storage for critical configuration to survive upgrades\\n- Prevents double initialization\\n- Validates all addresses are non-zero\\n\\n# Returns\\nResult indicating success or failure of initialization",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "usdc_token_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "fee_collector",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Creates a new offer to sell USDC for KES with escrow protection.\\nThe seller must approve the contract to spend their USDC before calling this function.\\n\\n# Business Flow\\n1. Validates seller authorization and input parameters\\n2. Checks trading limits and seller doesn't have active offer\\n3. Verifies seller has sufficient USDC balance and allowance\\n4. Transfers USDC from seller to contract (escrow)\\n5. Creates offer record and updates active offers mapping\\n6. Emits event for transparency\\n\\n# Security Checks\\n- Requires seller authorization\\n- Validates amount ranges to prevent spam/large trades\\n- Checks USDC balance and allowance before transfer\\n- Uses safe transfer with error handling\\n- Enforces one active offer per seller rule\\n\\n# Arguments\\n* `seller` - The address creating the offer (must sign transaction)\\n* `usdc_amount` - Amount of USDC to sell (with 6 decimals)\\n* `kes_amount` - Amount of KES expected in return (off-chain settlement)\\n\\n# Returns\\nThe unique ID of the created offer\\n\\n# Errors\\n- ContractPaused: If tra",
+      "name": "create_offer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "seller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "usdc_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "kes_amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u64",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initiates a trade by a buyer against an existing offer.\\nThis begins the escrow process where USDC is held while payment confirmation occurs.\\n\\n# Business Flow\\n1. Validates buyer authorization and offer existence\\n2. Prevents self-trading and checks offer is still active\\n3. Ensures no existing active trade for the offer\\n4. Creates trade record with initial status\\n5. Emits event to notify participants\\n\\n# Security Features\\n- Prevents buyers from trading with themselves\\n- Validates offer is still active and available\\n- Efficient lookup using active_offers mapping\\n- Checks for existing active trades to prevent conflicts\\n\\n# Arguments\\n* `buyer` - The address initiating the trade (must sign transaction)\\n* `offer_id` - The ID of the offer to trade against\\n\\n# Returns\\nThe unique ID of the created trade\\n\\n# Errors\\n- ContractPaused: If trading is disabled\\n- OfferNotFound: If offer doesn't exist or is no longer active\\n- Unauthorized: If buyer tries to trade with themselves\\n- TradeAlreadyInitiated: If offer already has an acti",
+      "name": "initiate_trade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "buyer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "offer_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u64",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Allows trade participants to confirm payment completion.\\nBoth buyer and seller must confirm before USDC is released.\\n\\n# Business Flow\\n1. Validates participant authorization and trade existence\\n2. Checks trade hasn't expired and is in correct status\\n3. Records participant's payment confirmation\\n4. If both parties confirm, automatically releases USDC\\n5. Emits appropriate events for transparency\\n\\n# Security Features\\n- Only trade participants can confirm\\n- Prevents confirmation on expired trades\\n- Validates trade is in correct status for confirmation\\n- Automatic execution when both parties confirm\\n\\n# Arguments\\n* `trade_id` - The ID of the trade to confirm payment for\\n* `participant` - The address confirming (buyer or seller, must sign)\\n\\n# Errors\\n- ContractPaused: If contract is paused\\n- TradeNotFound: If trade doesn't exist\\n- TradeExpired: If trade has exceeded time limit\\n- InvalidTradeStatus: If trade is not in confirmable state\\n- Unauthorized: If caller is not a trade participant",
+      "name": "confirm_payment",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "trade_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "participant",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Allows trade participants to cancel an initiated trade.\\nThis returns the escrowed USDC to the seller.\\n\\n# Business Flow\\n1. Validates participant authorization and trade state\\n2. Ensures only initiated trades can be cancelled\\n3. Returns escrowed USDC to seller\\n4. Updates trade status and removes offer from active list\\n5. Emits cancellation event\\n\\n# Security Features\\n- Only trade participants can cancel\\n- Only initiated trades can be cancelled\\n- Safe transfer with error handling\\n- Proper cleanup of offer state\\n\\n# Arguments\\n* `trade_id` - The ID of the trade to cancel\\n* `participant` - The address requesting cancellation (buyer or seller)\\n\\n# Errors\\n- ContractPaused: If contract is paused\\n- TradeNotFound: If trade doesn't exist\\n- InvalidTradeStatus: If trade cannot be cancelled\\n- Unauthorized: If caller is not a trade participant\\n- TokenTransferFailed: If USDC return fails",
+      "name": "cancel_trade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "trade_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "participant",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Resolves expired trades by returning escrowed USDC to sellers.\\nAnyone can call this function to clean up expired trades.\\n\\n# Business Logic\\n- Trades have time limits to prevent indefinite escrow\\n- Expired trades are automatically cancelled\\n- USDC is returned to seller when trade expires\\n- This prevents buyer griefing by not confirming payment\\n\\n# Public Access\\n- Any address can call this function\\n- Helps maintain marketplace hygiene\\n- Incentivizes community participation in cleanup\\n\\n# Arguments\\n* `trade_id` - The ID of the expired trade to resolve\\n\\n# Errors\\n- ContractPaused: If contract is paused\\n- TradeNotFound: If trade doesn't exist\\n- TradeNotExpired: If trade hasn't actually expired\\n- InvalidTradeStatus: If trade is not in expirable state\\n- TokenTransferFailed: If USDC return fails",
+      "name": "resolve_expired_trade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "trade_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Allows sellers to cancel their offers and recover escrowed USDC.\\nOffers can only be cancelled if no active trade exists.\\n\\n# Business Flow\\n1. Validates seller authorization and offer ownership\\n2. Checks no active trades exist for the offer\\n3. Returns escrowed USDC to seller\\n4. Removes offer from all mappings\\n5. Emits cancellation event\\n\\n# Security Features\\n- Only offer owner can cancel\\n- Prevents cancellation if active trade exists\\n- Safe transfer with error handling\\n- Proper cleanup of all offer references\\n\\n# Arguments\\n* `seller` - The address that created the offer (must sign)\\n* `offer_id` - The ID of the offer to cancel\\n\\n# Errors\\n- ContractPaused: If contract is paused\\n- OfferNotFound: If offer doesn't exist\\n- Unauthorized: If caller is not the offer owner\\n- TradeAlreadyInitiated: If active trade exists for offer\\n- TokenTransferFailed: If USDC return fails",
+      "name": "cancel_offer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "seller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "offer_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Emergency function to pause all trading activities.\\nOnly admin can pause the contract for security or maintenance.\\n\\n# Use Cases\\n- Security incidents requiring immediate halt\\n- Contract upgrades or maintenance\\n- Regulatory compliance requirements\\n- Market manipulation prevention\\n\\n# Admin Only\\n- Requires admin authorization\\n- Immediate effect on all trading functions\\n- Does not affect existing trades, only new operations\\n\\n# Returns\\nResult indicating success or failure of pause operation",
+      "name": "pause",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Resumes trading activities after a pause.\\nOnly admin can unpause the contract.\\n\\n# Security Consideration\\n- Admin should verify all issues are resolved before unpausing\\n- Existing trades continue normally after unpause\\n- New trading activities become available immediately\\n\\n# Returns\\nResult indicating success or failure of unpause operation",
+      "name": "unpause",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Raises a dispute for a trade when payment confirmation conflicts arise.\\nThis function allows trade participants to escalate issues that cannot be resolved\\nthrough normal payment confirmation flow.\\n\\n# Business Logic\\n- Either buyer or seller can raise a dispute\\n- Disputes can be raised on initiated or payment-confirmed trades\\n- Once disputed, trades require admin intervention to resolve\\n- Prevents automatic trade completion until dispute is resolved\\n\\n# Security Features\\n- Only trade participants can raise disputes\\n- Validates trade exists and is in appropriate state\\n- Prevents abuse by limiting who can dispute\\n\\n# Arguments\\n* `trade_id` - The ID of the trade to dispute\\n* `caller` - The address raising the dispute (buyer or seller)\\n\\n# Returns\\nResult indicating success or failure of dispute creation\\n\\n# Errors\\n- TradeNotFound: If trade doesn't exist\\n- Unauthorized: If caller is not a trade participant\\n- InvalidTradeStatus: If trade is not in disputable state",
+      "name": "raise_dispute",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "trade_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Resolves a disputed trade with admin intervention.\\nOnly the admin can resolve disputes by choosing to release USDC to buyer or refund to seller.\\n\\n# Business Logic\\n- Admin reviews dispute details off-chain\\n- Admin decides whether buyer or seller is correct\\n- USDC is transferred based on admin's resolution decision\\n- Fees are still collected on successful trades (release to buyer)\\n- No fees on refunds to seller\\n\\n# Admin Authority\\n- Only admin can resolve disputes\\n- Admin decisions are final and irreversible\\n- Admin should have off-chain verification process\\n\\n# Arguments\\n* `trade_id` - The ID of the disputed trade to resolve\\n* `resolution` - The admin's decision (ReleaseToBuyer or RefundToSeller)\\n\\n# Returns\\nResult indicating success or failure of dispute resolution\\n\\n# Errors\\n- Unauthorized: If caller is not the admin\\n- TradeNotFound: If trade doesn't exist\\n- InvalidTradeStatus: If trade is not in disputed state\\n- TokenTransferFailed: If USDC transfer fails",
+      "name": "resolve_dispute",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "trade_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "resolution",
+          "type_": {
+            "udt": {
+              "name": "DisputeResolution"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Upgrades the contract to a new Wasm hash.\\nThis function can only be called by the contract admin.\\n\\n# Arguments\\n* `new_wasm_hash` - The hash of the new contract Wasm to upgrade to.\\n\\n# Security\\n- Requires admin authorization.\\n- The new Wasm hash must be valid.",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Updates the admin address to a new address.\\nThis is a critical security function that transfers administrative control.\\n\\n# Security Features\\n- Requires current admin authorization\\n- Requires new admin to sign transaction (prevents unauthorized transfers)\\n- Emits event for transparency and audit trail\\n- Immediate effect - new admin can perform admin functions right away\\n\\n# Use Cases\\n- Transferring control to a new administrator\\n- Moving to a multi-sig admin address\\n- Emergency admin change for security reasons\\n\\n# Arguments\\n* `new_admin` - The new admin address (must sign transaction)\\n\\n# Returns\\nResult indicating success or failure of admin update\\n\\n# Errors\\n- Unauthorized: If caller is not current admin",
+      "name": "update_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Updates the fee collector address where trading fees are sent.\\nThis allows admin to change where marketplace fees are collected.\\n\\n# Business Logic\\n- Fee collector receives a percentage of each completed trade\\n- Can be set to treasury, DAO, or operational address\\n- Takes effect immediately for new trades\\n- Does not affect ongoing trades\\n\\n# Arguments\\n* `new_fee_collector` - The new address to receive trading fees\\n\\n# Returns\\nResult indicating success or failure of fee collector update\\n\\n# Errors\\n- Unauthorized: If caller is not admin",
+      "name": "update_fee_collector",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_fee_collector",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Updates the trading fee rate charged on completed trades.\\nFee rate is specified in basis points (1/100th of a percent).\\n\\n# Fee Structure\\n- Basis points: 1 = 0.01%, 100 = 1%, 1000 = 10%\\n- Maximum allowed fee is 10% (1000 basis points)\\n- Reasonable marketplace fees are typically 0.1% - 1%\\n- Fees are only collected on successful trades\\n\\n# Arguments\\n* `new_fee_rate` - New fee rate in basis points (max 1000 = 10%)\\n\\n# Returns\\nResult indicating success or failure of fee rate update\\n\\n# Errors\\n- Unauthorized: If caller is not admin\\n- InvalidAmount: If fee rate exceeds 10%",
+      "name": "update_fee_rate",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_fee_rate",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Updates the minimum and maximum trade amounts for USDC trades.\\nThese limits help prevent spam trades and excessive exposure.\\n\\n# Business Logic\\n- Minimum amount prevents spam with tiny trades\\n- Maximum amount limits exposure per trade\\n- Amounts are in USDC with 6 decimal places\\n- Applies to new offers only, existing offers unchanged\\n\\n# Arguments\\n* `min_amount` - Minimum USDC amount for trades (with 6 decimals)\\n* `max_amount` - Maximum USDC amount for trades (with 6 decimals)\\n\\n# Returns\\nResult indicating success or failure of limits update\\n\\n# Errors\\n- Unauthorized: If caller is not admin\\n- InvalidAmount: If amounts are invalid or min > max",
+      "name": "update_trade_limits",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "min_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "max_amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Updates the trade expiration time for new trades.\\nThis controls how long buyers have to confirm payment before trades expire.\\n\\n# Business Logic\\n- Expired trades automatically return USDC to seller\\n- Shorter times reduce seller risk but may rush buyers\\n- Longer times give buyers more flexibility but increase seller risk\\n- Typical values: 10 minutes to 24 hours\\n\\n# Arguments\\n* `expiration_seconds` - New expiration time in seconds (60 to 86400)\\n\\n# Returns\\nResult indicating success or failure of expiration update\\n\\n# Errors\\n- Unauthorized: If caller is not admin\\n- InvalidAmount: If expiration is outside allowed range",
+      "name": "update_trade_expiration",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "expiration_seconds",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the current admin address.\\n\\n# Usage\\n- Check who has administrative privileges\\n- Verify admin address in UI applications\\n- Audit administrative access\\n\\n# Returns\\nThe address of the current contract administrator",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the USDC token contract address.\\n\\n# Usage\\n- Verify which token is used for trading\\n- Set up token approvals in client applications\\n- Validate contract configuration\\n\\n# Returns\\nThe address of the USDC token contract",
+      "name": "get_usdc_token_id",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the fee collector address.\\n\\n# Usage\\n- See where trading fees are sent\\n- Verify fee collection setup\\n- Audit fee distribution\\n\\n# Returns\\nThe address that receives trading fees",
+      "name": "get_fee_collector",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the current trading fee rate in basis points.\\n\\n# Fee Calculation\\n- Basis points: 25 = 0.25%, 100 = 1%\\n- To calculate fee: (trade_amount * fee_rate) / 10000\\n- Example: 1000 USDC trade with 25 basis points = 2.5 USDC fee\\n\\n# Returns\\nCurrent fee rate in basis points (e.g., 25 = 0.25%)",
+      "name": "get_fee_rate",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the current minimum and maximum trade amounts.\\n\\n# Usage\\n- Validate trade amounts before creating offers\\n- Display trading limits in UI\\n- Ensure compliance with platform rules\\n\\n# Returns\\nTuple of (minimum_amount, maximum_amount) in USDC with 6 decimals",
+      "name": "get_trade_limits",
+      "inputs": [],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "i128",
+              "i128"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the current trade expiration time in seconds.\\n\\n# Usage\\n- Calculate trade expiration times for UI\\n- Inform users how long they have to confirm\\n- Set appropriate timeout expectations\\n\\n# Returns\\nTrade expiration time in seconds",
+      "name": "get_trade_expiration",
+      "inputs": [],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the next offer ID that will be assigned.\\n\\n# Usage\\n- Predict offer IDs for client applications\\n- Monitor marketplace growth and activity\\n- Debug offer creation issues\\n\\n# Returns\\nThe next available offer ID",
+      "name": "get_next_offer_id",
+      "inputs": [],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the next trade ID that will be assigned.\\n\\n# Usage\\n- Predict trade IDs for client applications\\n- Monitor trading activity and volume\\n- Debug trade creation issues\\n\\n# Returns\\nThe next available trade ID",
+      "name": "get_next_trade_id",
+      "inputs": [],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns all offers in the marketplace.\\nWarning: This function can be expensive for large datasets.\\n\\n# Performance Considerations\\n- Returns ALL offers (including inactive ones)\\n- Can consume significant gas for large datasets\\n- Consider using pagination for production applications\\n- Better to use `get_offer` for specific lookups\\n\\n# Returns\\nMap of all offers keyed by offer ID",
+      "name": "get_offers",
+      "inputs": [],
+      "outputs": [
+        {
+          "map": {
+            "key_type": "u64",
+            "value_type": {
+              "udt": {
+                "name": "Offer"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns a specific offer by its ID.\\n\\n# Usage\\n- Get offer details for display\\n- Validate offer exists before trading\\n- Check offer parameters\\n\\n# Arguments\\n* `offer_id` - The ID of the offer to retrieve\\n\\n# Returns\\nThe offer if it exists, None otherwise",
+      "name": "get_offer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "offer_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "Offer"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns all trades in the marketplace.\\nWarning: This function can be expensive for large datasets.\\n\\n# Performance Considerations\\n- Returns ALL trades regardless of status\\n- Can consume significant gas for large datasets\\n- Consider using pagination for production applications\\n- Better to use `get_trade` for specific lookups\\n\\n# Returns\\nMap of all trades keyed by trade ID",
+      "name": "get_trades",
+      "inputs": [],
+      "outputs": [
+        {
+          "map": {
+            "key_type": "u64",
+            "value_type": {
+              "udt": {
+                "name": "Trade"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns a specific trade by its ID.\\n\\n# Usage\\n- Get trade details and status\\n- Monitor trade progress\\n- Validate trade exists before operations\\n\\n# Arguments\\n* `trade_id` - The ID of the trade to retrieve\\n\\n# Returns\\nThe trade if it exists, None otherwise",
+      "name": "get_trade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "trade_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "Trade"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the mapping of sellers to their active offer IDs.\\n\\n# Usage\\n- Check which sellers have active offers\\n- Enforce one-offer-per-seller rule\\n- Display active offers by seller\\n\\n# Returns\\nMap of seller addresses to their active offer IDs",
+      "name": "get_active_offers",
+      "inputs": [],
+      "outputs": [
+        {
+          "map": {
+            "key_type": "address",
+            "value_type": "u64"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the active offer ID for a specific seller.\\n\\n# Usage\\n- Check if seller has an active offer\\n- Get seller's current offer ID\\n- Enforce business rules about multiple offers\\n\\n# Arguments\\n* `seller` - The seller address to check\\n\\n# Returns\\nThe seller's active offer ID if they have one, None otherwise",
+      "name": "get_seller_active_offer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "seller",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "u64"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns whether the contract is currently paused.\\n\\n# Usage\\n- Check if trading is allowed\\n- Display maintenance status in UI\\n- Validate operations before attempting\\n\\n# Returns\\nTrue if contract is paused, false if trading is active",
+      "name": "is_paused",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns comprehensive contract configuration and status.\\nThis is a convenience function that aggregates multiple config values.\\n\\n# Usage\\n- Get all contract settings in one call\\n- Display complete contract status\\n- Validate configuration in client applications\\n\\n# Returns\\nTuple containing:\\n(admin, usdc_token, fee_collector, fee_rate, min_amount, max_amount, expiration, is_paused)",
+      "name": "get_contract_info",
+      "inputs": [],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "address",
+              "address",
+              "address",
+              "u32",
+              "i128",
+              "i128",
+              "u64",
+              "bool"
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

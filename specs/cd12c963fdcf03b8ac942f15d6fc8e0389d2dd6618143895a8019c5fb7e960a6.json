@@ -1,0 +1,39 @@
+[
+  {
+    "function_v0": {
+      "doc": "Welcome to Okashi!\\n\\nThis modal will appear when a contract function needs values.\\nThe `say_hi` function needs just one - your `name`.\\n\\nHave fun!",
+      "name": "add",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "a",
+          "type_": "i32"
+        },
+        {
+          "doc": "",
+          "name": "b",
+          "type_": "i32"
+        }
+      ],
+      "outputs": [
+        "i32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add2",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "b",
+          "type_": "i32"
+        }
+      ],
+      "outputs": [
+        "i32"
+      ]
+    }
+  }
+]

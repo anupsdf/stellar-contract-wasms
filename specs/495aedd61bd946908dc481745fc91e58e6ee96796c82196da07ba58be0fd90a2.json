@@ -1,0 +1,3747 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ApplicationStatus",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Pending"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Approved"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Rejected"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Blacklisted"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Config",
+      "fields": [
+        {
+          "doc": "",
+          "name": "default_page_size",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "kyc_wl_list_id",
+          "type_": {
+            "option": {
+              "value_type": "u128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "list_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pending_owner",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "project_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "protocol_fee_basis_points",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "protocol_fee_recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_contract",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RoundDetail",
+      "fields": [
+        {
+          "doc": "",
+          "name": "allow_applications",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "allow_remaining_dist",
+          "type_": {
+            "option": {
+              "value_type": "bool"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "application_end_ms",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "application_start_ms",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "application_wl_list_id",
+          "type_": {
+            "option": {
+              "value_type": "u128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "compliance_end_ms",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "compliance_period_ms",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "compliance_req_desc",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "contacts",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Contact"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "cooldown_end_ms",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "cooldown_period_ms",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "current_vault_balance",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "expected_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "is_video_required",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "max_participants",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "minimum_deposit",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "num_picks_per_voter",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "referrer_fee_basis_points",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "remaining_dist_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "remaining_dist_at_ms",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "remaining_dist_by",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "remaining_dist_memo",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "round_complete_ms",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "use_vault",
+          "type_": {
+            "option": {
+              "value_type": "bool"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "use_whitelist_application",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "use_whitelist_voting",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "vault_total_deposits",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "voting_end_ms",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "voting_start_ms",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "voting_wl_list_id",
+          "type_": {
+            "option": {
+              "value_type": "u128"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CreateRoundParams",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admins",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "allow_applications",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "allow_remaining_dist",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "application_end_ms",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "application_start_ms",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "application_wl_list_id",
+          "type_": {
+            "option": {
+              "value_type": "u128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "compliance_period_ms",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "compliance_req_desc",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "contacts",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Contact"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "cooldown_period_ms",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "expected_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "is_video_required",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "max_participants",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "minimum_deposit",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "num_picks_per_voter",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "referrer_fee_basis_points",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "remaining_dist_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "use_vault",
+          "type_": {
+            "option": {
+              "value_type": "bool"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "use_whitelist_application",
+          "type_": {
+            "option": {
+              "value_type": "bool"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "use_whitelist_voting",
+          "type_": {
+            "option": {
+              "value_type": "bool"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "voting_end_ms",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "voting_start_ms",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "voting_wl_list_id",
+          "type_": {
+            "option": {
+              "value_type": "u128"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UpdateRoundParams",
+      "fields": [
+        {
+          "doc": "",
+          "name": "application_wl_list_id",
+          "type_": {
+            "option": {
+              "value_type": "u128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "contacts",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Contact"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "is_video_required",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "max_participants",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "num_picks_per_voter",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "referrer_fee_basis_points",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "use_vault",
+          "type_": {
+            "option": {
+              "value_type": "bool"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "use_whitelist_voting",
+          "type_": {
+            "option": {
+              "value_type": "bool"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "voting_wl_list_id",
+          "type_": {
+            "option": {
+              "value_type": "u128"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RoundApplication",
+      "fields": [
+        {
+          "doc": "",
+          "name": "applicant_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "applicant_note",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "review_note",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "ApplicationStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "submited_ms",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "updated_ms",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Pair",
+      "fields": [
+        {
+          "doc": "",
+          "name": "pair_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "projects",
+          "type_": {
+            "vec": {
+              "element_type": "u128"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PickedPair",
+      "fields": [
+        {
+          "doc": "",
+          "name": "pair_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "voted_project_id",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PickResult",
+      "fields": [
+        {
+          "doc": "",
+          "name": "pair_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VotingResult",
+      "fields": [
+        {
+          "doc": "",
+          "name": "picks",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "PickResult"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "voted_ms",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "voter",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ProjectVotingResult",
+      "fields": [
+        {
+          "doc": "",
+          "name": "is_flagged",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "voting_count",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Contact",
+      "fields": [
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Payout",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "memo",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "paid_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "paid_at_ms",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "recipient_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PayoutInput",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "memo",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "recipient_id",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PayoutsChallenge",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin_notes",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "challenger_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "created_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "reason",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "resolved",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "resolved_by",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Deposit",
+      "fields": [
+        {
+          "doc": "",
+          "name": "deposit_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "deposited_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "depositor_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "memo",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "net_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "protocol_fee",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "referrer_fee",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "total_amount",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FlagDetail",
+      "fields": [
+        {
+          "doc": "",
+          "name": "applicant_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "flagged_by",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "flagged_ms",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "reason",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "OwnerOrAdminOnly",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "ContractNotInitialized",
+          "value": 26
+        },
+        {
+          "doc": "",
+          "name": "InsufficientBalance",
+          "value": 31
+        },
+        {
+          "doc": "",
+          "name": "IndexOutOfBound",
+          "value": 32
+        },
+        {
+          "doc": "",
+          "name": "SameOwner",
+          "value": 38
+        },
+        {
+          "doc": "",
+          "name": "DataNotFound",
+          "value": 52
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 57
+        },
+        {
+          "doc": "",
+          "name": "OwnerOnly",
+          "value": 88
+        },
+        {
+          "doc": "",
+          "name": "NoPendingOwnershipTransfer",
+          "value": 89
+        },
+        {
+          "doc": "",
+          "name": "ProtocolFeeTooHigh",
+          "value": 65
+        },
+        {
+          "doc": "",
+          "name": "ReferrerFeeTooHigh",
+          "value": 66
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RoundError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "VotingStartGreaterThanVotingEnd",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "ApplicationStartGreaterThanApplicationEnd",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "VotingStartLessThanApplicationEnd",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "AmountMustBeGreaterThanZero",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "ContactMustBeLessThanTen",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "InvalidVaultBalance",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "UserBlacklisted",
+          "value": 19
+        },
+        {
+          "doc": "",
+          "name": "UserAlreadyBlacklisted",
+          "value": 20
+        },
+        {
+          "doc": "",
+          "name": "BlacklistNotFound",
+          "value": 21
+        },
+        {
+          "doc": "",
+          "name": "UserNotWhitelisted",
+          "value": 22
+        },
+        {
+          "doc": "",
+          "name": "ReviewNotTooLong",
+          "value": 23
+        },
+        {
+          "doc": "",
+          "name": "RoundAlreadyCompleted",
+          "value": 27
+        },
+        {
+          "doc": "",
+          "name": "AdminNotFound",
+          "value": 28
+        },
+        {
+          "doc": "",
+          "name": "OwnerCannotBeAdmin",
+          "value": 29
+        },
+        {
+          "doc": "",
+          "name": "AlreadyPaidOut",
+          "value": 34
+        },
+        {
+          "doc": "",
+          "name": "NoApprovedProjects",
+          "value": 35
+        },
+        {
+          "doc": "",
+          "name": "UserWhitelisted",
+          "value": 36
+        },
+        {
+          "doc": "",
+          "name": "VotesAlreadyCast",
+          "value": 37
+        },
+        {
+          "doc": "",
+          "name": "ApplicationPeriodMustBeSet",
+          "value": 39
+        },
+        {
+          "doc": "",
+          "name": "ZeroValutBalance",
+          "value": 40
+        },
+        {
+          "doc": "",
+          "name": "BalanceNotEmpty",
+          "value": 41
+        },
+        {
+          "doc": "",
+          "name": "InsufficientFunds",
+          "value": 44
+        },
+        {
+          "doc": "",
+          "name": "ChallengeNotFound",
+          "value": 45
+        },
+        {
+          "doc": "",
+          "name": "PayoutNotFound",
+          "value": 46
+        },
+        {
+          "doc": "",
+          "name": "RedistributionNotAllowed",
+          "value": 47
+        },
+        {
+          "doc": "",
+          "name": "RedistributionAlreadyDone",
+          "value": 48
+        },
+        {
+          "doc": "",
+          "name": "CompliancePeriodInProcess",
+          "value": 49
+        },
+        {
+          "doc": "",
+          "name": "CooldownPeriodNotInProcess",
+          "value": 50
+        },
+        {
+          "doc": "",
+          "name": "NotSolveAllPayoutChallenge",
+          "value": 51
+        },
+        {
+          "doc": "",
+          "name": "RoundDoesNotUseVault",
+          "value": 53
+        },
+        {
+          "doc": "",
+          "name": "ApplicationPeriodNotSet",
+          "value": 55
+        },
+        {
+          "doc": "",
+          "name": "CoolDownPeriodNotComplete",
+          "value": 56
+        },
+        {
+          "doc": "",
+          "name": "VotingPeriodTooShort",
+          "value": 61
+        },
+        {
+          "doc": "",
+          "name": "ApplicationPeriodTooShort",
+          "value": 62
+        },
+        {
+          "doc": "",
+          "name": "ApplicationStartInPast",
+          "value": 63
+        },
+        {
+          "doc": "",
+          "name": "VotingStartInPast",
+          "value": 64
+        },
+        {
+          "doc": "",
+          "name": "CannotUpdateVaultAfterDeposits",
+          "value": 69
+        },
+        {
+          "doc": "",
+          "name": "WhitelistIdNotSet",
+          "value": 59
+        },
+        {
+          "doc": "",
+          "name": "NotProjectParticipant",
+          "value": 74
+        },
+        {
+          "doc": "",
+          "name": "NotApprovedParticipant",
+          "value": 75
+        },
+        {
+          "doc": "",
+          "name": "DepositAmountTooLow",
+          "value": 76
+        },
+        {
+          "doc": "",
+          "name": "PayoutsAlreadySet",
+          "value": 79
+        },
+        {
+          "doc": "",
+          "name": "MinimumDepositMustBeLessThanExpectedAmount",
+          "value": 90
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VoteError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "VotingPeriodNotStarted",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "VotingPeriodEnded",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "VotingPeriodNotEnded",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "VotingAlreadyStarted",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "AlreadyVoted",
+          "value": 17
+        },
+        {
+          "doc": "",
+          "name": "NotVoteAllPairs",
+          "value": 18
+        },
+        {
+          "doc": "",
+          "name": "EmptyVote",
+          "value": 24
+        },
+        {
+          "doc": "",
+          "name": "TooManyVotes",
+          "value": 25
+        },
+        {
+          "doc": "",
+          "name": "ProjectNotInPair",
+          "value": 33
+        },
+        {
+          "doc": "",
+          "name": "DuplicatePick",
+          "value": 58
+        },
+        {
+          "doc": "",
+          "name": "TooManyVotesForAvailablePairs",
+          "value": 60
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ApplicationError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "ApplicationPeriodNotStarted",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "ApplicationPeriodEnded",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "ProjectNotApproved",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "ProjectAlreadyApproved",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "ProjectNotFoundInRegistry",
+          "value": 15
+        },
+        {
+          "doc": "",
+          "name": "MaxParticipantsReached",
+          "value": 16
+        },
+        {
+          "doc": "",
+          "name": "ApplicationNotFound",
+          "value": 30
+        },
+        {
+          "doc": "",
+          "name": "VideoUrlNotValid",
+          "value": 42
+        },
+        {
+          "doc": "",
+          "name": "ProjectAlreadyApplied",
+          "value": 43
+        },
+        {
+          "doc": "",
+          "name": "ApplicationNotAllowed",
+          "value": 54
+        },
+        {
+          "doc": "",
+          "name": "ApplicationStartInPast",
+          "value": 81
+        },
+        {
+          "doc": "",
+          "name": "ApplicationPeriodTooShort",
+          "value": 82
+        },
+        {
+          "doc": "",
+          "name": "ApplicationOverlapsVoting",
+          "value": 83
+        },
+        {
+          "doc": "",
+          "name": "ApplicationPeriodMustBeSet",
+          "value": 84
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RoundPreCheck",
+      "fields": [
+        {
+          "doc": "",
+          "name": "applicant",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "has_video",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RegistrationStatus",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Pending"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Approved"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Rejected"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Graylisted"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Blacklisted"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ListExternal",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin_only_registrations",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "admins",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "cover_img_url",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "created_ms",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "default_registration_status",
+          "type_": {
+            "udt": {
+              "name": "RegistrationStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "total_registrations_count",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_upvotes_count",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "updated_ms",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "registry_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "list_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "kyc_wl_list_id",
+          "type_": {
+            "option": {
+              "value_type": "u128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "protocol_fee_basis_points",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "protocol_fee_recipient",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "default_page_size",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_round",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "round_detail",
+          "type_": {
+            "udt": {
+              "name": "CreateRoundParams"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "RoundDetail"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_rounds",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from_index",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "limit",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "RoundDetail"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer_ownership",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "accept_ownership",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "cancel_ownership_transfer",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_config",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Config"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "owner_set_default_page_size",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "default_page_size",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "owner_set_protocol_fee_config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "protocol_fee_recipient",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "protocol_fee_basis_points",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "change_kyc_wl_list_id",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "list_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_voting_period",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "start_ms",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "end_ms",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_expected_amount",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_minimum_deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_admins",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "round_admin",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "apply_to_round",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "applicant",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "note",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "review_note",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "RoundApplication"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "review_application",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "applicant",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "ApplicationStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "note",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "RoundApplication"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deposit_to_round",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "memo",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "referrer_id",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "vote",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "voter",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "picks",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "PickedPair"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_pairs_to_vote",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "Pair"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "flag_voters",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "voters",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "unflag_voters",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "voters",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_voting_results_for_round",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "ProjectVotingResult"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "process_payouts",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_votes_for_round",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "skip",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "limit",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "VotingResult"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "can_vote",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "voter",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_round",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "RoundDetail"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_voting_live",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_application_live",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_applications_for_round",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "from_index",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "limit",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "RoundApplication"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_application",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "applicant",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "RoundApplication"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_payout_done",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "user_has_vote",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "voter",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_approved_project",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_ids",
+          "type_": {
+            "vec": {
+              "element_type": "u128"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_approved_project",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_ids",
+          "type_": {
+            "vec": {
+              "element_type": "u128"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "whitelist_status",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "blacklist_status",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_all_pairs_for_round",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "Pair"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_pair_by_index",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Pair"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_number_of_votes",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "num_picks_per_voter",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer_round_ownership",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "new_owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "admins",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "unapply_from_round",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "applicant",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "RoundApplication"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_applicant_note",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "note",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "RoundApplication"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_applications_config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "allow_applications",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "start_ms",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "end_ms",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "RoundDetail"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_round",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "round_detail",
+          "type_": {
+            "udt": {
+              "name": "UpdateRoundParams"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "RoundDetail"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "delete_round",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "RoundDetail"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "apply_to_round_batch",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "review_notes",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "option": {
+                  "value_type": "string"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "applicants",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "RoundApplication"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_payouts_for_round",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "from_index",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "limit",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "Payout"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_payouts",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "payouts",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "PayoutInput"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "clear_existing",
+          "type_": "bool"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "Payout"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_round_complete",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "RoundDetail"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "challenge_payouts",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "reason",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "PayoutsChallenge"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_payouts_challenge",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_payouts_challenge",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "challenger_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "notes",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "resolve_challenge",
+          "type_": {
+            "option": {
+              "value_type": "bool"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "PayoutsChallenge"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_resolved_challenges",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_payouts",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from_index",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "limit",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "Payout"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_payout",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "payout_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Payout"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "redistribute_vault",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "memo",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_deposits_for_round",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "from_index",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "limit",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "Deposit"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_cooldown_config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "cooldown_period_ms",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "RoundDetail"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_compliance_config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "compliance_req_desc",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "compliance_period_ms",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "RoundDetail"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "blacklisted_voters",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_redistribution_config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "allow_remaining_dist",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "remaining_dist_address",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "RoundDetail"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_my_vote_for_round",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "voter",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "VotingResult"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_voted_rounds",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "voter",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from_index",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "limit",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "RoundDetail"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_challenges_payout",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "from_index",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "limit",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "PayoutsChallenge"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "flag_project",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "reason",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "FlagDetail"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "unflag_project",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_approved_projects",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "u128"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Config"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "NextRoundId"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "NextPayoutId"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "NextDepositId"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ProjectPayoutIds",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "PayoutInfo",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "DepositInfo",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "RoundInfo",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "BlackList",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ProjectApplicants",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ApprovedProjects",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "FlaggedProjects",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Payouts",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "PayoutChallenges",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "VotingState",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "VotedRoundIds",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Votes",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ProjectVotingCount",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Admin",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Deposit",
+            "type_": [
+              "u128"
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

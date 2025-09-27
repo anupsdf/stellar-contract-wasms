@@ -1,0 +1,890 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "multihop_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "lp_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "stable_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "stake_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "whitelisted_accounts",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "lp_token_decimals",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_liquidity_pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "lp_init_info",
+          "type_": {
+            "udt": {
+              "name": "LiquidityPoolInitInfo"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "share_token_name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "share_token_symbol",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "pool_type",
+          "type_": {
+            "udt": {
+              "name": "PoolType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "amp",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "default_slippage_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "max_allowed_fee_bps",
+          "type_": "i64"
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_liquidity_pool_v2",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "share_token_name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "share_token_symbol",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_whitelisted_accounts",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to_add",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "to_remove",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_wasm_hashes",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "lp_wasm_hash",
+          "type_": {
+            "option": {
+              "value_type": {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "stake_wasm_hash",
+          "type_": {
+            "option": {
+              "value_type": {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_wasm_hash",
+          "type_": {
+            "option": {
+              "value_type": {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_pools",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_pool_details",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pool_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "LiquidityPoolInfo"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_all_pools_details",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "LiquidityPoolInfo"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_for_pool_by_token_pair",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_config",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Config"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_user_portfolio",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "staking",
+          "type_": "bool"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "UserPortfolio"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": []
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "WhiteListeEmpty",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "NotAuthorized",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "LiquidityPoolNotFound",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "TokenABiggerThanTokenB",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "MinStakeInvalid",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "MinRewardInvalid",
+          "value": 7
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PairTupleKey",
+      "fields": [
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Config",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "lp_token_decimals",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "lp_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "multihop_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "stake_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "whitelisted_accounts",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UserPortfolio",
+      "fields": [
+        {
+          "doc": "",
+          "name": "lp_portfolio",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "LpPortfolio"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "stake_portfolio",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "StakePortfolio"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LpPortfolio",
+      "fields": [
+        {
+          "doc": "",
+          "name": "assets",
+          "type_": {
+            "tuple": {
+              "value_types": [
+                {
+                  "udt": {
+                    "name": "Asset"
+                  }
+                },
+                {
+                  "udt": {
+                    "name": "Asset"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StakePortfolio",
+      "fields": [
+        {
+          "doc": "",
+          "name": "stakes",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Stake"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "staking_contract",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Asset",
+      "fields": [
+        {
+          "doc": "Address of the asset",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "The total amount of those tokens in the pool",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "This struct is used to return a query result with the total amount of LP tokens and assets in a specific pool.",
+      "lib": "",
+      "name": "PoolResponse",
+      "fields": [
+        {
+          "doc": "The asset A in the pool together with asset amounts",
+          "name": "asset_a",
+          "type_": {
+            "udt": {
+              "name": "Asset"
+            }
+          }
+        },
+        {
+          "doc": "The asset B in the pool together with asset amounts",
+          "name": "asset_b",
+          "type_": {
+            "udt": {
+              "name": "Asset"
+            }
+          }
+        },
+        {
+          "doc": "The total amount of LP tokens currently issued",
+          "name": "asset_lp_share",
+          "type_": {
+            "udt": {
+              "name": "Asset"
+            }
+          }
+        },
+        {
+          "doc": "The address of the Stake contract for the liquidity pool",
+          "name": "stake_address",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LiquidityPoolInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "pool_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_response",
+          "type_": {
+            "udt": {
+              "name": "PoolResponse"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "total_fee_bps",
+          "type_": "i64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StakedResponse",
+      "fields": [
+        {
+          "doc": "",
+          "name": "stakes",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Stake"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "total_stake",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Stake",
+      "fields": [
+        {
+          "doc": "The amount of staked tokens",
+          "name": "stake",
+          "type_": "i128"
+        },
+        {
+          "doc": "The timestamp when the stake was made",
+          "name": "stake_timestamp",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenInitInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StakeInitInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "manager",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "max_complexity",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "min_bond",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_reward",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LiquidityPoolInitInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "default_slippage_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "fee_recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "max_allowed_slippage_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "max_allowed_spread_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "max_referral_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "stake_init_info",
+          "type_": {
+            "udt": {
+              "name": "StakeInitInfo"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "swap_fee_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "token_init_info",
+          "type_": {
+            "udt": {
+              "name": "TokenInitInfo"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolType",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Xyk",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Stable",
+          "value": 1
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,1021 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Asset",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Stellar",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Other",
+            "type_": [
+              "symbol"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "DifferentDepositedToken",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "WrongRepayToken",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "InsufficientCollateral",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "SpotRateAlreadyDefined",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "LiquidatedUser",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "TimeNotReached",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "CollateralOnlyCanBeDeposited",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "WrongStageToSwap",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "InvalidToken",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "ContractStillOpen",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "AlreadyRepaid",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "ContractAlreadyInitialized",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "AllPositionsAreUsed",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "DepositAmountDoesntMatchPosition",
+          "value": 15
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Position",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "is_valid",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PositionData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "deposit_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "limit",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "used",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "The price data for an asset at a given timestamp.",
+      "lib": "",
+      "name": "PriceData",
+      "fields": [
+        {
+          "doc": "The price in contracts' base asset and decimals.",
+          "name": "price",
+          "type_": "i128"
+        },
+        {
+          "doc": "The timestamp of the price.",
+          "name": "timestamp",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Stage",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Deposit",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "Swap",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "Repay",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "Withdraw",
+          "value": 4
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TokenA"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TokenB"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "SpotRate"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ForwardRate"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "InitTime"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TimeToMature"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PositionA"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PositionB"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "UsedPositionsA"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "UsedPositionsB"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "DepositedToken",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "DepositedAmount",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Collateral",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "SwappedAmount",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ReturnedAmount",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "WithdrawnAmount",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "WithdrawnCollateralAmount",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ReclaimedAmount",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "IsLiquidated",
+            "type_": [
+              "address"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Token",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "collateral_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "deposited_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "liquidated_collateral",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "reclaimed_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "returned_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "swapped_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "used_liq_collateral",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "withdrawn_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "withdrawn_collateral",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "User",
+      "fields": [
+        {
+          "doc": "",
+          "name": "collateral",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "deposited_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "deposited_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "is_liquidated",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "reclaimed_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "returned_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "swapped_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "withdrawn_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "withdrawn_collateral",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UserLiqData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "collateral",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "is_liquidated",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "min_collateral",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "name_token_a",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "name_token_b",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "forward_rate",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "duration",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "init_pos",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "positions_token_a",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "positions_token_b",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "amount_deposit_token_a",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "collateral",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": [
+                  "i128",
+                  "i128"
+                ]
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "swap",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "reclaim",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "reclaim_col",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "balance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "User"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "liquidate",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "repay",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": [
+                  "i128",
+                  "i128"
+                ]
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": [
+                  "i128",
+                  "i128"
+                ]
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "spot_rate",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "admin",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "near_leg",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "PriceData"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "tokens",
+      "inputs": [],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              {
+                "udt": {
+                  "name": "Token"
+                }
+              },
+              {
+                "udt": {
+                  "name": "Token"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_spot",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "stage",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Stage"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deposits",
+      "inputs": [],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              {
+                "vec": {
+                  "element_type": {
+                    "udt": {
+                      "name": "Position"
+                    }
+                  }
+                }
+              },
+              {
+                "vec": {
+                  "element_type": {
+                    "udt": {
+                      "name": "Position"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "users",
+      "inputs": [],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              {
+                "vec": {
+                  "element_type": {
+                    "udt": {
+                      "name": "UserLiqData"
+                    }
+                  }
+                }
+              },
+              {
+                "vec": {
+                  "element_type": {
+                    "udt": {
+                      "name": "UserLiqData"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  }
+]

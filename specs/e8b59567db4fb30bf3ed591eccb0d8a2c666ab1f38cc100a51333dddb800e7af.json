@@ -1,0 +1,1393 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RegistrationStatus",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Pending"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Approved"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Rejected"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Graylisted"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Blacklisted"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ListInternal",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin_only_registration",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "cover_image_url",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "created_ms",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "default_registration_status",
+          "type_": {
+            "udt": {
+              "name": "RegistrationStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "updated_ms",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RegistrationInternal",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin_notes",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "list_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "registered_by",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "registrant_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "registrant_notes",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "RegistrationStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "submited_ms",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "updated_ms",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ListExternal",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin_only_registrations",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "admins",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "cover_img_url",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "created_ms",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "default_registration_status",
+          "type_": {
+            "udt": {
+              "name": "RegistrationStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "total_registrations_count",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_upvotes_count",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "updated_ms",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RegistrationExternal",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin_notes",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "list_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "registered_by",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "registrant_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "registrant_notes",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "RegistrationStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "submitted_ms",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "updated_ms",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RegistrationInput",
+      "fields": [
+        {
+          "doc": "",
+          "name": "notes",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "registrant",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "RegistrationStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "submitted_ms",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "updated_ms",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_list",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "default_registration_status",
+          "type_": {
+            "udt": {
+              "name": "RegistrationStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "cover_image_url",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "admins",
+          "type_": {
+            "option": {
+              "value_type": {
+                "vec": {
+                  "element_type": "address"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "admin_only_registrations",
+          "type_": {
+            "option": {
+              "value_type": "bool"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "ListExternal"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_list",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "list_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "cover_image_url",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "remove_cover_image",
+          "type_": {
+            "option": {
+              "value_type": "bool"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "default_registration_status",
+          "type_": {
+            "option": {
+              "value_type": {
+                "udt": {
+                  "name": "RegistrationStatus"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "admin_only_registrations",
+          "type_": {
+            "option": {
+              "value_type": "bool"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "ListExternal"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "delete_list",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "list_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upvote",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "voter",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "list_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_upvote",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "voter",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "list_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer_ownership",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "list_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "new_owner_id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_admins",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "list_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "admins",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_admins",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "list_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "admins",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "clear_admins",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "list_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "register_batch",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "submitter",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "list_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "notes",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "registrations",
+          "type_": {
+            "option": {
+              "value_type": {
+                "vec": {
+                  "element_type": {
+                    "udt": {
+                      "name": "RegistrationInput"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "RegistrationExternal"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "unregister",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "submitter",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "list_id",
+          "type_": {
+            "option": {
+              "value_type": "u128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "registration_id",
+          "type_": {
+            "option": {
+              "value_type": "u128"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_registration",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "submitter",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "list_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "registration_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "RegistrationStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "notes",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "RegistrationExternal"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_list",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "list_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "ListExternal"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_lists",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from_index",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "limit",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "ListExternal"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_lists_for_owner",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner_id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "ListExternal"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_lists_for_registrant",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "registrant_id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "ListExternal"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_upvotes_for_list",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "list_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "from_index",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "limit",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_upvoted_lists_for_account",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from_index",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "limit",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "ListExternal"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_registration",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "registration_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "RegistrationExternal"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_registrations_for_list",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "list_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "required_status",
+          "type_": {
+            "option": {
+              "value_type": {
+                "udt": {
+                  "name": "RegistrationStatus"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "from_index",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "limit",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "RegistrationExternal"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_registrations_for_registrant",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "registrant_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "required_status",
+          "type_": {
+            "option": {
+              "value_type": {
+                "udt": {
+                  "name": "RegistrationStatus"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "from_index",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "limit",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "RegistrationExternal"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_registered",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "list_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "registrant_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "required_status",
+          "type_": {
+            "option": {
+              "value_type": {
+                "udt": {
+                  "name": "RegistrationStatus"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "owner",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "admins",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "list_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ContractOwner"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ListsNumber"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Lists",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ListAdmins",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "OwnedList",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "RegistrantList",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "RegistrationsNumber"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Registrations",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ListRegistration",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "RegistrationsIDs",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Upvotes",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserUpvotes",
+            "type_": [
+              "address"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NameCannotBeEmpty",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "DescriptionTooLong",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "CoverImageUrlTooLong",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "InvalidListId",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "AlreadyUpvoted",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "NotUpvoted",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "ContractOwnerOnly",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "AdminNotFound",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "ListNotFound",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "AdminAlreadyExists",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "AdminDoesNotExist",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "NoteRequired",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "RegistrationsRequired",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "RegistrationNotFound",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "AdminOrOwnerOnly",
+          "value": 15
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 16
+        },
+        {
+          "doc": "",
+          "name": "InvalidRegistrationId",
+          "value": 17
+        },
+        {
+          "doc": "",
+          "name": "AlreadyRegistered",
+          "value": 18
+        },
+        {
+          "doc": "",
+          "name": "RegistrationListMismatch",
+          "value": 19
+        }
+      ]
+    }
+  }
+]

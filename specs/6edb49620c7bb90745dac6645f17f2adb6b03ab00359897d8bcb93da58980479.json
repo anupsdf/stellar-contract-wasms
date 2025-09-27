@@ -1,0 +1,1282 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotEnoughBalance",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "CurrenciesDoNotMatch",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "UnknownOrder",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "OrderAlreadyClosed",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "OrderTypesDoNotMatch",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "FacilitiesDoNotMatch",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "NotAuthorized",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "FacilityIsNotActive",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "FacilityIsAlreadyActive",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "Timelock",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "FeeExceedsMax",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "ZeroValue",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "UnknownFacility",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "Overflow",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "PricesDoNotMatch",
+          "value": 15
+        },
+        {
+          "doc": "",
+          "name": "BothMarketOrders",
+          "value": 16
+        },
+        {
+          "doc": "",
+          "name": "AssetIsNotSupported",
+          "value": 17
+        },
+        {
+          "doc": "",
+          "name": "TooManyActiveFacilities",
+          "value": 18
+        },
+        {
+          "doc": "",
+          "name": "TooManyOpenOrders",
+          "value": 19
+        },
+        {
+          "doc": "",
+          "name": "CancelBeforeDelay",
+          "value": 20
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "fee_receiver",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_owner",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "accept_ownership",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "write_asset_support",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "bool"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "check_asset_support",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_execution_facility",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "alias",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "fee_receiver",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "disable_execution_facility",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "alias",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "reactivate_execution_facility",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "alias",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_active_facilities",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "symbol"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_execution_facility",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "alias",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "ExecutionFacility"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_execution_facility",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_facility_fee",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "alias",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "new_fee",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "executor",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_facility_fee",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "alias",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_facility_receiver",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "alias",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "fee_receiver",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "executor",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_facility_receiver",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "alias",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_facility_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "alias",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "executor",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_facility_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "alias",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "buy_limit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "base_amnt",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "base_asst",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "quot_asst",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "max_price",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "exec_facility_alias",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "sell_limit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "base_amnt",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "base_asst",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "quot_asst",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "min_price",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "exec_facility_alias",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "buy_otc",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "base_amnt",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "base_asst",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "quot_asst",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "max_price",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "quote_id",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "exec_facility_alias",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "sell_otc",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "base_amnt",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "base_asst",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "quot_asst",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "min_price",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "quote_id",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "exec_facility_alias",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "buy_market",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "quot_amnt",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "base_asst",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "quot_asst",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "exec_facility_alias",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "sell_market",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "base_amnt",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "base_asst",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "quot_asst",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "exec_facility_alias",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "cur_order",
+      "inputs": [],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_order",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "order_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Order"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_opened",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "u128"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "fill",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "order_id1",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "order_id2",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "executor",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "match_and_fill",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "order_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "executor",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "cancel_order",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "order_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "executor",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "CurOrder"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ActiveFacilities"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "IsAssetSupported",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Order",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserOpen",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "IsExecFacility",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ExecFacilityAlias",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ExecutionFacility",
+            "type_": [
+              "symbol"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "TimeLastChange",
+            "type_": [
+              "symbol",
+              "symbol"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "OrderTimestamp",
+            "type_": [
+              "u128"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ExecutionFacility",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "alias",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "fee_receiver",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OrderStatus",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "OpenUnfill"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "OpenPart"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ClosedPart"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ClosedFull"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ClosedCnld"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OrderType",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Sell"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Buy"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TradeType",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Limit"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Market"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "OTC"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Order",
+      "fields": [
+        {
+          "doc": "",
+          "name": "balance",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "base_amnt",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "base_asst",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "creator",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "exec_fac",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "limit_prc",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "order_type",
+          "type_": {
+            "udt": {
+              "name": "OrderType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "quot_amnt",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "quot_asst",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "quote_id",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "OrderStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "trade_type",
+          "type_": {
+            "udt": {
+              "name": "TradeType"
+            }
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,54 @@
+[
+  {
+    "function_v0": {
+      "doc": "Initialize the contract\\n\\n### Arguments\\n* `backstop` - The backstop address",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "backstop",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Fill an interest auction\\n\\n### Arguments\\n* `from` - The address to fill the auction from\\n* `pool` - The pool address",
+      "name": "fill_interest",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "The error codes for the contract.",
+      "lib": "",
+      "name": "FeeVaultError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "BalanceError",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "ReserveNotFound",
+          "value": 500
+        }
+      ]
+    }
+  }
+]

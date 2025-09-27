@@ -1,0 +1,16 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "require_payment",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

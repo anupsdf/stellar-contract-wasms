@@ -1,0 +1,12 @@
+[
+  {
+    "function_v0": {
+      "doc": "Increment increments an internal counter, and returns the value.",
+      "name": "increment",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  }
+]

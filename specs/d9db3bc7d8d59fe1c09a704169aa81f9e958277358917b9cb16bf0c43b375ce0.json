@@ -1,0 +1,581 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ContractInfo"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Mint",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Staking",
+            "type_": [
+              "address"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "fun_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "fun_contract_balance",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "max_token_supply",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_mint",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "mint_reward_range",
+          "type_": {
+            "tuple": {
+              "value_types": [
+                "u64",
+                "u64"
+              ]
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "nlt_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "rewards_reserve",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "staking_daily_rate",
+          "type_": {
+            "map": {
+              "key_type": "u64",
+              "value_type": "i128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "successful_mints",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "successful_mints_timestamps",
+          "type_": {
+            "vec": {
+              "element_type": "u64"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Mint",
+      "fields": [
+        {
+          "doc": "",
+          "name": "dev",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "irrelevancy_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "mint_reward_range",
+          "type_": {
+            "tuple": {
+              "value_types": [
+                "u64",
+                "u64"
+              ]
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "minted",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "token_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_info",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "total_supply",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "MintStatus",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Active"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Failed"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Success"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Staking",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "unclaimed_balance",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Initialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "NotAuthorized",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "MintAlreadyExist",
+          "value": 100
+        },
+        {
+          "doc": "",
+          "name": "MintNotFound",
+          "value": 101
+        },
+        {
+          "doc": "",
+          "name": "MintEnded",
+          "value": 102
+        },
+        {
+          "doc": "",
+          "name": "MintFailed",
+          "value": 103
+        },
+        {
+          "doc": "",
+          "name": "MintActive",
+          "value": 104
+        },
+        {
+          "doc": "",
+          "name": "MintLessThanMin",
+          "value": 105
+        },
+        {
+          "doc": "",
+          "name": "StakingInvalidAmount",
+          "value": 200
+        },
+        {
+          "doc": "",
+          "name": "StakingInsufficientBalance",
+          "value": 201
+        },
+        {
+          "doc": "",
+          "name": "StakingInvalidReward",
+          "value": 202
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "contract_info",
+          "type_": {
+            "udt": {
+              "name": "ContractInfo"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "change_contract_info",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_contract_info",
+          "type_": {
+            "udt": {
+              "name": "ContractInfo"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "burn_leftovers",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "start_mint",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "dev",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_info",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "token_contract",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "mint",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim_mint_reward",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_contract",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "stake",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "unstake",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim_staking_reward",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "min_amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_mint_info",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_contract",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Mint"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_inactivity_fee",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_staking_data",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "i128",
+              "i128",
+              "u32",
+              "i128"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_current_staking_reward",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_contract_info",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "ContractInfo"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "version",
+      "inputs": [],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "u32",
+              "u32",
+              "u32"
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,181 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "A simple (pubkey, signature) pair to satisfy the host\\xe2\\x80\\x99s CustomAccountInterface",
+      "lib": "",
+      "name": "Signature",
+      "fields": [
+        {
+          "doc": "",
+          "name": "pub_key",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "signature",
+          "type_": {
+            "bytes_n": {
+              "n": 64
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "Error types for AtomicRouter",
+      "lib": "",
+      "name": "AtomicRouterError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InsufficientFunds",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "InsufficientProfit",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 3
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Only the owner may initialize",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Execute a chain of swaps across different AMMs",
+      "name": "execute",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "actions",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "vec": {
+                  "element_type": "val"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "max_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "min_profit",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Owner\\xe2\\x80\\x90only withdraw",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "This is the actual entrypoint Soroban will call when\\n`me.require_auth()` runs. It *must* live inside\\n`#[contractimpl]` so the host can find it.",
+      "name": "__check_auth",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "_payload",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "_sigs",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Signature"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "_ctxs",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Context"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  }
+]

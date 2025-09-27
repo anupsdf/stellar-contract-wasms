@@ -1,0 +1,1170 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "init",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "protocol_manager",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "col_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "stable_issuer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "treasury",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "oracle",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_core_state",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "CoreState"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_address",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "typ",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_fee",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_fee",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_panic",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "status",
+          "type_": "bool"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_lowest_key",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "denomination",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "next_key",
+          "type_": {
+            "udt": {
+              "name": "OptionalVaultKey"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_next_key",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "target_key",
+          "type_": {
+            "udt": {
+              "name": "VaultKey"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "next_key",
+          "type_": {
+            "udt": {
+              "name": "OptionalVaultKey"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_currency",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "denomination",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "contract",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_currency",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "denomination",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Currency"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "toggle_currency",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "denomination",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "active",
+          "type_": "bool"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_vault_conditions",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "min_col_rate",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "min_debt_creation",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "opening_col_rate",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "denomination",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_vaults_info",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "denomination",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "VaultsInfo"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "calculate_deposit_ratio",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "currency_rate",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "collateral",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "debt",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "new_vault",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "prev_key",
+          "type_": {
+            "udt": {
+              "name": "OptionalVaultKey"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "initial_debt",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "collateral_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "denomination",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_vault",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "denomination",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Vault"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_vault_from_key",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "vault_key",
+          "type_": {
+            "udt": {
+              "name": "VaultKey"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Vault"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_vaults",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "prev_key",
+          "type_": {
+            "udt": {
+              "name": "OptionalVaultKey"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "denomination",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "total",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "only_to_liquidate",
+          "type_": "bool"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "Vault"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "increase_collateral",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "prev_key",
+          "type_": {
+            "udt": {
+              "name": "OptionalVaultKey"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "vault_key",
+          "type_": {
+            "udt": {
+              "name": "VaultKey"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "new_prev_key",
+          "type_": {
+            "udt": {
+              "name": "OptionalVaultKey"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw_collateral",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "prev_key",
+          "type_": {
+            "udt": {
+              "name": "OptionalVaultKey"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "vault_key",
+          "type_": {
+            "udt": {
+              "name": "VaultKey"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "new_prev_key",
+          "type_": {
+            "udt": {
+              "name": "OptionalVaultKey"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "increase_debt",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "prev_key",
+          "type_": {
+            "udt": {
+              "name": "OptionalVaultKey"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "vault_key",
+          "type_": {
+            "udt": {
+              "name": "VaultKey"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "new_prev_key",
+          "type_": {
+            "udt": {
+              "name": "OptionalVaultKey"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "pay_debt",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "prev_key",
+          "type_": {
+            "udt": {
+              "name": "OptionalVaultKey"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "vault_key",
+          "type_": {
+            "udt": {
+              "name": "VaultKey"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "new_prev_key",
+          "type_": {
+            "udt": {
+              "name": "OptionalVaultKey"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer_debt",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "prev_key",
+          "type_": {
+            "udt": {
+              "name": "OptionalVaultKey"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "vault_key",
+          "type_": {
+            "udt": {
+              "name": "VaultKey"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "destination",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "redeem",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "denomination",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "new_prev_key",
+          "type_": {
+            "udt": {
+              "name": "OptionalVaultKey"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "liquidate",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "liquidator",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "denomination",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "total_vaults_to_liquidate",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "Vault"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CoreState",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "col_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "oracle",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "panic_mode",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "protocol_manager",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "stable_issuer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "treasury",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CoreDataKeys",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "CoreState"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Currency",
+      "fields": [
+        {
+          "doc": "",
+          "name": "active",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "denomination",
+          "type_": "symbol"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CurrenciesDataKeys",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Currency",
+            "type_": [
+              "symbol"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OptionalVaultKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "None"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Some",
+            "type_": [
+              {
+                "udt": {
+                  "name": "VaultKey"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VaultsInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "denomination",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "lowest_key",
+          "type_": {
+            "udt": {
+              "name": "OptionalVaultKey"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "min_col_rate",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "min_debt_creation",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "opening_col_rate",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "total_col",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "total_debt",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "total_vaults",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VaultKey",
+      "fields": [
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "denomination",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Vault",
+      "fields": [
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "denomination",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "next_key",
+          "type_": {
+            "udt": {
+              "name": "OptionalVaultKey"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "total_collateral",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "total_debt",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VaultIndexKey",
+      "fields": [
+        {
+          "doc": "",
+          "name": "denomination",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VaultsDataKeys",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "VaultsInfo",
+            "type_": [
+              "symbol"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Vault",
+            "type_": [
+              {
+                "tuple": {
+                  "value_types": [
+                    "address",
+                    "symbol"
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "VaultIndex",
+            "type_": [
+              {
+                "udt": {
+                  "name": "VaultIndexKey"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SCErrors",
+      "cases": [
+        {
+          "doc": "",
+          "name": "PanicModeEnabled",
+          "value": 20
+        },
+        {
+          "doc": "",
+          "name": "UnexpectedError",
+          "value": 50
+        },
+        {
+          "doc": "",
+          "name": "CoreAlreadySet",
+          "value": 100
+        },
+        {
+          "doc": "",
+          "name": "InvalidFee",
+          "value": 101
+        },
+        {
+          "doc": "",
+          "name": "VaultsInfoHasNotStarted",
+          "value": 200
+        },
+        {
+          "doc": "",
+          "name": "ThereAreNoVaults",
+          "value": 201
+        },
+        {
+          "doc": "",
+          "name": "InvalidMinDebtAmount",
+          "value": 300
+        },
+        {
+          "doc": "",
+          "name": "InvalidMinCollateralAmount",
+          "value": 310
+        },
+        {
+          "doc": "",
+          "name": "InvalidOpeningCollateralRatio",
+          "value": 400
+        },
+        {
+          "doc": "",
+          "name": "VaultDoesntExist",
+          "value": 500
+        },
+        {
+          "doc": "",
+          "name": "UserAlreadyHasDenominationVault",
+          "value": 501
+        },
+        {
+          "doc": "",
+          "name": "UserVaultIndexIsInvalid",
+          "value": 502
+        },
+        {
+          "doc": "",
+          "name": "UserVaultCantBeLiquidated",
+          "value": 503
+        },
+        {
+          "doc": "",
+          "name": "InvalidPrevVaultIndex",
+          "value": 504
+        },
+        {
+          "doc": "",
+          "name": "PrevVaultCantBeNone",
+          "value": 505
+        },
+        {
+          "doc": "",
+          "name": "PrevVaultDoesntExist",
+          "value": 506
+        },
+        {
+          "doc": "",
+          "name": "PrevVaultNextIndexIsLowerThanNewVault",
+          "value": 507
+        },
+        {
+          "doc": "",
+          "name": "PrevVaultNextIndexIsInvalid",
+          "value": 508
+        },
+        {
+          "doc": "",
+          "name": "IndexProvidedIsNotTheOneSaved",
+          "value": 509
+        },
+        {
+          "doc": "",
+          "name": "NextPrevVaultShouldBeNone",
+          "value": 510
+        },
+        {
+          "doc": "",
+          "name": "NotEnoughVaultsToLiquidate",
+          "value": 511
+        },
+        {
+          "doc": "",
+          "name": "InvalidPrevKeyDenomination",
+          "value": 512
+        },
+        {
+          "doc": "",
+          "name": "DepositAmountIsMoreThanTotalDebt",
+          "value": 600
+        },
+        {
+          "doc": "",
+          "name": "CollateralRateUnderMinimum",
+          "value": 700
+        },
+        {
+          "doc": "",
+          "name": "NotEnoughFundsToRedeem",
+          "value": 800
+        },
+        {
+          "doc": "",
+          "name": "CurrencyAlreadyAdded",
+          "value": 900
+        },
+        {
+          "doc": "",
+          "name": "CurrencyDoesntExist",
+          "value": 901
+        },
+        {
+          "doc": "",
+          "name": "CurrencyIsInactive",
+          "value": 902
+        }
+      ]
+    }
+  }
+]

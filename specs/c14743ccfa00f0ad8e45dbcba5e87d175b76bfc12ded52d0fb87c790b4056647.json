@@ -1,0 +1,180 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "Error types for AtomicRouter",
+      "lib": "",
+      "name": "AtomicRouterError",
+      "cases": [
+        {
+          "doc": "Not enough funds in the contract to start the route",
+          "name": "InsufficientFunds",
+          "value": 1
+        },
+        {
+          "doc": "Profit was below the minimum required threshold",
+          "name": "InsufficientProfit",
+          "value": 2
+        },
+        {
+          "doc": "Caller is not contract owner",
+          "name": "Unauthorized",
+          "value": 3
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "Supported protocols",
+      "lib": "",
+      "name": "Protocol",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Aquarius",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Soroswap",
+          "value": 1
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "A single swap action",
+      "lib": "",
+      "name": "Action",
+      "fields": [
+        {
+          "doc": "",
+          "name": "a0_out",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "a1_out",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "in_idx",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "min_out",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "out_idx",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "protocol",
+          "type_": {
+            "udt": {
+              "name": "Protocol"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Execute an atomic, multi-protocol route with precomputed parameters.",
+      "name": "execute",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "actions",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Action"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "max_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "min_profit",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Withdraw arbitrary amount of a specified token from contract back to owner",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

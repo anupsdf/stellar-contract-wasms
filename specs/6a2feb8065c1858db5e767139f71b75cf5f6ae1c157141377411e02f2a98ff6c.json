@@ -1,0 +1,432 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "FactoryData"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FactoryData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "collection_data",
+          "type_": {
+            "udt": {
+              "name": "LuanchpadData"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "open_edition_data",
+          "type_": {
+            "udt": {
+              "name": "LuanchpadData"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "platform_share",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "safe_transfer_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "vending_data",
+          "type_": {
+            "udt": {
+              "name": "LuanchpadData"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "whitelist_data",
+          "type_": {
+            "udt": {
+              "name": "LuanchpadData"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LuanchpadData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "fee_asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Initialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "NotAuthorized",
+          "value": 10
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "factory_data",
+          "type_": {
+            "udt": {
+              "name": "FactoryData"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deploy_whitelist",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "salt",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deploy_vending",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "collection_salt",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "launchpad_salt",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "collection_info",
+          "type_": {
+            "udt": {
+              "name": "CollectionInfo"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "payment_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "base_token_uri",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "num_tokens",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "stages",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Stage"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "start_time",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deploy_open_edition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "collection_salt",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "launchpad_salt",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "collection_info",
+          "type_": {
+            "udt": {
+              "name": "CollectionInfo"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "payment_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "base_token_uri",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "stages",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Stage"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "start_time",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deploy_collection",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "collection_salt",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "collection_info",
+          "type_": {
+            "udt": {
+              "name": "CollectionInfo"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_data",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_factory_data",
+          "type_": {
+            "udt": {
+              "name": "FactoryData"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "bump",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "destination",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_factory_data",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "FactoryData"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "version",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  }
+]

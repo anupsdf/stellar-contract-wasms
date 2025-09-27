@@ -1,0 +1,64 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "s",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "input_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "input_amt",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "output_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "out_amt_min",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "ops",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "tuple": {
+                  "value_types": [
+                    "symbol",
+                    "address",
+                    {
+                      "vec": {
+                        "element_type": "address"
+                      }
+                    },
+                    "address",
+                    "address"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

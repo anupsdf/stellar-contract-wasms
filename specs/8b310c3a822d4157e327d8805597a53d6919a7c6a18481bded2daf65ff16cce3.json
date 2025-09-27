@@ -1,0 +1,786 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "total_supply",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "allowance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "approve",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "expiration_ledger",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "balance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer_from",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "burn",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "burn_from",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "decimals",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "name",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "symbol",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AllowanceDataKey",
+      "fields": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AllowanceValue",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "expiration_ledger",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Allowance",
+            "type_": [
+              {
+                "udt": {
+                  "name": "AllowanceDataKey"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Balance",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TotalSupply"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DepositEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount_0",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_1",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "liquidity",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "new_reserve_0",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "new_reserve_1",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SwapEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount_0_in",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_0_out",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_1_in",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_1_out",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "WithdrawEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount_0",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_1",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "liquidity",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "new_reserve_0",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "new_reserve_1",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SyncEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "new_reserve_0",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "new_reserve_1",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PairError",
+      "cases": [
+        {
+          "doc": "Pair: already initialized",
+          "name": "InitializeAlreadyInitialized",
+          "value": 101
+        },
+        {
+          "doc": "Pair: not yet initialized",
+          "name": "NotInitialized",
+          "value": 102
+        },
+        {
+          "doc": "Pair: token_0 must be less than token_1 while initializing",
+          "name": "InitializeTokenOrderInvalid",
+          "value": 103
+        },
+        {
+          "doc": "Pair: insufficient amount of token 0 sent while doing deposit",
+          "name": "DepositInsufficientAmountToken0",
+          "value": 104
+        },
+        {
+          "doc": "Pair: insufficient amount of token 1 sent while doing deposit",
+          "name": "DepositInsufficientAmountToken1",
+          "value": 105
+        },
+        {
+          "doc": "Pair: insufficient first liquidity minted while doing deposit",
+          "name": "DepositInsufficientFirstLiquidity",
+          "value": 106
+        },
+        {
+          "doc": "Pair: insufficient liquidity minted while doing deposit",
+          "name": "DepositInsufficientLiquidityMinted",
+          "value": 107
+        },
+        {
+          "doc": "Pair: insufficient output amount while doing deposDepositit",
+          "name": "SwapInsufficientOutputAmount",
+          "value": 108
+        },
+        {
+          "doc": "Pair: negatives amounts out dont supported while doing swap",
+          "name": "SwapNegativesOutNotSupported",
+          "value": 109
+        },
+        {
+          "doc": "Pair: insufficient liquidity to do the swap",
+          "name": "SwapInsufficientLiquidity",
+          "value": 110
+        },
+        {
+          "doc": "Pair: invalid to to do the swap",
+          "name": "SwapInvalidTo",
+          "value": 111
+        },
+        {
+          "doc": "Pair: insufficient input amount while doing swap",
+          "name": "SwapInsufficientInputAmount",
+          "value": 112
+        },
+        {
+          "doc": "Pair: negatives amounts in dont supported while doing swap",
+          "name": "SwapNegativesInNotSupported",
+          "value": 113
+        },
+        {
+          "doc": "Pair: Multiplier is not met while doing swap",
+          "name": "SwapConstantNotMet",
+          "value": 114
+        },
+        {
+          "doc": "Pair: liquidity was not initialized yet while doing withdraw",
+          "name": "WithdrawLiquidityNotInitialized",
+          "value": 115
+        },
+        {
+          "doc": "Pair: insufficient sent shares while doing withdraw",
+          "name": "WithdrawInsufficientSentShares",
+          "value": 116
+        },
+        {
+          "doc": "Pair: insufficient liquidity burned while doing withdraw",
+          "name": "WithdrawInsufficientLiquidityBurned",
+          "value": 117
+        },
+        {
+          "doc": "Pair: OVERFLOW while updating",
+          "name": "UpdateOverflow",
+          "value": 118
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FactoryError",
+      "cases": [
+        {
+          "doc": "RaumFiFactory: not yet initialized",
+          "name": "NotInitialized",
+          "value": 201
+        },
+        {
+          "doc": "RaumFiFactory: token_a and token_b have identical addresses",
+          "name": "CreatePairIdenticalTokens",
+          "value": 202
+        },
+        {
+          "doc": "RaumFiFactory: pair already exists between token_a and token_b",
+          "name": "CreatePairAlreadyExists",
+          "value": 203
+        },
+        {
+          "doc": "RaumFiFactory: already initialized",
+          "name": "InitializeAlreadyInitialized",
+          "value": 204
+        },
+        {
+          "doc": "RaumFiFactory: pair does not exist",
+          "name": "PairDoesNotExist",
+          "value": 205
+        },
+        {
+          "doc": "RaumFiFactory: index does not exist",
+          "name": "IndexDoesNotExist",
+          "value": 206
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initializes a new RaumFi pair by setting token addresses, factory, and initial reserves.\\n\\n# Arguments\\n* `e` - The runtime environment.\\n* `factory` - The address of the RaumFi factory contract.\\n* `token_0` - The address of the first token in the pair.\\n* `token_1` - The address of the second token in the pair.",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "factory",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_0",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_1",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "PairError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the address of the first token in the RaumFi pair.",
+      "name": "token_0",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the address of the second token in the RaumFi pair.",
+      "name": "token_1",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the address of the RaumFi factory contract.",
+      "name": "factory",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Deposits tokens into the RaumFi pair and mints LP tokens in return.\\n\\n# Arguments\\n* `e` - The runtime environment.\\n* `to` - The address where the minted LP tokens will be sent.\\n\\n# Returns\\nThe amount of minted LP tokens.\\nPossible errors:\\n- `PairError::NotInitialized`: The RaumFi pair has not been initialized.\\n- `PairError::DepositInsufficientAmountToken0`: Insufficient amount of token 0 sent.\\n- `PairError::DepositInsufficientAmountToken1`: Insufficient amount of token 1 sent.\\n- `PairError::DepositInsufficientFirstLiquidity`: Insufficient first liquidity minted.\\n- `PairError::DepositInsufficientLiquidityMinted`: Insufficient liquidity minted.\\n- `PairError::UpdateOverflow`: Overflow occurred during update.",
+      "name": "deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": {
+              "udt": {
+                "name": "PairError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Executes a token swap within the RaumFi pair.\\n\\n# Arguments\\n* `e` - The runtime environment.\\n* `amount_0_out` - The desired amount of the first token to receive.\\n* `amount_1_out` - The desired amount of the second token to receive.\\n* `to` - The address where the swapped tokens will be sent.\\nReturns an error if the swap cannot be executed. Possible errors include:\\n- `PairError::NotInitialized`\\n- `PairError::SwapInsufficientOutputAmount`\\n- `PairError::SwapNegativesOutNotSupported`\\n- `PairError::SwapInsufficientLiquidity`\\n- `PairError::SwapInvalidTo`\\n- `PairError::SwapInsufficientInputAmount`\\n- `PairError::SwapNegativesInNotSupported`\\n- `PairError::SwapConstantNotMet`: If the K constant condition is not met after the swap.",
+      "name": "swap",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount_0_out",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_1_out",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "PairError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Withdraws liquidity from the RaumFi pair, burning LP tokens and returning the corresponding tokens to the user.\\n\\n# Arguments\\n* `e` - The runtime environment.\\n* `to` - The address where the withdrawn tokens will be sent.\\n\\n# Returns\\nA tuple containing the amounts of token 0 and token 1 withdrawn from the pair.",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": [
+                  "i128",
+                  "i128"
+                ]
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "PairError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Skims excess tokens from reserves and sends them to the specified address.\\n\\n# Arguments\\n* `e` - The runtime environment.\\n* `to` - The address where the excess tokens will be sent.",
+      "name": "skim",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Forces reserves to match current balances.\\n\\n# Arguments\\n* `e` - The runtime environment.",
+      "name": "sync",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the current reserves and the last block timestamp.\\n\\n# Arguments\\n* `e` - The runtime environment.\\n\\n# Returns\\nA tuple containing the reserves of token 0 and token 1.",
+      "name": "get_reserves",
+      "inputs": [],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "i128",
+              "i128"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the value of the last product of reserves (`K`) stored in the contract.\\n\\n# Arguments\\n* `e` - The runtime environment.\\n\\n# Returns\\nThe value of the last product of reserves (`K`).",
+      "name": "k_multiplier",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenMetadata",
+      "fields": [
+        {
+          "doc": "",
+          "name": "decimal",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        }
+      ]
+    }
+  }
+]

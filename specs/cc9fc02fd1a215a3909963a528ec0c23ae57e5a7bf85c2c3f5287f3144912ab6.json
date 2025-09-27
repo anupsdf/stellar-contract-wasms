@@ -1,0 +1,339 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TVLEntry",
+      "fields": [
+        {
+          "doc": "",
+          "name": "confirmations",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "revenue",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_active_loans",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_markup_payout",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_originated_loans",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "tvl",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "verified",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Owner"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Validator",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "TVLEntry",
+            "type_": [
+              "u64"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Confirmed",
+            "type_": [
+              "u64",
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "DateIndex"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RegistryError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InvalidTVLData",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "AlreadySubmitted",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "MismatchedHash",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "AlreadyConfirmed",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "NotValidator",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "InvalidHash",
+          "value": 6
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_validator",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "addr",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_validator",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "addr",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "submit_tvl",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "tvl",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "revenue",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_active_loans",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_originated_loans",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_markup_payout",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "verify_tvl",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_tvl_entry",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "date",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "TVLEntry"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_all_dates",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "u64"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_all_tvl_entries",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "TVLEntry"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "has_confirmed",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "validator",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "increment",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  }
+]

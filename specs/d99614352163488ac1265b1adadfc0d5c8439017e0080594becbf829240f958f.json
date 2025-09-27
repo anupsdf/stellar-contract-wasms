@@ -1,0 +1,1144 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CashAllowance",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "expiry",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ItemAllowance",
+      "fields": [
+        {
+          "doc": "",
+          "name": "expiry",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "quantity",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Roles",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admins",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "beneficiaries",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "ngos",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "super_admins",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "vendors",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Unauthorized"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "InsufficientFunds"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "AllowanceNotFound"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "InvalidRole"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ContractPaused"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ExpiredAllowance"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "StorageCorruption"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "InvalidProjectId"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "RoleAlreadyExists"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ReentrancyDetected"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RoleAssigned",
+      "fields": [
+        {
+          "doc": "",
+          "name": "assignee",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "role",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AllowanceAllocated",
+      "fields": [
+        {
+          "doc": "",
+          "name": "allowee",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "currency_or_item",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AllowanceClaimed",
+      "fields": [
+        {
+          "doc": "",
+          "name": "allowee",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_role",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "role",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "new_member",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_role",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "role",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "member_to_remove",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "pause_contract",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "unpause_contract",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "allocate_cash_allowance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "allowee",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "currency",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "expiry",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim_cash_allowance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "currency",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "vendor",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "allocate_item_allowance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "allowee",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "item_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "quantity",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "expiry",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim_item_allowance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "vendor",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "item_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "quantity",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "allocate_cash_allowances_batch",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "allowances",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "tuple": {
+                  "value_types": [
+                    "address",
+                    "string",
+                    "u64",
+                    {
+                      "option": {
+                        "value_type": "u64"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "allocate_item_allowances_batch",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "allowances",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "tuple": {
+                  "value_types": [
+                    "address",
+                    "string",
+                    "u64",
+                    {
+                      "option": {
+                        "value_type": "u64"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer_cash_allowance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "new_allowee",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "currency",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer_item_allowance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "new_allowee",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "item_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "quantity",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "redeem_item_claims",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "vendor",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "item_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "quantity",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "redeem_cash_claims",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "vendor",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "currency",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_cash_allowance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "allowee",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "currency",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "CashAllowance"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_item_allowance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "allowee",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "item_id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "ItemAllowance"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_all_cash_allowances",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "map": {
+            "key_type": {
+              "tuple": {
+                "value_types": [
+                  "address",
+                  "string"
+                ]
+              }
+            },
+            "value_type": {
+              "udt": {
+                "name": "CashAllowance"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_all_item_allowances",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "map": {
+            "key_type": {
+              "tuple": {
+                "value_types": [
+                  "address",
+                  "string"
+                ]
+              }
+            },
+            "value_type": {
+              "udt": {
+                "name": "ItemAllowance"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_total_cash_allowance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "beneficiary",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_ids",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_total_item_allowance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "beneficiary",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_ids",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_roles",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Roles"
+          }
+        }
+      ]
+    }
+  }
+]

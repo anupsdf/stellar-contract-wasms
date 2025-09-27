@@ -1,0 +1,119 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SignerOperation",
+      "fields": [
+        {
+          "doc": "",
+          "name": "high_threshold",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "low_threshold",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "master_weight",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "med_threshold",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "new_signer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "signer_weight",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "target_account",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "prepare_signer_addition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_signer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "current_min_weight",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "SignerOperation"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_prepared_operation",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "SignerOperation"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "mark_executed",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

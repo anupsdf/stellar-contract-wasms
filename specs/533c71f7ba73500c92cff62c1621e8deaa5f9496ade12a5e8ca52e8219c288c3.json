@@ -1,0 +1,70 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "MigrationNotAllowed",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "MigrationInProgress",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "InvalidAssetXdr",
+          "value": 3
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Deploys the Stellar Asset Contract (SAC) address for a given asset XDR.\\n\\nThis function takes an asset's XDR representation and deploys the corresponding\\nStellar Asset Contract. It will fail if the contract is already deployed.\\n\\nThis utility is specifically designed for Stellar Classic tokens (native Stellar assets),\\nallowing them to be used in Soroban smart contracts through the SAC interface.\\n\\n# Arguments\\n* `asset_xdr` - The XDR byte representation of the Stellar asset\\n\\n# Returns\\n* `Ok(Address)` - The deployed Stellar Asset Contract address\\n* `Err(ContractError::InvalidAssetXdr)` - If the asset XDR is invalid\\n* `Err` - If the contract is already deployed (deployment error)\\n\\n# Usage\\nThis function is used to deploy a new Stellar Asset Contract for a specific asset.\\nIt takes the XDR representation of a Stellar asset (code and issuer) and creates\\na new contract instance for that asset.\\n\\nTo obtain the asset XDR:\\n1. Use Stellar SDK libraries (like js-stellar-sdk) to create an Asset object\\n2. Serialize the Asset to",
+      "name": "deploy_stellar_asset_contract",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset_xdr",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Token",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ]
+    }
+  }
+]

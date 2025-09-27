@@ -1,0 +1,791 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AggregatorError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 601
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 602
+        },
+        {
+          "doc": "",
+          "name": "NegativeNotAllowed",
+          "value": 603
+        },
+        {
+          "doc": "",
+          "name": "ProtocolNotFound",
+          "value": 604
+        },
+        {
+          "doc": "",
+          "name": "DeadlineExpired",
+          "value": 605
+        },
+        {
+          "doc": "",
+          "name": "InsufficientOutputAmount",
+          "value": 608
+        },
+        {
+          "doc": "",
+          "name": "ExcessiveInputAmount",
+          "value": 609
+        },
+        {
+          "doc": "",
+          "name": "ProtocolPaused",
+          "value": 610
+        },
+        {
+          "doc": "",
+          "name": "DistributionLengthExceeded",
+          "value": 611
+        },
+        {
+          "doc": "",
+          "name": "ZeroDistributionPart",
+          "value": 612
+        },
+        {
+          "doc": "",
+          "name": "ArithmeticError",
+          "value": 613
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 614
+        },
+        {
+          "doc": "",
+          "name": "InvalidPath",
+          "value": 615
+        },
+        {
+          "doc": "",
+          "name": "NegibleAmount",
+          "value": 616
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "InitializedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "adapter_addresses",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Adapter"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UpdateProtocolsEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "adapter_addresses",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Adapter"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RemovedProtocolEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "protocol_id",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PausedProtocolEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "paused",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "protocol_id",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "NewAdminEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "new",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "old",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SwapEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount_in",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_out",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "distribution",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "DexDistribution"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_in",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_out",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DexDistribution",
+      "fields": [
+        {
+          "doc": "",
+          "name": "parts",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "path",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "protocol_id",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Adapter",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "paused",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "protocol_id",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initializes the contract and sets the soroswap_router address.\\n\\n# Arguments\\n\\n* `e` - The environment in which the contract is running.\\n* `admin` - The address of the administrator.\\n* `adapter_vec` - A vector containing the adapters to be initialized.\\n\\n# Errors\\n\\nReturns an `AggregatorError::AlreadyInitialized` error if the contract is already initialized.\\n\\n# Returns\\n\\nReturns `Ok(())` if the initialization is successful.",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "adapter_vec",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Adapter"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "AggregatorError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Updates the adapters in the contract.\\n\\nThis function overwrites any existing protocol address pairs if they exist.\\nIf an adapter does not exist, it will add it.\\n\\n# Arguments\\n\\n* `e` - The environment in which the contract is running.\\n* `adapter_vec` - A vector containing the adapters to be updated.\\n\\n# Errors\\n\\nReturns an `AggregatorError` if the contract is not initialized or if the caller is not the admin.\\n\\n# Returns\\n\\nReturns `Ok(())` if the adapters are successfully updated.",
+      "name": "update_adapters",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "adapter_vec",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Adapter"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "AggregatorError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Removes an adapter from the contract.\\n\\nThis function removes the adapter associated with the specified protocol ID.\\n\\n# Arguments\\n\\n* `e` - The environment in which the contract is running.\\n* `protocol_id` - The ID of the protocol whose adapter is to be removed.\\n\\n# Errors\\n\\nReturns an `AggregatorError` if the contract is not initialized or if the caller is not the admin.\\n\\n# Returns\\n\\nReturns `Ok(())` if the adapter is successfully removed.",
+      "name": "remove_adapter",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "protocol_id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "AggregatorError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sets the paused state of the protocol in the aggregator.\\n\\n# Argumentsnts\\n* `e` - The runtime environment.t.\\n* `protocol_id` - The ID of the protocol to set the paused state for.\\n* `paused` - The boolean value indicating whether the protocol should be paused or not.\\n\\n# Returns\\nReturns `Ok(())` if the operation is successful, otherwise returns an `AggregatorError`.",
+      "name": "set_pause",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "protocol_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "paused",
+          "type_": "bool"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "AggregatorError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sets a new administrator for the contract.\\n\\nThis function updates the administrator of the contract to the specified `new_admin` address.\\n\\n# Arguments\\n\\n* `e` - The runtime environment.\\n* `new_admin` - The address of the new administrator.\\n\\n# Errors\\n\\nReturns an `AggregatorError` if the contract is not initialized or if the caller is not the current admin.\\n\\n# Returns\\n\\nReturns `Ok(())` if the operation is successful.",
+      "name": "set_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "AggregatorError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Upgrades the contract with new WebAssembly (WASM) code.\\n\\nThis function updates the contract with new WASM code provided by the `new_wasm_hash`.\\n\\n# Arguments\\n\\n* `e` - The runtime environment.\\n* `new_wasm_hash` - The hash of the new WASM code to upgrade the contract to.\\n\\n# Errors\\n\\nReturns an `AggregatorError` if the contract is not initialized or if the caller is not the admin.\\n\\n# Returns\\n\\nReturns `Ok(())` if the upgrade is successful.",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "AggregatorError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Swaps an exact amount of input tokens for output tokens across multiple DEXes.\\n\\nThis function performs a swap operation where an exact amount of input tokens is exchanged for output tokens,\\ndistributed across multiple DEXes as specified by the `distribution` parameter.\\n\\n# Arguments\\n\\n* `e` - The runtime environment.\\n* `token_in` - The address of the input token.\\n* `token_out` - The address of the output token.\\n* `amount_in` - The exact amount of input tokens to be swapped.\\n* `amount_out_min` - The minimum amount of output tokens expected to receive.\\n* `distribution` - A vector specifying how the swap should be distributed across different DEXes.\\n* `to` - The address to receive the output tokens.\\n* `deadline` - The time by which the swap must be completed.\\n\\n# Errors\\n\\nReturns an `AggregatorError` if any of the following conditions are met:\\n- The parameters are invalid.\\n- The swap amounts calculation fails.\\n- There is an arithmetic error.\\n- The final output amount is less than the minimum expected amount.\\n\\n# Retu",
+      "name": "swap_exact_tokens_for_tokens",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_in",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_out",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount_in",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_out_min",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "distribution",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "DexDistribution"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "deadline",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "bytes",
+          "type_": {
+            "option": {
+              "value_type": {
+                "vec": {
+                  "element_type": {
+                    "bytes_n": {
+                      "n": 32
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": {
+                  "vec": {
+                    "element_type": "i128"
+                  }
+                }
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "AggregatorError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Swaps tokens for an exact amount of output tokens across multiple DEXes.\\n\\nThis function performs a swap operation where tokens are exchanged for an exact amount of output tokens,\\ndistributed across multiple DEXes as specified by the `distribution` parameter.\\n\\n# Arguments\\n\\n* `e` - The runtime environment.\\n* `token_in` - The address of the input token.\\n* `token_out` - The address of the output token.\\n* `amount_out` - The exact amount of output tokens to be received.\\n* `amount_in_max` - The maximum amount of input tokens to be spent.\\n* `distribution` - A vector specifying how the swap should be distributed across different DEXes.\\n* `to` - The address to receive the output tokens.\\n* `deadline` - The time by which the swap must be completed.\\n\\n# Errors\\n\\nReturns an `AggregatorError` if any of the following conditions are met:\\n- The parameters are invalid.\\n- The swap amounts calculation fails.\\n- There is an arithmetic error.\\n- The final input amount exceeds the maximum allowed.\\n\\n# Returns\\n\\nReturns a vector of vectors",
+      "name": "swap_tokens_for_exact_tokens",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_in",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_out",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount_out",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_in_max",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "distribution",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "DexDistribution"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "deadline",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "bytes",
+          "type_": {
+            "option": {
+              "value_type": {
+                "vec": {
+                  "element_type": {
+                    "bytes_n": {
+                      "n": 32
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": {
+                  "vec": {
+                    "element_type": "i128"
+                  }
+                }
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "AggregatorError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the administrator address of the contract.\\n\\nThis function returns the current administrator address of the contract.\\n\\n# Arguments\\n\\n* `e` - A reference to the runtime environment.\\n\\n# Errors\\n\\nReturns an `AggregatorError` if the contract is not initialized.\\n\\n# Returns\\n\\nReturns the address of the current administrator if the operation is successful.",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "AggregatorError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the list of adapters registered in the contract.\\n\\nThis function returns a vector containing all the adapters registered in the contract.\\n\\n# Arguments\\n\\n* `e` - A reference to the runtime environment.\\n\\n# Errors\\n\\nReturns an `AggregatorError` if the contract is not initialized or if there are issues retrieving adapters.\\n\\n# Returns\\n\\nReturns a vector of `Adapter` objects if the operation is successful.",
+      "name": "get_adapters",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": {
+                  "udt": {
+                    "name": "Adapter"
+                  }
+                }
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "AggregatorError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the paused state of a specific protocol adapter.\\n\\nThis function returns whether the adapter associated with the specified `protocol_id` is currently paused.\\n\\n# Arguments\\n\\n* `e` - A reference to the runtime environment.\\n* `protocol_id` - The ID of the protocol whose paused state is to be retrieved.\\n\\n# Errors\\n\\nReturns an `AggregatorError` if there are issues retrieving the adapter or if the protocol ID is not found.\\n\\n# Returns\\n\\nReturns `true` if the adapter is paused, otherwise `false`.",
+      "name": "get_paused",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "protocol_id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "bool",
+            "error_type": {
+              "udt": {
+                "name": "AggregatorError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the version number of the contract.\\n\\nThis function returns the version number of the contract. If the WebAssembly (WASM) code is updated,\\nthis number should be increased accordingly to reflect the new version.\\n\\n# Returns\\n\\nReturns the current version number of the contract as a `u32`.",
+      "name": "get_version",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AdapterError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 401
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 402
+        },
+        {
+          "doc": "",
+          "name": "NegativeNotAllowed",
+          "value": 403
+        },
+        {
+          "doc": "",
+          "name": "ProtocolAddressNotFound",
+          "value": 404
+        },
+        {
+          "doc": "",
+          "name": "DeadlineExpired",
+          "value": 405
+        },
+        {
+          "doc": "",
+          "name": "MissingPoolHashes",
+          "value": 406
+        },
+        {
+          "doc": "",
+          "name": "WrongMinimumPathLength",
+          "value": 407
+        },
+        {
+          "doc": "",
+          "name": "WrongPoolHashesLength",
+          "value": 408
+        }
+      ]
+    }
+  }
+]

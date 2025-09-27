@@ -1,0 +1,221 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "router",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "factory",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_expected_output",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount_in",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "input_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "output_token",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "swap",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "customer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "merchant",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount_in",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "input_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "output_token",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_config",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "SwapConfig"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "InvalidAmount",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "InvalidAddress",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "SwapFailed",
+          "value": 5
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Represents the configuration for a swap",
+      "lib": "",
+      "name": "SwapConfig",
+      "fields": [
+        {
+          "doc": "The factory address for swap operations",
+          "name": "factory",
+          "type_": "address"
+        },
+        {
+          "doc": "The router address for executing swaps",
+          "name": "router",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "Error types for swap-related operations",
+      "lib": "",
+      "name": "SwapError",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "Contract not initialized",
+            "name": "NotInitialized"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "Swap amount is below minimum threshold",
+            "name": "AmountTooLow"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "Swap amount exceeds maximum limit",
+            "name": "AmountTooHigh"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "Insufficient output token balance",
+            "name": "InsufficientOutputBalance"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "Swap failed due to slippage",
+            "name": "SlippageTooHigh"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "Unauthorized swap attempt",
+            "name": "Unauthorized"
+          }
+        }
+      ]
+    }
+  }
+]

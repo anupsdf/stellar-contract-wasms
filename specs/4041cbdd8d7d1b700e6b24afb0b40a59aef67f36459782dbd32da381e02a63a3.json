@@ -1,0 +1,507 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "No such Contract has been published",
+          "name": "NoSuchContractPublished",
+          "value": 1
+        },
+        {
+          "doc": "No such version of the contact has been published",
+          "name": "NoSuchVersion",
+          "value": 2
+        },
+        {
+          "doc": "Contract already published",
+          "name": "AlreadyPublished",
+          "value": 3
+        },
+        {
+          "doc": "No such contract deployed",
+          "name": "NoSuchContractDeployed",
+          "value": 4
+        },
+        {
+          "doc": "Contract already deployed",
+          "name": "AlreadyDeployed",
+          "value": 5
+        },
+        {
+          "doc": "Contract already claimed",
+          "name": "AlreadyClaimed",
+          "value": 6
+        },
+        {
+          "doc": "Failed to initialize contract",
+          "name": "InitFailed",
+          "value": 7
+        },
+        {
+          "doc": "Failed to redeploy a deployed contract with no coreriff macro",
+          "name": "RedeployDeployedFailed",
+          "value": 8
+        },
+        {
+          "doc": "Contract doesn't have owner, impossible to perform the operation",
+          "name": "NoOwnerSet",
+          "value": 9
+        },
+        {
+          "doc": "Only Admin is allowed",
+          "name": "AdminOnly",
+          "value": 10
+        },
+        {
+          "doc": "New version must be greater than the most recent version",
+          "name": "VersionMustBeGreaterThanCurrent",
+          "value": 11
+        },
+        {
+          "doc": "Invalid name.\\nMust be 64 characters or less;\\nascii alphanumeric, '-', or '_';\\nstart with a ascii alphabetic character;\\nand not be a Rust keyword",
+          "name": "InvalidName",
+          "value": 12
+        },
+        {
+          "doc": "Invalid Version. Must be valid cargo version",
+          "name": "InvalidVersion",
+          "value": 13
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "WKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "WR",
+            "type_": [
+              "string"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "WA",
+            "type_": [
+              "string"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "CR",
+            "type_": [
+              "string"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DeployEventData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "contract_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "contract_name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "deployer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "version",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "wasm_name",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get current admin",
+      "name": "admin_get",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Transfer to new admin\\nShould be called in the same transaction as deploying the contract to ensure that\\na different account try to become admin",
+      "name": "admin_set",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Admin can upgrade the contract with given hash.",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Constructor to set the admin",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Fetch the hash of a Wasm binary from the registry",
+      "name": "fetch_hash",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "wasm_name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "version",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "bytes_n": {
+                "n": 32
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Most recent version of the published Wasm binary",
+      "name": "current_version",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "wasm_name",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "string",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Publish a binary. If contract had been previously published only previous author can publish again",
+      "name": "publish",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "wasm_name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "author",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "wasm",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "version",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Publish a binary. If contract had been previously published only previous author can publish again",
+      "name": "publish_hash",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "wasm_name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "author",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "version",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Deploys a new published contract returning the deployed contract's id.\\nIf no salt provided it will use the current sequence number.",
+      "name": "deploy",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "wasm_name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "version",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "contract_name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "init",
+          "type_": {
+            "option": {
+              "value_type": {
+                "vec": {
+                  "element_type": "val"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Look up the contract id of a deployed contract",
+      "name": "fetch_contract_id",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "contract_name",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Skips the publish step to deploy a contract directly, keeping the name",
+      "name": "dev_deploy",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "wasm",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "upgrade_fn",
+          "type_": {
+            "option": {
+              "value_type": "symbol"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Upgrades a contract by calling the upgrade function.\\nDefault is 'upgrade' and expects that first arg is the corresponding wasm hash",
+      "name": "upgrade_contract",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "wasm_name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "version",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "upgrade_fn",
+          "type_": {
+            "option": {
+              "value_type": "symbol"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  }
+]

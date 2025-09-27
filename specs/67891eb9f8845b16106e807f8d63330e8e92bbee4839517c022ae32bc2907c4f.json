@@ -1,0 +1,281 @@
+[
+  {
+    "function_v0": {
+      "doc": "Trade between `KALE` and some other, related vegetable.\\n\\n# Arguments\\n\\n* `customer` - The address of a customer making the trade.\\n* `vegetable` - The SAC address of the vegetable which should be traded\\nagainst `KALE`.\\n* `amount` - The amount of tokens (in stroops) which should be exchanged\\nbetween the customer and the trading post.\\n* `buy_kale` - Whether or not the customer should receive `KALE` or the\\nother vegetable.\\n\\n# Panics\\n\\n* If the trading post is not open for business.\\n* If the desired vegetable token is not in the list of available\\nvegetables.\\n* If the trading post contract does not have a high enough `KALE`\\nbalance to send to the customer (if buying `KALE`).",
+      "name": "trade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "customer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "vegetable",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "buy_kale",
+          "type_": "bool"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initializes the trading post and sets things up to begin further\\nconfiguration.\\n\\n# Arguments\\n\\n* `owner` - The address which will be the owner and administrator of the\\ntrading post.\\n* `kale` - The address of the `KALE` asset contract.\\n* `vegetables` - (optional) A vector of assets that will be available\\nfor trading.\\n* `max_vegetables` - (optional) The maximum number of vegetables that\\nshould be available to trade. Defaults to 4.",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "kale",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "vegetables",
+          "type_": {
+            "option": {
+              "value_type": {
+                "vec": {
+                  "element_type": "address"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "max_vegetables",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Upgrade the contract's Wasm bytecode. The trading post must be closed\\nbefore invoking this function.\\n\\n# Arguments\\n\\n* `new_wasm_hash` - Hash identifier for the bytecode that should be\\nhenceforth used by this contract. The bytecode must already be\\ninstalled and present on-chain.\\n\\n# Panics\\n\\n* If the trading post is still open.\\n* If the Wasm bytecode is not already installed on-chain.",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Add more vegetables which will be available to trade for using `KALE`\\ntokens.\\n\\n# Arguments\\n\\n* `vegetables_to_add` - A vector of vegetable asset contract addresses.\\n\\n# Panics\\n\\n* If a vegetable to be added is already available for trade.\\n* If the trading post is open for trading, but the SAC admin of a\\nprovided vegetable contract is not the trading post contract address.",
+      "name": "add_vegetables",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "vegetables_to_add",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Remove vegetables so they will no longer be available to trade for using\\n`KALE` tokens.\\n\\n# Arguments\\n\\n* `vegetables_to_remove` - A vector of vegetable asset contract\\naddresses.\\n\\n# Panics\\n\\n* If a vegetable to be removed is not already available for trade.",
+      "name": "remove_vegetables",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "vegetables_to_remove",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Increase the maximum number of vegetables available for trade.\\n\\n# Arguments\\n\\n* `new_max_vegetables` - The new maximum number of vegetables that can\\nbe available to trade.\\n\\n# Panics\\n\\n* If the existing maximum is greater than the provided new maximum.\\n* If the existing maximum is equal to the provided new maximum. Why even\\nbother then?",
+      "name": "grow_shelf_space",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_max_vegetables",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Decrease the maximum number of vegetables available for trade.\\n\\n# Arguments\\n\\n* `new_max_vegetables` - The new maximum number of vegetables that can\\nbe available to trade.\\n\\n# Panics\\n\\n* If the existing maximum is less than the provided new maximum.\\n* If the existing maximum is equal to the provided new maximum. Why even\\nbother then?\\n* If the number of available vegetables would be bigger than the new\\nmaximum.",
+      "name": "shrink_shelf_space",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_max_vegetables",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Open the trading post for business. The trading post is closed _by\\ndefault_, so this function will need to be invoked before trading can\\nbegin.\\n\\n# Panics\\n\\n* If there are no vegetable assets available for trade.\\n* If one or more of the available vegetable assets does not have a SAC\\nadmin set to this trading post contract's address.",
+      "name": "open",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Close the trading post.",
+      "name": "close",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Donate a portion of the trading post's holdings to the LP effort",
+      "name": "donate",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Errors",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InvalidVegetable",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "TradingPostClosed",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "VegetablesRequired",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "ContractNotSacAdmin",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "VegetableNotForTrade",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "VegetableAlreadyForTrade",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "TradingPostOpen",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "TooManyVegetables",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "ShelfAlreadyBigger",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "ShelfAlreadySmaller",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "NotEnoughKale",
+          "value": 11
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Storage",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Owner"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "KaleAddress"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Vegetables"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "MaxVegetables"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "IsOpen"
+          }
+        }
+      ]
+    }
+  }
+]

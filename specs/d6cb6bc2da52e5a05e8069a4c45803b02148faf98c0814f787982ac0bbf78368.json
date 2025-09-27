@@ -1,0 +1,1276 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CreditManagerAddressesChangedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "credit_storage",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_storage",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CreditStorageAddressesChangedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "credit",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "credit_manager",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ClientDataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Pool"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PoolStorage"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "CreditStorage"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_storage",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "credit_storage",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_contract_addrs",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_storage",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "credit_storage",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_storage_contract_addrs",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "credit",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "credit_manager",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "approve_borrower",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "borrower",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "credit_limit",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "num_periods",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "yield_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "committed_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "designated_start_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "revolving",
+          "type_": "bool"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "start_committed_credit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "borrower",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "refresh_credit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "borrower",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "trigger_default",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "borrower",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "u128",
+              "u128",
+              "u128"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_yield",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "borrower",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_yield_bps",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "extend_remaining_period",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "borrower",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "num_of_periods",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_limit_and_commitment",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "borrower",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_credit_limit",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "new_committed_amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "waive_late_fee",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "borrower",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "close_credit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "borrower",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_default_ready",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "borrower",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CreditApprovedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "borrower",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "committed_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "credit_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "credit_limit",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "designated_start_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "period_duration",
+          "type_": {
+            "udt": {
+              "name": "PayPeriodDuration"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "remaining_periods",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "revolving",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "yield_bps",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CommittedCreditStartedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "credit_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CreditClosedByAdminEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "credit_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DefaultTriggeredEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "credit_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "fees_loss",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "principal_loss",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "yield_loss",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RemainingPeriodsExtendedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "credit_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "new_remaining_periods",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "old_remaining_periods",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "YieldUpdatedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "credit_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "new_yield_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "old_yield_bps",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LimitAndCommitmentUpdatedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "credit_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "new_committed_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "new_credit_limit",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "old_committed_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "old_credit_limit",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LateFeeWaivedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "credit_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "new_late_fee",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "old_late_fee",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CreditManagerError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "BorrowerOrEARequired",
+          "value": 701
+        },
+        {
+          "doc": "",
+          "name": "EAOrSentinelRequired",
+          "value": 702
+        },
+        {
+          "doc": "",
+          "name": "ZeroPayPeriodsProvided",
+          "value": 703
+        },
+        {
+          "doc": "",
+          "name": "CreditNotInStateForApproval",
+          "value": 704
+        },
+        {
+          "doc": "",
+          "name": "CommittedAmountExceedsCreditLimit",
+          "value": 705
+        },
+        {
+          "doc": "",
+          "name": "CreditWithoutCommitmentShouldHaveNoDesignatedStartDate",
+          "value": 706
+        },
+        {
+          "doc": "",
+          "name": "DesignatedStartDateInThePast",
+          "value": 707
+        },
+        {
+          "doc": "",
+          "name": "PayPeriodsTooLowForCreditsWithDesignatedStartDate",
+          "value": 708
+        },
+        {
+          "doc": "",
+          "name": "CommittedCreditCannotBeStarted",
+          "value": 709
+        },
+        {
+          "doc": "",
+          "name": "CreditLimitTooHigh",
+          "value": 710
+        },
+        {
+          "doc": "",
+          "name": "DefaultHasAlreadyBeenTriggered",
+          "value": 711
+        },
+        {
+          "doc": "",
+          "name": "DefaultTriggeredTooEarly",
+          "value": 712
+        },
+        {
+          "doc": "",
+          "name": "CreditNotInStateForUpdate",
+          "value": 713
+        },
+        {
+          "doc": "",
+          "name": "CreditHasOutstandingBalance",
+          "value": 714
+        },
+        {
+          "doc": "",
+          "name": "CreditHasUnfulfilledCommitment",
+          "value": 715
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PayPeriodDuration",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Monthly"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Quarterly"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "SemiAnnually"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CalendarError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "StartDateLaterThanEndDate",
+          "value": 801
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CommonError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "ProtocolIsPausedOrPoolIsNotOn",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "PoolOwnerOrHumaOwnerRequired",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "PoolOperatorRequired",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "AuthorizedContractCallerRequired",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "UnsupportedFunction",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "ZeroAmountProvided",
+          "value": 7
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "BillRefreshedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "credit_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "new_due_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "next_due",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "total_past_due",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CreditState",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Deleted"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Approved"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "GoodStanding"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Delayed"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Defaulted"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CreditConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "committed_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "credit_limit",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "num_periods",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "pay_period_duration",
+          "type_": {
+            "udt": {
+              "name": "PayPeriodDuration"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "revolving",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "yield_bps",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CreditRecord",
+      "fields": [
+        {
+          "doc": "",
+          "name": "missed_periods",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "next_due",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "next_due_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "remaining_periods",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "state",
+          "type_": {
+            "udt": {
+              "name": "CreditState"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "total_past_due",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "unbilled_principal",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "yield_due",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DueDetail",
+      "fields": [
+        {
+          "doc": "",
+          "name": "accrued",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "committed",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "late_fee",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "late_fee_updated_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "paid",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "principal_past_due",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "yield_past_due",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DueManagerError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "BorrowAmountLessThanPlatformFees",
+          "value": 221
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TranchesPolicyType",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "FixedSeniorYield"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "RiskAdjusted"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolSettings",
+      "fields": [
+        {
+          "doc": "",
+          "name": "default_grace_period_days",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "late_payment_grace_period_days",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "max_credit_line",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "min_deposit_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "pay_period_duration",
+          "type_": {
+            "udt": {
+              "name": "PayPeriodDuration"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "principal_only_payment_allowed",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LPConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "fixed_senior_yield_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "liquidity_cap",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "max_senior_junior_ratio",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "tranches_risk_adjustment_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "withdrawal_lockout_period_days",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FeeStructure",
+      "fields": [
+        {
+          "doc": "",
+          "name": "front_loading_fee_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "front_loading_fee_flat",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "late_fee_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "yield_bps",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolStatus",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Off"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "On"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Closed"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Epoch",
+      "fields": [
+        {
+          "doc": "",
+          "name": "end_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AdminRnR",
+      "fields": [
+        {
+          "doc": "",
+          "name": "liquidity_rate_bps_ea",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "liquidity_rate_bps_pool_owner",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "reward_rate_bps_ea",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "reward_rate_bps_pool_owner",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TrancheAddresses",
+      "fields": [
+        {
+          "doc": "",
+          "name": "addrs",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "option": {
+                  "value_type": "address"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TrancheAssets",
+      "fields": [
+        {
+          "doc": "",
+          "name": "assets",
+          "type_": {
+            "vec": {
+              "element_type": "u128"
+            }
+          }
+        }
+      ]
+    }
+  }
+]

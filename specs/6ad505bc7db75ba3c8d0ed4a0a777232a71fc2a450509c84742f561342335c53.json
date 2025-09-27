@@ -1,0 +1,221 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "Storage keys used for persistent state.",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Owner"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TotalSupply"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "BurnFee"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "MarketingFee"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ReflectionFee"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "RewardRate"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "MarketingWallet"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TotalReflection"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Balances"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "FeeExempt"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ReflectionClaimed"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Stakes"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "A stake record for an account.",
+      "lib": "",
+      "name": "Stake",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "last_update",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "reward_debt",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initializes the contract. Must be called only once.\\nSets initial supply, default fee percentages (in basis points), reward rate,\\nand assigns the owner and marketing wallet.",
+      "name": "init",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "initial_supply",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "marketing_wallet",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Transfer tokens from `from` to `to`, deducting fees unless either party is fee-exempt.",
+      "name": "transfer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Allows an account to claim its share of accumulated reflection fees.",
+      "name": "claim_reflection",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Stake tokens by transferring them from the account into the staking pool.",
+      "name": "stake",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Unstake tokens, returning them to the account and claiming accrued staking rewards.",
+      "name": "unstake",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Claim accumulated staking rewards without unstaking tokens.",
+      "name": "claim_staking_reward",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

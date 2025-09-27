@@ -1,0 +1,26 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_title",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "title",
+          "type_": "string"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "read_title",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  }
+]

@@ -1,0 +1,750 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "lp_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "min_bond",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_reward",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "manager",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "max_complexity",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "bond",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "tokens",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "unbond",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "stake_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "stake_timestamp",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_distribution_flow",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "distribute_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reward_token",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw_rewards_chunks",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "reward_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "chunk_size",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_config",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "ConfigResponse"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_admin",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_staked",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "StakedResponse"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_total_staked",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_withdrawable_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "WithdrawableRewardsResponse"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_withdrawable_rewards_ch",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "chunk_size",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "start_day",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "WithdrawableRewardsResponse"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DistributionDataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "RewardHistory",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TotalStakedHistory"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "InvalidMinBond",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "InvalidMinReward",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "InvalidBond",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "MinRewardNotEnough",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "RewardsInvalid",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "StakeNotFound",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "InvalidTime",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "DistributionExists",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "InvalidRewardAmount",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "InvalidMaxComplexity",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "DistributionNotFound",
+          "value": 13
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ConfigResponse",
+      "fields": [
+        {
+          "doc": "",
+          "name": "config",
+          "type_": {
+            "udt": {
+              "name": "Config"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StakedResponse",
+      "fields": [
+        {
+          "doc": "",
+          "name": "last_reward_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "stakes",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Stake"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "total_stake",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AnnualizedReward",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AnnualizedRewardsResponse",
+      "fields": [
+        {
+          "doc": "",
+          "name": "rewards",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "AnnualizedReward"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "WithdrawableReward",
+      "fields": [
+        {
+          "doc": "",
+          "name": "reward_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "reward_amount",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "WithdrawableRewardsResponse",
+      "fields": [
+        {
+          "doc": "Amount of rewards assigned for withdrawal from the given address.",
+          "name": "rewards",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "WithdrawableReward"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Config",
+      "fields": [
+        {
+          "doc": "",
+          "name": "lp_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "manager",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "max_complexity",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "min_bond",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_reward",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Stake",
+      "fields": [
+        {
+          "doc": "The amount of staked tokens",
+          "name": "stake",
+          "type_": "i128"
+        },
+        {
+          "doc": "The timestamp when the stake was made",
+          "name": "stake_timestamp",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "BondingInfo",
+      "fields": [
+        {
+          "doc": "Last time when user has claimed rewards",
+          "name": "last_reward_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "The rewards debt is a mechanism to determine how much a user has already been credited in terms of staking rewards.\\nWhenever a user deposits or withdraws staked tokens to the pool, the rewards for the user is updated based on the\\naccumulated rewards per share, and the difference is stored as reward debt. When claiming rewards, this reward debt\\nis used to determine how much rewards a user can actually claim.",
+          "name": "reward_debt",
+          "type_": "u128"
+        },
+        {
+          "doc": "Vec of stakes sorted by stake timestamp",
+          "name": "stakes",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Stake"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "Total amount of staked tokens",
+          "name": "total_stake",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenInitInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StakeInitInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "manager",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "max_complexity",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "min_bond",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_reward",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LiquidityPoolInitInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "default_slippage_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "fee_recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "max_allowed_slippage_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "max_allowed_spread_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "max_referral_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "stake_init_info",
+          "type_": {
+            "udt": {
+              "name": "StakeInitInfo"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "swap_fee_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "token_init_info",
+          "type_": {
+            "udt": {
+              "name": "TokenInitInfo"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolType",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Xyk",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Stable",
+          "value": 1
+        }
+      ]
+    }
+  }
+]

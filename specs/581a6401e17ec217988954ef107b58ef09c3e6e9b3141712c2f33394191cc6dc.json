@@ -1,0 +1,154 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "init_factory",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pool_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "salt",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "oracle",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "external_asset",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "oracle_asset",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "periods_in_days",
+          "type_": "i32"
+        },
+        {
+          "doc": "",
+          "name": "volatility",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "multiplier",
+          "type_": "i32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PoolHash"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "NotAdmin",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "PoolExists",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "NoPool",
+          "value": 4
+        }
+      ]
+    }
+  }
+]

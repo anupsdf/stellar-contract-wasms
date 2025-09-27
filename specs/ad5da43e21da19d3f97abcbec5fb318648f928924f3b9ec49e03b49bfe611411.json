@@ -1,0 +1,2314 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RolesDataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "EmergencyManager"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "VaultFeeReceiver"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Manager"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "RebalanceManager"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 100
+        },
+        {
+          "doc": "",
+          "name": "InvalidRatio",
+          "value": 101
+        },
+        {
+          "doc": "",
+          "name": "StrategyDoesNotSupportAsset",
+          "value": 102
+        },
+        {
+          "doc": "",
+          "name": "NoAssetAllocation",
+          "value": 103
+        },
+        {
+          "doc": "",
+          "name": "RolesIncomplete",
+          "value": 104
+        },
+        {
+          "doc": "",
+          "name": "MetadataIncomplete",
+          "value": 105
+        },
+        {
+          "doc": "",
+          "name": "MaximumFeeExceeded",
+          "value": 106
+        },
+        {
+          "doc": "",
+          "name": "NegativeNotAllowed",
+          "value": 110
+        },
+        {
+          "doc": "",
+          "name": "InsufficientBalance",
+          "value": 111
+        },
+        {
+          "doc": "",
+          "name": "WrongAmountsLength",
+          "value": 112
+        },
+        {
+          "doc": "",
+          "name": "NotEnoughIdleFunds",
+          "value": 113
+        },
+        {
+          "doc": "",
+          "name": "InsufficientManagedFunds",
+          "value": 114
+        },
+        {
+          "doc": "",
+          "name": "MissingInstructionData",
+          "value": 115
+        },
+        {
+          "doc": "",
+          "name": "UnsupportedAsset",
+          "value": 116
+        },
+        {
+          "doc": "",
+          "name": "InsufficientAmount",
+          "value": 117
+        },
+        {
+          "doc": "",
+          "name": "NoOptimalAmounts",
+          "value": 118
+        },
+        {
+          "doc": "",
+          "name": "WrongInvestmentLength",
+          "value": 119
+        },
+        {
+          "doc": "",
+          "name": "WrongAssetAddress",
+          "value": 122
+        },
+        {
+          "doc": "",
+          "name": "WrongStrategiesLength",
+          "value": 123
+        },
+        {
+          "doc": "",
+          "name": "AmountOverTotalSupply",
+          "value": 124
+        },
+        {
+          "doc": "",
+          "name": "NoInstructions",
+          "value": 125
+        },
+        {
+          "doc": "",
+          "name": "NotUpgradable",
+          "value": 126
+        },
+        {
+          "doc": "",
+          "name": "ArithmeticError",
+          "value": 120
+        },
+        {
+          "doc": "",
+          "name": "Overflow",
+          "value": 121
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 130
+        },
+        {
+          "doc": "",
+          "name": "RoleNotFound",
+          "value": 131
+        },
+        {
+          "doc": "",
+          "name": "ManagerNotInQueue",
+          "value": 132
+        },
+        {
+          "doc": "",
+          "name": "SetManagerBeforeTime",
+          "value": 133
+        },
+        {
+          "doc": "",
+          "name": "QueueEmpty",
+          "value": 134
+        },
+        {
+          "doc": "",
+          "name": "StrategyNotFound",
+          "value": 140
+        },
+        {
+          "doc": "",
+          "name": "StrategyPausedOrNotFound",
+          "value": 141
+        },
+        {
+          "doc": "",
+          "name": "StrategyWithdrawError",
+          "value": 142
+        },
+        {
+          "doc": "",
+          "name": "StrategyInvestError",
+          "value": 143
+        },
+        {
+          "doc": "",
+          "name": "StrategyPaused",
+          "value": 144
+        },
+        {
+          "doc": "",
+          "name": "AssetNotFound",
+          "value": 150
+        },
+        {
+          "doc": "",
+          "name": "NoAssetsProvided",
+          "value": 151
+        },
+        {
+          "doc": "",
+          "name": "LibrarySortIdenticalTokens",
+          "value": 190
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VaultDepositEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amounts",
+          "type_": {
+            "vec": {
+              "element_type": "i128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "depositor",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "df_tokens_minted",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VaultWithdrawEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amounts_withdrawn",
+          "type_": {
+            "vec": {
+              "element_type": "i128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "df_tokens_burned",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "withdrawer",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "EmergencyWithdrawEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount_withdrawn",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "strategy_address",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StrategyPausedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "strategy_address",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StrategyUnpausedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "strategy_address",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FeeReceiverChangedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_fee_receiver",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ManagerChangedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "new_manager",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "EmergencyManagerChangedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "new_emergency_manager",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RebalanceManagerChangedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "new_rebalance_manager",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FeesDistributedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "distributed_fees",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "tuple": {
+                  "value_types": [
+                    "address",
+                    "i128"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UnwindEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "call_params",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "tuple": {
+                  "value_types": [
+                    "address",
+                    "i128",
+                    "address"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "rebalance_method",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "report",
+          "type_": {
+            "udt": {
+              "name": "Report"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "InvestEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "asset_investments",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "AssetInvestmentAllocation"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "rebalance_method",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "report",
+          "type_": {
+            "udt": {
+              "name": "Report"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SwapExactInEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "rebalance_method",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "swap_args",
+          "type_": {
+            "vec": {
+              "element_type": "val"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SwapExactOutEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "rebalance_method",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "swap_args",
+          "type_": {
+            "vec": {
+              "element_type": "val"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StrategyAllocation",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "strategy_address",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CurrentAssetInvestmentAllocation",
+      "fields": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "idle_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "invested_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "strategy_allocations",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "StrategyAllocation"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "total_amount",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AssetInvestmentAllocation",
+      "fields": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "strategy_allocations",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "option": {
+                  "value_type": {
+                    "udt": {
+                      "name": "StrategyAllocation"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Instruction",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "Withdraw funds from a strategy.",
+            "name": "Unwind",
+            "type_": [
+              "address",
+              "i128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "Invest funds into a strategy.",
+            "name": "Invest",
+            "type_": [
+              "address",
+              "i128"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "Perform a swap with an exact input amount.",
+            "name": "SwapExactIn",
+            "type_": [
+              "address",
+              "address",
+              "i128",
+              "i128",
+              "u64"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "Perform a swap with an exact output amount.",
+            "name": "SwapExactOut",
+            "type_": [
+              "address",
+              "address",
+              "i128",
+              "i128",
+              "u64"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Report",
+      "fields": [
+        {
+          "doc": "",
+          "name": "gains_or_losses",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "locked_fee",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "prev_balance",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "total_supply",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "allowance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "approve",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "expiration_ledger",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "balance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer_from",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "burn",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "burn_from",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "decimals",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "name",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "symbol",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AllowanceDataKey",
+      "fields": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AllowanceValue",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "expiration_ledger",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Allowance",
+            "type_": [
+              {
+                "udt": {
+                  "name": "AllowanceDataKey"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Balance",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TotalSupply"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initializes the DeFindex Vault contract with the required parameters.\\n\\nThis function sets the roles for manager, emergency manager, vault fee receiver, and manager.\\nIt also stores the list of assets to be managed by the vault, including strategies for each asset.\\n\\n# Arguments\\n- `assets`: List of asset allocations for the vault, including strategies associated with each asset.\\n- `manager`: Primary vault manager with permissions for vault control.\\n- `emergency_manager`: Address with emergency access for emergency control over the vault.\\n- `vault_fee_receiver`: Address designated to receive the vault fee receiver's portion of management fees.\\n- `vault_fee`: Vault-specific fee percentage in basis points (typically set at 0-2% APR).\\n- `defindex_protocol_receiver`: Address receiving DeFindex\\xe2\\x80\\x99s protocol-wide fee in basis points (0.5% APR).\\n- `factory`: Factory contract address for deployment linkage.\\n- `soroswap_router`: Address of the Soroswap router\\n- `vault_name`: Name of the vault token to be displayed in meta",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "assets",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "AssetStrategySet"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "roles",
+          "type_": {
+            "map": {
+              "key_type": "u32",
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "vault_fee",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "defindex_protocol_receiver",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "defindex_protocol_rate",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "factory",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "soroswap_router",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "name_symbol",
+          "type_": {
+            "map": {
+              "key_type": "string",
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "upgradable",
+          "type_": "bool"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Handles user deposits into the DeFindex Vault and optionally allocates investments automatically.\\n\\nThis function processes a deposit by transferring each specified asset amount from the user's address to\\nthe vault, allocating assets according to the vault's defined strategy ratios, and minting vault shares that\\nrepresent the user's proportional share in the vault. Additionally, if the `invest` parameter is set to `true`,\\nthe function will immediately generate and execute investment allocations based on the vault's strategy configuration.\\n\\n# Parameters\\n* `e` - The current environment reference (`Env`), for access to the contract state and utilities.\\n* `amounts_desired` - A vector specifying the user's intended deposit amounts for each asset.\\n* `amounts_min` - A vector of minimum deposit amounts required for the transaction to proceed.\\n* `from` - The address of the user making the deposit.\\n* `invest` - A boolean flag indicating whether to immediately invest the deposited funds into the vault's strategies:\\n- `tr",
+      "name": "deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amounts_desired",
+          "type_": {
+            "vec": {
+              "element_type": "i128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "amounts_min",
+          "type_": {
+            "vec": {
+              "element_type": "i128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "invest",
+          "type_": "bool"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": [
+                  {
+                    "vec": {
+                      "element_type": "i128"
+                    }
+                  },
+                  "i128",
+                  {
+                    "option": {
+                      "value_type": {
+                        "vec": {
+                          "element_type": {
+                            "option": {
+                              "value_type": {
+                                "udt": {
+                                  "name": "AssetInvestmentAllocation"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Handles the withdrawal process for a specified number of vault shares.\\n\\nThis function performs the following steps:\\n1. Validates the environment and the inputs:\\n- Ensures the contract is initialized.\\n- Checks that the withdrawal amount (`withdraw_shares`) is non-negative.\\n- Verifies the authorization of the `from` address.\\n2. Collects applicable fees.\\n3. Calculates the proportionate withdrawal amounts for each asset based on the number of shares.\\n4. Burns the specified shares from the user's account.\\n5. Processes the withdrawal for each asset:\\n- First attempts to cover the withdrawal amount using idle funds.\\n- If idle funds are insufficient, unwinds investments from the associated strategies\\nto cover the remaining amount, accounting for rounding errors in the last strategy.\\n6. Transfers the withdrawn funds to the user's address (`from`).\\n7. Emits an event to record the withdrawal details.\\n\\n## Parameters:\\n- `e`: The contract environment (`Env`).\\n- `withdraw_shares`: The number of vault shares to withdraw.\\n- `f",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "withdraw_shares",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": "i128"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Executes an emergency withdrawal from a specific strategy.\\n\\nThis function allows the emergency manager or manager to withdraw all assets from a particular strategy\\nand store them as idle funds within the vault. It also pauses the strategy to prevent further use until\\nunpaused.\\n\\n# Arguments:\\n* `e` - The environment.\\n* `strategy_address` - The address of the strategy to withdraw from.\\n* `caller` - The address initiating the emergency withdrawal (must be the manager or emergency manager).\\n\\n# Returns:\\n* `Result<(), ContractError>` - Ok if successful, otherwise returns a ContractError.",
+      "name": "rescue",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "strategy_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Pauses a strategy to prevent it from being used in the vault.\\n\\nThis function pauses a strategy by setting its `paused` field to `true`. Only the manager or emergency\\nmanager can pause a strategy.\\n\\n# Arguments:\\n* `e` - The environment.\\n* `strategy_address` - The address of the strategy to pause.\\n* `caller` - The address initiating the pause (must be the manager or emergency manager).\\n\\n# Returns:\\n* `Result<(), ContractError>` - Ok if successful, otherwise returns a ContractError.",
+      "name": "pause_strategy",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "strategy_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Unpauses a previously paused strategy.\\n\\nThis function unpauses a strategy by setting its `paused` field to `false`, allowing it to be used\\nagain in the vault.\\n\\n# Arguments:\\n* `e` - The environment.\\n* `strategy_address` - The address of the strategy to unpause.\\n* `caller` - The address initiating the unpause (must be the manager or emergency manager).\\n\\n# Returns:\\n* `Result<(), ContractError>` - Ok if successful, otherwise returns a ContractError.",
+      "name": "unpause_strategy",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "strategy_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the list of assets managed by the DeFindex Vault.\\n\\n# Arguments:\\n* `e` - The environment.\\n\\n# Returns:\\n* `Vec<AssetStrategySet>` - A vector of `AssetStrategySet` structs representing the assets managed by the vault.",
+      "name": "get_assets",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "AssetStrategySet"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the total managed funds of the vault, including both invested and idle funds.\\n\\nThis function provides a map where the key is the asset address and the value is the total amount\\nof that asset being managed by the vault.\\n\\n# Arguments:\\n* `e` - The environment.\\n\\n# Returns:\\n* `Map<Address, i128>` - A map of asset addresses to their total managed amounts.",
+      "name": "fetch_total_managed_funds",
+      "inputs": [],
+      "outputs": [
+        {
+          "map": {
+            "key_type": "address",
+            "value_type": {
+              "udt": {
+                "name": "CurrentAssetInvestmentAllocation"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "This function extends the contract's time-to-live and calculates how much of each asset corresponds\\nper the provided number of vault shares (`vault_shares`). It provides proportional allocations for each asset\\nin the vault relative to the specified shares.\\n\\n# Arguments\\n* `e` - The current environment reference.\\n* `vault_shares` - The number of vault shares for which the corresponding asset amounts are calculated.\\n\\n# Returns\\n* `Map<Address, i128>` - A map containing each asset address and its corresponding proportional amount.",
+      "name": "get_asset_amounts_per_shares",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "vault_shares",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "map": {
+                "key_type": "address",
+                "value_type": "i128"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the current fee rates for the vault and the DeFindex protocol.\\n\\nThis function returns the fee rates for both the vault and the DeFindex protocol.\\n\\n# Arguments\\n* `e` - The environment.\\n\\n# Returns\\n* `(u32, u32)` - A tuple containing:\\n- The vault fee rate as a percentage in basis points.\\n- The DeFindex protocol fee rate as a percentage in basis points.\\n",
+      "name": "get_fees",
+      "inputs": [],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "u32",
+              "u32"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "report",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": {
+                  "udt": {
+                    "name": "Report"
+                  }
+                }
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sets the fee receiver for the vault.\\n\\nThis function allows the manager or emergency manager to set a new fee receiver address for the vault.\\n\\n# Arguments:\\n* `e` - The environment.\\n* `caller` - The address initiating the change (must be the manager or emergency manager).\\n* `vault_fee_receiver` - The new fee receiver address.\\n\\n# Returns:\\n* `()` - No return value.",
+      "name": "set_fee_receiver",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_fee_receiver",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the current fee receiver address for the vault.\\n\\n# Arguments:\\n* `e` - The environment.\\n\\n# Returns:\\n* `Result<Address, ContractError>` - The fee receiver address if successful, otherwise returns a ContractError.",
+      "name": "get_fee_receiver",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sets the manager for the vault.\\n\\nThis function allows the current manager to set a new manager for the vault.\\n\\n# Arguments:\\n* `e` - The environment.\\n* `new_manager` - The new manager address.\\n\\n# Returns:\\n* `()` - No return value.",
+      "name": "set_manager",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_manager",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the current manager address for the vault.\\n\\n# Arguments:\\n* `e` - The environment.\\n\\n# Returns:\\n* `Result<Address, ContractError>` - The manager address if successful, otherwise returns a ContractError.",
+      "name": "get_manager",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sets the emergency manager for the vault.\\n\\nThis function allows the current manager or emergency manager to set a new emergency manager for the vault.\\n\\n# Arguments:\\n* `e` - The environment.\\n* `emergency_manager` - The new emergency manager address.\\n\\n# Returns:\\n* `()` - No return value.",
+      "name": "set_emergency_manager",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "emergency_manager",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the current emergency manager address for the vault.\\n\\n# Arguments:\\n* `e` - The environment.\\n\\n# Returns:\\n* `Result<Address, ContractError>` - The emergency manager address if successful, otherwise returns a ContractError.",
+      "name": "get_emergency_manager",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sets the rebalance manager for the vault.\\n\\nThis function allows the current manager to set a new rebalance manager for the vault.\\n\\n# Arguments:\\n* `e` - The environment.\\n* `new_rebalance_manager` - The new rebalance manager address.\\n\\n# Returns:\\n* `()` - No return value.",
+      "name": "set_rebalance_manager",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_rebalance_manager",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the current rebalance manager address for the vault.\\n\\n# Arguments:\\n* `e` - The environment.\\n\\n# Returns:\\n* `Result<Address, ContractError>` - The rebalance manager address if successful, otherwise returns a ContractError.",
+      "name": "get_rebalance_manager",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Upgrades the contract with new WebAssembly (WASM) code.\\n\\nThis function updates the contract with new WASM code provided by the `new_wasm_hash`.\\n\\n# Arguments\\n\\n* `e` - The runtime environment.\\n* `new_wasm_hash` - The hash of the new WASM code to upgrade the contract to.\\n",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "rebalance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "instructions",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Instruction"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Locks fees for all assets and their strategies.\\n\\nIterates through each asset and its strategies, locking fees based on `new_fee_bps` or the default vault fee.\\n\\n# Arguments\\n* `e` - The environment reference.\\n* `new_fee_bps` - Optional fee basis points to override the default.\\n\\n# Returns\\n* `Result<Vec<(Address, i128)>, ContractError>` - A vector of tuples with strategy addresses and locked fee amounts in their underlying_asset.",
+      "name": "lock_fees",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_fee_bps",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": {
+                  "udt": {
+                    "name": "Report"
+                  }
+                }
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Releases locked fees for a specific strategy.\\n\\n# Arguments\\n* `e` - The environment reference.\\n* `strategy` - The address of the strategy for which to release fees.\\n* `amount` - The amount of fees to release.\\n\\n# Returns\\n* `Result<Report, ContractError>` - A report of the released fees or a `ContractError` if the operation fails.",
+      "name": "release_fees",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "strategy",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "Report"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Distributes the locked fees for all assets and their strategies.\\n\\nThis function iterates through each asset and its strategies, calculating the fees to be distributed\\nto the vault fee receiver and the DeFindex protocol fee receiver based on their respective fee rates.\\nIt ensures proper authorization and validation checks before proceeding with the distribution.\\n\\n# Arguments\\n* `e` - The environment reference.\\n* `caller` - The address initiating the fee distribution.\\n\\n# Returns\\n* `Result<Vec<(Address, i128)>, ContractError>` - A vector of tuples with asset addresses and the total distributed fee amounts.",
+      "name": "distribute_fees",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": {
+                  "tuple": {
+                    "value_types": [
+                      "address",
+                      "i128"
+                    ]
+                  }
+                }
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Strategy",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "paused",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AssetStrategySet",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "strategies",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Strategy"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StrategyError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 401
+        },
+        {
+          "doc": "",
+          "name": "NegativeNotAllowed",
+          "value": 410
+        },
+        {
+          "doc": "",
+          "name": "InvalidArgument",
+          "value": 411
+        },
+        {
+          "doc": "",
+          "name": "InsufficientBalance",
+          "value": 412
+        },
+        {
+          "doc": "",
+          "name": "ProtocolAddressNotFound",
+          "value": 420
+        },
+        {
+          "doc": "",
+          "name": "DeadlineExpired",
+          "value": 421
+        },
+        {
+          "doc": "",
+          "name": "ExternalError",
+          "value": 422
+        },
+        {
+          "doc": "",
+          "name": "AmountBelowMinDust",
+          "value": 451
+        },
+        {
+          "doc": "",
+          "name": "UnderlyingAmountBelowMin",
+          "value": 452
+        },
+        {
+          "doc": "",
+          "name": "BTokensAmountBelowMin",
+          "value": 453
+        },
+        {
+          "doc": "",
+          "name": "InternalSwapError",
+          "value": 454
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DepositEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "HarvestEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "WithdrawEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenMetadata",
+      "fields": [
+        {
+          "doc": "",
+          "name": "decimal",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SoroswapLibraryError",
+      "cases": [
+        {
+          "doc": "SoroswapLibrary: insufficient amount",
+          "name": "InsufficientAmount",
+          "value": 301
+        },
+        {
+          "doc": "SoroswapLibrary: insufficient liquidity",
+          "name": "InsufficientLiquidity",
+          "value": 302
+        },
+        {
+          "doc": "SoroswapLibrary: insufficient input amount",
+          "name": "InsufficientInputAmount",
+          "value": 303
+        },
+        {
+          "doc": "SoroswapLibrary: insufficient output amount",
+          "name": "InsufficientOutputAmount",
+          "value": 304
+        },
+        {
+          "doc": "SoroswapLibrary: invalid path",
+          "name": "InvalidPath",
+          "value": 305
+        },
+        {
+          "doc": "SoroswapLibrary: token_a and token_b have identical addresses",
+          "name": "SortIdenticalTokens",
+          "value": 306
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sorts two token addresses in a consistent order.\\n\\n# Arguments\\n\\n* `token_a` - The address of the first token.\\n* `token_b` - The address of the second token.\\n\\n# Returns\\n\\nReturns `Result<(Address, Address), SoroswapLibraryError>` where `Ok` contains a tuple with the sorted token addresses, and `Err` indicates an error such as identical tokens.",
+      "name": "sort_tokens",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": [
+                  "address",
+                  "address"
+                ]
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SoroswapLibraryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Calculates the deterministic address for a pair without making any external calls.\\ncheck <https://github.com/paltalabs/deterministic-address-soroban>\\n\\n# Arguments\\n\\n* `e` - The environment.\\n* `factory` - The factory address.\\n* `token_a` - The address of the first token.\\n* `token_b` - The address of the second token.\\n\\n# Returns\\n\\nReturns `Result<Address, SoroswapLibraryError>` where `Ok` contains the deterministic address for the pair, and `Err` indicates an error such as identical tokens or an issue with sorting.",
+      "name": "pair_for",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "factory",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "SoroswapLibraryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Fetches and sorts the reserves for a pair of tokens using the factory address.\\n\\n# Arguments\\n\\n* `e` - The environment.\\n* `factory` - The factory address.\\n* `token_a` - The address of the first token.\\n* `token_b` - The address of the second token.\\n\\n# Returns\\n\\nReturns `Result<(i128, i128), SoroswapLibraryError>` where `Ok` contains a tuple of sorted reserves, and `Err` indicates an error such as identical tokens or an issue with sorting.",
+      "name": "get_reserves_with_factory",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "factory",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": [
+                  "i128",
+                  "i128"
+                ]
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SoroswapLibraryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Fetches and sorts the reserves for a pair of tokens using the pair address.\\n\\n# Arguments\\n\\n* `e` - The environment.\\n* `pair` - The pair address.\\n* `token_a` - The address of the first token.\\n* `token_b` - The address of the second token.\\n\\n# Returns\\n\\nReturns `Result<(i128, i128), SoroswapLibraryError>` where `Ok` contains a tuple of sorted reserves, and `Err` indicates an error such as identical tokens or an issue with sorting.",
+      "name": "get_reserves_with_pair",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pair",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": [
+                  "i128",
+                  "i128"
+                ]
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SoroswapLibraryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Given some amount of an asset and pair reserves, returns an equivalent amount of the other asset.\\n\\n# Arguments\\n\\n* `amount_a` - The amount of the first asset.\\n* `reserve_a` - Reserves of the first asset in the pair.\\n* `reserve_b` - Reserves of the second asset in the pair.\\n\\n# Returns\\n\\nReturns `Result<i128, SoroswapLibraryError>` where `Ok` contains the calculated equivalent amount, and `Err` indicates an error such as insufficient amount or liquidity",
+      "name": "quote",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount_a",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reserve_a",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reserve_b",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": {
+              "udt": {
+                "name": "SoroswapLibraryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Given an input amount of an asset and pair reserves, returns the maximum output amount of the other asset.\\n\\n# Arguments\\n\\n* `amount_in` - The input amount of the asset.\\n* `reserve_in` - Reserves of the input asset in the pair.\\n* `reserve_out` - Reserves of the output asset in the pair.\\n\\n# Returns\\n\\nReturns `Result<i128, SoroswapLibraryError>` where `Ok` contains the calculated maximum output amount, and `Err` indicates an error such as insufficient input amount or liquidity.",
+      "name": "get_amount_out",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount_in",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reserve_in",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reserve_out",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": {
+              "udt": {
+                "name": "SoroswapLibraryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Given an output amount of an asset and pair reserves, returns a required input amount of the other asset.\\n\\n# Arguments\\n\\n* `amount_out` - The output amount of the asset.\\n* `reserve_in` - Reserves of the input asset in the pair.\\n* `reserve_out` - Reserves of the output asset in the pair.\\n\\n# Returns\\n\\nReturns `Result<i128, SoroswapLibraryError>` where `Ok` contains the required input amount, and `Err` indicates an error such as insufficient output amount or liquidity.",
+      "name": "get_amount_in",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount_out",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reserve_in",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reserve_out",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": {
+              "udt": {
+                "name": "SoroswapLibraryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Performs chained get_amount_out calculations on any number of pairs.\\n\\n# Arguments\\n\\n* `e` - The environment.\\n* `factory` - The factory address.\\n* `amount_in` - The input amount.\\n* `path` - Vector of token addresses representing the path.\\n\\n# Returns\\n\\nReturns `Result<Vec<i128>, SoroswapLibraryError>` where `Ok` contains a vector of calculated amounts, and `Err` indicates an error such as an invalid path.",
+      "name": "get_amounts_out",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "factory",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount_in",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "path",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": "i128"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SoroswapLibraryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Performs chained get_amount_in calculations on any number of pairs.\\n\\n# Arguments\\n\\n* `e` - The environment.\\n* `factory` - The factory address.\\n* `amount_out` - The output amount.\\n* `path` - Vector of token addresses representing the path.\\n\\n# Returns\\n\\nReturns `Result<Vec<i128>, SoroswapLibraryError>` where `Ok` contains a vector of calculated amounts, and `Err` indicates an error such as an invalid path.",
+      "name": "get_amounts_in",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "factory",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount_out",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "path",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": "i128"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SoroswapLibraryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+]

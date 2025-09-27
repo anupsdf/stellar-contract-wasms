@@ -1,0 +1,303 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "Immutable data stored for each escrow",
+      "lib": "",
+      "name": "Immutables",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "hashlock",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "maker",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "order_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "safety_deposit",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "taker",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "timelocks",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "Escrow state",
+      "lib": "",
+      "name": "State",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Active",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Withdrawn",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "Cancelled",
+          "value": 2
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InvalidState",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "InvalidSecret",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "TimelockNotExpired",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "CannotCancel",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "InvalidAmount",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "InvalidAddress",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "InsufficientBalance",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "UnauthorizedCaller",
+          "value": 10
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initialize a new escrow with deterministic address calculation\\nThis function should be called by a factory contract that deploys this escrow\\nwith a deterministic address based on the immutables hash",
+      "name": "deploy",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "order_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "hashlock",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "maker",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "taker",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "safety_deposit",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "timelocks",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the hash of the current escrow's immutables\\nThis can be used by external contracts to verify the escrow address",
+      "name": "get_immutables_hash",
+      "inputs": [],
+      "outputs": [
+        {
+          "bytes_n": {
+            "n": 32
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Withdraw funds by revealing the secret",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "secret",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "_unwrap_native",
+          "type_": "bool"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Cancel escrow and return funds",
+      "name": "cancel",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Public withdrawal after timelock expiry",
+      "name": "public_withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "secret",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get current escrow state",
+      "name": "get_state",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "State"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get escrow immutables",
+      "name": "get_immutables",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Immutables"
+          }
+        }
+      ]
+    }
+  }
+]

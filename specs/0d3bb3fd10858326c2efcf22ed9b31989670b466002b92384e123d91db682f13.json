@@ -1,0 +1,80 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LeverDataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "FxDaoVaultContract"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "AquariusContract"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "BlendPoolContract"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "init",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "fxdao_vault_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "aquarius_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "blend_pool_contract",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_positions",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "tuple": {
+                "value_types": [
+                  "u32",
+                  "i128"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+]

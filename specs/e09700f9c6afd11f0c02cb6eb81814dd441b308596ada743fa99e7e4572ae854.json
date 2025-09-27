@@ -1,0 +1,23 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "a",
+          "type_": "i32"
+        },
+        {
+          "doc": "",
+          "name": "b",
+          "type_": "i32"
+        }
+      ],
+      "outputs": [
+        "i32"
+      ]
+    }
+  }
+]

@@ -1,0 +1,931 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "This is from the rust doc above the struct SimpleStruct",
+      "lib": "",
+      "name": "SimpleStruct",
+      "fields": [
+        {
+          "doc": "",
+          "name": "a",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "b",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "c",
+          "type_": "symbol"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SimpleEnum",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "First"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Second"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Third"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RoyalCard",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Jack",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "Queen",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "King",
+          "value": 13
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TupleStruct",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": {
+            "udt": {
+              "name": "SimpleStruct"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "1",
+          "type_": {
+            "udt": {
+              "name": "SimpleEnum"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ComplexEnum",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Struct",
+            "type_": [
+              {
+                "udt": {
+                  "name": "SimpleStruct"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Tuple",
+            "type_": [
+              {
+                "udt": {
+                  "name": "TupleStruct"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Enum",
+            "type_": [
+              {
+                "udt": {
+                  "name": "SimpleEnum"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Asset",
+            "type_": [
+              "address",
+              "i128"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Void"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "Please provide an odd number",
+          "name": "NumberMustBeOdd",
+          "value": 1
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "This is from the rust doc above the struct SimpleStruct",
+      "lib": "",
+      "name": "True",
+      "fields": [
+        {
+          "doc": "",
+          "name": "def",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "False",
+      "cases": [
+        {
+          "doc": "Please provide an odd number",
+          "name": "elif",
+          "value": 1
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "None",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "elif"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "nonlocal"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "not"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "import",
+      "cases": [
+        {
+          "doc": "",
+          "name": "not",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "elif",
+          "value": 12
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "hello",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "hello",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "from",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "finally",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "void",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "val",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "a",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "b",
+          "type_": "val"
+        }
+      ],
+      "outputs": [
+        "val"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "u32_fail_on_even",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "u32_",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u32",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "u32",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "u32",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "i32",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "i32",
+          "type_": "i32"
+        }
+      ],
+      "outputs": [
+        "i32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "u64",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "u64",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "i64",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "i64",
+          "type_": "i64"
+        }
+      ],
+      "outputs": [
+        "i64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Example contract method which takes a struct",
+      "name": "strukt_hel",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "strukt",
+          "type_": {
+            "udt": {
+              "name": "SimpleStruct"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "symbol"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "strukt",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "strukt",
+          "type_": {
+            "udt": {
+              "name": "SimpleStruct"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "SimpleStruct"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "simple",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "simple",
+          "type_": {
+            "udt": {
+              "name": "SimpleEnum"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "SimpleEnum"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "complex",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "complex",
+          "type_": {
+            "udt": {
+              "name": "ComplexEnum"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "ComplexEnum"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "address",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "bytes_",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "bytes_",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        "bytes"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "bytes_n",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "bytes_n",
+          "type_": {
+            "bytes_n": {
+              "n": 9
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "bytes_n": {
+            "n": 9
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "card",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "card",
+          "type_": {
+            "udt": {
+              "name": "RoyalCard"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "RoyalCard"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "boolean",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "boolean",
+          "type_": "bool"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Negates a boolean value",
+      "name": "not",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "boolean",
+          "type_": "bool"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "i128",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "i128",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "u128",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "u128",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "multi_args",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "a",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "b",
+          "type_": "bool"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "map",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "map",
+          "type_": {
+            "map": {
+              "key_type": "u32",
+              "value_type": "bool"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "map": {
+            "key_type": "u32",
+            "value_type": "bool"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "vec",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "vec",
+          "type_": {
+            "vec": {
+              "element_type": "u32"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "u32"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "tuple",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "tuple",
+          "type_": {
+            "tuple": {
+              "value_types": [
+                "symbol",
+                "u32"
+              ]
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "symbol",
+              "u32"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "empty_tuple",
+      "inputs": [],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": []
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Example of an optional argument",
+      "name": "option",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "option",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "u32"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "u256",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "u256",
+          "type_": "u256"
+        }
+      ],
+      "outputs": [
+        "u256"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "i256",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "i256",
+          "type_": "i256"
+        }
+      ],
+      "outputs": [
+        "i256"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "string",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "string",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "tuple_strukt",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "tuple_strukt",
+          "type_": {
+            "udt": {
+              "name": "TupleStruct"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "TupleStruct"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "tuple_strukt_nested",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "tuple_strukt",
+          "type_": {
+            "tuple": {
+              "value_types": [
+                {
+                  "udt": {
+                    "name": "SimpleStruct"
+                  }
+                },
+                {
+                  "udt": {
+                    "name": "SimpleEnum"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              {
+                "udt": {
+                  "name": "SimpleStruct"
+                }
+              },
+              {
+                "udt": {
+                  "name": "SimpleEnum"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "timepoint",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "timepoint",
+          "type_": "timepoint"
+        }
+      ],
+      "outputs": [
+        "timepoint"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "duration",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "duration",
+          "type_": "duration"
+        }
+      ],
+      "outputs": [
+        "duration"
+      ]
+    }
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "increment",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "email",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "cantidad_minterminos",
+          "type_": "i32"
+        },
+        {
+          "doc": "",
+          "name": "cantidad_assets",
+          "type_": "i32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_balance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "email",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        "i32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "delete_email",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "email",
+          "type_": "string"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "decrement",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "_token",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "email",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "cantidad_minterminos",
+          "type_": "i32"
+        }
+      ],
+      "outputs": [
+        "string"
+      ]
+    }
+  }
+]

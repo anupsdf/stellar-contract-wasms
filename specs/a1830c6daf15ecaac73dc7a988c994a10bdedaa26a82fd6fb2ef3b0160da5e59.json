@@ -1,0 +1,18 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "increment",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  }
+]

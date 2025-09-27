@@ -1,0 +1,613 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_game_settings",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "game_length",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "min_bet",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "max_bet",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "max_bets",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "max_total_bet",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_payouts",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "banker",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "tie",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "player_pair",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "banker_pair",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "any_pair",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "perfect_pair",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "big",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "small",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_to_reserve",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw_from_reserve",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "freeze",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "freeze",
+          "type_": "bool"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "place_bet",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "bets",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Bet"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "resolve_game",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Game"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "game_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InvalidAmount",
+          "value": 20
+        },
+        {
+          "doc": "",
+          "name": "ContractFrozen",
+          "value": 21
+        },
+        {
+          "doc": "",
+          "name": "InsufficientReserve",
+          "value": 22
+        },
+        {
+          "doc": "",
+          "name": "GameNotFound",
+          "value": 30
+        },
+        {
+          "doc": "",
+          "name": "BettingClosed",
+          "value": 31
+        },
+        {
+          "doc": "",
+          "name": "GameNotComplete",
+          "value": 32
+        },
+        {
+          "doc": "",
+          "name": "GameCompleted",
+          "value": 33
+        },
+        {
+          "doc": "",
+          "name": "PlayerAlreadyBet",
+          "value": 40
+        },
+        {
+          "doc": "",
+          "name": "PlayerHasNoBets",
+          "value": 41
+        },
+        {
+          "doc": "",
+          "name": "InvalidBet",
+          "value": 42
+        },
+        {
+          "doc": "",
+          "name": "BetAmountTooLow",
+          "value": 43
+        },
+        {
+          "doc": "",
+          "name": "BetAmountTooHigh",
+          "value": 44
+        },
+        {
+          "doc": "",
+          "name": "BetLimitExceeded",
+          "value": 45
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "BetType",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Player"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Banker"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Tie"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PlayerPair"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "BankerPair"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "AnyPair"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PerfectPair"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Big"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Small"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Bet",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "bet_type",
+          "type_": {
+            "udt": {
+              "name": "BetType"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GameSettings",
+      "fields": [
+        {
+          "doc": "",
+          "name": "game_length",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "max_bet",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "max_bets",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "max_total_bet",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_bet",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Payouts",
+      "fields": [
+        {
+          "doc": "",
+          "name": "any_pair",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "banker",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "banker_pair",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "big",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "perfect_pair",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "player_pair",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "small",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "tie",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Game",
+      "fields": [
+        {
+          "doc": "",
+          "name": "end",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "start",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "winning_bets",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "BetType"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Storage",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Frozen"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "BetToken"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "GameIndex"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Game",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "PlayerBets",
+            "type_": [
+              "address",
+              "u32"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "GameSettings"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Payouts"
+          }
+        }
+      ]
+    }
+  }
+]

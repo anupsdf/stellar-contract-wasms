@@ -1,0 +1,506 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AmountMustNonZero",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "WrongCurrency",
+          "value": 3
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Project",
+      "fields": [
+        {
+          "doc": "",
+          "name": "account_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "creator_name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "financial_goal",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "images",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "main_image",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "main_location",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "product_short_desc",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "project_category",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "project_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "project_description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "project_email",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "project_tags",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "project_title",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "target_currency",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "temporary_location",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ProjectUpdate",
+      "fields": [
+        {
+          "doc": "",
+          "name": "account_address",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "creator_name",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "financial_goal",
+          "type_": {
+            "option": {
+              "value_type": "u128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "images",
+          "type_": {
+            "option": {
+              "value_type": {
+                "vec": {
+                  "element_type": "string"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "main_image",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "main_location",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "product_short_desc",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "project_category",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "project_date",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "project_description",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "project_email",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "project_tags",
+          "type_": {
+            "option": {
+              "value_type": {
+                "vec": {
+                  "element_type": "string"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "project_title",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "target_currency",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "temporary_location",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Donation",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "donator",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_project",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "limit",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "lp_token_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "development",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "launchpad",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project",
+          "type_": {
+            "udt": {
+              "name": "Project"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "string",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "donate",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "donator",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_project",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_updated",
+          "type_": {
+            "udt": {
+              "name": "ProjectUpdate"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "Project"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_donations",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "start_donator_id",
+          "type_": {
+            "option": {
+              "value_type": "u128"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "Donation"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_project",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Project"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_donation",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "donator",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Donation"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_total_donation",
+      "inputs": [],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  }
+]

@@ -1,0 +1,677 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FactoryError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 401
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 402
+        },
+        {
+          "doc": "",
+          "name": "EmptyMap",
+          "value": 403
+        },
+        {
+          "doc": "",
+          "name": "AssetLengthMismatch",
+          "value": 404
+        },
+        {
+          "doc": "",
+          "name": "IndexDoesNotExist",
+          "value": 405
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CreateDeFindexEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "assets",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "AssetStrategySet"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "roles",
+          "type_": {
+            "map": {
+              "key_type": "u32",
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "vault_fee",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "NewAdminEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "NewDeFindexReceiverEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "new_defindex_receiver",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "NewFeeRateEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "new_defindex_fee",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "NewVaultWasmHashEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "new_vault_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "DeFindexWasmHash"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "DeFindexReceiver"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TotalVaults"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "VaultAddressNIndexed",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "FeeRate"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "defindex_receiver",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "defindex_fee",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "vault_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Creates a new DeFindex Vault with the specified parameters.\\n\\n# Arguments\\n* `e` - The environment in which the contract is running.\\n* `roles` - A `Map` containing role identifiers (`u32`) and their corresponding `Address` assignments.\\nExample roles include the manager and fee receiver.\\n* `vault_fee` - The fee rate in basis points (1 basis point = 0.01%) allocated to the fee receiver.\\n* `assets` - A vector of `AssetStrategySet` structs defining the strategies and assets managed by the vault.\\n* `salt` - A unique `BytesN<32>` value used to ensure that each deployed vault has a unique address.\\n* `soroswap_router` - The `Address` of the Soroswap router, which facilitates swaps within the vault.\\n* `name_symbol` - A `Map` containing the vault's name and symbol metadata (e.g., \"name\" -> \"MyVault\", \"symbol\" -> \"MVLT\").\\n* `upgradable` - A boolean flag indicating whether the deployed vault contract should support upgrades.\\n\\n# Returns\\n* `Result<Address, FactoryError>` - Returns the address of the newly created vault if su",
+      "name": "create_defindex_vault",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "roles",
+          "type_": {
+            "map": {
+              "key_type": "u32",
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "vault_fee",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "assets",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "AssetStrategySet"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "salt",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "soroswap_router",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "name_symbol",
+          "type_": {
+            "map": {
+              "key_type": "string",
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "upgradable",
+          "type_": "bool"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "FactoryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Creates a new DeFindex Vault with specified parameters and performs an initial deposit to set asset ratios.\\n\\n# Arguments\\n* `e` - The environment in which the contract is running.\\n* `caller` - The address of the caller, who must authenticate and provide the initial deposit.\\n* `roles` - A `Map` containing role identifiers (`u32`) and their corresponding `Address` assignments.\\nExample roles include the manager and fee receiver.\\n* `vault_fee` - The fee rate in basis points (1 basis point = 0.01%) allocated to the fee receiver.\\n* `assets` - A vector of `AssetStrategySet` structs defining the strategies and assets managed by the vault.\\n* `salt` - A unique `BytesN<32>` value used to ensure that each deployed vault has a unique address.\\n* `soroswap_router` - The `Address` of the Soroswap router, which facilitates swaps within the vault.\\n* `name_symbol` - A `Map` containing the vault's name and symbol metadata (e.g., \"name\" -> \"MyVault\", \"symbol\" -> \"MVLT\").\\n* `upgradable` - A boolean flag indicating whether the deplo",
+      "name": "create_defindex_vault_deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "roles",
+          "type_": {
+            "map": {
+              "key_type": "u32",
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "vault_fee",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "assets",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "AssetStrategySet"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "salt",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "soroswap_router",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "name_symbol",
+          "type_": {
+            "map": {
+              "key_type": "string",
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "upgradable",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "amounts",
+          "type_": {
+            "vec": {
+              "element_type": "i128"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "FactoryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sets a new admin address.\\n\\n# Arguments\\n* `e` - The environment in which the contract is running.\\n* `new_admin` - The new administrator's address.\\n\\n# Returns\\n* `Result<(), FactoryError>` - Returns Ok(()) if successful, or an error if not authorized.",
+      "name": "set_new_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "FactoryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Updates the default receiver address for the DeFindex portion of fees.\\n\\n# Arguments\\n* `e` - The environment in which the contract is running.\\n* `new_fee_receiver` - The address of the new fee receiver.\\n\\n# Returns\\n* `Result<(), FactoryError>` - Returns Ok(()) if successful, or an error if not authorized.",
+      "name": "set_defindex_receiver",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_fee_receiver",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "FactoryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Updates the default fee rate for new vaults.\\n\\n# Arguments\\n* `e` - The environment in which the contract is running.\\n* `new_fee_rate` - The new annual fee rate in basis points.\\n\\n# Returns\\n* `Result<(), FactoryError>` - Returns Ok(()) if successful, or an error if not authorized.",
+      "name": "set_defindex_fee",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "defindex_fee",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "FactoryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_vault_wasm_hash",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_vault_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "FactoryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the current admin's address.\\n\\n# Arguments\\n* `e` - The environment in which the contract is running.\\n\\n# Returns\\n* `Result<Address, FactoryError>` - Returns the admin's address or an error if not found.",
+      "name": "admin",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "FactoryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the current DeFindex receiver's address.\\n\\n# Arguments\\n* `e` - The environment in which the contract is running.\\n\\n# Returns\\n* `Result<Address, FactoryError>` - Returns the DeFindex receiver's address or an error if not found.",
+      "name": "defindex_receiver",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "FactoryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the total number of deployed DeFindex vaults.\\n\\n# Arguments\\n* `e` - The environment in which the contract is running.\\n\\n# Returns\\n* `Result<u32, FactoryError>` - Returns the total number of deployed vaults or an error if retrieval fails.",
+      "name": "total_vaults",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u32",
+            "error_type": {
+              "udt": {
+                "name": "FactoryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves a specific vault address by its index.\\n\\n# Arguments\\n* `e` - The environment in which the contract is running.\\n* `index` - The index of the vault to retrieve (0-based).\\n\\n# Returns\\n* `Result<Address, FactoryError>` - Returns the vault address at the specified index or an error if not found.",
+      "name": "get_vault_by_index",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "FactoryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the current fee rate.\\n\\n# Arguments\\n* `e` - The environment in which the contract is running.\\n\\n# Returns\\n* `Result<u32, FactoryError>` - Returns the fee rate in basis points or an error if not found.",
+      "name": "defindex_fee",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u32",
+            "error_type": {
+              "udt": {
+                "name": "FactoryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the WASM hash of the vault contract.\\n\\n# Arguments\\n* `e` - The environment in which the contract is running.\\n\\n# Returns\\n* `Result<BytesN<32>, FactoryError>` - Returns the 32-byte WASM hash of the vault contract\\nor an error if the contract is not properly initialized.\\n\\n# Behavior\\n1. Ensures the contract is initialized by calling `check_initialized(&e)`.\\n2. Extends the instance's time-to-live (TTL) by invoking `extend_instance_ttl(&e)`.\\n3. Retrieves and returns the vault WASM hash by calling `get_vault_wasm_hash(&e)`.",
+      "name": "vault_wasm_hash",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "bytes_n": {
+                "n": 32
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "FactoryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Strategy",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "paused",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AssetStrategySet",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "strategies",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Strategy"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+]

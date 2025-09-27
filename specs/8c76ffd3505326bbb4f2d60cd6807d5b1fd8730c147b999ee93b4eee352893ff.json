@@ -1,0 +1,194 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Uninitialized",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 3
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RecvMessage",
+      "fields": [
+        {
+          "doc": "",
+          "name": "conn_sn",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "payload",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "src_address",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "src_chain_id",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "connection_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "send_message",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "dst_chain_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "dst_address",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "payload",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "recv_message",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "src_chain_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "src_address",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "conn_sn",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "payload",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "signatures",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "bytes_n": {
+                  "n": 65
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_connection_address",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+]

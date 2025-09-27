@@ -1,0 +1,367 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "SignerState"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "SignerOperation",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "OperationConfirmation",
+            "type_": [
+              "u32",
+              "address"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SignerState",
+      "fields": [
+        {
+          "doc": "",
+          "name": "completed_operations",
+          "type_": {
+            "vec": {
+              "element_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "operations_count",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SignerOperation",
+      "fields": [
+        {
+          "doc": "",
+          "name": "executed",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "high_threshold",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "low_threshold",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "master_weight",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "med_threshold",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "new_signer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_signer_weight",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "operation_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "target_account",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OperationConfirmation",
+      "fields": [
+        {
+          "doc": "",
+          "name": "confirmed",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SignerError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "OperationNotFound",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "OperationAlreadyExecuted",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "InvalidParameters",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "StateNotInitialized",
+          "value": 5
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initialize the contract state",
+      "name": "initialize",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SignerError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Add a new signer and set weights in a single operation",
+      "name": "add_signer_and_set_weights",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "target_account",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_signer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "current_signer_weight",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u32",
+            "error_type": {
+              "udt": {
+                "name": "SignerError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Execute the complete signer modification (this would be called by your transaction)",
+      "name": "execute_signer_modification",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "operation_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "SignerOperation"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SignerError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get operation details",
+      "name": "get_signer_operation",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "operation_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "SignerOperation"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SignerError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get contract state",
+      "name": "get_signer_state",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "SignerState"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SignerError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get all completed operations for an account",
+      "name": "get_completed_operations",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": "u32"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SignerError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Batch operation: Complete signer addition with all parameters",
+      "name": "complete_signer_addition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "target_account",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_signer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "current_signer_weight",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "SignerOperation"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SignerError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+]

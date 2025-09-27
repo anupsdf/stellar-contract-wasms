@@ -1,0 +1,563 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Bootstrap",
+      "fields": [
+        {
+          "doc": "",
+          "name": "config",
+          "type_": {
+            "udt": {
+              "name": "BootstrapConfig"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": {
+            "udt": {
+              "name": "BootstrapData"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "BootstrapStatus"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initialize the contract\\n\\n### Arguments\\n* `backstop` - The backstop address\\n* `backstop_token` - The backstop token address\\n* `pool_factory_address` - The pool factory address\\n\\n### Panics\\n* `AlreadyInitializedError` - If the contract has already been initialized",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "backstop",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "backstop_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_factory_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Fetch data for a bootstrap\\n\\n### Arguments\\n* `id` - The id of the bootstrap",
+      "name": "get_bootstrap",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Bootstrap"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Fetch the next bootstrap's ID. The previous (and most recently created) bootsrap's ID will\\nbe this value decremented by 1.",
+      "name": "get_next_id",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Fetch a deposit for a user in a bootstrap\\n\\n### Arguments\\n* `id` - The id of the bootstrap\\n* `user` - The address of the user",
+      "name": "get_deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "DepositData"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Add a new bootstrap\\n\\nReturns the ID of the bootstrap\\n\\n### Arguments\\n* `config` - The configuration for the bootstrap",
+      "name": "bootstrap",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "config",
+          "type_": {
+            "udt": {
+              "name": "BootstrapConfig"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Join a bootstrap by depositing a given amount of pair tokens\\n\\nReturns the total amount of pair tokens deposited by `from` in this bootstrap\\n\\n### Arguments\\n* `from` - The address of the user joining the bootstrap\\n* `id` - The bootstrap id to join\\n* `amount` - The amount of tokens to join with",
+      "name": "join",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Exits a bootstrap by withdrawing a given amount of pair tokens\\n\\nReturns the remaining amount of pair tokens deposited by `from` in this bootstrap\\n\\n### Arguments\\n* `from` - The address of the user joining the bootstrap\\n* `id` - The bootstrap id to join\\n* `amount` - The amount of tokens to join with",
+      "name": "exit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Close the bootstrap by depositing bootstrapping tokens into the comet\\n\\n### Arguments\\n* `id` - The id of the bootstrap",
+      "name": "close",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Claim and deposit pool tokens into backstop\\n\\nReturns the amount of backstop shares minted\\n\\n### Arguments\\n* `from` - The address of the user claiming their bootstrap proceeds\\n* `id` - The address of the bootstrap initiator",
+      "name": "claim",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Refund funds from a cancelled bootstrap\\n\\nReturns the amount of funds returned\\n\\n### Arguments\\n* `from` - The address of the user claiming their bootstrap proceeds\\n* `id` - The address of the bootstrap initiator",
+      "name": "refund",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "The error codes for the contract.",
+      "lib": "",
+      "name": "BackstopBootstrapperError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InternalError",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitializedError",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "UnauthorizedError",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "NegativeAmountError",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "AllowanceError",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "BalanceError",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "OverflowError",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "BadRequest",
+          "value": 50
+        },
+        {
+          "doc": "",
+          "name": "InvalidCloseLedger",
+          "value": 100
+        },
+        {
+          "doc": "",
+          "name": "InvalidBootstrapToken",
+          "value": 101
+        },
+        {
+          "doc": "",
+          "name": "InvalidBootstrapAmount",
+          "value": 102
+        },
+        {
+          "doc": "",
+          "name": "InvalidPoolAddressError",
+          "value": 103
+        },
+        {
+          "doc": "",
+          "name": "InvalidBootstrapStatus",
+          "value": 104
+        },
+        {
+          "doc": "",
+          "name": "AlreadyClaimedError",
+          "value": 105
+        },
+        {
+          "doc": "",
+          "name": "InsufficientDepositError",
+          "value": 106
+        },
+        {
+          "doc": "",
+          "name": "ReceivedNoBackstopTokens",
+          "value": 107
+        },
+        {
+          "doc": "",
+          "name": "AlreadyRefundedError",
+          "value": 108
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DepositKey",
+      "fields": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "BootstrapKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Config",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Data",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Claim",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Refund",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Deposit",
+            "type_": [
+              {
+                "udt": {
+                  "name": "DepositKey"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "BootstrapStatus",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Active",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Closing",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "Completed",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "Cancelled",
+          "value": 3
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "weight",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "BootstrapConfig",
+      "fields": [
+        {
+          "doc": "The amount of the bootstrap token to bootstrap",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "The address creating the bootstrap",
+          "name": "bootstrapper",
+          "type_": "address"
+        },
+        {
+          "doc": "The ledger number at which the bootstrap will close",
+          "name": "close_ledger",
+          "type_": "u32"
+        },
+        {
+          "doc": "The minimum amount of the pair token to bootstrap",
+          "name": "pair_min",
+          "type_": "i128"
+        },
+        {
+          "doc": "The address of the pool to bootstrap",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "The index of the comet underlying token being bootstrapped",
+          "name": "token_index",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "BootstrapData",
+      "fields": [
+        {
+          "doc": "The amount of the boostrapped token held by the contract for this boostrap",
+          "name": "bootstrap_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "The amount of pair tokens held by the contract for this bootstrap",
+          "name": "pair_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_backstop_tokens",
+          "type_": "i128"
+        },
+        {
+          "doc": "The total number of pair tokens deposited for this bootstrap",
+          "name": "total_pair",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DepositData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "claimed",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "refunded",
+          "type_": "bool"
+        }
+      ]
+    }
+  }
+]

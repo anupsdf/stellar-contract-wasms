@@ -1,0 +1,123 @@
+[
+  {
+    "function_v0": {
+      "doc": "Initialize the contract with a fee collector address",
+      "name": "init",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "fee_collector",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": []
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Transfer tokens with an automatic fee deduction.\\n- `token_contract`: token contract address (USDC or native XLM contract id)\\n- `from`: account sending tokens (must be the invoker)\\n- `to`: recipient (e.g. Binance deposit address)\\n- `amount`: total amount user wants to transfer\\n- `fee_bps`: fee in basis points (e.g. 100 = 1%)",
+      "name": "transfer_usdc",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "fee_bps",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": []
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "send XLM with fee deduction",
+      "name": "transfer_xlm",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": []
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Calculate the transaction fee for XLM or USD sent.\\n- `amount`: total amount to be transferred\\n- `fee_bps`: fee in basis points (e.g. 100 = 1%)\\nReturns the calculated fee amount",
+      "name": "calculate_fee",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "fee_bps",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  }
+]

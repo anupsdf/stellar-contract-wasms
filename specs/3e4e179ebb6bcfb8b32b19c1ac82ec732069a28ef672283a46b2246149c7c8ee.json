@@ -1,0 +1,20 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "init",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "describe",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  }
+]

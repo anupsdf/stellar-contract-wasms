@@ -1,0 +1,293 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "plant",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "farmer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "work",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "farmer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "nonce",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "harvest",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "farmer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "homestead",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "farmer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "pause",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "unpause",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Errors",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyDiscovered",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "HomesteadNotFound",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "PailAmountTooLow",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "AlreadyHasPail",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "FarmIsPaused",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "HashIsInvalid",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "BlockNotFound",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "HarvestNotReady",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "KaleNotFound",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "PailNotFound",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "ZeroCountTooLow",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "AssetAdminMismatch",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "FarmIsNotPaused",
+          "value": 13
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Block",
+      "fields": [
+        {
+          "doc": "",
+          "name": "entropy",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "pow_zeros",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reclaimed",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "staked",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Storage",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Homesteader"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "HomesteadAsset"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "FarmIndex"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "FarmEntropy"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "FarmPaused"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Block",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Pail",
+            "type_": [
+              "address",
+              "u32"
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

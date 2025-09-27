@@ -1,0 +1,931 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKeyOwnable",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Owner"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKeyPause",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Paused"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolInfoV3Struct",
+      "fields": [
+        {
+          "doc": "",
+          "name": "acc_wom_per_factor_share",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "acc_wom_per_share",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "last_reward_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "lp_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "period_finish",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "reward_rate",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "sum_of_factors",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UserInfoStruct",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "factor",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "pending_wom",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "reward_debt",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "BoostedMasterWombatDataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Wom"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "VeWom"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "NewMasterWombat"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Voter"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "BasePartition"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "LpTokens"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "PoolInfoV3",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserInfoV3",
+            "type_": [
+              "u32",
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "AssetPid",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "BoostedRewarders",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "BribeRewarderFactory"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SetMasterWombatEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "new_master_wombat",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SetBribeRewarderFactoryEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "bribe_rewarder_factory",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UpdateVeWomEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "new_vewom",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "old_vewom",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UpdateWomEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "new_wom",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "old_wom",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UpdateVoterEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "new_voter",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "old_voter",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AddEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "boosted_multi_rewarder",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "lp_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pid",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AddNonBoostedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "lp_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pid",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SetBoostedRewarderEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "boosted_multi_rewarder",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pid",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "HarvestEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "pid",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "reward",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DepositEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "pid",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "WithdrawEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "pid",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "_wom",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "_ve_wom",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "_voter",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "_base_partition",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "pause",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "unpause",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_new_master_wombat",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "_new_master_wombat",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_bribe_rewarder_factory",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "_bribe_rewarder_factory",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_vewom",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "_new_vewom",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_wom",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "_new_wom",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_voter",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "_new_voter",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "lp_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "boosted_multi_rewarder",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_boosted_multi_rewarder",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pid",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "boosted_multi_rewarder",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_factor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "_user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "_new_vewom_balance",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "_pid",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "_amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "u128",
+              {
+                "vec": {
+                  "element_type": "u128"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deposit_for",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "_pid",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "_amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "u128",
+              {
+                "vec": {
+                  "element_type": "u128"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "multi_claim",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "_pids",
+          "type_": {
+            "vec": {
+              "element_type": "u32"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "_pid",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "_amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "u128",
+              {
+                "vec": {
+                  "element_type": "u128"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "notify_reward_amount",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "lp_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_sum_of_factors",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pid",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_asset_pid",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "lp_token",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "base_partition",
+      "inputs": [],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_pool_id",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pid",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "PoolInfoV3Struct"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user_info_id",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "_user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pid",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "UserInfoStruct"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_pool_length",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_pool_info",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pid",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "PoolInfoV3Struct"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_pending_tokens",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "_user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pid",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer_ownership",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_owner",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  }
+]

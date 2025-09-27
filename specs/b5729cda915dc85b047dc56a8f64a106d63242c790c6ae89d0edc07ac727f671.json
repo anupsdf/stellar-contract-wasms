@@ -1,0 +1,603 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "msg",
+          "type_": {
+            "udt": {
+              "name": "InitializeMsg"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initiate_admin_transfer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "confirm_admin_transfer",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "send_message",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "src_dapp_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "dst_chain_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "dst_address",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "payload",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "verify_message",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender_dapp_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "src_chain_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "src_address",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "conn_sn",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "payload",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "signatures",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "bytes_n": {
+                  "n": 65
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_validators",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pub_keys",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "bytes_n": {
+                  "n": 65
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "threshold",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_validators_threshold",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u32",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_validators_threshold",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "threshold",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_validators",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": {
+                  "bytes_n": {
+                    "n": 65
+                  }
+                }
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_receipt",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "chain_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "sn",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "extend_instance_storage",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "OnlyAdmin",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "Uninitialized",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "InsufficientFund",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "DuplicateMessage",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "NetworkNotSupported",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "CannotRemoveAdmin",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "InsufficientValidators",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "ValidatorNotFound",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "ValidatorAlreadyAdded",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "SignatureVerificationFailed",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "InvalidThreshold",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "InvalidAddressBytes",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "NoPendingAdmin",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "NoValidators",
+          "value": 15
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SendMsgEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "conn_sn",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "dst_address",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "dst_chain_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "payload",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "src_address",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "src_chain_id",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StorageKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ChainId"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ConnSn"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Receipts",
+            "type_": [
+              "u128",
+              "u128"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Validators"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ValidatorThreshold"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PendingAdmin"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "InitializeMsg",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "chain_id",
+          "type_": "u128"
+        }
+      ]
+    }
+  }
+]

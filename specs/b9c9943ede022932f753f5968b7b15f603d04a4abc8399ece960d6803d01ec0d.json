@@ -1,0 +1,21 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "send",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "addr",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "msg",
+          "type_": "string"
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

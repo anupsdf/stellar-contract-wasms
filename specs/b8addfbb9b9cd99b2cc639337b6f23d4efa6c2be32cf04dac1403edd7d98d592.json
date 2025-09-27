@@ -1,0 +1,1185 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ArtworkMetadata",
+      "fields": [
+        {
+          "doc": "",
+          "name": "artwork_name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "img_url",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VotingEligibility",
+      "fields": [
+        {
+          "doc": "",
+          "name": "can_vote",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "current_balance",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "has_voted",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "min_required",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "voting_active",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Competition",
+      "fields": [
+        {
+          "doc": "",
+          "name": "artist_add_end",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "artist_add_start",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "artist_metadata",
+          "type_": {
+            "map": {
+              "key_type": "string",
+              "value_type": {
+                "vec": {
+                  "element_type": {
+                    "udt": {
+                      "name": "ArtworkMetadata"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "artists",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "tuple": {
+                  "value_types": [
+                    "address",
+                    "string"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "finalized",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "id_description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "min_vote_tokens",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "pot",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "share_ratio",
+          "type_": {
+            "vec": {
+              "element_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "vote_end",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "vote_log",
+          "type_": {
+            "map": {
+              "key_type": "address",
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "vote_start",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "votes",
+          "type_": {
+            "map": {
+              "key_type": "string",
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "winner",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CompetitionStatus",
+      "fields": [
+        {
+          "doc": "",
+          "name": "competition",
+          "type_": {
+            "udt": {
+              "name": "Competition"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "is_finalized",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "is_submission_active",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "is_voting_active",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ArtistRanking",
+      "fields": [
+        {
+          "doc": "",
+          "name": "artist",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "is_winner",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "rank",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "votes",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VoteHistory",
+      "fields": [
+        {
+          "doc": "",
+          "name": "artist",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "voter",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Medium",
+      "fields": [
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Network",
+      "fields": [
+        {
+          "doc": "",
+          "name": "chain_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ArtistInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "bio",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "blockchains",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Network"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "competitions_participated",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "competitions_won",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "img_url",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "mediums",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Medium"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "registered",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "website",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "*** Functions for Admins ***\\n\\nInitialize the contract with two admins",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin1",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "admin2",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Update one or both admins of the contract {Only admins can update}",
+      "name": "update_admins",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_admin1",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "new_admin2",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Migrate all artists from another contract automatically {Only admins can migrate}",
+      "name": "migrate_all_artists",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "old_contract",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "\\nCreate a new competition {Only admins can create}",
+      "name": "create_competition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "id_description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "artist_add_start",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "artist_add_end",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "vote_start",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "vote_end",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "min_vote_tokens",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Delete a competition and emergency withdraw funds {Only admin can delete}",
+      "name": "delete_competition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "\\nRemove an artist from a competition {Only admin can remove}",
+      "name": "remove_artist",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "artist_name",
+          "type_": "string"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "\\nRemove a registered artist from the global artist registry {Only admin can remove}",
+      "name": "remove_registered_artist",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "artist_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Upgrade the contract to a new implementation {Only admins can upgrade}",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "***{User Write Fn for Art Competition}***\\n\\nVote for an artist in a competition (one vote per wallet)",
+      "name": "vote",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "artist",
+          "type_": "string"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "\\nFund the competition pot",
+      "name": "fund_pot",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "\\nPays the competition winners",
+      "name": "pay_winners",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "***{Artist Write Fn for Art Competition}***\\n\\nSubmit an artist to the competition",
+      "name": "submit_art",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "artist_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "artist_name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "artwork_name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "img_url",
+          "type_": "string"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Update artist metadata with optional parameters",
+      "name": "update_submission_metadata",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "artist_name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "artwork_name",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "***{Artist Write Fn for Artist Registration}***\\n\\nAdd artist profile info (one per address, unique name)",
+      "name": "add_artist_info",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "bio",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "img_url",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "website",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "mediums",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Medium"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "blockchains",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Network"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Update artist profile info (only by the artist, optional fields)",
+      "name": "update_artist_info",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "bio",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "img_url",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "website",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "mediums",
+          "type_": {
+            "option": {
+              "value_type": {
+                "vec": {
+                  "element_type": {
+                    "udt": {
+                      "name": "Medium"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "blockchains",
+          "type_": {
+            "option": {
+              "value_type": {
+                "vec": {
+                  "element_type": {
+                    "udt": {
+                      "name": "Network"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "***{Read Functions}***\\n\\nGet all active competitions based on current timestamp",
+      "name": "get_active_competitions",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "CompetitionStatus"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the competition details",
+      "name": "get_competition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Competition"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "View all submitted artists and their metadata for a competition",
+      "name": "get_comp_artists",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "tuple": {
+                "value_types": [
+                  "string",
+                  {
+                    "udt": {
+                      "name": "ArtworkMetadata"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the total pot for a competition",
+      "name": "get_pot",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the minimum token amount required to vote in a competition",
+      "name": "get_min_vote_tokens",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get all contestants ranked by votes from winner to last place",
+      "name": "get_winner",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "ArtistRanking"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get all artists and their info stored on the contract",
+      "name": "get_artists",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "tuple": {
+                "value_types": [
+                  "address",
+                  {
+                    "udt": {
+                      "name": "ArtistInfo"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get artist info for a specific address",
+      "name": "get_artist_info",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "ArtistInfo"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get vote history for a competition",
+      "name": "get_vote_history",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "VoteHistory"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "check if an wallet has registered artist info",
+      "name": "has_registered",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Check if a voter voted",
+      "name": "has_voted",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "voter",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "string"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Check if a user can vote",
+      "name": "check_voting_eligibility",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "voter",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "VotingEligibility"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the current contract version",
+      "name": "version",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the current admins of the contract",
+      "name": "get_admins",
+      "inputs": [],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              {
+                "option": {
+                  "value_type": "address"
+                }
+              },
+              {
+                "option": {
+                  "value_type": "address"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

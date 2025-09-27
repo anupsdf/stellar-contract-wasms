@@ -1,0 +1,55 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "store_data_deb",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "key",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_data",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "key",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "bytes"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "delete_data",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "key",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

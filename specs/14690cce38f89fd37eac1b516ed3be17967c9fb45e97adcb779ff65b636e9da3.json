@@ -1,0 +1,57 @@
+[
+  {
+    "function_v0": {
+      "doc": "Deploy the contract Wasm and after deployment invoke the initialize function\\nof the contract with the given arguments.\\n\\nThis has to be authorized by `deployer` (unless the `Deployer` instance\\nitself is used as deployer). This way the whole operation is atomic\\nand it's not possible to frontrun the contract initialization.\\n\\nReturns the contract ID and the result of the initialize function.\\nCode comes from the stellar/soroban-examples repository.",
+      "name": "deploy",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "deployer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "salt",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "init_fn",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "init_args",
+          "type_": {
+            "vec": {
+              "element_type": "val"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "address",
+              "val"
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

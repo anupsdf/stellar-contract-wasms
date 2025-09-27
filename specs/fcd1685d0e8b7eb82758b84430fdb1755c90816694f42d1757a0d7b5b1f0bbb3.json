@@ -1,0 +1,475 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "staking_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "reward_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "threshold",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "close_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "project_token_price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "project_token",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw_reward",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim_project_token_reward",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "stake_token",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_token_amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "retrieve_staked_tokens",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_close_date",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "close_date",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u64",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_progress",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "StakingProgress"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InvalidToken",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "NotAuthorizedMethod",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "StakingNotAllowed",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "WithdrawNotAllowed",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "StakingAmountExceeded",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "NotEnoughStaked",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "NotEnoughBalance",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "StakingTimeClosed",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "BuildingProject",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "ThresholdNotReached",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "NotReachedTargetDate",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "InvalidUser",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "DateOlderThanLedger",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "NoReclaimableProjectToken",
+          "value": 14
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "StakingToken"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "RewardToken"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "WithwdrawAllowance"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "StakeAllowance"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TotalStaked"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "User",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "CloseDate"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Balance",
+            "type_": [
+              "address"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "withdrawal_amount",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StakingTokenData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "minted_project_tokens",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "project_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_token_price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reward_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reward_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "threshold",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_staked",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "User",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_token_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "project_token_withdrawn",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "shares",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "tokens_staked",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "withdrawn_reward",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StakingProgress",
+      "fields": [
+        {
+          "doc": "",
+          "name": "limit_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "threshold",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_staked",
+          "type_": "i128"
+        }
+      ]
+    }
+  }
+]

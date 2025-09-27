@@ -1,0 +1,72 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "TransactionAlreadyExecuted",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "UnauthorizedMinting",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "AssetCodeMismatch",
+          "value": 3
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "uno_mint",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "transaction_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "asset_code",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "asset_issuer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "sac_contract_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "target_account",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "string",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  }
+]

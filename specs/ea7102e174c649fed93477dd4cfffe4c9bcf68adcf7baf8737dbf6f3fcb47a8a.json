@@ -1,0 +1,905 @@
+[
+  {
+    "function_v0": {
+      "doc": "Deploy the pool contract wasm and after deployment invoke the `initialize` function\\nof the contract with the given admin address. Returns the contract ID and\\nresult of the `initialize` function.",
+      "name": "deploy_pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "salt",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_config",
+          "type_": {
+            "udt": {
+              "name": "PoolConfig"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "address",
+              "val"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Deploy the s-token contract wasm and after deployment invoke the `initialize` function\\nof the contract with the given arguments. Returns the contract ID and\\nresult of the `initialize` function.",
+      "name": "deploy_s_token",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "salt",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "underlying_asset",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "address",
+              "val"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Deploy the debt token contract wasm and after deployment invoke the `initialize` function\\nof the contract with the given arguments. Returns the contract ID and\\nresult of the `initialize` function.",
+      "name": "deploy_debt_token",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "salt",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "underlying_asset",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "address",
+              "val"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AccountPosition",
+      "fields": [
+        {
+          "doc": "",
+          "name": "debt",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "discounted_collateral",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "npv",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AssetBalance",
+      "fields": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "balance",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "BaseAssetConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "decimals",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Collateralization parameters",
+      "lib": "",
+      "name": "CollateralParamsInput",
+      "fields": [
+        {
+          "doc": "Specifies what fraction of the underlying asset counts toward\\nthe portfolio collateral value [0%, 100%].",
+          "name": "discount",
+          "type_": "u32"
+        },
+        {
+          "doc": "The total amount of an asset the protocol accepts into the market.",
+          "name": "liq_cap",
+          "type_": "i128"
+        },
+        {
+          "doc": "Liquidation order",
+          "name": "pen_order",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "util_cap",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Uninitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "Paused",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "BellowMinValue",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "ExceededMaxValue",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "GracePeriod",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "NoActiveReserve",
+          "value": 100
+        },
+        {
+          "doc": "",
+          "name": "ReservesMaxCapacityExceeded",
+          "value": 101
+        },
+        {
+          "doc": "",
+          "name": "NoPriceForAsset",
+          "value": 102
+        },
+        {
+          "doc": "",
+          "name": "InvalidAssetPrice",
+          "value": 103
+        },
+        {
+          "doc": "",
+          "name": "LiquidationOrderMustBeUnique",
+          "value": 104
+        },
+        {
+          "doc": "",
+          "name": "NotFungible",
+          "value": 105
+        },
+        {
+          "doc": "",
+          "name": "NotEnoughAvailableUserBalance",
+          "value": 200
+        },
+        {
+          "doc": "",
+          "name": "DebtError",
+          "value": 201
+        },
+        {
+          "doc": "",
+          "name": "BorrowingDisabled",
+          "value": 300
+        },
+        {
+          "doc": "",
+          "name": "GoodPosition",
+          "value": 301
+        },
+        {
+          "doc": "",
+          "name": "InvalidAmount",
+          "value": 302
+        },
+        {
+          "doc": "",
+          "name": "ValidateBorrowMathError",
+          "value": 303
+        },
+        {
+          "doc": "",
+          "name": "CalcAccountDataMathError",
+          "value": 304
+        },
+        {
+          "doc": "",
+          "name": "LiquidateMathError",
+          "value": 305
+        },
+        {
+          "doc": "",
+          "name": "MustNotBeInCollateralAsset",
+          "value": 306
+        },
+        {
+          "doc": "",
+          "name": "FlashLoanReceiverError",
+          "value": 307
+        },
+        {
+          "doc": "",
+          "name": "MathOverflowError",
+          "value": 400
+        },
+        {
+          "doc": "",
+          "name": "MustBeLtePercentageFactor",
+          "value": 401
+        },
+        {
+          "doc": "",
+          "name": "MustBeLtPercentageFactor",
+          "value": 402
+        },
+        {
+          "doc": "",
+          "name": "MustBeGtPercentageFactor",
+          "value": 403
+        },
+        {
+          "doc": "",
+          "name": "MustBeNonNegative",
+          "value": 404
+        },
+        {
+          "doc": "",
+          "name": "AccruedRateMathError",
+          "value": 500
+        },
+        {
+          "doc": "",
+          "name": "CollateralCoeffMathError",
+          "value": 501
+        },
+        {
+          "doc": "",
+          "name": "DebtCoeffMathError",
+          "value": 502
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FlashLoanAsset",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "borrow",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OracleAsset",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Stellar",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Other",
+            "type_": [
+              "symbol"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PauseInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "grace_period_secs",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "paused",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "unpaused_at",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "base_asset_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "base_asset_decimals",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "flash_loan_fee",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "grace_period",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "initial_health",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "ir_alpha",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "ir_initial_rate",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "ir_max_rate",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "ir_scaling_coeff",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "liquidation_protocol_fee",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "min_collat_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_debt_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "timestamp_window",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "user_assets_limit",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PriceFeed",
+      "fields": [
+        {
+          "doc": "",
+          "name": "feed",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "feed_asset",
+          "type_": {
+            "udt": {
+              "name": "OracleAsset"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "feed_decimals",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "min_timestamp_delta",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "timestamp_precision",
+          "type_": {
+            "udt": {
+              "name": "TimestampPrecision"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "twap_records",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PriceFeedConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "asset_decimals",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "feeds",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "PriceFeed"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "max_sanity_price_in_base",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_sanity_price_in_base",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PriceFeedConfigInput",
+      "fields": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "asset_decimals",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "feeds",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "PriceFeed"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "max_sanity_price_in_base",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_sanity_price_in_base",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ReserveConfiguration",
+      "fields": [
+        {
+          "doc": "",
+          "name": "borrowing_enabled",
+          "type_": "bool"
+        },
+        {
+          "doc": "Specifies what fraction of the underlying asset counts toward\\nthe portfolio collateral value [0%, 100%].",
+          "name": "discount",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "is_active",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "liquidity_cap",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "pen_order",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "util_cap",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ReserveData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "borrower_ar",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "borrower_ir",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "configuration",
+          "type_": {
+            "udt": {
+              "name": "ReserveConfiguration"
+            }
+          }
+        },
+        {
+          "doc": "The id of the reserve (position in the list of the active reserves).",
+          "name": "id",
+          "type_": {
+            "bytes_n": {
+              "n": 1
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "last_update_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "lender_ar",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "lender_ir",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reserve_type",
+          "type_": {
+            "udt": {
+              "name": "ReserveType"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ReserveType",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "Fungible reserve for which created sToken and debtToken",
+            "name": "Fungible",
+            "type_": [
+              "address",
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "RWA reserve",
+            "name": "RWA"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TimestampPrecision",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Msec"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Sec"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UserConfiguration",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "1",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Asset",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Stellar",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Other",
+            "type_": [
+              "symbol"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PriceData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        }
+      ]
+    }
+  }
+]

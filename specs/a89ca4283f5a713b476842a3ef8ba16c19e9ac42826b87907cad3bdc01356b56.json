@@ -1,0 +1,190 @@
+[
+  {
+    "function_v0": {
+      "doc": "Initialize the contract\\n\\n### Arguments\\n* `admin` - The admin of the lockup contract\\n* `owner` - The owner of the lockup contract\\n* `token` - The token to lock up\\n* `unlocks` - A vector of unlocks. Percentages represent the portion of the lockups token balance can be claimed\\nat the given unlock time. If multiple unlocks are claimed at once, the percentages are applied in order.\\n\\n### Errors\\n* AlreadyInitializedError - The contract has already been initialized\\n* InvalidUnlocks - The unlock times do not represent a valid unlock sequence",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "unlocks",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Unlock"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get unlocks for the lockup",
+      "name": "unlocks",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "Unlock"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the admin address",
+      "name": "admin",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the owner address",
+      "name": "owner",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Only admin) Set new unlocks for the lockup. The new unlocks must retain\\nany existing unlocks that have already passed their unlock time.\\n\\n### Arguments\\n* `new_unlocks` - The new unlocks to set\\n\\n### Errors\\n* UnauthorizedError - The caller is not the admin\\n* InvalidUnlocks - The unlock times do not represent a valid unlock sequence",
+      "name": "set_unlocks",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_unlocks",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Unlock"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "(Only owner) Claim the unlocked tokens. The tokens are transferred to the owner.\\n\\n### Arguments\\n* `tokens` - A vector of tokens to claim\\n\\n### Errors\\n* UnauthorizedError - The caller is not the owner\\n* NoUnlockedTokens - There are not tokens to claim for a given asset",
+      "name": "claim",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "tokens",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "The error codes for the contract.",
+      "lib": "",
+      "name": "TokenLockupError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InternalError",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitializedError",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "UnauthorizedError",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "NegativeAmountError",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "AllowanceError",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "BalanceError",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "OverflowError",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "InvalidUnlocks",
+          "value": 100
+        },
+        {
+          "doc": "",
+          "name": "NoUnlockedTokens",
+          "value": 101
+        },
+        {
+          "doc": "",
+          "name": "AlreadyUnlocked",
+          "value": 102
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Unlock",
+      "fields": [
+        {
+          "doc": "The amount of current tokens (in bps) to unlock",
+          "name": "percent",
+          "type_": "u32"
+        },
+        {
+          "doc": "The ledger time (in seconds) the unlock occurs",
+          "name": "time",
+          "type_": "u64"
+        }
+      ]
+    }
+  }
+]

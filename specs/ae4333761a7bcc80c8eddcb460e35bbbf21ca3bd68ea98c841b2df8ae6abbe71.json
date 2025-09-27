@@ -1,0 +1,55 @@
+[
+  {
+    "function_v0": {
+      "doc": "Construct the deployer with a provided administrator.",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Deploys the contract on behalf of the `Deployer` contract.\\n\\nThis has to be authorized by the `Deployer`s administrator.",
+      "name": "deploy",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "salt",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "index",
+      "inputs": [],
+      "outputs": [
+        "u256"
+      ]
+    }
+  }
+]

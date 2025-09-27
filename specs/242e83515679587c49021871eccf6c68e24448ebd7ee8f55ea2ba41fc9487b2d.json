@@ -1,0 +1,218 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Operation",
+      "fields": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "op",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "result",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "x",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "y",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FormattedOperation",
+      "fields": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "op",
+          "type_": {
+            "vec": {
+              "element_type": "symbol"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "x",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "y",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "z",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "sum",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "x",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "y",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "sub",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "x",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "y",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "mul",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "x",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "y",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "div",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "x",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "y",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "last_op",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "FormattedOperation"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "all_op",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "FormattedOperation"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_op",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "FormattedOperation"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+]

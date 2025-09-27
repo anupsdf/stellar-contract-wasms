@@ -1,0 +1,156 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 401
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 402
+        },
+        {
+          "doc": "",
+          "name": "NegativeNotAllowed",
+          "value": 403
+        },
+        {
+          "doc": "",
+          "name": "ProtocolAddressNotFound",
+          "value": 404
+        },
+        {
+          "doc": "",
+          "name": "DeadlineExpired",
+          "value": 405
+        },
+        {
+          "doc": "",
+          "name": "NeedToWait",
+          "value": 406
+        },
+        {
+          "doc": "",
+          "name": "ArithmeticError",
+          "value": 407
+        },
+        {
+          "doc": "",
+          "name": "LengthMismatch",
+          "value": 408
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AdapterParams",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "share",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "adapters",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "AdapterParams"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_adapter_address",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  }
+]

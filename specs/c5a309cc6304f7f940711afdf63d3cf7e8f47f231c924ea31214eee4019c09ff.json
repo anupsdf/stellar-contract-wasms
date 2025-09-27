@@ -1,0 +1,323 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "find",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "fcm",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "supply",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "miner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "message",
+          "type_": "string"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "mine",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "message",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "nonce",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "miner",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "stake",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "miner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "un_stake",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "miner",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "fkin_nuke_it",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractErrors",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyDiscovered",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "NonDiscovered",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "NoMoreSupplyAvailable",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "ProvidedHashIsInvalid",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "ProvidedDifficultyIsInvalid",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "MessageIsTooLarge",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "MintedFCMPaymentFailed",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "TheMineWasNuked",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "NotTheFinder",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "NothingToWithdraw",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "StakeIsStillHot",
+          "value": 10
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ReactorState",
+      "fields": [
+        {
+          "doc": "",
+          "name": "current",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "difficulty",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "fcm",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "finder",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "is_nuked",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "supply",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Block",
+      "fields": [
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "message",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "miner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "nonce",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "prev_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Stake",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "cools_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StorageKeys",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "MineState"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Block",
+            "type_": [
+              "u64"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Stake",
+            "type_": [
+              "address"
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

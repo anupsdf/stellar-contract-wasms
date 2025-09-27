@@ -1,0 +1,1787 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "emergency_admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "unstaking_period",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "optimal_utilization",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "base_rate",
+          "type_": "i32"
+        },
+        {
+          "doc": "",
+          "name": "rate_slopes",
+          "type_": {
+            "tuple": {
+              "value_types": [
+                "u32",
+                "u32"
+              ]
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "request_withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "cancel_request_withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "pay_premium",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_token",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_unstaking_period",
+      "inputs": [],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_optimal_insurance",
+      "inputs": [],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_total_shares",
+      "inputs": [],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_share_base",
+      "inputs": [],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_stake",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Stake"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_optimal_utilization",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_utilization",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_rate",
+      "inputs": [],
+      "outputs": [
+        "i32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_base_rate",
+      "inputs": [],
+      "outputs": [
+        "i32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_rate_slopes",
+      "inputs": [],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "u32",
+              "u32"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "version",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "commit_upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "apply_upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "bytes_n": {
+            "n": 32
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "revert_upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_emergency_mode",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "emergency_admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "bool"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_emergency_mode",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "resolve_liquidity_deficit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_unstaking_period",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "unstaking_period",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_optimal_insurance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "optimal_insurance",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_rate_config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "optimal_utilization",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "base_rate",
+          "type_": "i32"
+        },
+        {
+          "doc": "",
+          "name": "rate_slope_a",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "rate_slope_b",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "kill_deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "kill_request_withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "kill_withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "unkill_deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "unkill_request_withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "unkill_withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_is_killed_deposit",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_is_killed_request_withdraw",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_is_killed_withdraw",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "commit_transfer_ownership",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "role_name",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "new_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "apply_transfer_ownership",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "role_name",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "revert_transfer_ownership",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "role_name",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_future_address",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "role_name",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "InsuranceFundError",
+      "cases": [
+        {
+          "doc": "InsuranceFundError",
+          "name": "MaxIFWithdrawReached",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "NoIFWithdrawAvailable",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "InvalidIFUnstake",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "InvalidIFUnstakeSize",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "InvalidIFRebase",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "InvalidInsuranceUnstakeSize",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "IFWithdrawRequestInProgress",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "NoIFWithdrawRequestInProgress",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "IFWithdrawRequestTooSmall",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "InvalidIFSharesDetected",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "InsufficientIFShares",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "TryingToRemoveLiquidityTooFast",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 15
+        },
+        {
+          "doc": "",
+          "name": "NotAuthorized",
+          "value": 16
+        },
+        {
+          "doc": "",
+          "name": "AdminNotSet",
+          "value": 17
+        },
+        {
+          "doc": "",
+          "name": "InsufficientCollateral",
+          "value": 18
+        },
+        {
+          "doc": "",
+          "name": "InvalidIFDetected",
+          "value": 19
+        },
+        {
+          "doc": "",
+          "name": "TooMuchInsurance",
+          "value": 20
+        },
+        {
+          "doc": "",
+          "name": "InvalidOptimalUtilization",
+          "value": 21
+        },
+        {
+          "doc": "",
+          "name": "InvalidTimestamp",
+          "value": 22
+        },
+        {
+          "doc": "",
+          "name": "CostBasisUnderflow",
+          "value": 23
+        },
+        {
+          "doc": "",
+          "name": "FundDepositKilled",
+          "value": 30
+        },
+        {
+          "doc": "",
+          "name": "FundRequestWithdrawKilled",
+          "value": 31
+        },
+        {
+          "doc": "",
+          "name": "FundWithdrawKilled",
+          "value": 32
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StakeAction",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Deposit"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "WithdrawRequest"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "WithdrawCancelRequest"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Withdraw"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Stake",
+      "fields": [
+        {
+          "doc": "",
+          "name": "cost_basis",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "if_base",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "if_shares",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "last_withdraw_request_shares",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "last_withdraw_request_ts",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "last_withdraw_request_value",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AccessControlError",
+      "cases": [
+        {
+          "doc": "AccessControlError",
+          "name": "RoleNotFound",
+          "value": 101
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 102
+        },
+        {
+          "doc": "",
+          "name": "AdminAlreadySet",
+          "value": 103
+        },
+        {
+          "doc": "",
+          "name": "BadRoleUsage",
+          "value": 104
+        },
+        {
+          "doc": "",
+          "name": "AnotherActionActive",
+          "value": 2906
+        },
+        {
+          "doc": "",
+          "name": "NoActionActive",
+          "value": 2907
+        },
+        {
+          "doc": "",
+          "name": "ActionNotReadyYet",
+          "value": 2908
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UpgradeError",
+      "cases": [
+        {
+          "doc": "UpgradeError",
+          "name": "AnotherActionActive",
+          "value": 2906
+        },
+        {
+          "doc": "",
+          "name": "NoActionActive",
+          "value": 2907
+        },
+        {
+          "doc": "",
+          "name": "ActionNotReadyYet",
+          "value": 2908
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "MathError",
+      "cases": [
+        {
+          "doc": "MathError: NumberOverflow",
+          "name": "NumberOverflow",
+          "value": 510
+        },
+        {
+          "doc": "",
+          "name": "MathError",
+          "value": 511
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OracleError",
+      "cases": [
+        {
+          "doc": "OracleError: OracleNonPositive",
+          "name": "OracleNonPositive",
+          "value": 601
+        },
+        {
+          "doc": "",
+          "name": "OracleTooVolatile",
+          "value": 602
+        },
+        {
+          "doc": "",
+          "name": "OracleStaleForPool",
+          "value": 603
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StorageError",
+      "cases": [
+        {
+          "doc": "StorageError",
+          "name": "ValueNotInitialized",
+          "value": 501
+        },
+        {
+          "doc": "",
+          "name": "ValueMissing",
+          "value": 502
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ValidationError",
+      "cases": [
+        {
+          "doc": "ValidationError",
+          "name": "InvalidToken",
+          "value": 801
+        },
+        {
+          "doc": "",
+          "name": "InvalidPercentage",
+          "value": 802
+        },
+        {
+          "doc": "",
+          "name": "Reentrancy",
+          "value": 803
+        },
+        {
+          "doc": "",
+          "name": "ZeroAmount",
+          "value": 804
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PrivilegedAddresses",
+      "fields": [
+        {
+          "doc": "",
+          "name": "emergency_admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "emergency_pause_admins",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "operations_admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pause_admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "rewards_admin",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OraclePriceData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "delay",
+          "type_": {
+            "udt": {
+              "name": "Delay"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OracleInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "decimals",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "frozen",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "last_updated",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "sanitize_clamp_denominator",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "MutableOracleInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "decimals",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "frozen",
+          "type_": {
+            "option": {
+              "value_type": "bool"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "sanitize_clamp_denominator",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "NormalAction",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PoolInit"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "AddLiquidity"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "RemoveLiquidity"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Swap"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "UpdateTwap"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Rebalance"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ClaimInsurance"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PriceDivergenceGuardRails",
+      "fields": [
+        {
+          "doc": "",
+          "name": "oracle_twap_percent_divergence",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ValidityGuardRails",
+      "fields": [
+        {
+          "doc": "",
+          "name": "seconds_before_stale_for_pool",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "too_volatile_ratio",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OracleGuardRails",
+      "fields": [
+        {
+          "doc": "",
+          "name": "price_divergence",
+          "type_": {
+            "udt": {
+              "name": "PriceDivergenceGuardRails"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "validity",
+          "type_": {
+            "udt": {
+              "name": "ValidityGuardRails"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OracleValidity",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "NonPositive"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TooVolatile"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "StaleForPool"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Frozen"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Valid"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "HistoricalOracleData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "last_oracle_price",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "last_oracle_price_twap",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "last_oracle_price_twap_ts",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Pool",
+      "fields": [
+        {
+          "doc": "",
+          "name": "base_asset",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "expiry_price",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "expiry_ts",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "fee_fraction",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "insurance_claim",
+          "type_": {
+            "udt": {
+              "name": "InsuranceClaim"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "liquidity_max_imbalance",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "quote_asset",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "PoolStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "tier",
+          "type_": {
+            "udt": {
+              "name": "PoolTier"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolStatus",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Initialized"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Active"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Frozen"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ReduceOnly"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Settlement"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Delisted"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolTier",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "A"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "B"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "C"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Speculative"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "HighlySpeculative"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Isolated"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "InsuranceClaim",
+      "fields": [
+        {
+          "doc": "",
+          "name": "last_revenue_withdraw_ts",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "quote_max_insurance",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "quote_settled_insurance",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "rev_withdraw_since_last_settle",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolResponse",
+      "fields": [
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": {
+            "udt": {
+              "name": "Pool"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": {
+            "udt": {
+              "name": "AddressAndAmount"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": {
+            "udt": {
+              "name": "AddressAndAmount"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_share",
+          "type_": {
+            "udt": {
+              "name": "AddressAndAmount"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "pool_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_response",
+          "type_": {
+            "udt": {
+              "name": "PoolResponse"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RewardConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "reward_token",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "InitializeParams",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "assets",
+          "type_": {
+            "tuple": {
+              "value_types": [
+                "symbol",
+                "symbol"
+              ]
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "fee_fraction",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "lp_token_info",
+          "type_": {
+            "udt": {
+              "name": "TokenInitInfo"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "oracle_registry",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "privileged_addrs",
+          "type_": {
+            "udt": {
+              "name": "PrivilegedAddresses"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "quote_max_insurance",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "router",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "synthetic_sac_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "tier",
+          "type_": {
+            "udt": {
+              "name": "PoolTier"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "InitializeAllParams",
+      "fields": [
+        {
+          "doc": "",
+          "name": "base",
+          "type_": {
+            "udt": {
+              "name": "InitializeParams"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "plane",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "reward_config",
+          "type_": {
+            "udt": {
+              "name": "RewardConfig"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SwapDirection",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Buy"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Sell"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenInitInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "token_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AddressAndAmount",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Delay",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": "u64"
+        }
+      ]
+    }
+  }
+]

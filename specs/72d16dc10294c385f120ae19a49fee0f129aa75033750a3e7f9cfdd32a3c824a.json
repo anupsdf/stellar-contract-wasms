@@ -1,0 +1,118 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "init",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "publisher",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "distro",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "sac",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "unclaimed",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "oracle",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "grace_secs",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_paused",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "paused",
+          "type_": "bool"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "publish_epoch_header",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "publisher",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "epoch_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "root",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "leaf_count",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "total_twab7",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_payout7",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "apr_ear_ppb",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "apr_hour_ppb",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

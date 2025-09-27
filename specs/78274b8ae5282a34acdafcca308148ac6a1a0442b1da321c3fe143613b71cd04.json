@@ -1,0 +1,1099 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Errors",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InvalidAmount",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "InsufficientBalance",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "InvalidAddress",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "StorageNotFound",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "InsufficientDeposit",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "InsufficientFactionPoints",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "UnauthorizedGame",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "EpochNotResolved",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "RewardsAlreadyClaimed",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "InvalidEpoch",
+          "value": 15
+        },
+        {
+          "doc": "",
+          "name": "NoRewardsAvailable",
+          "value": 16
+        },
+        {
+          "doc": "",
+          "name": "FactionNotSelected",
+          "value": 17
+        },
+        {
+          "doc": "",
+          "name": "SessionNotFound",
+          "value": 18
+        },
+        {
+          "doc": "",
+          "name": "SessionAlreadyExists",
+          "value": 19
+        },
+        {
+          "doc": "",
+          "name": "InvalidSession",
+          "value": 20
+        },
+        {
+          "doc": "",
+          "name": "SessionExpired",
+          "value": 21
+        },
+        {
+          "doc": "",
+          "name": "TooManyAbandons",
+          "value": 22
+        },
+        {
+          "doc": "",
+          "name": "SameFactionMatchNotAllowed",
+          "value": 23
+        },
+        {
+          "doc": "",
+          "name": "FactionChangeNotAllowedToday",
+          "value": 24
+        },
+        {
+          "doc": "",
+          "name": "FactionSwitchCooldown",
+          "value": 25
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "The three competing factions in the game",
+      "lib": "",
+      "name": "Faction",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Alpha"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Beta"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Gamma"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "Represents the winning faction of an epoch (includes None for unresolved)",
+      "lib": "",
+      "name": "WinningFaction",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "None"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Alpha"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Beta"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Gamma"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Core user data persisted across epochs",
+      "lib": "",
+      "name": "UserData",
+      "fields": [
+        {
+          "doc": "Total amount currently deposited by the user",
+          "name": "deposit_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "Timestamp when deposit duration tracking started/reset",
+          "name": "deposit_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "User's chosen faction",
+          "name": "faction",
+          "type_": {
+            "udt": {
+              "name": "Faction"
+            }
+          }
+        },
+        {
+          "doc": "Epoch number when the user last switched factions (u32::MAX = never switched)",
+          "name": "faction_switch_epoch",
+          "type_": "u32"
+        },
+        {
+          "doc": "Epoch number the `withdrawals_in_epoch` is tracking",
+          "name": "withdrawals_epoch",
+          "type_": "u32"
+        },
+        {
+          "doc": "Amount withdrawn in the current epoch (resets when epoch changes)",
+          "name": "withdrawals_in_epoch",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Data for a single 24-hour epoch",
+      "lib": "",
+      "name": "EpochData",
+      "fields": [
+        {
+          "doc": "Total points earned by each faction during the epoch",
+          "name": "faction_points",
+          "type_": {
+            "map": {
+              "key_type": {
+                "udt": {
+                  "name": "Faction"
+                }
+              },
+              "value_type": "i128"
+            }
+          }
+        },
+        {
+          "doc": "Whether the epoch has been resolved by admin",
+          "name": "resolved",
+          "type_": "bool"
+        },
+        {
+          "doc": "Total USDC yield available for distribution",
+          "name": "total_yield",
+          "type_": "i128"
+        },
+        {
+          "doc": "Which faction won (determined at resolution)",
+          "name": "winning_faction",
+          "type_": {
+            "udt": {
+              "name": "WinningFaction"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "User's participation data for a specific epoch",
+      "lib": "",
+      "name": "UserEpochData",
+      "fields": [
+        {
+          "doc": "Points this user earned for their faction",
+          "name": "points_contributed",
+          "type_": "i128"
+        },
+        {
+          "doc": "Total points wagered in games (limits available points)",
+          "name": "points_wagered",
+          "type_": "i128"
+        },
+        {
+          "doc": "Whether user has claimed their rewards for this epoch",
+          "name": "rewards_claimed",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Represents a game session with locked wagers",
+      "lib": "",
+      "name": "GameSession",
+      "fields": [
+        {
+          "doc": "When the session was created",
+          "name": "created_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "Epoch this session belongs to",
+          "name": "epoch",
+          "type_": "u32"
+        },
+        {
+          "doc": "The game contract managing this session",
+          "name": "game",
+          "type_": "address"
+        },
+        {
+          "doc": "First player in the session",
+          "name": "player1",
+          "type_": "address"
+        },
+        {
+          "doc": "Amount of points wagered by player1",
+          "name": "player1_wager",
+          "type_": "i128"
+        },
+        {
+          "doc": "Second player in the session",
+          "name": "player2",
+          "type_": "address"
+        },
+        {
+          "doc": "Amount of points wagered by player2",
+          "name": "player2_wager",
+          "type_": "i128"
+        },
+        {
+          "doc": "Unique session identifier",
+          "name": "session_id",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "Storage keys for different data types",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "WithdrawalThreshold"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "CurrentEpoch"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "FeeVault"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Router"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ReserveTokenIds"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "UsdcToken"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "Maximum number of abandons allowed per user per epoch",
+            "name": "MaxAbandonsPerEpoch"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserData",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "EpochData",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserEpoch",
+            "type_": [
+              "address",
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "Per-user abandon counts within an epoch",
+            "name": "UserAbandonCount",
+            "type_": [
+              "address",
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "AuthorizedGame",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "GameSession",
+            "type_": [
+              "u64"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserActiveSession",
+            "type_": [
+              "address"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "fee_vault_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "router_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "reserve_token_ids",
+          "type_": {
+            "vec": {
+              "element_type": "u32"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "fee_vault_address",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "router_address",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "reserve_token_ids",
+          "type_": {
+            "option": {
+              "value_type": {
+                "vec": {
+                  "element_type": "u32"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "withdrawal_threshold",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "max_abandons_per_epoch",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_authorized_game",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "game",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_authorized_game",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "game",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_game_authorized",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "game",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "force_epoch_transition",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__check_auth",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "_signature_payload",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "_signature",
+          "type_": {
+            "option": {
+              "value_type": "val"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "_auth_contexts",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Context"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "Errors"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_fee_vault_address",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_reserve_token_ids",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "u32"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim_and_distribute_yield",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "distribution",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "deadline",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "select_faction",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "faction",
+          "type_": {
+            "udt": {
+              "name": "Faction"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user_faction_points",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_game_session",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "game",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "player1",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "player2",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "player1_wager",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "player2_wager",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "resolve_game_session",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "game",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "session_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "winner",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "epoch",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "epoch",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_faction_standings",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "epoch",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "tuple": {
+                "value_types": [
+                  {
+                    "udt": {
+                      "name": "Faction"
+                    }
+                  },
+                  "i128"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_current_epoch",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user_data",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "UserData"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user_epoch_data",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "epoch",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "UserEpochData"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_epoch_data",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "epoch",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "EpochData"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_withdrawal_threshold",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_epoch_resolved",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "epoch",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user_available_points",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "abandon_game_session",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "session_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

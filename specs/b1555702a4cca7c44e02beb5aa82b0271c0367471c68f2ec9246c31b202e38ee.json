@@ -1,0 +1,239 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Swap",
+      "fields": [
+        {
+          "doc": "",
+          "name": "new_backstop",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_backstop_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "unlock_time",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "blnd_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "backstop",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "backstop_token",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "distribute",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_last_distro",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "backstop_id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_backstop",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "queue_swap_backstop",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_backstop",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_backstop_token",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_queued_swap",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "Swap"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "cancel_swap_backstop",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "swap_backstop",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "drop",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "list",
+          "type_": {
+            "map": {
+              "key_type": "address",
+              "value_type": "i128"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "Error codes for the emitter contract. Common errors are codes that match up with the built-in\\ncontracts error reporting. Emitter specific errors start at 1100.",
+      "lib": "",
+      "name": "EmitterError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InternalError",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitializedError",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "UnauthorizedError",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "InsufficientBackstopSize",
+          "value": 1100
+        },
+        {
+          "doc": "",
+          "name": "BadDrop",
+          "value": 1101
+        },
+        {
+          "doc": "",
+          "name": "SwapNotQueued",
+          "value": 1102
+        },
+        {
+          "doc": "",
+          "name": "SwapAlreadyExists",
+          "value": 1103
+        },
+        {
+          "doc": "",
+          "name": "SwapNotUnlocked",
+          "value": 1104
+        },
+        {
+          "doc": "",
+          "name": "SwapCannotBeCanceled",
+          "value": 1105
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "EmitterDataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "LastDistro",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Dropped",
+            "type_": [
+              "address"
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

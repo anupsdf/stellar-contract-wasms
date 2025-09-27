@@ -1,0 +1,361 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "DiscountExpired",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "ProductNotExist",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "AmountMustNonZero",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "TargetReached",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "AmountExceedTargetLimit",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "ProductAlreadyExist",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "IdProductMustNonZero",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "LowAmountForSplitter",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "ExpiryShouldBeFuture",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "AmountMustBeGreaterThanZero",
+          "value": 11
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Product",
+      "fields": [
+        {
+          "doc": "",
+          "name": "category",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "expiry",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "image",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "remaining",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "title",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ReserveAccount"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "DevAccount"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "LaunchpadAccount"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "reserve_acc",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "dev_acc",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "launchpad_acc",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "string",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_product",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "product_title",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "product_description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "product_category",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "product_expiry",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "product_image",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "product_price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "product_target",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "Product"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_products",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "Product"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_product",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "product_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Product"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_discount",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "customer_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": [
+                  "i128",
+                  "i128",
+                  "i128"
+                ]
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_reserve_acc",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_dev_acc",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_launchpad_acc",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  }
+]

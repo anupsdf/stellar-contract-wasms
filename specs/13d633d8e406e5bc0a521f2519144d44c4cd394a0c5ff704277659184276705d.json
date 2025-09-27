@@ -1,0 +1,199 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VC",
+      "fields": [
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "expire_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "revoked",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "subject_did",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "updated_at",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "VCNotFound",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "VCNotEmpty",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "IssuerNotFound",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "DIDRegistryError",
+          "value": 4
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upload_vc",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "invoker",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "did_reg_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "issuer_did",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "subject_did",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "vc_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "expire_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "updated_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "is_revoked",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_revoke",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "invoker",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "issuer_did",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "vc_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "is_revoked",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "updated_at",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_vc",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "issuer_did",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "vc_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "u64",
+              "u64",
+              "bytes",
+              "string",
+              "bool",
+              "string"
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

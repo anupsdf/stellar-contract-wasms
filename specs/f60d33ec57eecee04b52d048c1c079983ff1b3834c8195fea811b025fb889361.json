@@ -1,0 +1,429 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "Contract-specific error codes",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "The contract is not initialized.",
+          "name": "NotInitialized",
+          "value": 0
+        },
+        {
+          "doc": "Contract has been already initialized earlier",
+          "name": "AlreadyInitialized",
+          "value": 1
+        },
+        {
+          "doc": "Caller is not authorized to perform the operation",
+          "name": "Unauthorized",
+          "value": 2
+        },
+        {
+          "doc": "Operation amount is invalid",
+          "name": "InvalidAmount",
+          "value": 3
+        },
+        {
+          "doc": "Invalid ballot create parameters",
+          "name": "InvalidBallotParams",
+          "value": 4
+        },
+        {
+          "doc": "Overflow occurred during the operation",
+          "name": "Overflow",
+          "value": 5
+        },
+        {
+          "doc": "Operators param is invalid",
+          "name": "InvalidOperators",
+          "value": 6
+        },
+        {
+          "doc": "Last unlock process has been executed less than a week ago",
+          "name": "UnlockUnavailable",
+          "value": 10
+        },
+        {
+          "doc": "Proposal has been created less than two weeks ago and refund is not available yet, or the ballot has been closed",
+          "name": "RefundUnavailable",
+          "value": 11
+        },
+        {
+          "doc": "Ballot with such ID has not been registered or expired",
+          "name": "BallotNotFound",
+          "value": 20
+        },
+        {
+          "doc": "Ballot voting has ended and it cannot be modified",
+          "name": "BallotClosed",
+          "value": 21
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "DAO contract configuration parameters",
+      "lib": "",
+      "name": "ContractConfig",
+      "fields": [
+        {
+          "doc": "Admin account address",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "Initial funding amount",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "Initial deposit amounts for each ballot category",
+          "name": "deposit_params",
+          "type_": {
+            "map": {
+              "key_type": {
+                "udt": {
+                  "name": "BallotCategory"
+                }
+              },
+              "value_type": "i128"
+            }
+          }
+        },
+        {
+          "doc": "DAO start date",
+          "name": "start_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "DAO token address",
+          "name": "token",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "New ballot initialization parameters",
+      "lib": "",
+      "name": "BallotInitParams",
+      "fields": [
+        {
+          "doc": "Ballot type",
+          "name": "category",
+          "type_": {
+            "udt": {
+              "name": "BallotCategory"
+            }
+          }
+        },
+        {
+          "doc": "Description text or URL",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "Initiator account address",
+          "name": "initiator",
+          "type_": "address"
+        },
+        {
+          "doc": "Short title",
+          "name": "title",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "BallotStatus",
+      "cases": [
+        {
+          "doc": "Ballot has been recently created and has no votes yet",
+          "name": "Draft",
+          "value": 0
+        },
+        {
+          "doc": "Accepted by DAO members",
+          "name": "Accepted",
+          "value": 1
+        },
+        {
+          "doc": "Rejected by DAO members",
+          "name": "Rejected",
+          "value": 2
+        },
+        {
+          "doc": "Retracted by the initiator",
+          "name": "Retracted",
+          "value": 3
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "BallotCategory",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AddNode",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "AddPriceFeed",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "AddAsset",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "General",
+          "value": 3
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Ballot registered in DAO contract",
+      "lib": "",
+      "name": "Ballot",
+      "fields": [
+        {
+          "doc": "Ballot type",
+          "name": "category",
+          "type_": {
+            "udt": {
+              "name": "BallotCategory"
+            }
+          }
+        },
+        {
+          "doc": "Creation timestamp",
+          "name": "created",
+          "type_": "u64"
+        },
+        {
+          "doc": "Deposited DAO tokens amount",
+          "name": "deposit",
+          "type_": "i128"
+        },
+        {
+          "doc": "Description text or URL",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "Address of the initiator account",
+          "name": "initiator",
+          "type_": "address"
+        },
+        {
+          "doc": "Current status",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "BallotStatus"
+            }
+          }
+        },
+        {
+          "doc": "Short title",
+          "name": "title",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initializes and funds the DAO contract\\nRequires admin permissions\\n\\n# Arguments\\n\\n* `config` - Initial contract configuration\\n\\n# Panics\\n\\nPanics if the contract has been already initialized\\nPanics if the deposit amounts is invalid\\nPanics if the deposit amount is not set for all categories",
+      "name": "config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "config",
+          "type_": {
+            "udt": {
+              "name": "ContractConfig"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sets the deposit amount for each ballot category\\nRequires admin permissions\\n\\n# Arguments\\n\\n* `deposit_params` - Map of deposit amounts for each ballot category\\n\\n# Panics\\n\\nPanics if the caller doesn't match admin address\\nPanics if the deposit amount is invalid\\nPanics if the deposit amount is not set for all categories",
+      "name": "set_deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "deposit_params",
+          "type_": {
+            "map": {
+              "key_type": {
+                "udt": {
+                  "name": "BallotCategory"
+                }
+              },
+              "value_type": "i128"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Unlocks tokens distributed to the developer organization and operators on a weekly basis\\nRequires admin permissions\\n\\n# Arguments\\n\\n* `developer` - Developer organization account address\\n* `operators` - Operators' account addresses\\n\\n# Panics\\n\\nPanics if the caller doesn't match admin address\\nPanics if the unlock process has been initiated too early",
+      "name": "unlock",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "developer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "operators",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Fetches the DAO tokens amount available for claiming\\n\\n# Arguments\\n\\n* `claimant` - Claimant's account address\\n\\n# Returns\\n\\n* `available` - Amount of DAO tokens available for claiming\\n\\n# Panics\\n\\nPanics if the caller doesn't match the claimant address",
+      "name": "available",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "claimant",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Claims tokens unlocked for a given account address\\n\\n# Arguments\\n\\n* `claimant` - Claimant's account address\\n* `to` - Destination address that will receive claimed tokens\\n* `amount` - Amount of tokens to claim\\n\\n# Panics\\n\\nPanics if the caller doesn't match the claimant address\\nPanics if the claimed amount is larger than the available unlocked amount",
+      "name": "claim",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "claimant",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Create a new ballot\\n\\n# Arguments\\n\\n* `params` - Ballot initialization parameters\\n\\n# Returns\\n\\n* `ballot_id` - Unique ID of a newly created ballot\\n\\n# Panics\\n\\nPanics if the caller doesn't match the initiator address",
+      "name": "create_ballot",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "params",
+          "type_": {
+            "udt": {
+              "name": "BallotInitParams"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Fetch the ballot by its unique ID\\n\\n# Arguments\\n\\n* `ballot_id` - Unique ballot ID\\n\\n# Returns\\n\\n* `ballot` - Ballot object\\n\\n# Panics\\n\\nPanics if the ballot is not found",
+      "name": "get_ballot",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "ballot_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Ballot"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retract the proposal and initiate the deposit refund\\n\\n# Arguments\\n\\n* `ballot_id` - Unique ballot ID\\n\\n# Panics\\n\\nPanics if the caller doesn't match the initiator address\\nPanics if the ballot status is in invalid state (not Draft or Rejected)\\nPanics if the voting period is not over\\nPanics if the ballot is not found",
+      "name": "retract_ballot",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "ballot_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Set ballot decision based on the operators voting (decision requires the majority of signatures)\\nRequires admin permissions\\n\\n# Arguments\\n\\n* `ballot_id` - Unique ballot ID\\n* `accepted` - Whether the proposal has been accepted or rejected by the majority of operators\\n\\n# Panics\\n\\nPanics if the caller doesn't match admin address\\nPanics if the ballot status is not Draft\\nPanics if the ballot is not found",
+      "name": "vote",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "ballot_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "accepted",
+          "type_": "bool"
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

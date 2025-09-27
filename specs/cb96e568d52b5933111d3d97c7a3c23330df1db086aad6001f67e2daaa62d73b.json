@@ -1,0 +1,878 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "interchain_token_service",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "execute_with_interchain_token",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "source_chain",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "message_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "source_address",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "payload",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "gateway",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "execute",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "source_chain",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "message_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "source_address",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "payload",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "__AxelarExampleAxelarExecutableInterfaceError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AxelarExampleError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotApproved",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "InvalidItsAddress",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "InvalidAmount",
+          "value": 3
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "gateway",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "gas_service",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "interchain_token_service",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "gas_service",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "send",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "destination_chain",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "destination_address",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "message",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "gas_token",
+          "type_": {
+            "option": {
+              "value_type": {
+                "udt": {
+                  "name": "Token"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "send_token",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "destination_chain",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "destination_app_contract",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": {
+            "option": {
+              "value_type": "bytes"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "gas_token",
+          "type_": {
+            "option": {
+              "value_type": {
+                "udt": {
+                  "name": "Token"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "AxelarExampleError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenMetadata",
+      "fields": [
+        {
+          "doc": "",
+          "name": "decimal",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "MigrationNotAllowed",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "InvalidAmount",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "InsufficientBalance",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "MigrationInProgress",
+          "value": 4
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "MigrationNotAllowed",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "InvalidThreshold",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "InvalidProof",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "InvalidSigners",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "InsufficientRotationDelay",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "InvalidSignatures",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "InvalidWeight",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "WeightOverflow",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "NotLatestSigners",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "DuplicateSigners",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "InvalidSignersHash",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "InvalidEpoch",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "EmptySigners",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "OutdatedSigners",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "EmptyMessages",
+          "value": 15
+        },
+        {
+          "doc": "",
+          "name": "ContractPaused",
+          "value": 16
+        },
+        {
+          "doc": "",
+          "name": "InvalidMessageApproval",
+          "value": 17
+        },
+        {
+          "doc": "",
+          "name": "MigrationInProgress",
+          "value": 18
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "WeightedSigner",
+      "fields": [
+        {
+          "doc": "",
+          "name": "signer",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "weight",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "WeightedSigners",
+      "fields": [
+        {
+          "doc": "",
+          "name": "nonce",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "signers",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "WeightedSigner"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "threshold",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "`ProofSignature` represents an optional signature from a signer.\\nSince Soroban doesn't support use of `Option` in it's contract interfaces,\\nwe use this enum instead.",
+      "lib": "",
+      "name": "ProofSignature",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Signed",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 64
+                }
+              }
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Unsigned"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "`ProofSigner` represents a signer in a proof.\\n\\nIf the signer submitted a signature, and if it is being included in the proof to meet the threshold,\\nthen a signature is attached. Otherwise, the `ProofSignature` is `Unsigned`.",
+      "lib": "",
+      "name": "ProofSigner",
+      "fields": [
+        {
+          "doc": "",
+          "name": "signature",
+          "type_": {
+            "udt": {
+              "name": "ProofSignature"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "signer",
+          "type_": {
+            "udt": {
+              "name": "WeightedSigner"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "`Proof` represents a proof that a set of signers have signed a message.\\nAll weighted signers are included in the along with a signature, if they have signed the message,\\nuntil threshold is met.",
+      "lib": "",
+      "name": "Proof",
+      "fields": [
+        {
+          "doc": "",
+          "name": "nonce",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "signers",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "ProofSigner"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "threshold",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CommandType",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ApproveMessages"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "RotateSigners"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Message",
+      "fields": [
+        {
+          "doc": "",
+          "name": "contract_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "message_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "payload_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "source_address",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "source_chain",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Token",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "MigrationNotAllowed",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "NotOwner",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "TrustedChainAlreadySet",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "TrustedChainNotSet",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "InvalidMessageType",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "InvalidPayload",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "UntrustedChain",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "InsufficientMessageLength",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "AbiDecodeFailed",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "InvalidAmount",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "InvalidUtf8",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "InvalidMinter",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "InvalidDestinationAddress",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "NotHubChain",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "NotHubAddress",
+          "value": 15
+        },
+        {
+          "doc": "",
+          "name": "InvalidTokenAddress",
+          "value": 16
+        },
+        {
+          "doc": "",
+          "name": "InvalidTokenId",
+          "value": 17
+        },
+        {
+          "doc": "",
+          "name": "TokenAlreadyRegistered",
+          "value": 18
+        },
+        {
+          "doc": "",
+          "name": "InvalidFlowLimit",
+          "value": 19
+        },
+        {
+          "doc": "",
+          "name": "FlowLimitExceeded",
+          "value": 20
+        },
+        {
+          "doc": "",
+          "name": "FlowAmountOverflow",
+          "value": 21
+        },
+        {
+          "doc": "",
+          "name": "NotApproved",
+          "value": 22
+        },
+        {
+          "doc": "",
+          "name": "InvalidDestinationChain",
+          "value": 23
+        },
+        {
+          "doc": "",
+          "name": "InvalidData",
+          "value": 24
+        },
+        {
+          "doc": "",
+          "name": "InvalidTokenName",
+          "value": 25
+        },
+        {
+          "doc": "",
+          "name": "InvalidTokenSymbol",
+          "value": 26
+        },
+        {
+          "doc": "",
+          "name": "InvalidTokenDecimals",
+          "value": 27
+        },
+        {
+          "doc": "",
+          "name": "ContractPaused",
+          "value": 28
+        },
+        {
+          "doc": "",
+          "name": "InvalidInitialSupply",
+          "value": 29
+        },
+        {
+          "doc": "",
+          "name": "TokenInvocationError",
+          "value": 30
+        },
+        {
+          "doc": "",
+          "name": "MigrationInProgress",
+          "value": 31
+        },
+        {
+          "doc": "",
+          "name": "InvalidTokenConfig",
+          "value": 32
+        },
+        {
+          "doc": "",
+          "name": "InvalidFlowKey",
+          "value": 33
+        },
+        {
+          "doc": "",
+          "name": "FlowAmountExceededLimit",
+          "value": 34
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "The type of token manager used for the tokenId.\\n\\nOnly the variants supported by Stellar ITS are defined here.\\nThe variant values need to match the [ITS spec](https://github.com/axelarnetwork/interchain-token-service/blob/v2.0.0/contracts/interfaces/ITokenManagerType.sol#L9).",
+      "lib": "",
+      "name": "TokenManagerType",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NativeInterchainToken",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "LockUnlock",
+          "value": 2
+        }
+      ]
+    }
+  }
+]

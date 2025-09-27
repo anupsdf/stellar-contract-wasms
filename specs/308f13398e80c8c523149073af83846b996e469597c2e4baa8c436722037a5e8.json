@@ -1,0 +1,267 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TreasuryDataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ADMIN"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "BLENDPOOL",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "FACTORY"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PEGKEEPER"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "TOTALSUPPLY",
+            "type_": [
+              "address"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initialize the treasury\\n\\n### Arguments\\n* `dao-utils` - The Address for the dao-utils\\n* `factory` - The Address for the blend factory\\n* `pegkeeper` - The Address for the pegkeeper\\n\\n### Panics\\nIf the contract is already initialized",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "factory",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pegkeeper",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_stablecoin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "blend_pool",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "increase_supply",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "decrease_supply",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "reserve_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "keep_peg",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "args",
+          "type_": {
+            "vec": {
+              "element_type": "val"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_pegkeeper",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_pegkeeper",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TreasuryError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyInitializedError",
+          "value": 1501
+        },
+        {
+          "doc": "",
+          "name": "InvalidAmount",
+          "value": 1502
+        },
+        {
+          "doc": "",
+          "name": "FlashloanFailedError",
+          "value": 1503
+        },
+        {
+          "doc": "",
+          "name": "NotEnoughSupplyError",
+          "value": 1504
+        },
+        {
+          "doc": "",
+          "name": "BlendPoolNotFoundError",
+          "value": 1506
+        },
+        {
+          "doc": "",
+          "name": "AlreadyAddedError",
+          "value": 1507
+        },
+        {
+          "doc": "",
+          "name": "InvalidBlendPoolError",
+          "value": 1508
+        },
+        {
+          "doc": "",
+          "name": "NoInterestToClaim",
+          "value": 1509
+        }
+      ]
+    }
+  }
+]

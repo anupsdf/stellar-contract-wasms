@@ -1,0 +1,178 @@
+[
+  {
+    "function_v0": {
+      "doc": "Initializes the contract with the root hash of the Merkle tree, the token address,\\nthe funding amount, and the funding source address.\\n\\n# Arguments:\\n* `e` - The Soroban environment.\\n* `root_hash` - The root hash of the Merkle tree.\\n* `token` - The address of the token to be distributed.\\n* `admin` - The address of the admin who will manage the airdrop.\\n* `funder` - The address where the `recover_unclaimed` function deposits the remaining balance.",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "root_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "funder",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns whether the airdrop has ended.\\n\\n# Arguments:\\n* `e` - The Soroban environment.",
+      "name": "is_ended",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns whether an index has been claimed.\\n\\n# Arguments:\\n* `e` - The Soroban environment.\\n* `index` - The index of the claim in the Merkle tree.",
+      "name": "is_claimed",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Claims the airdrop for a given index, transferring the specified amount of tokens to the receiver.\\n\\n# Arguments:\\n* `e` - The Soroban environment.\\n* `index` - The index of the claim in the Merkle tree.\\n* `receiver` - The address of the receiver who will receive the tokens.\\n* `amount` - The amount of tokens to be claimed.\\n* `proof` - The Merkle proof that verifies the claim.",
+      "name": "claim",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "receiver",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "proof",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Recovers any unclaimed tokens from the contract back to the funder and disables further claims.\\n\\n# Arguments:\\n* `e` - The Soroban environment.",
+      "name": "recover_unclaimed",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CryptoError",
+      "cases": [
+        {
+          "doc": "The merkle proof length is out of bounds.",
+          "name": "MerkleProofOutOfBounds",
+          "value": 1400
+        },
+        {
+          "doc": "The index of the leaf is out of bounds.",
+          "name": "MerkleIndexOutOfBounds",
+          "value": 1401
+        },
+        {
+          "doc": "No data in hasher state.",
+          "name": "HasherEmptyState",
+          "value": 1402
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "MerkleDistributorError",
+      "cases": [
+        {
+          "doc": "The merkle root is not set.",
+          "name": "RootNotSet",
+          "value": 1300
+        },
+        {
+          "doc": "The provided index was already claimed.",
+          "name": "IndexAlreadyClaimed",
+          "value": 1301
+        },
+        {
+          "doc": "The proof is invalid.",
+          "name": "InvalidProof",
+          "value": 1302
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "Storage keys for the data associated with `MerkleDistributor`",
+      "lib": "",
+      "name": "MerkleDistributorStorageKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "The Merkle root of the distribution tree",
+            "name": "Root"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "Maps an index to its claimed status",
+            "name": "Claimed",
+            "type_": [
+              "u32"
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

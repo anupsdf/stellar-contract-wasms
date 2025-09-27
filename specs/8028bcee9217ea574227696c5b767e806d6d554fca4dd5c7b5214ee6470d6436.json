@@ -1,0 +1,1180 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "provide_liquidity",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "desired_a",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "desired_b",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "custom_slippage_bps",
+          "type_": {
+            "option": {
+              "value_type": "i64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "deadline",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "min_shares_to_receive",
+          "type_": {
+            "option": {
+              "value_type": "u128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "auto_stake",
+          "type_": "bool"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "swap",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "offer_asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "offer_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "ask_asset_min_amount",
+          "type_": {
+            "option": {
+              "value_type": "i128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "max_spread_bps",
+          "type_": {
+            "option": {
+              "value_type": "i64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "deadline",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "max_allowed_fee_bps",
+          "type_": {
+            "option": {
+              "value_type": "i64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw_liquidity",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "share_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_a",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_b",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "deadline",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "auto_unstake",
+          "type_": {
+            "option": {
+              "value_type": {
+                "udt": {
+                  "name": "AutoUnstakeInfo"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "i128",
+              "i128"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "total_fee_bps",
+          "type_": {
+            "option": {
+              "value_type": "i64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "fee_recipient",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "max_allowed_slippage_bps",
+          "type_": {
+            "option": {
+              "value_type": "i64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "max_allowed_spread_bps",
+          "type_": {
+            "option": {
+              "value_type": "i64"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_config",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Config"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_share_token_address",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_stake_contract_address",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_pool_info",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "PoolResponse"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_pool_info_for_factory",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "StableLiquidityPoolInfo"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "simulate_swap",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "offer_asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "offer_amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "SimulateSwapResponse"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "simulate_reverse_swap",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "offer_asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "ask_amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "SimulateReverseSwapResponse"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_share",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              {
+                "udt": {
+                  "name": "Asset"
+                }
+              },
+              {
+                "udt": {
+                  "name": "Asset"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_total_issued_lp",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "migrate_admin_key",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "propose_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "time_limit",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "revoke_admin_change",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "accept_admin",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "stake_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "lp_init_info",
+          "type_": {
+            "udt": {
+              "name": "LiquidityPoolInitInfo"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "factory_addr",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "share_token_name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "share_token_symbol",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "amp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "max_allowed_fee_bps",
+          "type_": "i64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "query_version",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_new_key_to_storage",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "SpreadExceedsLimit",
+          "value": 400
+        },
+        {
+          "doc": "",
+          "name": "ProvideLiquiditySlippageToleranceTooHigh",
+          "value": 401
+        },
+        {
+          "doc": "",
+          "name": "WithdrawLiquidityMinimumAmountOfAOrBIsNotSatisfied",
+          "value": 402
+        },
+        {
+          "doc": "",
+          "name": "ValidateFeeBpsTotalFeesCantBeGreaterThan100",
+          "value": 403
+        },
+        {
+          "doc": "",
+          "name": "TotalSharesEqualZero",
+          "value": 404
+        },
+        {
+          "doc": "",
+          "name": "AssetNotInPool",
+          "value": 405
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 406
+        },
+        {
+          "doc": "",
+          "name": "TokenABiggerThanTokenB",
+          "value": 407
+        },
+        {
+          "doc": "",
+          "name": "InvalidBps",
+          "value": 408
+        },
+        {
+          "doc": "",
+          "name": "LowLiquidity",
+          "value": 409
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 410
+        },
+        {
+          "doc": "",
+          "name": "IncorrectAssetSwap",
+          "value": 411
+        },
+        {
+          "doc": "",
+          "name": "NewtonMethodFailed",
+          "value": 412
+        },
+        {
+          "doc": "",
+          "name": "CalcYErr",
+          "value": 413
+        },
+        {
+          "doc": "",
+          "name": "SwapMinReceivedBiggerThanReturn",
+          "value": 414
+        },
+        {
+          "doc": "",
+          "name": "ProvideLiquidityBothTokensMustBeMoreThanZero",
+          "value": 415
+        },
+        {
+          "doc": "",
+          "name": "DivisionByZero",
+          "value": 416
+        },
+        {
+          "doc": "",
+          "name": "InvalidAMP",
+          "value": 417
+        },
+        {
+          "doc": "",
+          "name": "TransactionAfterTimestampDeadline",
+          "value": 418
+        },
+        {
+          "doc": "",
+          "name": "SlippageToleranceExceeded",
+          "value": 419
+        },
+        {
+          "doc": "",
+          "name": "IssuedSharesLessThanUserRequested",
+          "value": 420
+        },
+        {
+          "doc": "",
+          "name": "SwapFeeBpsOverLimit",
+          "value": 421
+        },
+        {
+          "doc": "",
+          "name": "UserDeclinesPoolFee",
+          "value": 422
+        },
+        {
+          "doc": "",
+          "name": "AdminNotSet",
+          "value": 423
+        },
+        {
+          "doc": "",
+          "name": "ContractMathError",
+          "value": 424
+        },
+        {
+          "doc": "",
+          "name": "NegativeInputProvided",
+          "value": 425
+        },
+        {
+          "doc": "",
+          "name": "SameAdmin",
+          "value": 426
+        },
+        {
+          "doc": "",
+          "name": "NoAdminChangeInPlace",
+          "value": 427
+        },
+        {
+          "doc": "",
+          "name": "AdminChangeExpired",
+          "value": 428
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PairType",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Xyk",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Stable",
+          "value": 1
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Config",
+      "fields": [
+        {
+          "doc": "Default slippage, in case the customer hasn't specified",
+          "name": "default_slippage_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "fee_recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "The maximum amount of slippage (in bps) that is tolerated during providing liquidity",
+          "name": "max_allowed_slippage_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "The maximum amount of spread (in bps) that is tolerated during swap",
+          "name": "max_allowed_spread_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "pool_type",
+          "type_": {
+            "udt": {
+              "name": "PairType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "share_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "stake_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        },
+        {
+          "doc": "The total fees (in bps) charged by a pool of this type.\\nIn relation to the returned amount of tokens",
+          "name": "total_fee_bps",
+          "type_": "i64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AmplifierParameters",
+      "fields": [
+        {
+          "doc": "",
+          "name": "init_amp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "init_amp_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "next_amp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "next_amp_time",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Asset",
+      "fields": [
+        {
+          "doc": "Address of the asset",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "The total amount of those tokens in the pool",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "This struct is used to return a query result with the total amount of LP tokens and assets in a specific pool.",
+      "lib": "",
+      "name": "PoolResponse",
+      "fields": [
+        {
+          "doc": "The asset A in the pool together with asset amounts",
+          "name": "asset_a",
+          "type_": {
+            "udt": {
+              "name": "Asset"
+            }
+          }
+        },
+        {
+          "doc": "The asset B in the pool together with asset amounts",
+          "name": "asset_b",
+          "type_": {
+            "udt": {
+              "name": "Asset"
+            }
+          }
+        },
+        {
+          "doc": "The total amount of LP tokens currently issued",
+          "name": "asset_lp_share",
+          "type_": {
+            "udt": {
+              "name": "Asset"
+            }
+          }
+        },
+        {
+          "doc": "The address of the Stake contract for the liquidity pool",
+          "name": "stake_address",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StableLiquidityPoolInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "pool_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_response",
+          "type_": {
+            "udt": {
+              "name": "PoolResponse"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "total_fee_bps",
+          "type_": "i64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SimulateSwapResponse",
+      "fields": [
+        {
+          "doc": "",
+          "name": "ask_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "commission_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "spread_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_return",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SimulateReverseSwapResponse",
+      "fields": [
+        {
+          "doc": "",
+          "name": "commission_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "offer_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "spread_amount",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenInitInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StakeInitInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "manager",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "max_complexity",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "min_bond",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_reward",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LiquidityPoolInitInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "default_slippage_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "fee_recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "max_allowed_slippage_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "max_allowed_spread_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "max_referral_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "stake_init_info",
+          "type_": {
+            "udt": {
+              "name": "StakeInitInfo"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "swap_fee_bps",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "token_init_info",
+          "type_": {
+            "udt": {
+              "name": "TokenInitInfo"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AdminChange",
+      "fields": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "time_limit",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AutoUnstakeInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "stake_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "stake_timestamp",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolType",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Xyk",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Stable",
+          "value": 1
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,432 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "init",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_executor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "executor_pub_key",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_account_addr",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "subaccount_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_account_pkey",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "executor_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "platform",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "profile_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "salt",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "salt_iv",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "key_index",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "index_iv",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "passkey_hash",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "max_allowance",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "subaccount_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "send_token_pkey",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "executor_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "profile_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "entered_passkey_hash",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "check_tx_validation",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "executor_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "profile_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "entered_passkey_hash",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user_points",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account_id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "UserPoints"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_executor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_account_addr",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "invoker",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_account_profile",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "profile_id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user_account",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner_id",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "profile_id",
+          "type_": {
+            "option": {
+              "value_type": "string"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "UserSmartId"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "AccountOwnerMap",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "AccountProfileMap",
+            "type_": [
+              "string"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "IsAccount",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "PlatformLink",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Excecutors",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ExcecutorCount"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Quests",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserPlatformId",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserSmartWalletID",
+            "type_": [
+              "string"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserSmartWallet",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "AuthorizedExecutor"
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,40 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "save_data",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "animal",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "weight",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_weight",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

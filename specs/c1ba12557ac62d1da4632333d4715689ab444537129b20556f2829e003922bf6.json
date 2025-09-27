@@ -1,0 +1,1077 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LayerAggregator",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Sum"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Product"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Neuron",
+      "fields": [
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "weight",
+          "type_": "i256"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Layer",
+      "fields": [
+        {
+          "doc": "",
+          "name": "aggregator",
+          "type_": {
+            "udt": {
+              "name": "LayerAggregator"
+            }
+          }
+        },
+        {
+          "doc": "Vec of `neuron_id`s",
+          "name": "neurons",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "NGQ",
+      "fields": [
+        {
+          "doc": "Vec of `layer_id`s",
+          "name": "layers",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LayerKeyData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "layer_id",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "NeuronResultKeyData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "layer_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "neuron_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "round",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "NeuronKeyData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "layer_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "neuron_id",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SubmissionVotesKeyData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "round",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "submission_id",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SubmissionsKeyData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "round",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VotingPowersKeyData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "round",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Vote",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Yes"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "No"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Abstain"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VotingSystemError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "UnknownError",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "NeuralGovernanceNotSet",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "DelegateesNotFound",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "UnexpectedValue",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "TooManyDelegatees",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "NotEnoughDelegatees",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "UnknownVote",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "NeuronResultNotSet",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "InvalidLayerAggregator",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "LayerMissing",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "NeuronMissing",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "NGQResultForVoterMissing",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "DelegationCalculationFailed",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "VotesForSubmissionNotSet",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "SubmissionDoesNotExist",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "VotingPowersNotSet",
+          "value": 15
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "storage type: instance",
+            "name": "NeuralGovernance"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "storage type: instance\\nMap<String, ()>",
+            "name": "Submissions",
+            "type_": [
+              {
+                "udt": {
+                  "name": "SubmissionsKeyData"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "storage type: instance\\nMap<user_id, Vec<user_id>> - users to the vector of users they delegated their votes to",
+            "name": "Delegatees"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "DelegationRanks"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "storage type: instance\\nu32",
+            "name": "CurrentLayerId"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "u32",
+            "name": "CurrentRound"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "NeuronKey",
+            "type_": [
+              {
+                "udt": {
+                  "name": "NeuronKeyData"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "NeuronResultKey",
+            "type_": [
+              {
+                "udt": {
+                  "name": "NeuronResultKeyData"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "LayerKey",
+            "type_": [
+              {
+                "udt": {
+                  "name": "LayerKeyData"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "SubmissionVotes",
+            "type_": [
+              {
+                "udt": {
+                  "name": "SubmissionVotesKeyData"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "VotingPowers",
+            "type_": [
+              {
+                "udt": {
+                  "name": "VotingPowersKeyData"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initialize the governance contract.",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "current_round",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the current active round.",
+      "name": "get_current_round",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Change the active round.",
+      "name": "set_current_round",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Set multiple submissions.",
+      "name": "set_submissions",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_submissions",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get submissions for the active round.",
+      "name": "get_submissions",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "string"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Set votes for a submission.",
+      "name": "set_votes_for_submission",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "submission_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "votes",
+          "type_": {
+            "map": {
+              "key_type": "string",
+              "value_type": {
+                "udt": {
+                  "name": "Vote"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "VotingSystemError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get votes for the submission for a specific round.",
+      "name": "get_votes_for_submission_round",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "submission_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "round",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "map": {
+                "key_type": "string",
+                "value_type": {
+                  "udt": {
+                    "name": "Vote"
+                  }
+                }
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "VotingSystemError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get votes for the submission for the active round",
+      "name": "get_votes_for_submission",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "submission_id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "map": {
+                "key_type": "string",
+                "value_type": {
+                  "udt": {
+                    "name": "Vote"
+                  }
+                }
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "VotingSystemError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Compute the final voting power of a submission.\\n\\nRequires calling `calculate_voting_powers` first to compute and store voting powers for the round.\\n\\n# Panics:\\n\\nThe function will panic if no voting powers are set for the active round.",
+      "name": "tally_submission",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "submission_id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i256",
+            "error_type": {
+              "udt": {
+                "name": "VotingSystemError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_layer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "raw_neurons",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "tuple": {
+                  "value_types": [
+                    "string",
+                    "i256"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "layer_aggregator",
+          "type_": {
+            "udt": {
+              "name": "LayerAggregator"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "VotingSystemError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_layer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "layer_id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "VotingSystemError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_layer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "layer_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "raw_neurons",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "tuple": {
+                  "value_types": [
+                    "string",
+                    "i256"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "layer_aggregator",
+          "type_": {
+            "udt": {
+              "name": "LayerAggregator"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "VotingSystemError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_layer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "layer_id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "Layer"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "VotingSystemError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_neuron",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "layer_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "neuron_id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "Neuron"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "VotingSystemError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_neuron_result_round",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "layer_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "neuron_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "round",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "map": {
+                "key_type": "string",
+                "value_type": "i256"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "VotingSystemError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_neuron_result",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "layer_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "neuron_id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "map": {
+                "key_type": "string",
+                "value_type": "i256"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "VotingSystemError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_neuron_result",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "layer_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "neuron_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "result",
+          "type_": {
+            "map": {
+              "key_type": "string",
+              "value_type": "i256"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get a result of a whole layer\\n\\nGets a result of each neuron and aggregates them using a configured aggregator function",
+      "name": "get_layer_result",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "layer_id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "map": {
+                "key_type": "string",
+                "value_type": "i256"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "VotingSystemError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "calculate_voting_powers",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "VotingSystemError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_voting_powers",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "map": {
+                "key_type": "string",
+                "value_type": "i256"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "VotingSystemError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get a current neural governance setup",
+      "name": "get_neural_governance",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "NGQ"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "VotingSystemError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,623 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "init",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "fee_taker",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "paying_asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "oracle",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_address",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "target",
+          "type_": {
+            "udt": {
+              "name": "CoreUpdateAddress"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_game",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "host",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "deadline",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "target_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "target_price",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "predict",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "game_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "result",
+          "type_": {
+            "udt": {
+              "name": "GameResult"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "deposit",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "execute",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "game_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "rerun",
+          "type_": "bool"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "game_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractErrors",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyInitiated",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "NotInitiated",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "InvalidAsset",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "GameAlreadyExists",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "InvalidDeadline",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "InvalidTargetDate",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "GameDoesntExist",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "GameDeadlineReached",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "AlreadyPredicted",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "InvalidPredictionResult",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "InvalidPredictionAmount",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "GameHasNotBeenExecuted",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "PredictionDoesntExist",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "PredictionWasIncorrect",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "PredictionAlreadyClaimed",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "FailedToWithdrawFunds",
+          "value": 15
+        },
+        {
+          "doc": "",
+          "name": "FailedToPayHostShare",
+          "value": 16
+        },
+        {
+          "doc": "",
+          "name": "FailedToPayProtocolShare",
+          "value": 17
+        },
+        {
+          "doc": "",
+          "name": "AssetPriceNotFound",
+          "value": 18
+        },
+        {
+          "doc": "",
+          "name": "GameCantBeExecuted",
+          "value": 19
+        },
+        {
+          "doc": "",
+          "name": "AssetPriceIsNotUpdated",
+          "value": 20
+        },
+        {
+          "doc": "",
+          "name": "FailedToDeposit",
+          "value": 21
+        },
+        {
+          "doc": "",
+          "name": "GameAlreadyExecuted",
+          "value": 22
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CoreUpdateAddress",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "FeeTaker"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PayingAsset"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Oracle"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CoreData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "fee_taker",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "oracle",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "paying_asset",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CoreDataKeys",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "CoreData"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GameResult",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Higher"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Lower"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "None"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Cancelled"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Game",
+      "fields": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "deadline",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "executed_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "highs_deposit",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "highs_participants",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "host",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "lows_deposit",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "lows_participants",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "prize",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "result",
+          "type_": {
+            "udt": {
+              "name": "GameResult"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "target_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "target_price",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Prediction",
+      "fields": [
+        {
+          "doc": "",
+          "name": "claimed",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "deposit",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "game_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "prize",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "result",
+          "type_": {
+            "udt": {
+              "name": "GameResult"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PredictionDataKeys",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Game",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Prediction",
+            "type_": [
+              {
+                "tuple": {
+                  "value_types": [
+                    {
+                      "bytes_n": {
+                        "n": 32
+                      }
+                    },
+                    "address"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

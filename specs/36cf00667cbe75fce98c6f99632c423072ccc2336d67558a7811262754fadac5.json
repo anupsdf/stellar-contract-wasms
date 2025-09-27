@@ -1,0 +1,18 @@
+[
+  {
+    "function_v0": {
+      "doc": "Welcome to Okashi!\\n\\nThis modal will appear when a contract function needs values.\\nThe `say_hi` function needs just one - your `name`.\\n\\nHave fun!",
+      "name": "say_howdy",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  }
+]

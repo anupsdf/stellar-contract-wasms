@@ -1,0 +1,21 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "hello",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "answer_to_life",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

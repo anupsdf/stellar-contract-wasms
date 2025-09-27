@@ -1,0 +1,1113 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "InitializedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "factory",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AddLiquidityEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount_a",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_b",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "liquidity",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "pair",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RemoveLiquidityEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount_a",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_b",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "liquidity",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "pair",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SwapEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amounts",
+          "type_": {
+            "vec": {
+              "element_type": "i128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "path",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SoroswapRouterError",
+      "cases": [
+        {
+          "doc": "SoroswapRouter: not yet initialized",
+          "name": "NotInitialized",
+          "value": 401
+        },
+        {
+          "doc": "SoroswapRouter: negative amount is not allowed",
+          "name": "NegativeNotAllowed",
+          "value": 402
+        },
+        {
+          "doc": "SoroswapRouter: deadline expired",
+          "name": "DeadlineExpired",
+          "value": 403
+        },
+        {
+          "doc": "SoroswapRouter: already initialized",
+          "name": "InitializeAlreadyInitialized",
+          "value": 404
+        },
+        {
+          "doc": "SoroswapRouter: insufficient a amount",
+          "name": "InsufficientAAmount",
+          "value": 405
+        },
+        {
+          "doc": "SoroswapRouter: insufficient b amount",
+          "name": "InsufficientBAmount",
+          "value": 406
+        },
+        {
+          "doc": "SoroswapRouter: insufficient output amount",
+          "name": "InsufficientOutputAmount",
+          "value": 407
+        },
+        {
+          "doc": "SoroswapRouter: excessive input amount",
+          "name": "ExcessiveInputAmount",
+          "value": 408
+        },
+        {
+          "doc": "SoroswapRouter: pair does not exist",
+          "name": "PairDoesNotExist",
+          "value": 409
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CombinedRouterError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "RouterNotInitialized",
+          "value": 501
+        },
+        {
+          "doc": "",
+          "name": "RouterNegativeNotAllowed",
+          "value": 502
+        },
+        {
+          "doc": "",
+          "name": "RouterDeadlineExpired",
+          "value": 503
+        },
+        {
+          "doc": "",
+          "name": "RouterInitializeAlreadyInitialized",
+          "value": 504
+        },
+        {
+          "doc": "",
+          "name": "RouterInsufficientAAmount",
+          "value": 505
+        },
+        {
+          "doc": "",
+          "name": "RouterInsufficientBAmount",
+          "value": 506
+        },
+        {
+          "doc": "",
+          "name": "RouterInsufficientOutputAmount",
+          "value": 507
+        },
+        {
+          "doc": "",
+          "name": "RouterExcessiveInputAmount",
+          "value": 508
+        },
+        {
+          "doc": "",
+          "name": "RouterPairDoesNotExist",
+          "value": 509
+        },
+        {
+          "doc": "",
+          "name": "LibraryInsufficientAmount",
+          "value": 510
+        },
+        {
+          "doc": "",
+          "name": "LibraryInsufficientLiquidity",
+          "value": 511
+        },
+        {
+          "doc": "",
+          "name": "LibraryInsufficientInputAmount",
+          "value": 512
+        },
+        {
+          "doc": "",
+          "name": "LibraryInsufficientOutputAmount",
+          "value": 513
+        },
+        {
+          "doc": "",
+          "name": "LibraryInvalidPath",
+          "value": 514
+        },
+        {
+          "doc": "",
+          "name": "LibrarySortIdenticalTokens",
+          "value": 515
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initializes the contract and sets the factory address",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "factory",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "CombinedRouterError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Adds liquidity to a token pair's pool, creating it if it doesn't exist. Ensures that exactly the desired amounts\\nof both tokens are added, subject to minimum requirements.\\nThis function is responsible for transferring tokens from the user to the pool and minting liquidity tokens in return.\\n# Arguments\\n* `token_a` - The address of the first token to add liquidity for.\\n* `token_b` - The address of the second token to add liquidity for.\\n* `amount_a_desired` - The desired amount of the first token to add.\\n* `amount_b_desired` - The desired amount of the second token to add.\\n* `amount_a_min` - The minimum required amount of the first token to add.\\n* `amount_b_min` - The minimum required amount of the second token to add.\\n* `to` - The address where the liquidity tokens will be minted and sent.\\n* `deadline` - The deadline for executing the operation.\\n# Returns\\nA tuple containing: amounts of token A and B added to the pool.\\nplus the amount of liquidity tokens minted.",
+      "name": "add_liquidity",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount_a_desired",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_b_desired",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_a_min",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_b_min",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "deadline",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": [
+                  "i128",
+                  "i128",
+                  "i128"
+                ]
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "CombinedRouterError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Removes liquidity from a token pair's pool.\\n\\nThis function facilitates the removal of liquidity from a Soroswap Liquidity Pool by burning a specified amount\\nof Liquidity Pool tokens (`liquidity`) owned by the caller. In return, it transfers back the corresponding\\namounts of the paired tokens (`token_a` and `token_b`) to the caller's specified address (`to`).\\n\\n# Arguments\\n* `token_a` - The address of the first token in the Liquidity Pool.\\n* `token_b` - The address of the second token in the Liquidity Pool.\\n* `liquidity` - The desired amount of Liquidity Pool tokens to be burned.\\n* `amount_a_min` - The minimum required amount of the first token to receive.\\n* `amount_b_min` - The minimum required amount of the second token to receive.\\n* `to` - The address where the paired tokens will be sent to, and from where the LP tokens will be taken.\\n* `deadline` - The deadline for executing the operation.\\n\\n# Returns\\nA tuple containing the amounts of `token_a` and `token_b` withdrawn from the pool.",
+      "name": "remove_liquidity",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "liquidity",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_a_min",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_b_min",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "deadline",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": [
+                  "i128",
+                  "i128"
+                ]
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "CombinedRouterError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Swaps an exact amount of input tokens for as many output tokens as possible\\nalong the specified trading route. The route is determined by the `path` vector,\\nwhere the first element is the input token, the last is the output token,\\nand any intermediate elements represent pairs to trade through if a direct pair does not exist.\\n\\n# Arguments\\n* `amount_in` - The exact amount of input tokens to be swapped.\\n* `amount_out_min` - The minimum required amount of output tokens to receive.\\n* `path` - A vector representing the trading route, where the first element is the input token\\nand the last is the output token. Intermediate elements represent pairs to trade through.\\n* `to` - The address where the output tokens will be sent to.\\n* `deadline` - The deadline for executing the operation.\\n\\n# Returns\\nA vector containing the amounts of tokens received at each step of the trading route.",
+      "name": "swap_exact_tokens_for_tokens",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount_in",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_out_min",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "path",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "deadline",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": "i128"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "CombinedRouterError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Swaps tokens for an exact amount of output token, following the specified trading route.\\nThe route is determined by the `path` vector, where the first element is the input token,\\nthe last is the output token, and any intermediate elements represent pairs to trade through.\\n\\n# Arguments\\n* `amount_out` - The exact amount of output token to be received.\\n* `amount_in_max` - The maximum allowed amount of input tokens to be swapped.\\n* `path` - A vector representing the trading route, where the first element is the input token\\nand the last is the output token. Intermediate elements represent pairs to trade through.\\n* `to` - The address where the output tokens will be sent to.\\n* `deadline` - The deadline for executing the operation.\\n\\n# Returns\\nA vector containing the amounts of tokens used at each step of the trading route.",
+      "name": "swap_tokens_for_exact_tokens",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount_out",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_in_max",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "path",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "deadline",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": "i128"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "CombinedRouterError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "This function retrieves the factory contract's address associated with the provided environment.\\nIt also checks if the factory has been initialized and raises an assertion error if not.\\nIf the factory is not initialized, this code will raise an assertion error with the message \"SoroswapRouter: not yet initialized\".\\nhttps://github.com/benjaminsalon/malicious_sorochat\\n# Arguments\\n* `e` - The contract environment (`Env`) in which the contract is executing.",
+      "name": "get_factory",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "CombinedRouterError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Calculates the deterministic address for a pair without making any external calls.\\ncheck <https://github.com/paltalabs/deterministic-address-soroban>\\n\\n# Arguments\\n\\n* `e` - The environment.\\n* `token_a` - The address of the first token.\\n* `token_b` - The address of the second token.\\n\\n# Returns\\n\\nReturns `Result<Address, SoroswapLibraryError>` where `Ok` contains the deterministic address for the pair, and `Err` indicates an error such as identical tokens or an issue with sorting.",
+      "name": "router_pair_for",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "CombinedRouterError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Given some amount of an asset and pair reserves, returns an equivalent amount of the other asset.\\n\\n# Arguments\\n\\n* `amount_a` - The amount of the first asset.\\n* `reserve_a` - Reserves of the first asset in the pair.\\n* `reserve_b` - Reserves of the second asset in the pair.\\n\\n# Returns\\n\\nReturns `Result<i128, SoroswapLibraryError>` where `Ok` contains the calculated equivalent amount, and `Err` indicates an error such as insufficient amount or liquidity",
+      "name": "router_quote",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount_a",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reserve_a",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reserve_b",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": {
+              "udt": {
+                "name": "CombinedRouterError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Given an input amount of an asset and pair reserves, returns the maximum output amount of the other asset.\\n\\n# Arguments\\n\\n* `amount_in` - The input amount of the asset.\\n* `reserve_in` - Reserves of the input asset in the pair.\\n* `reserve_out` - Reserves of the output asset in the pair.\\n\\n# Returns\\n\\nReturns `Result<i128, SoroswapLibraryError>` where `Ok` contains the calculated maximum output amount, and `Err` indicates an error such as insufficient input amount or liquidity.",
+      "name": "router_get_amount_out",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount_in",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reserve_in",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reserve_out",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": {
+              "udt": {
+                "name": "CombinedRouterError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Given an output amount of an asset and pair reserves, returns a required input amount of the other asset.\\n\\n# Arguments\\n\\n* `amount_out` - The output amount of the asset.\\n* `reserve_in` - Reserves of the input asset in the pair.\\n* `reserve_out` - Reserves of the output asset in the pair.\\n\\n# Returns\\n\\nReturns `Result<i128, SoroswapLibraryError>` where `Ok` contains the required input amount, and `Err` indicates an error such as insufficient output amount or liquidity.",
+      "name": "router_get_amount_in",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount_out",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reserve_in",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reserve_out",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": {
+              "udt": {
+                "name": "CombinedRouterError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Performs chained get_amount_out calculations on any number of pairs.\\n\\n# Arguments\\n\\n* `e` - The environment.\\n* `amount_in` - The input amount.\\n* `path` - Vector of token addresses representing the path.\\n\\n# Returns\\n\\nReturns `Result<Vec<i128>, SoroswapLibraryError>` where `Ok` contains a vector of calculated amounts, and `Err` indicates an error such as an invalid path.",
+      "name": "router_get_amounts_out",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount_in",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "path",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": "i128"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "CombinedRouterError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Performs chained get_amount_in calculations on any number of pairs.\\n\\n# Arguments\\n\\n* `e` - The environment.\\n* `amount_out` - The output amount.\\n* `path` - Vector of token addresses representing the path.\\n\\n# Returns\\n\\nReturns `Result<Vec<i128>, SoroswapLibraryError>` where `Ok` contains a vector of calculated amounts, and `Err` indicates an error such as an invalid path.",
+      "name": "router_get_amounts_in",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount_out",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "path",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": "i128"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "CombinedRouterError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SoroswapLibraryError",
+      "cases": [
+        {
+          "doc": "SoroswapLibrary: insufficient amount",
+          "name": "InsufficientAmount",
+          "value": 301
+        },
+        {
+          "doc": "SoroswapLibrary: insufficient liquidity",
+          "name": "InsufficientLiquidity",
+          "value": 302
+        },
+        {
+          "doc": "SoroswapLibrary: insufficient input amount",
+          "name": "InsufficientInputAmount",
+          "value": 303
+        },
+        {
+          "doc": "SoroswapLibrary: insufficient output amount",
+          "name": "InsufficientOutputAmount",
+          "value": 304
+        },
+        {
+          "doc": "SoroswapLibrary: invalid path",
+          "name": "InvalidPath",
+          "value": 305
+        },
+        {
+          "doc": "SoroswapLibrary: token_a and token_b have identical addresses",
+          "name": "SortIdenticalTokens",
+          "value": 306
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sorts two token addresses in a consistent order.\\n\\n# Arguments\\n\\n* `token_a` - The address of the first token.\\n* `token_b` - The address of the second token.\\n\\n# Returns\\n\\nReturns `Result<(Address, Address), SoroswapLibraryError>` where `Ok` contains a tuple with the sorted token addresses, and `Err` indicates an error such as identical tokens.",
+      "name": "sort_tokens",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": [
+                  "address",
+                  "address"
+                ]
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SoroswapLibraryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Calculates the deterministic address for a pair without making any external calls.\\ncheck <https://github.com/paltalabs/deterministic-address-soroban>\\n\\n# Arguments\\n\\n* `e` - The environment.\\n* `factory` - The factory address.\\n* `token_a` - The address of the first token.\\n* `token_b` - The address of the second token.\\n\\n# Returns\\n\\nReturns `Result<Address, SoroswapLibraryError>` where `Ok` contains the deterministic address for the pair, and `Err` indicates an error such as identical tokens or an issue with sorting.",
+      "name": "pair_for",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "factory",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "SoroswapLibraryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Fetches and sorts the reserves for a pair of tokens.\\n\\n# Arguments\\n\\n* `e` - The environment.\\n* `factory` - The factory address.\\n* `token_a` - The address of the first token.\\n* `token_b` - The address of the second token.\\n\\n# Returns\\n\\nReturns `Result<(i128, i128), SoroswapLibraryError>` where `Ok` contains a tuple of sorted reserves, and `Err` indicates an error such as identical tokens or an issue with sorting.",
+      "name": "get_reserves",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "factory",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": [
+                  "i128",
+                  "i128"
+                ]
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SoroswapLibraryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Given some amount of an asset and pair reserves, returns an equivalent amount of the other asset.\\n\\n# Arguments\\n\\n* `amount_a` - The amount of the first asset.\\n* `reserve_a` - Reserves of the first asset in the pair.\\n* `reserve_b` - Reserves of the second asset in the pair.\\n\\n# Returns\\n\\nReturns `Result<i128, SoroswapLibraryError>` where `Ok` contains the calculated equivalent amount, and `Err` indicates an error such as insufficient amount or liquidity",
+      "name": "quote",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount_a",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reserve_a",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reserve_b",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": {
+              "udt": {
+                "name": "SoroswapLibraryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Given an input amount of an asset and pair reserves, returns the maximum output amount of the other asset.\\n\\n# Arguments\\n\\n* `amount_in` - The input amount of the asset.\\n* `reserve_in` - Reserves of the input asset in the pair.\\n* `reserve_out` - Reserves of the output asset in the pair.\\n\\n# Returns\\n\\nReturns `Result<i128, SoroswapLibraryError>` where `Ok` contains the calculated maximum output amount, and `Err` indicates an error such as insufficient input amount or liquidity.",
+      "name": "get_amount_out",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount_in",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reserve_in",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reserve_out",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": {
+              "udt": {
+                "name": "SoroswapLibraryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Given an output amount of an asset and pair reserves, returns a required input amount of the other asset.\\n\\n# Arguments\\n\\n* `amount_out` - The output amount of the asset.\\n* `reserve_in` - Reserves of the input asset in the pair.\\n* `reserve_out` - Reserves of the output asset in the pair.\\n\\n# Returns\\n\\nReturns `Result<i128, SoroswapLibraryError>` where `Ok` contains the required input amount, and `Err` indicates an error such as insufficient output amount or liquidity.",
+      "name": "get_amount_in",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount_out",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reserve_in",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reserve_out",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": {
+              "udt": {
+                "name": "SoroswapLibraryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Performs chained get_amount_out calculations on any number of pairs.\\n\\n# Arguments\\n\\n* `e` - The environment.\\n* `factory` - The factory address.\\n* `amount_in` - The input amount.\\n* `path` - Vector of token addresses representing the path.\\n\\n# Returns\\n\\nReturns `Result<Vec<i128>, SoroswapLibraryError>` where `Ok` contains a vector of calculated amounts, and `Err` indicates an error such as an invalid path.",
+      "name": "get_amounts_out",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "factory",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount_in",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "path",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": "i128"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SoroswapLibraryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Performs chained get_amount_in calculations on any number of pairs.\\n\\n# Arguments\\n\\n* `e` - The environment.\\n* `factory` - The factory address.\\n* `amount_out` - The output amount.\\n* `path` - Vector of token addresses representing the path.\\n\\n# Returns\\n\\nReturns `Result<Vec<i128>, SoroswapLibraryError>` where `Ok` contains a vector of calculated amounts, and `Err` indicates an error such as an invalid path.",
+      "name": "get_amounts_in",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "factory",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount_out",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "path",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": "i128"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SoroswapLibraryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,788 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "asset_manager",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "hub_admin",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "hub_chain_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "hub_manager",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "connection",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "pause",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "pause_with_signature",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "payload",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "unpause",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_paused",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "bool",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "verify_withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "_amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_available",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u128",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "recv_message",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "src_chain_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "src_address",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "conn_sn",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "payload",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "signatures",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "bytes_n": {
+                  "n": 65
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initiate_admin_transfer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "confirm_admin_transfer",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_asset_manager",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_asset_manager",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_asset_manager",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_connection",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_connection",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_connection",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_hub_admin",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "bytes",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_hub_signers",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "vec": {
+                "element_type": "bytes"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_rate_limit_configs",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "_token",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "TokenConfig"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AssetManagerNotFound",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "InsufficientBalance",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "HubChainIdNotFound",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "HubManagerNotFound",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "InvalidHubManager",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "HubAdminNotFound",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "ConnectionNotFound",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "InvalidSignature",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "RateLimitExceeded",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "InvalidHubChainId",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "HubSignersNotFound",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "InvalidPublicKey",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "MessageExpired",
+          "value": 15
+        },
+        {
+          "doc": "",
+          "name": "InvalidMessageKind",
+          "value": 16
+        },
+        {
+          "doc": "",
+          "name": "InvalidAddress",
+          "value": 17
+        },
+        {
+          "doc": "",
+          "name": "Paused",
+          "value": 18
+        },
+        {
+          "doc": "",
+          "name": "AdminNotFound",
+          "value": 19
+        },
+        {
+          "doc": "",
+          "name": "MessageAlreadyExecuted",
+          "value": 20
+        },
+        {
+          "doc": "",
+          "name": "NoPendingAdmin",
+          "value": 21
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StorageKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "AssetManager"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "HubChainId"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "HubManager"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Connection"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "HubAdmin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "HubSigners"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Paused"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "RatePerSecond",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "LastUpdate",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "MaxAvailable",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Available",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ExecutedMessage",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PendingAdmin"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "available",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "last_update",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "max_available",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "rate_per_second",
+          "type_": "u128"
+        }
+      ]
+    }
+  }
+]

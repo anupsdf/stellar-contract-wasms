@@ -1,0 +1,57 @@
+[
+  {
+    "function_v0": {
+      "doc": "One-time init: set admin and initial EAR (parts-per-billion, e.g. 85_000_000 for 8.5%)",
+      "name": "init",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "ear_ppb",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Admin-only: update EAR (ppb)",
+      "name": "set_ear_ppb",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "ear_ppb",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Read EAR (ppb) and last updated timestamp (unix seconds)",
+      "name": "get_ear_ppb",
+      "inputs": [],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "u64",
+              "u64"
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

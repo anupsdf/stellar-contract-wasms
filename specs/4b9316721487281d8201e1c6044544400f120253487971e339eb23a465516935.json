@@ -1,0 +1,22 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "write",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "xdr_bytes",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "bytes_n": {
+            "n": 32
+          }
+        }
+      ]
+    }
+  }
+]

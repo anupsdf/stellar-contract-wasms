@@ -1,0 +1,278 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "MuniError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "CusipNotFound",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "NoPriceHistory",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "InvalidInput",
+          "value": 4
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PriceData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "trade_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "trade_type",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "yield_value",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "MuniPrice",
+      "fields": [
+        {
+          "doc": "",
+          "name": "cusip",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "price_history",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "PriceData"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LatestPriceEntry",
+      "fields": [
+        {
+          "doc": "",
+          "name": "cusip",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "latest_price",
+          "type_": {
+            "udt": {
+              "name": "PriceData"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initialize the contract with an admin address\\nAdmin will only be needed for special administrative tasks",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Add a single price entry for a CUSIP\\nThis function is public - anyone can add prices",
+      "name": "add_price",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "cusip",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "yield_value",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "trade_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "trade_type",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "MuniError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Administrative function - only callable by admin\\nThis can be used for future administrative tasks",
+      "name": "admin_function",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "MuniError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_cusip_prices",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "cusip",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "PriceData"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_all_cusips",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "string"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_all_latest_prices",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "limit",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "LatestPriceEntry"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+]

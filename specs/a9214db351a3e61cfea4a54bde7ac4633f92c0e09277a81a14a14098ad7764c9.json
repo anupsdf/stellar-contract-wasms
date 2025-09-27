@@ -1,0 +1,279 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ConfigData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "repos",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "RepoMissing",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "RepoAlreadyExists",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "RepoLimitExceeded",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "IssueAlreadyExists",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "IssueLimitExceeded",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "IssueMissing",
+          "value": 7
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "config",
+          "type_": {
+            "udt": {
+              "name": "ConfigData"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "version",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "admin",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_repos",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "repos",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_issues",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "repo_name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "issues",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "clear_repos",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_repos",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "repos",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_issues",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "repo_name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "issues",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_repos",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "string"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_repos_and_issues",
+      "inputs": [],
+      "outputs": [
+        {
+          "map": {
+            "key_type": "string",
+            "value_type": {
+              "map": {
+                "key_type": "string",
+                "value_type": "string"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_issues_for_repo",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "repo_name",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "map": {
+            "key_type": "string",
+            "value_type": "string"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_contract",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

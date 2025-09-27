@@ -1,0 +1,344 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "ContractNotInitalized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "XAssetDeployFailed",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "AssetAlreadyDeployed",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "AssetAdminSetFailed",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "NoSuchAsset",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "AssetUpgradeFailed",
+          "value": 6
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get current admin",
+      "name": "admin_get",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Transfer to new admin\\nShould be called in the same transaction as deploying the contract to ensure that\\na different account try to become admin",
+      "name": "admin_set",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Admin can redeploy the contract with given hash.",
+      "name": "redeploy",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "init",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "xlm_sac",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "xlm_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "xasset_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_xasset_wasm_hash",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "xasset_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "bytes_n": {
+                "n": 32
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deploy_asset_contract",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pegged_asset",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "min_collat_ratio",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "decimals",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "annual_interest_rate",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_asset_contract",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset_symbol",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_asset_contract",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset_symbol",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "asset_contract",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_existing_asset_contract",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset_symbol",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "asset_contract",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade_existing_asset_contract",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset_symbol",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "StorageWasmHash"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "StorageXlmSac"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "StorageXlmContract"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "StorageAssets",
+            "type_": [
+              "string"
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

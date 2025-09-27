@@ -1,0 +1,402 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "base",
+          "type_": {
+            "udt": {
+              "name": "Asset"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "decimals",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "max_age",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "oracles",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "OracleConfig"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "asset_configs",
+      "inputs": [],
+      "outputs": [
+        {
+          "map": {
+            "key_type": {
+              "udt": {
+                "name": "Asset"
+              }
+            },
+            "value_type": {
+              "udt": {
+                "name": "AssetConfig"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "max_age",
+      "inputs": [],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "base",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Asset"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "decimals",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "assets",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "Asset"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "lastprice",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": {
+            "udt": {
+              "name": "Asset"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "PriceData"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_oracle",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "oracle_id",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_asset",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": {
+            "udt": {
+              "name": "Asset"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "oracle_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "oracle_asset",
+          "type_": {
+            "udt": {
+              "name": "Asset"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "max_dev",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "PriceData"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_base_asset",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "base",
+          "type_": {
+            "udt": {
+              "name": "Asset"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OracleAggregatorErrors",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotImplemented",
+          "value": 100
+        },
+        {
+          "doc": "",
+          "name": "InvalidAssetOracle",
+          "value": 101
+        },
+        {
+          "doc": "",
+          "name": "MaxAssetsExceeded",
+          "value": 102
+        },
+        {
+          "doc": "",
+          "name": "AssetExists",
+          "value": 103
+        },
+        {
+          "doc": "",
+          "name": "AssetNotFound",
+          "value": 104
+        },
+        {
+          "doc": "",
+          "name": "InvalidMaxAge",
+          "value": 105
+        },
+        {
+          "doc": "",
+          "name": "OracleExists",
+          "value": 106
+        },
+        {
+          "doc": "",
+          "name": "OracleNotFound",
+          "value": 107
+        },
+        {
+          "doc": "",
+          "name": "MaxOraclesExceeded",
+          "value": 108
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Price data for an asset at a specific timestamp",
+      "lib": "",
+      "name": "PriceData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "Asset type",
+      "lib": "",
+      "name": "Asset",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Stellar",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Other",
+            "type_": [
+              "symbol"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AssetConfig",
+      "fields": [
+        {
+          "doc": "The asset used to fetch prices from the source oracle",
+          "name": "asset",
+          "type_": {
+            "udt": {
+              "name": "Asset"
+            }
+          }
+        },
+        {
+          "doc": "The maximum deviation allowed for a stable price, as a percentage with 0 decimals\\n(e.g 5 => 5%). If this is 0, the oracle will just fetch the last price within the\\nresolution time.",
+          "name": "max_dev",
+          "type_": "u32"
+        },
+        {
+          "doc": "The index of the oracle used for this asset",
+          "name": "oracle_index",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OracleConfig",
+      "fields": [
+        {
+          "doc": "The oracle id",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "The decimals of the oracle",
+          "name": "decimals",
+          "type_": "u32"
+        },
+        {
+          "doc": "The index of the oracle",
+          "name": "index",
+          "type_": "u32"
+        },
+        {
+          "doc": "The resolution of the oracle, in seconds",
+          "name": "resolution",
+          "type_": "u32"
+        }
+      ]
+    }
+  }
+]

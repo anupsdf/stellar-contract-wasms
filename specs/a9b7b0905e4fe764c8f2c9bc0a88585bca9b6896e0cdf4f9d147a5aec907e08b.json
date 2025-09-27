@@ -1,0 +1,567 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "contract_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "total_supply",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "name_token_a",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "price_token_a",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "name_token_b",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "price_token_b",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "distributor",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "buy",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "customer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "token_name",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": [
+                  "address",
+                  "i128",
+                  "i128"
+                ]
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "buy_with_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "customer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "gold_price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "token_name",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": [
+                  "address",
+                  "i128",
+                  "i128"
+                ]
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "change_token_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_token_price",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_name",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_disbursment_wallets",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "alternun_wallet",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "mine_owner_wallet",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "refi_bull_wallet",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "comunity_wallet",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "og_wallet",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "native_asset",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "disburse",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": [
+                  "address",
+                  "i128"
+                ]
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Asset",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Stellar",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Other",
+            "type_": [
+              "symbol"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Customer",
+      "fields": [
+        {
+          "doc": "",
+          "name": "gold_balance",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "gold_withdrawn",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "DifferentDepositedToken",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "InvalidToken",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "ContractStillOpen",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "ContractAlreadyInitialized",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "MintMoreThanTotalSupply",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "InsufficientFunds",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "CustomerNotFound",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "TokenNotFound",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "NotEnoughGoldForStableToken",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "NotEnoughStableTokenForGold",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "OgWalletNotFound",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "RefiBullWalletNotFound",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "MineOwnerWalletNotFound",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "ComunityWalletNotFound",
+          "value": 15
+        },
+        {
+          "doc": "",
+          "name": "AlternunWalletNotFound",
+          "value": 16
+        },
+        {
+          "doc": "",
+          "name": "NativeAssetNotFound",
+          "value": 17
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PriceData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Token",
+            "type_": [
+              "symbol"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Price",
+            "type_": [
+              "symbol"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ContractToken"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "DistributorWallet"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Customer",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "OGWallet"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ComunityWallet"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "MineOwnerWallet"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "AlternunWallet"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "RefiBullWallet"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Native"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Token",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "minted_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_supply",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StableToken",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "i128"
+        }
+      ]
+    }
+  }
+]

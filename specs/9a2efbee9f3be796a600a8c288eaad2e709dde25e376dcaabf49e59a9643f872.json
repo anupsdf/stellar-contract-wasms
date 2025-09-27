@@ -1,0 +1,494 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "InitializedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "setter",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PairEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "new_pairs_length",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "pair",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_0",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_1",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "IdenticalPairError",
+      "cases": [
+        {
+          "doc": "RaumFiFactory: token_a and token_b have identical addresses",
+          "name": "CreatePairIdenticalTokens",
+          "value": 901
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Pair",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "1",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "FeeTo"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "FeeToSetter"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PairWasmHash"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "FeesEnabled"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TotalPairs"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "PairAddressesNIndexed",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "PairAddressesByTokens",
+            "type_": [
+              {
+                "udt": {
+                  "name": "Pair"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FactoryError",
+      "cases": [
+        {
+          "doc": "RaumFiFactory: not yet initialized",
+          "name": "NotInitialized",
+          "value": 201
+        },
+        {
+          "doc": "RaumFiFactory: token_a and token_b have identical addresses",
+          "name": "CreatePairIdenticalTokens",
+          "value": 202
+        },
+        {
+          "doc": "RaumFiFactory: pair already exists between token_a and token_b",
+          "name": "CreatePairAlreadyExists",
+          "value": 203
+        },
+        {
+          "doc": "RaumFiFactory: already initialized",
+          "name": "InitializeAlreadyInitialized",
+          "value": 204
+        },
+        {
+          "doc": "RaumFiFactory: pair does not exist",
+          "name": "PairDoesNotExist",
+          "value": 205
+        },
+        {
+          "doc": "RaumFiFactory: index does not exist",
+          "name": "IndexDoesNotExist",
+          "value": 206
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the recipient of the fee.\\n\\nReturns an error if the Factory is not yet initialized.",
+      "name": "fee_to",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "FactoryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the address allowed to change the fee recipient.\\n\\nReturns an error if the Factory is not yet initialized.",
+      "name": "fee_to_setter",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "FactoryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if fees are enabled.\\n\\nReturns an error if the Factory is not yet initialized.",
+      "name": "fees_enabled",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "bool",
+            "error_type": {
+              "udt": {
+                "name": "FactoryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the total number of pairs created through the factory so far.\\n\\nReturns an error if the Factory is not yet initialized.",
+      "name": "all_pairs_length",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u32",
+            "error_type": {
+              "udt": {
+                "name": "FactoryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the address of the pair for `token_a` and `token_b`, if it has been created.\\n\\nReturns an error if the Factory is not yet initialized or if the pair does not exist",
+      "name": "get_pair",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "FactoryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns the address of the nth pair (0-indexed) created through the factory, or address(0) if not enough pairs have been created yet.\\n\\nReturns an error if the Factory is not yet initialized or if index `n` does not exist.",
+      "name": "all_pairs",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "n",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "FactoryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if a pair exists for the given `token_a` and `token_b`.\\n\\nReturns an error if the Factory is not yet initialized.",
+      "name": "pair_exists",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "bool",
+            "error_type": {
+              "udt": {
+                "name": "FactoryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sets the `fee_to_setter` address and initializes the factory.\\n\\nReturns an error if the Factory is already initialized.",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "setter",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pair_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "FactoryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sets the `fee_to` address.\\n\\nReturns an error if the Factory is not yet initialized or if the caller is not the current `fee_to_setter`.",
+      "name": "set_fee_to",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "FactoryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sets the `fee_to_setter` address.\\n\\nReturns an error if the Factory is not yet initialized or if the caller is not the existing `fee_to_setter`.",
+      "name": "set_fee_to_setter",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_setter",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "FactoryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sets whether fees are enabled or disabled.\\n\\nReturns an error if the Factory is not yet initialized or if the caller is not the current `fee_to_setter`.",
+      "name": "set_fees_enabled",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "is_enabled",
+          "type_": "bool"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "FactoryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Creates a pair for `token_a` and `token_b` if one doesn't exist already.\\n\\nReturns an error if the pair is not yet initialized, if `token_a` and `token_b` have identical addresses, or if the pair already exists between `token_a` and `token_b`.",
+      "name": "create_pair",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "FactoryError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+]

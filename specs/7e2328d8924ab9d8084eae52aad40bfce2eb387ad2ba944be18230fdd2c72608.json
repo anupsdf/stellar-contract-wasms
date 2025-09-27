@@ -1,0 +1,996 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "EIP712 signature data structure: withdrawal request",
+      "lib": "",
+      "name": "WithdrawRequest",
+      "fields": [
+        {
+          "doc": "",
+          "name": "nav",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "request_hash",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "signature",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "target_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Deposit event",
+      "lib": "",
+      "name": "DepositEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "minted_tokens",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "nav",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Withdrawal event",
+      "lib": "",
+      "name": "WithdrawEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "request_hash",
+          "type_": "bytes"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Currency added event",
+      "lib": "",
+      "name": "SetAllowedCurrencyEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "allowed",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Currency removed event",
+      "lib": "",
+      "name": "CurrencyRemovedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Withdraw request event",
+      "lib": "",
+      "name": "WithdrawRequestEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "nav",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "request_hash",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "shares",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "token_contract",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Treasurer deposit event",
+      "lib": "",
+      "name": "TreasurerDepositEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "Storage data key enum",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "Oracle contract address",
+            "name": "Oracle"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "Treasurer address",
+            "name": "Treasurer"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "Withdrawal verifier map: u32 (signature_type) -> PublicKey (Bytes)\\nSignatureType::ED25519 (32 bytes)\\nSignatureType::SECP256K1 (65 bytes uncompressed)",
+            "name": "WithdrawVerifier",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "Token contract address",
+            "name": "TokenContract"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "Supported currencies mapping (Map<Address, bool>)",
+            "name": "AllowedCurrency"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "Deposit fee ratio",
+            "name": "DepositFeeRatio"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "Withdrawal currency",
+            "name": "WithdrawCurrency"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "Withdrawal fee ratio",
+            "name": "WithdrawFeeRatio"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "Withdraw fee receiver address",
+            "name": "WithdrawFeeReceiver"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "Withdrawal request status",
+            "name": "WithdrawRequestStatus"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "Used request hash mapping",
+            "name": "UsedRequestHash",
+            "type_": [
+              "bytes"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "EIP712Domain",
+      "fields": [
+        {
+          "doc": "",
+          "name": "chain_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "salt",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "verifying_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "version",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "Error code definition",
+      "lib": "",
+      "name": "VaultError",
+      "cases": [
+        {
+          "doc": "Currency not supported",
+          "name": "CurrencyNotAllowed",
+          "value": 301
+        },
+        {
+          "doc": "Exceeds maximum currency quantity",
+          "name": "TooManyCurrencies",
+          "value": 302
+        },
+        {
+          "doc": "Currency already exists",
+          "name": "CurrencyAlreadyExists",
+          "value": 303
+        },
+        {
+          "doc": "Currency does not exist",
+          "name": "CurrencyNotExists",
+          "value": 304
+        },
+        {
+          "doc": "Invalid amount",
+          "name": "InvalidAmount",
+          "value": 305
+        },
+        {
+          "doc": "Invalid NAV",
+          "name": "InvalidNav",
+          "value": 306
+        },
+        {
+          "doc": "Withdraw fee ratio not set or invalid",
+          "name": "WithdrawFeeRatioNotSet",
+          "value": 307
+        },
+        {
+          "doc": "Invalid withdraw fee ratio",
+          "name": "InvalidWithdrawFeeRatio",
+          "value": 308
+        },
+        {
+          "doc": "Request already exists",
+          "name": "RequestAlreadyExists",
+          "value": 309
+        },
+        {
+          "doc": "Insufficient balance",
+          "name": "InsufficientBalance",
+          "value": 310
+        },
+        {
+          "doc": "Invalid request status",
+          "name": "InvalidRequestStatus",
+          "value": 311
+        },
+        {
+          "doc": "Invalid deposit fee ratio",
+          "name": "InvalidDepositFeeRatio",
+          "value": 312
+        },
+        {
+          "doc": "Insufficient permissions",
+          "name": "Unauthorized",
+          "value": 313
+        },
+        {
+          "doc": "Invalid signature type",
+          "name": "InvalidSignatureType",
+          "value": 314
+        },
+        {
+          "doc": "Withdraw verifier not set",
+          "name": "WithdrawVerifierNotSet",
+          "value": 315
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "WithdrawStatus",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotExist",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Pending",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "Done",
+          "value": 2
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "operator",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "oracle",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "treasurer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "withdraw_verifier",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "deposit_fee_ratio",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "withdraw_fee_ratio",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "withdraw_fee_receiver",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "withdraw_currency",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "currency",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw_request",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "shares",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "request_hash",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "shares",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "nav",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "request_hash",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "signature",
+          "type_": {
+            "bytes_n": {
+              "n": 64
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "signature_type",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "recovery_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "treasurer_deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_currency_by_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "currency",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_currency_by_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "currency",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_supported_currencies",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_currency_supported",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "currency",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_withdraw_currency",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_withdraw_currency_by_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "withdraw_currency",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_shares_token",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_withdraw_verifier_by_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "signature_type",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "verifier_public_key",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_oracle_by_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "oracle",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_treasurer_by_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "treasurer",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_deposit_fee_ratio_by_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "deposit_fee_ratio",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_withdraw_fee_ratio_by_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "withdraw_fee_ratio",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_withdraw_fee_recv_by_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "withdraw_fee_receiver",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the current admin address",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_withdraw_verifier",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "signature_type",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "bytes"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_oracle",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_treasurer",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_withdraw_fee_ratio",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_deposit_fee_ratio",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_eip712_domain_name",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_eip712_domain_version",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_eip712_chain_id",
+      "inputs": [],
+      "outputs": [
+        "bytes"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_eip712_domain_separator",
+      "inputs": [],
+      "outputs": [
+        "bytes"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_withdraw_fee_receiver",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_owner",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer_ownership",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "live_until_ledger",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "accept_ownership",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "renounce_ownership",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OwnableError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "OwnerNotSet",
+          "value": 1220
+        },
+        {
+          "doc": "",
+          "name": "TransferInProgress",
+          "value": 1221
+        },
+        {
+          "doc": "",
+          "name": "OwnerAlreadySet",
+          "value": 1222
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "Storage keys for `Ownable` utility.",
+      "lib": "",
+      "name": "OwnableStorageKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Owner"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PendingOwner"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UpgradeableError",
+      "cases": [
+        {
+          "doc": "When migration is attempted but not allowed due to upgrade state.",
+          "name": "MigrationNotAllowed",
+          "value": 1100
+        }
+      ]
+    }
+  }
+]

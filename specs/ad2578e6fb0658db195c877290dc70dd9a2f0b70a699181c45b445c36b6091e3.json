@@ -1,0 +1,1309 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "addrs",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "tranche_addrs",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "option": {
+                  "value_type": "address"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "tranches_policy",
+          "type_": {
+            "udt": {
+              "name": "TranchesPolicyType"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_contract_addrs",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_manager",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "credit",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_huma_config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "huma_config",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "huma_owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "sentinel",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_pool_owner",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pool_owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_pool_owner_treasury",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pool_owner_treasury",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_evaluation_agent",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "ea",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_tranche_addresses",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "junior_addr",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "senior_addr",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_pool_operator",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "addr",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "is_operator",
+          "type_": "bool"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_pool_status",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "PoolStatus"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_epoch",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "epoch",
+          "type_": {
+            "udt": {
+              "name": "Epoch"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_admin_rnr",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pool_owner_reward_rate",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "pool_owner_liquidity_rate",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "ea_reward_rate",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "ea_liquidity_rate",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_pool_settings",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "max_credit_line",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "min_deposit_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "pay_period_duration",
+          "type_": {
+            "udt": {
+              "name": "PayPeriodDuration"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "late_payment_grace_period_days",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "default_grace_period_days",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "principal_only_payment_allowed",
+          "type_": "bool"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_lp_config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "liquidity_cap",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "max_senior_junior_ratio",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "fixed_senior_yield_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "tranches_risk_adjustment_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "withdrawal_lockout_period_days",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_fee_structure",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "yield_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "late_fee_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "front_loading_fee_flat",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "front_loading_fee_bps",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_tranches_policy_type",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "policy_type",
+          "type_": {
+            "udt": {
+              "name": "TranchesPolicyType"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "send_tokens",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_tranche_assets",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "addr",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "reduce_tranche_assets",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "addr",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_assets",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "tranche_assets",
+          "type_": {
+            "udt": {
+              "name": "TrancheAssets"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_admin_fees_reserve",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "increase",
+          "type_": "bool"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "distribute_profit_to_tranches",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "profit",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "admin_fees",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "TrancheAssets"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "refresh_yield_tracker",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "tranche_assets",
+          "type_": {
+            "udt": {
+              "name": "TrancheAssets"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_huma_owner",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_pool_owner",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_pool_owner_treasury",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_evaluation_agent",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_sentinel",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_underlying_token",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_available_balance",
+      "inputs": [],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_pool_status",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "PoolStatus"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_pool_settings",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "PoolSettings"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_lp_config",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "LPConfig"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_fee_structure",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "FeeStructure"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_admin_rnr",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "AdminRnR"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_current_epoch",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Epoch"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_tranche_assets_by_addr",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "addr",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_tranche_assets",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "TrancheAssets"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_tranche_addresses",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "TrancheAddresses"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_pool_owner_or_huma_owner",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "addr",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_pool_operator",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "addr",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_protocol_and_pool_on",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "check_liquidity_requirements",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "lender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "tranche_vault",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "balance",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "check_pool_owner_liquidity_req",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "tranche_vault",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "balance",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "check_ea_liquidity_req",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "tranche_vault",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "balance",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_pool_owner_min_liquidity_req",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_ea_min_liquidity_req",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolStorageError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InvalidTrancheAddress",
+          "value": 201
+        },
+        {
+          "doc": "",
+          "name": "PoolOwnerInsufficientLiquidity",
+          "value": 202
+        },
+        {
+          "doc": "",
+          "name": "EvaluationAgentInsufficientLiquidity",
+          "value": 203
+        },
+        {
+          "doc": "",
+          "name": "UnderlyingTokenNotApprovedForHumaProtocol",
+          "value": 204
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "YieldTrackerRefreshedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "last_updated_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_assets",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "unpaid_yield",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FixedSeniorYieldTranchesPolicyDataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "SeniorYieldTracker"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SeniorYieldTracker",
+      "fields": [
+        {
+          "doc": "",
+          "name": "last_updated_date",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_assets",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "unpaid_yield",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FixedSeniorYieldTranchesPolicy",
+      "fields": [
+        {
+          "doc": "",
+          "name": "placeholder",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RiskAdjustedTranchesPolicy",
+      "fields": [
+        {
+          "doc": "",
+          "name": "placeholder",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PayPeriodDuration",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Monthly"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Quarterly"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "SemiAnnually"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CalendarError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "StartDateLaterThanEndDate",
+          "value": 801
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CommonError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "ProtocolIsPausedOrPoolIsNotOn",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "PoolOwnerOrHumaOwnerRequired",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "PoolOperatorRequired",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "AuthorizedContractCallerRequired",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "UnsupportedFunction",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "ZeroAmountProvided",
+          "value": 7
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TranchesPolicyType",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "FixedSeniorYield"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "RiskAdjusted"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolSettings",
+      "fields": [
+        {
+          "doc": "",
+          "name": "default_grace_period_days",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "late_payment_grace_period_days",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "max_credit_line",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "min_deposit_amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "pay_period_duration",
+          "type_": {
+            "udt": {
+              "name": "PayPeriodDuration"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "principal_only_payment_allowed",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LPConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "fixed_senior_yield_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "liquidity_cap",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "max_senior_junior_ratio",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "tranches_risk_adjustment_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "withdrawal_lockout_period_days",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FeeStructure",
+      "fields": [
+        {
+          "doc": "",
+          "name": "front_loading_fee_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "front_loading_fee_flat",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "late_fee_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "yield_bps",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolStatus",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Off"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "On"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Closed"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Epoch",
+      "fields": [
+        {
+          "doc": "",
+          "name": "end_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AdminRnR",
+      "fields": [
+        {
+          "doc": "",
+          "name": "liquidity_rate_bps_ea",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "liquidity_rate_bps_pool_owner",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "reward_rate_bps_ea",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "reward_rate_bps_pool_owner",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TrancheAddresses",
+      "fields": [
+        {
+          "doc": "",
+          "name": "addrs",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "option": {
+                  "value_type": "address"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TrancheAssets",
+      "fields": [
+        {
+          "doc": "",
+          "name": "assets",
+          "type_": {
+            "vec": {
+              "element_type": "u128"
+            }
+          }
+        }
+      ]
+    }
+  }
+]

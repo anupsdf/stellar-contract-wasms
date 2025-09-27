@@ -1,0 +1,180 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Offer",
+      "fields": [
+        {
+          "doc": "",
+          "name": "buy_price",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "buy_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "sell_price",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "sell_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "seller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "treasury",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "seller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "treasury",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "sell_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "buy_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "sell_price",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "buy_price",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "buyer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "buy_token_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_sell_token_amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "updt_price",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "sell_price",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "buy_price",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_offer",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Offer"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "redeem",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "receiver",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "redeem_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_buy_token_amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

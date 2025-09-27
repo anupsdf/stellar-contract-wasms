@@ -1,0 +1,451 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "TokensToClaim",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "LaunchpadInfo"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Minted",
+            "type_": [
+              "u32",
+              "address"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LaunchpadInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "base_token_uri",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "collection",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "minted_total",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "payment_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "platform_fee",
+          "type_": {
+            "udt": {
+              "name": "PlatformFee"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "safe_transfer_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "stages",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Stage"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "start_time",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PlatformFee",
+      "fields": [
+        {
+          "doc": "",
+          "name": "payment_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "share",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Stage",
+      "fields": [
+        {
+          "doc": "",
+          "name": "access",
+          "type_": {
+            "udt": {
+              "name": "Access"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "duration",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "max_per_wallet",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "title",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Access",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Whitelist",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Public"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Initialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "InvalidLaunchpadInfo",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "InvalidStage",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "NotWhitelisted",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "MaxPerAddressLimitExceeded",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "NotStarted",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "Started",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "InvalidNumTokens",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "AlreadyMinted",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "PendingClaimLimitExceeded",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "NotAuthorized",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "Ended",
+          "value": 13
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "launchpad_info",
+          "type_": {
+            "udt": {
+              "name": "LaunchpadInfo"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "mint",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "try_stage_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "quantity",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "u32"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "mint_to",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "quantity",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "u32"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim_tokens",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "minter",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "limit",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim_token",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "minter",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_launchpad_info",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "LaunchpadInfo"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_tokens_to_claim",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "minter",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "u32"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_total_minted",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "minter",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "u32"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "version",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  }
+]

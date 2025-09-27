@@ -1,0 +1,28 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "auth",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "map": {
+            "key_type": "address",
+            "value_type": "u32"
+          }
+        }
+      ]
+    }
+  }
+]

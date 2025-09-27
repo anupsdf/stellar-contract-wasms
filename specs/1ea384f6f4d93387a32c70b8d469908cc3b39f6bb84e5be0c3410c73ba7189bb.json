@@ -1,0 +1,42 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "plant_work",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "farm_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "farmer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "stake",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "nonce",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  }
+]

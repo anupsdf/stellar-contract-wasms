@@ -1,0 +1,273 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "Data for a subscription plan (price in stroops, duration in seconds).",
+      "lib": "",
+      "name": "PlanData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "duration",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Data for an active user subscription (plan ID and expiration timestamp).",
+      "lib": "",
+      "name": "SubscriptionData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "expiration",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "plan_id",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "Keys for storing contract state.",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Treasury"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "AuthAccount"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Plan",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Subscription",
+            "type_": [
+              "address"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "One-time initialization to set admin, treasury, and auth account.",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "treasury",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "auth",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Subscribe `user` to the plan `plan_id` by paying the plan price in XLM to the treasury.\\nIf user already has an active subscription to the same plan, extend the expiration date.",
+      "name": "subscribe",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "plan_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Check if a given user currently has an active (unexpired) subscription.",
+      "name": "is_sub_active",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieve the subscription details of a user, if any.",
+      "name": "get_subscription",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "SubscriptionData"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Create a new subscription plan (admin only).",
+      "name": "create_plan",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "plan_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "duration",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Update an existing subscription plan's price and/or duration (admin only).",
+      "name": "update_plan",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "plan_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "new_price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "new_duration",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get details of a subscription plan by ID (anyone can call).",
+      "name": "get_plan",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "plan_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "PlanData"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Delete a subscription plan (admin only).",
+      "name": "delete_plan",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "plan_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Update the treasury account address (admin only).",
+      "name": "update_treasury",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_treasury",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

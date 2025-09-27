@@ -1,0 +1,861 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Project",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admins",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "contacts",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "ProjectContact"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "contracts",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "ProjectContract"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "funding_histories",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "ProjectFundingHistory"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "image_url",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "overview",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "repositories",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "ProjectRepository"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "submited_ms",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "team_members",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "ProjectTeamMember"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "updated_ms",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "video_url",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CreateProjectParams",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admins",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "contacts",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "ProjectContact"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "contracts",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "ProjectContract"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "fundings",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "ProjectFundingHistory"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "image_url",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "overview",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "repositories",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "ProjectRepository"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "team_members",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "ProjectTeamMember"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "video_url",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UpdateProjectParams",
+      "fields": [
+        {
+          "doc": "",
+          "name": "contacts",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "ProjectContact"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "contracts",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "ProjectContract"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "fundings",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "ProjectFundingHistory"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "image_url",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "overview",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "repositories",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "ProjectRepository"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "team_members",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "ProjectTeamMember"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "video_url",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ProjectContact",
+      "fields": [
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ProjectContract",
+      "fields": [
+        {
+          "doc": "",
+          "name": "contract_address",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ProjectTeamMember",
+      "fields": [
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ProjectRepository",
+      "fields": [
+        {
+          "doc": "",
+          "name": "label",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "url",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ProjectFundingHistory",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "denomination",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "funded_ms",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "source",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RoundPreCheck",
+      "fields": [
+        {
+          "doc": "",
+          "name": "applicant",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "has_video",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "EmptyName",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "EmptyOverview",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "EmptyContacts",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "EmptyAdmins",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "EmptyImageUrl",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "AdminOrOwnerOnly",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "OwnerOnly",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "ContractOwnerOnly",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "AlreadyApplied",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "DataNotFound",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 11
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "contract_owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "apply",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "applicant",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_params",
+          "type_": {
+            "udt": {
+              "name": "CreateProjectParams"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Project"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_project",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "new_project_params",
+          "type_": {
+            "udt": {
+              "name": "UpdateProjectParams"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "admin_to_remove",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_project_by_id",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Project"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_projects",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "skip",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "limit",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "Project"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_project_admins",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_total_projects",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_project_from_applicant",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "applicant",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Project"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "owner",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_precheck",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "applicant",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "RoundPreCheck"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_precheck_by_id",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "RoundPreCheck"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "NumOfProjects"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Projects"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Project",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "RegistryAdmin"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ApplicantToProjectID",
+            "type_": [
+              "address"
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

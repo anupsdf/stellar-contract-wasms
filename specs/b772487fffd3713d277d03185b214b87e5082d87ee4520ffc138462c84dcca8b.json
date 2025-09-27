@@ -1,0 +1,337 @@
+[
+  {
+    "function_v0": {
+      "doc": "Initializes the contract by setting the administrator address if it has not been set previously.\\n\\n# Parameters\\n- `admin`: The address to be set as the administrator of the contract.\\n\\n# Returns\\n- `Ok(())` if the contract is successfully initialized with the specified administrator.\\n- `Err(ContractError)` if an error occurs during initialization.\\n\\n# Errors\\n- `AlreadyInitialized`: Thrown if the administrator has already been set, indicating the contract is already initialized.",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Deploys a new contract using the provided Wasm hash and initialization parameters.\\nAfter deployment, invokes the contract's init function with the specified arguments.\\n\\n# Parameters\\n- `deployer`: The address initiating the deployment, required for authorization.\\n- `wasm_hash`: The hash of the Wasm code for the new contract.\\n- `salt`: A salt value used to derive a unique contract address.\\n- `init_fn`: The name of the init function to call on the newly deployed contract.\\n- `init_args`: A vector of arguments for the init function.\\n- `token_address`: The address of the token used to pay the fee.\\n- `fee_recipient`: The address receiving the deployment fee.\\n- `fee_amount`: The amount of tokens to transfer as a fee.\\n\\n# Returns\\n- `Ok(Address)` with the address of the deployed contract if successful.\\n- `Err(ContractError)` if an error occurs during deployment.\\n\\n# Errors\\n- `AddressNotWhitelisted`: Thrown if the sender is not whitelisted and whitelisting is enabled.\\n- `InsufficientTokenBalance`: Thrown if the sender\\xe2\\x80\\x99s",
+      "name": "deploy",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "deployer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "salt",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "init_fn",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "init_args",
+          "type_": {
+            "vec": {
+              "element_type": "val"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "fee_recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "fee_amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if a specific address is on the whitelist.\\n\\n# Parameters\\n- `address`: The address to check for whitelisting status.\\n\\n# Returns\\n- `bool`: `true` if the address is whitelisted, `false` otherwise.",
+      "name": "is_whitelisted",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if the whitelist feature is enabled in the contract.\\n\\n# Returns\\n- `bool`: `true` if whitelisting is enabled, `false` otherwise.",
+      "name": "is_whitelist_enabled",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Enables the whitelist feature in the contract, allowing addresses to be whitelisted for special permissions.\\n\\n# Returns\\n- `Ok(())` if the whitelist is successfully enabled.\\n- `Err(ContractError)` if an error occurs during the enabling process.\\n\\n# Events\\nEmits a `whitelist_enabled` event with topics `[\"whitelist_enabled\"]`.\\n\\n# Errors\\n- `WhitelistAlreadyEnabled`: Thrown if the whitelist is already enabled.",
+      "name": "enable_whitelist",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Disables the whitelist feature in the contract, revoking special permissions for whitelisted addresses.\\n\\n# Returns\\n- `Ok(())` if the whitelist is successfully disabled.\\n- `Err(ContractError)` if an error occurs during the disabling process.\\n\\n# Events\\nEmits a `whitelist_disabled` event with topics `[\"whitelist_disabled\"]`.\\n\\n# Errors\\n- `WhitelistAlreadyDisabled`: Thrown if the whitelist is already disabled.",
+      "name": "disable_whitelist",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Adds an address to the whitelist, granting it any special permissions associated with whitelisted addresses.\\n\\n# Parameters\\n- `address`: The address to be added to the whitelist.\\n\\n# Returns\\n- `Ok(())` if the address is successfully whitelisted.\\n- `Err(ContractError)` if an error occurs during the whitelisting process.\\n\\n# Events\\nEmits a `user_whitelisted` event with topics `[\"user_whitelisted\"], data = address: Address`.\\n\\n# Errors\\n- `WhitelistNotEnabled`: Thrown if the whitelist feature is not enabled in the contract.\\n- `AddrAlreadyWhitelisted`: Thrown if the address is already on the whitelist.",
+      "name": "whitelist",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Removes an address from the whitelist, revoking any special permissions associated with whitelisted addresses.\\n\\n# Parameters\\n- `address`: The address to be removed from the whitelist.\\n\\n# Returns\\n- `Ok(())` if the address is successfully removed from the whitelist.\\n- `Err(ContractError)` if an error occurs during the removal process.\\n\\n# Events\\nEmits a `user_unwhitelisted` event with topics `[\"user_unwhitelisted\"], data = address: Address`.\\n\\n# Errors\\n- `WhitelistNotEnabled`: Thrown if the whitelist feature is not enabled in the contract.\\n- `AddrAlreadyUnwhitelisted`: Thrown if the address is not currently on the whitelist.",
+      "name": "remove_from_whitelist",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "InvalidArrayLengths",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "InsufficientXLMBalance",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "InsufficientTokenBalance",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "TransferFailed",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "AddrAlreadyWhitelisted",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "AddrAlreadyUnwhitelisted",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "AddressNotWhitelisted",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "WhitelistNotEnabled",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "WhitelistAlreadyEnabled",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "WhitelistAlreadyDisabled",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "MissingParam",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "InvalidParamType",
+          "value": 13
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "WhitelistEnabled"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Whitelisted",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        }
+      ]
+    }
+  }
+]
