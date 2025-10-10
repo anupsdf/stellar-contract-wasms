@@ -1,0 +1,26 @@
+[
+  {
+    "sc_meta_v0": {
+      "key": "assdkver",
+      "val": "0.4.0"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "name",
+      "val": "readme"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "version",
+      "val": "0.0.1"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "description",
+      "val": "hi! call the readme function!"
+    }
+  }
+]

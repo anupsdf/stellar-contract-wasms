@@ -1,0 +1,20 @@
+[
+  {
+    "sc_meta_v0": {
+      "key": "Description",
+      "val": "Phoenix Protocol LP Share token staking"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "rsver",
+      "val": "1.84.1"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "rssdkver",
+      "val": "22.0.0-rc.3.2#9324422a11daa99fdf31d420bb4072dbd875de60"
+    }
+  }
+]

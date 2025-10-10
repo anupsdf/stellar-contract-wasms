@@ -1,0 +1,20 @@
+[
+  {
+    "sc_meta_v0": {
+      "key": "Debwewin UserId",
+      "val": "Hashed UserDetails"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "rsver",
+      "val": "1.81.0"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "rssdkver",
+      "val": "22.0.3#5a3ca3afe8f995c8e04a06656ff037ebaf545704"
+    }
+  }
+]

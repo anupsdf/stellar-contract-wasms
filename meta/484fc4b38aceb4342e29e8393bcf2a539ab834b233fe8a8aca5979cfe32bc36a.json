@@ -1,0 +1,32 @@
+[
+  {
+    "sc_meta_v0": {
+      "key": "title",
+      "val": "KaleFail Trading Post"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "desc",
+      "val": "Exchange your hard-earned KALE tokens for other, related vegetables."
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "ver",
+      "val": "1.2.0"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "rsver",
+      "val": "1.81.0"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "rssdkver",
+      "val": "22.0.7#211569aa49c8d896877dfca1f2eb4fe9071121c8"
+    }
+  }
+]

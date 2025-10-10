@@ -1,0 +1,26 @@
+[
+  {
+    "sc_meta_v0": {
+      "key": "rsver",
+      "val": "1.83.0"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "rssdkver",
+      "val": "22.0.2#31b2892ef4d20538004e52713cb81e4895a8de9a"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "source_repo",
+      "val": "github:reflector-network/reflector-dao-contract"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "home_domain",
+      "val": "reflector.network"
+    }
+  }
+]

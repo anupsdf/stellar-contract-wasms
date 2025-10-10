@@ -1,0 +1,14 @@
+[
+  {
+    "sc_meta_v0": {
+      "key": "rsver",
+      "val": "1.79.0"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "rssdkver",
+      "val": "21.7.1#9e35dceaba1a032fb76e486d2bcf970a7f31843e"
+    }
+  }
+]

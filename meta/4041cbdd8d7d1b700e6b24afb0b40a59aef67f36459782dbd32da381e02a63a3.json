@@ -1,0 +1,32 @@
+[
+  {
+    "sc_meta_v0": {
+      "key": "rsver",
+      "val": "1.86.0"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "rssdkver",
+      "val": "22.0.4#1d4afb3b981a4f4b2bbc19f0ce38af85c4ab316a"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "name",
+      "val": "registry"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "binver",
+      "val": "0.1.0"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "authors",
+      "val": "Aha Labs <hello@ahalabs.dev>"
+    }
+  }
+]
