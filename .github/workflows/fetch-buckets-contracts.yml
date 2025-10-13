@@ -270,8 +270,8 @@ jobs:
         run: >
           cargo run --locked --release --manifest-path .scripts/extract-specs/Cargo.toml contracts/ specs/
 
-        run: >
       - name: Run extract-meta
+        run: >
           cargo run --locked --release --manifest-path .scripts/extract-meta/Cargo.toml contracts/ meta/
 
       - name: Run spec-analysis
