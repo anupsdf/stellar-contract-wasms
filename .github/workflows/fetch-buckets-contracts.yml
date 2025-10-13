@@ -296,5 +296,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git add analysis/
           git add contracts/
+          git add meta/
+          git add specs/
           git commit -m "Update contracts from buckets" || echo "No changes to commit"
           git push
