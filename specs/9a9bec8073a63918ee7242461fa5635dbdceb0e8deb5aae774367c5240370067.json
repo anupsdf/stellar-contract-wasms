@@ -1,0 +1,932 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Config"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "RewardPool",
+            "type_": [
+              {
+                "udt": {
+                  "name": "RewardPoolType"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserReward",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserClaimHistory",
+            "type_": [
+              "address",
+              "u32"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "GlobalStats"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "RewardSnapshot",
+            "type_": [
+              "u64"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ClaimWindow",
+            "type_": [
+              "u64"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RewardPool",
+      "fields": [
+        {
+          "doc": "",
+          "name": "active",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "distributed_rewards",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "distribution_rate",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "last_distribution",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "pool_type",
+          "type_": {
+            "udt": {
+              "name": "RewardPoolType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "total_rewards",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RewardError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "InsufficientRewards",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "NoRewardsToClaim",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "BelowMinimumClaim",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "AboveMaximumClaim",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "ContractPaused",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "InvalidConfiguration",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "ClaimCooldownActive",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "InvalidRewardPool",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "NumericOverflow",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "InvalidTimestamp",
+          "value": 17
+        },
+        {
+          "doc": "",
+          "name": "RewardPoolInactive",
+          "value": 18
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RewardConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "claim_cooldown",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "emergency_pause",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "max_claim_per_tx",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_claim_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reward_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "staking_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "treasury_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "treasury_fee_rate",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RewardPoolType",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Staking"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Liquidity"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Governance"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Bonus"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UserRewardInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "claim_count",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "last_claim",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "last_update",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_claimed",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_earned",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GlobalRewardStats",
+      "fields": [
+        {
+          "doc": "",
+          "name": "average_claim_size",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "last_stats_update",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_rewards_distributed",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_unique_claimants",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RewardClaimedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "claim_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "pool_type",
+          "type_": {
+            "udt": {
+              "name": "RewardPoolType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_config",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "RewardConfig"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "RewardError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "staking_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "reward_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "treasury_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "min_claim_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "max_claim_per_tx",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "claim_cooldown",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "treasury_fee_rate",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "RewardError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RewardPoolFundedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "funder",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_type",
+          "type_": {
+            "udt": {
+              "name": "RewardPoolType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_type",
+          "type_": {
+            "udt": {
+              "name": "RewardPoolType"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": {
+              "udt": {
+                "name": "RewardError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_reward_pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pool_type",
+          "type_": {
+            "udt": {
+              "name": "RewardPoolType"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "RewardPool"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "fund_reward_pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_type",
+          "type_": {
+            "udt": {
+              "name": "RewardPoolType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "RewardError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_global_stats",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "GlobalRewardStats"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "BatchRewardProcessedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "pool_type",
+          "type_": {
+            "udt": {
+              "name": "RewardPoolType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "recipients_processed",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_amount",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "credit_user_reward",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_type",
+          "type_": {
+            "udt": {
+              "name": "RewardPoolType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "RewardError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_daily_snapshot",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "day",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "i128"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "toggle_reward_pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_type",
+          "type_": {
+            "udt": {
+              "name": "RewardPoolType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "active",
+          "type_": "bool"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "RewardError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_emergency_pause",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "paused",
+          "type_": "bool"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "RewardError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user_reward_info",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "UserRewardInfo"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "estimate_user_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_type",
+          "type_": {
+            "udt": {
+              "name": "RewardPoolType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "user_stake_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_stake_amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": {
+              "udt": {
+                "name": "RewardError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_claimable_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "process_batch_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_type",
+          "type_": {
+            "udt": {
+              "name": "RewardPoolType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "total_pool_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "treasury_amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u32",
+            "error_type": {
+              "udt": {
+                "name": "RewardError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+]

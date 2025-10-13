@@ -1,0 +1,785 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Config"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserGovernance",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserCount",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserByIndex",
+            "type_": [
+              "address",
+              "u32"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "GlobalStats"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "DailySnapshot",
+            "type_": [
+              "u64"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GovernanceError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "InvalidInput",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "ContractPaused",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "RecordNotFound",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "NumericOverflow",
+          "value": 7
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GovernanceStats",
+      "fields": [
+        {
+          "doc": "",
+          "name": "last_update",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_ice_supply",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_participants",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "total_voting_power",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GovernanceConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "base_multiplier",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "emergency_pause",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "max_time_multiplier",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "staking_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "treasury_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "version",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GovernanceRecord",
+      "fields": [
+        {
+          "doc": "",
+          "name": "aqua_locked",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "ice_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "lock_duration_years",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "lock_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "tx_hash",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "voting_power",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "IceTokensIssuedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "aqua_locked",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "ice_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "lock_duration_years",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "record_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "tx_hash",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "voting_power",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_config",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "GovernanceConfig"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "GovernanceError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initialize governance contract with ICE token parameters",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "staking_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "treasury_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "base_multiplier",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "max_time_multiplier",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "GovernanceError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PolVotingRecordedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "aqua_blub_pair_votes",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_ice_voting_power",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "voting_percentage",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VotingPowerUpdatedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "new_voting_power",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "old_voting_power",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_ice",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GovernanceStatsUpdatedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_ice_supply",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_participants",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "total_voting_power",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_global_stats",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "GovernanceStats"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_voting_power",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Record automated POL voting with ICE tokens (admin-only)",
+      "name": "record_pol_voting",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "total_ice_voting_power",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "aqua_blub_pair_votes",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "GovernanceError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_daily_snapshot",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "day",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "GovernanceStats"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_multipliers",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "base_multiplier",
+          "type_": {
+            "option": {
+              "value_type": "i128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "max_time_multiplier",
+          "type_": {
+            "option": {
+              "value_type": "i128"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "GovernanceError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user_governance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "GovernanceRecord"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Record ICE token issuance when user locks AQUA (admin-only)",
+      "name": "record_ice_issuance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "aqua_locked",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "lock_duration_years",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "tx_hash",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u32",
+            "error_type": {
+              "udt": {
+                "name": "GovernanceError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_emergency_pause",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "paused",
+          "type_": "bool"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "GovernanceError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Update voting power when user's total stake changes (called by staking contract)",
+      "name": "update_voting_power",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_total_ice",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "GovernanceError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user_record_count",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_total_voting_power",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user_record_by_index",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "GovernanceRecord"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get current voting allocation for POL",
+      "name": "get_pol_voting_allocation",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  }
+]

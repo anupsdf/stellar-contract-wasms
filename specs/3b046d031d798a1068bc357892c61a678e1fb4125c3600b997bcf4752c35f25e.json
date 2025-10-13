@@ -1,0 +1,3345 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Stake",
+      "fields": [
+        {
+          "doc": "",
+          "name": "category",
+          "type_": {
+            "udt": {
+              "name": "Category"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "interest_percentage",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "period",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "power",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "staked_time",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Lending",
+      "fields": [
+        {
+          "doc": "",
+          "name": "category",
+          "type_": {
+            "udt": {
+              "name": "Category"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "lender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "lent_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "power",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Borrowing",
+      "fields": [
+        {
+          "doc": "",
+          "name": "borrowed_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "borrower",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "category",
+          "type_": {
+            "udt": {
+              "name": "Category"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "power",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Asset",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Stellar",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Other",
+            "type_": [
+              "symbol"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PriceData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SidePosition",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Long"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Short"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FightCurrency",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "BTC"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ETH"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "XLM"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "SOL"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Fight",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount_asset",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "category",
+          "type_": {
+            "udt": {
+              "name": "Category"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "currency",
+          "type_": {
+            "udt": {
+              "name": "FightCurrency"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "leverage",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "power",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "side_position",
+          "type_": {
+            "udt": {
+              "name": "SidePosition"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "trigger_price",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "config",
+          "type_": {
+            "udt": {
+              "name": "Config"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_new_level",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "level",
+          "type_": {
+            "udt": {
+              "name": "Level"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_level",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "level_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "level",
+          "type_": {
+            "udt": {
+              "name": "Level"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "mint_terry",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "batch_mint_terry",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "to_addresses",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "amounts",
+          "type_": {
+            "vec": {
+              "element_type": "i128"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "terry_balance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "mint",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "card_level",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "buy_currency",
+          "type_": {
+            "udt": {
+              "name": "Currency"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "burn",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "check_admin",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "check_admin_address",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_level",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "level",
+          "type_": {
+            "udt": {
+              "name": "Level"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_to_whitelist",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "members",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_from_whitelist",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "members",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "card",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "Card"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "exists",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "admin_balance",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Balance"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "admin_state",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "State"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "config",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Config"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_metadata",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "card",
+          "type_": {
+            "udt": {
+              "name": "CardMetadata"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_card",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "CardMetadata"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_user",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_all_cards",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "CardMetadata"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_player_cards_with_state",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "tuple": {
+                "value_types": [
+                  {
+                    "udt": {
+                      "name": "CardMetadata"
+                    }
+                  },
+                  {
+                    "udt": {
+                      "name": "Card"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_power_to_card",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "read_user",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "User"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_current_pot_state",
+      "inputs": [],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              {
+                "udt": {
+                  "name": "PotBalance"
+                }
+              },
+              {
+                "udt": {
+                  "name": "DogstarBalance"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_player_potential_reward",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "PendingReward"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_historical_snapshot",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "PotSnapshot"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_player_participation",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "round",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "PlayerReward"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_pending_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "PendingReward"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "accumulate_pot",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "terry",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "power",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "xtar",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "action",
+          "type_": {
+            "option": {
+              "value_type": {
+                "udt": {
+                  "name": "Action"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim_dogstar_fees",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "claimer",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "release_dogstar_fees",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "open_pot",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "round",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "NFTError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim_haw_ai_pot_share",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": [
+                  "i128",
+                  "u32",
+                  "i128"
+                ]
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "NFTError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "view_claimable_balance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "UserClaimableBalance"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "view_vault_status",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "ContractVault"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim_all_pending_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": [
+                  "i128",
+                  "u32",
+                  "i128"
+                ]
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "NFTError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_dogstar_fee_percentage",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "fee_percentage",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "contribute_to_pot",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "terry",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "power",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "xtar",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_eligible_players",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_eligible_players_with_shares",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "tuple": {
+                "value_types": [
+                  "address",
+                  "u32",
+                  "u32",
+                  "u32"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_all_rounds",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "u32"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_current_round",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "stake",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "category",
+          "type_": {
+            "udt": {
+              "name": "Category"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "period_index",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "increase_stake_power",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "category",
+          "type_": {
+            "udt": {
+              "name": "Category"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "increase_power",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "unstake",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "category",
+          "type_": {
+            "udt": {
+              "name": "Category"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "read_stake",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "category",
+          "type_": {
+            "udt": {
+              "name": "Category"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Stake"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "read_stakes",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "Stake"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "open_position",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "category",
+          "type_": {
+            "udt": {
+              "name": "Category"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "currency",
+          "type_": {
+            "udt": {
+              "name": "FightCurrency"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "side_position",
+          "type_": {
+            "udt": {
+              "name": "SidePosition"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "leverage",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "power_staked",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "close_position",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "category",
+          "type_": {
+            "udt": {
+              "name": "Category"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "currency_price",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "oracle_contract_id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "read_fight",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "category",
+          "type_": {
+            "udt": {
+              "name": "Category"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Fight"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "read_fights",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "Fight"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "check_liquidation",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "liquidator",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "category",
+          "type_": {
+            "udt": {
+              "name": "Category"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "lend",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "lender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "category",
+          "type_": {
+            "udt": {
+              "name": "Category"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "power",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "borrow",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "borrower",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "category",
+          "type_": {
+            "udt": {
+              "name": "Category"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "power",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "repay",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "borrower",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "category",
+          "type_": {
+            "udt": {
+              "name": "Category"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "lender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "category",
+          "type_": {
+            "udt": {
+              "name": "Category"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_current_apy",
+      "inputs": [],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "read_lending",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "category",
+          "type_": {
+            "udt": {
+              "name": "Category"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Lending"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "read_borrowing",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "category",
+          "type_": {
+            "udt": {
+              "name": "Category"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Borrowing"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "read_borrowings",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "Borrowing"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "read_lendings",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "Lending"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "place",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "replace",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "prev_token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_place",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "udt": {
+              "name": "TokenId"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "read_deck",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Deck"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "MyLabError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotOwner",
+          "value": 300
+        },
+        {
+          "doc": "",
+          "name": "NotNFT",
+          "value": 301
+        },
+        {
+          "doc": "",
+          "name": "NotAuthorized",
+          "value": 302
+        },
+        {
+          "doc": "",
+          "name": "OutOfBounds",
+          "value": 303
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "NFTError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "RoundAlreadyProcessed",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "NotAuthorized",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "NoRewardsAvailable",
+          "value": 4
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CardMetadata",
+      "fields": [
+        {
+          "doc": "",
+          "name": "base_uri",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "category",
+          "type_": {
+            "udt": {
+              "name": "Category"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "initial_power",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "level",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "max_power",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "price_terry",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "price_xtar",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "thumb_uri",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Category",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Leader"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Resource"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Skill"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Weapon"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Currency",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Terry"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Xtar"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Action",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "None"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Stake"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Fight"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Lend"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Borrow"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Burn"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Deck"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Mint"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Card",
+      "fields": [
+        {
+          "doc": "",
+          "name": "locked_by_action",
+          "type_": {
+            "udt": {
+              "name": "Action"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "power",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CardInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "initial_power",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "max_power",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "price_terry",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "price_xtar",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenId",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "User",
+      "fields": [
+        {
+          "doc": "",
+          "name": "level",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "power",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "terry",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_history_terry",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Level",
+      "fields": [
+        {
+          "doc": "",
+          "name": "maximum_terry",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "minimum_terry",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PotBalance",
+      "fields": [
+        {
+          "doc": "",
+          "name": "accumulated_power",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "accumulated_terry",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "accumulated_xtar",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "last_opening_round",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "last_updated",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_openings",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PlayerReward",
+      "fields": [
+        {
+          "doc": "",
+          "name": "deck_bonus",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "deck_categories",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "effective_power",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "round_number",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "share_percentage",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PotSnapshot",
+      "fields": [
+        {
+          "doc": "",
+          "name": "round_number",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_effective_power",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "total_participants",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "total_power",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "total_terry",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_xtar",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PendingReward",
+      "fields": [
+        {
+          "doc": "",
+          "name": "power_amount",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "round_number",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "RewardStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "terry_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "xtar_amount",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RewardStatus",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Pending"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "AwaitingTrustLine"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Claimed"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Failed"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RewardClaim",
+      "fields": [
+        {
+          "doc": "",
+          "name": "claimed_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "rewards",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "PendingReward"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DogstarBalance",
+      "fields": [
+        {
+          "doc": "",
+          "name": "power",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "terry",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "xtar",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractVault",
+      "fields": [
+        {
+          "doc": "",
+          "name": "dogstar_power",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "dogstar_terry",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "dogstar_xtar",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "haw_ai_pot_power",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "haw_ai_pot_terry",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "haw_ai_pot_xtar",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_claimable_power",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "total_claimable_terry",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_claimable_xtar",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UserClaimableBalance",
+      "fields": [
+        {
+          "doc": "",
+          "name": "last_claim_round",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "last_claim_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "power",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "terry",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "xtar",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Deck",
+      "fields": [
+        {
+          "doc": "",
+          "name": "bonus",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "deck_categories",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "haw_ai_percentage",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_ids",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "TokenId"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "total_power",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Config",
+      "fields": [
+        {
+          "doc": "",
+          "name": "apy_alpha",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "burn_receive_percentage",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "burnable_percentage",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "dogstar_fee_percentage",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "haw_ai_percentage",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "oracle_contract_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "power_action_fee",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "power_to_usdc_rate",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "stake_interest_percentages",
+          "type_": {
+            "vec": {
+              "element_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "stake_periods",
+          "type_": {
+            "vec": {
+              "element_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "terry_per_deck",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "terry_per_fight",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "terry_per_lending",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "terry_per_power",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "terry_per_stake",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "withdrawable_percentage",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "xtar_token",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Balance",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin_power",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "admin_terry",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "haw_ai_power",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "haw_ai_terry",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "haw_ai_xtar",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_deck_power",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "State",
+      "fields": [
+        {
+          "doc": "",
+          "name": "total_borrowed_power",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_demand",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_interest",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_loan_count",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_loan_duration",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_offer",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_staked_power",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Config"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PotBalance"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Balance"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "BalanceSC",
+            "type_": [
+              {
+                "udt": {
+                  "name": "Category"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "DogstarBalance"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ContractVault"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "State"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Whitelist",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "User",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "OwnerOwnedCardIds",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Card",
+            "type_": [
+              "address",
+              {
+                "udt": {
+                  "name": "TokenId"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "AllCardIds"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Decks"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Deck",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Stakes"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Stake",
+            "type_": [
+              "address",
+              {
+                "udt": {
+                  "name": "Category"
+                }
+              },
+              {
+                "udt": {
+                  "name": "TokenId"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Lendings"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Lending",
+            "type_": [
+              "address",
+              {
+                "udt": {
+                  "name": "Category"
+                }
+              },
+              {
+                "udt": {
+                  "name": "TokenId"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Borrowings"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Borrowing",
+            "type_": [
+              "address",
+              {
+                "udt": {
+                  "name": "Category"
+                }
+              },
+              {
+                "udt": {
+                  "name": "TokenId"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Fights"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Fight",
+            "type_": [
+              "address",
+              {
+                "udt": {
+                  "name": "Category"
+                }
+              },
+              {
+                "udt": {
+                  "name": "TokenId"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "LevelId"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Level",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "TokenId",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TokenIdCounter"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Metadata",
+            "type_": [
+              {
+                "udt": {
+                  "name": "TokenId"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "Total snapshot per asset at pot opening for round",
+            "name": "PotSnapshotAsset",
+            "type_": [
+              "u32",
+              {
+                "udt": {
+                  "name": "TokenId"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "PotSnapshotSC",
+            "type_": [
+              "u32",
+              {
+                "udt": {
+                  "name": "Category"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "OpeningSnapshot",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "PlayerShare",
+            "type_": [
+              "u32",
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "PlayerPower",
+            "type_": [
+              "u32",
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "PendingReward",
+            "type_": [
+              "u32",
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserClaimableBalance",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "DogstarClaimableBalance"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "CurrentRound"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "AllRounds"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "RewardClaim",
+            "type_": [
+              "address",
+              "u64"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TokenMetadata",
+      "fields": [
+        {
+          "doc": "",
+          "name": "decimal",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        }
+      ]
+    }
+  }
+]

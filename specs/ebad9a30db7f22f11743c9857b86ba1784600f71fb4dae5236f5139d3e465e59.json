@@ -1,0 +1,635 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "operator",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RedemptionEntry",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "1",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "2",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "3",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RedemptionStatus",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Null"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Pending"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Executed"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Canceled"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ExecuteRedemptionOperation",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "1",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "2",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "3",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Add a token to the redemption contract. All token contract addresses must be added to the redemption contract.\\n\\n# Arguments\\n\\n* `token_contract_address` - The address of the token contract to add.\\n\\n# Errors\\n\\nThe caller must be the owner.\\n",
+      "name": "add_token",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_contract_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Remove a token from the redemption contract.\\n\\n# Arguments\\n\\n* `token_contract_address` - The address of the token contract to remove.\\n\\n# Errors\\n\\nThe caller must be the owner.\\n",
+      "name": "remove_token",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_contract_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Set the permission manager (central role management authority).\\n\\n# Arguments\\n\\n* `permission_manager` - The address of the permission manager.\\n\\n# Errors\\n\\nThe caller must be the owner.\\n",
+      "name": "set_permission_manager",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "permission_manager",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "On redeem. It is called by a registered token contract just after the tokens are transferred to the redemption contract. The redemption is recorded as pending.\\n\\n# Arguments\\n\\n* `token` - The address of the token contract.\\n* `from` - The address of the account that redeemed the tokens.\\n* `amount` - The amount of tokens redeemed.\\n* `salt` - The salt used to generate the redemption hash.\\n\\n# Errors\\n\\nIt must be called by a registered token contract.\\nThe redemption hash must be in the Null status. The redemption hash is used to prevent duplicate redemptions. All redemptions are unique.\\n",
+      "name": "on_redeem",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "salt",
+          "type_": "string"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Execute redemptions. It is called by a redemption executor. It will burn the tokens from the redemption contract.\\n\\n# Arguments\\n\\n* `caller` - The address of the redemption executor.\\n* `operations` - The operations to execute.\\n\\n# Errors\\n\\nThe caller must have the REDEMPTION_EXECUTOR_ROLE.\\nThe operations must not be empty.\\nAll tokens must be registered.\\nAll redemptions must be in the Pending status.\\n",
+      "name": "execute_redemptions",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "operations",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "ExecuteRedemptionOperation"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Cancel a redemption. It is called by a redemption executor. It will transfer the tokens back to the from address.\\n\\n# Arguments\\n\\n* `caller` - The address of the redemption executor.\\n* `token` - The address of the token contract.\\n* `from` - The address of the account that redeemed the tokens.\\n* `amount` - The amount of tokens redeemed.\\n* `salt` - The salt used to generate the redemption hash.\\n\\n# Errors\\n\\nThe caller must have the REDEMPTION_EXECUTOR_ROLE.\\nThe token must be registered.\\nThe redemption must be in the Pending status.\\n",
+      "name": "cancel_redemption",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "from",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "salt",
+          "type_": "string"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_owner",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "transfer_ownership",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "live_until_ledger",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "accept_ownership",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "renounce_ownership",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Storage key for enumeration of accounts per role.",
+      "lib": "",
+      "name": "RoleAccountKey",
+      "fields": [
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "role",
+          "type_": "symbol"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "Storage keys for the data associated with the access control",
+      "lib": "",
+      "name": "AccessControlStorageKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "RoleAccounts",
+            "type_": [
+              {
+                "udt": {
+                  "name": "RoleAccountKey"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "HasRole",
+            "type_": [
+              "address",
+              "symbol"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "RoleAccountsCount",
+            "type_": [
+              "symbol"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "RoleAdmin",
+            "type_": [
+              "symbol"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PendingAdmin"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AccessControlError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 1210
+        },
+        {
+          "doc": "",
+          "name": "AdminNotSet",
+          "value": 1211
+        },
+        {
+          "doc": "",
+          "name": "IndexOutOfBounds",
+          "value": 1212
+        },
+        {
+          "doc": "",
+          "name": "AdminRoleNotFound",
+          "value": 1213
+        },
+        {
+          "doc": "",
+          "name": "RoleCountIsNotZero",
+          "value": 1214
+        },
+        {
+          "doc": "",
+          "name": "RoleNotFound",
+          "value": 1215
+        },
+        {
+          "doc": "",
+          "name": "AdminAlreadySet",
+          "value": 1216
+        },
+        {
+          "doc": "",
+          "name": "RoleNotHeld",
+          "value": 1217
+        },
+        {
+          "doc": "",
+          "name": "RoleIsEmpty",
+          "value": 1218
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "Storage keys for `Ownable` utility.",
+      "lib": "",
+      "name": "OwnableStorageKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Owner"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PendingOwner"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OwnableError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "OwnerNotSet",
+          "value": 1220
+        },
+        {
+          "doc": "",
+          "name": "TransferInProgress",
+          "value": 1221
+        },
+        {
+          "doc": "",
+          "name": "OwnerAlreadySet",
+          "value": 1222
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RoleTransferError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NoPendingTransfer",
+          "value": 1200
+        },
+        {
+          "doc": "",
+          "name": "InvalidLiveUntilLedger",
+          "value": 1201
+        },
+        {
+          "doc": "",
+          "name": "InvalidPendingAccount",
+          "value": 1202
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CryptoError",
+      "cases": [
+        {
+          "doc": "The merkle proof length is out of bounds.",
+          "name": "MerkleProofOutOfBounds",
+          "value": 1400
+        },
+        {
+          "doc": "The index of the leaf is out of bounds.",
+          "name": "MerkleIndexOutOfBounds",
+          "value": 1401
+        },
+        {
+          "doc": "No data in hasher state.",
+          "name": "HasherEmptyState",
+          "value": 1402
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "Storage keys for the data associated with `MerkleDistributor`",
+      "lib": "",
+      "name": "MerkleDistributorStorageKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "The Merkle root of the distribution tree",
+            "name": "Root"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "Maps an index to its claimed status",
+            "name": "Claimed",
+            "type_": [
+              "u32"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "MerkleDistributorError",
+      "cases": [
+        {
+          "doc": "The merkle root is not set.",
+          "name": "RootNotSet",
+          "value": 1300
+        },
+        {
+          "doc": "The provided index was already claimed.",
+          "name": "IndexAlreadyClaimed",
+          "value": 1301
+        },
+        {
+          "doc": "The proof is invalid.",
+          "name": "InvalidProof",
+          "value": 1302
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "Storage key for the pausable state",
+      "lib": "",
+      "name": "PausableStorageKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "Indicates whether the contract is in paused state.",
+            "name": "Paused"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PausableError",
+      "cases": [
+        {
+          "doc": "The operation failed because the contract is paused.",
+          "name": "EnforcedPause",
+          "value": 1000
+        },
+        {
+          "doc": "The operation failed because the contract is not paused.",
+          "name": "ExpectedPause",
+          "value": 1001
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UpgradeableError",
+      "cases": [
+        {
+          "doc": "When migration is attempted but not allowed due to upgrade state.",
+          "name": "MigrationNotAllowed",
+          "value": 1100
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,428 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade_contract",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "handle_upgrade_contract",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade_contract_completed",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deploy",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "subscriber",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "billing_cycles_timestamps",
+          "type_": {
+            "vec": {
+              "element_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "expiration_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "expiration_ledger",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "plan_name",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "currency_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "billing_period",
+          "type_": {
+            "udt": {
+              "name": "BillingPeriod"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "salt",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_deployed_contract",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "subscriber",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "deployed_contract_for",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "subscriber",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "total_deployed_contracts",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "admin",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "subscription_wasm_hash",
+      "inputs": [],
+      "outputs": [
+        {
+          "bytes_n": {
+            "n": 32
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_subscription_wasm_hash",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "merchant",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_merchant",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_merchant",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "plan",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "plan_name",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "currency_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "billing_period",
+          "type_": {
+            "udt": {
+              "name": "BillingPeriod"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_plan",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "plan_name",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "currency_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "billing_period",
+          "type_": {
+            "udt": {
+              "name": "BillingPeriod"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "price_per_cycle",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_plan",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "plan_name",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "currency_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "billing_period",
+          "type_": {
+            "udt": {
+              "name": "BillingPeriod"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "DeployedContract",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Merchant"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "SubscriptionWasmHash"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TotalDeployedContracts"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "UpgradeContractCompleted"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Plan",
+            "type_": [
+              "symbol",
+              "address",
+              {
+                "udt": {
+                  "name": "BillingPeriod"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "BillingPeriod",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Daily"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Weekly"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Monthly"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Quarterly"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Yearly"
+          }
+        }
+      ]
+    }
+  }
+]

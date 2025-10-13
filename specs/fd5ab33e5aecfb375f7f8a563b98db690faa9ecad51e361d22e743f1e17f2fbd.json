@@ -1,0 +1,1587 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "register_account",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Account"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_account",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "Account"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_account_status",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "AccountStatus"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "delete_account",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_locked_assets",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "map": {
+            "key_type": "address",
+            "value_type": "u128"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "reset_locked_assets",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "owner_repair_account",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "bool",
+              "string"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "register_asset",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "contract_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "issuer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "decimals",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "last_price_usd",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Asset"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_asset",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "contract_id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "Asset"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_active_assets",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "Asset"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_all_assets",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "Asset"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_asset_description",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "contract_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_asset_status",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "contract_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "AssetStatus"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_asset_prices",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "contract_ids",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "prices",
+          "type_": {
+            "vec": {
+              "element_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "bool",
+              "string"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "delete_asset",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "contract_id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "change_asset_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset_contract_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "value_portfolio",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "portfolio_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "u128",
+              "u128"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "fund_portfolio",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "portfolio_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "funding_asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "funding_amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "bool",
+              "string"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "rebalance_portfolio",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "portfolio_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "bool",
+              "string"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw_from_portfolio",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "portfolio_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "withdraw_asset",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "bool",
+              "string"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "fund_portfolio_mainnet",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "portfolio_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "asset_addresses",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "asset_amounts",
+          "type_": {
+            "vec": {
+              "element_type": "u128"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "bool",
+              "string"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "rebalance_portfolio_mainnet",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "portfolio_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "new_rebalance_value",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "asset_addresses",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "asset_amounts",
+          "type_": {
+            "vec": {
+              "element_type": "u128"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "bool",
+              "string"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw_from_portfolio_mainnet",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "portfolio_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "bool",
+              "string"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_portfolio",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "currency",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "rebalance_value",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "asset_ids",
+          "type_": {
+            "option": {
+              "value_type": {
+                "vec": {
+                  "element_type": "address"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "asset_percentages",
+          "type_": {
+            "option": {
+              "value_type": {
+                "vec": {
+                  "element_type": "u32"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "u32",
+              "bool",
+              "string"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "delete_portfolio",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "portfolio_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "bool",
+              "string"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_portfolio",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "portfolio_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "UserPortfolio"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_portfolio",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "portfolio_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "currency",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "rebalance_value",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "bool",
+              "string"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_asset_to_portfolio",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "portfolio_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "asset_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "percentage",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "bool",
+              "string"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_asset_from_portfolio",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "portfolio_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "asset_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "bool",
+              "string"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "token_swap",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "wallet_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "src_contract_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "dst_contract_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "src_amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "bool",
+              "string",
+              "u128"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "calculate_swap_amount",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "src_contract_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "dst_contract_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "src_amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "test_faucet",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "contract_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "receiver",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "test_faucet_owner",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "contract_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "receiver",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Account",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "last_update_ts",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "locked",
+          "type_": {
+            "map": {
+              "key_type": "address",
+              "value_type": "u128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "portfolio",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "UserPortfolio"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "AccountStatus"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AccountStatus",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Active"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Paused"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Deleted"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PortfolioBalance",
+      "fields": [
+        {
+          "doc": "",
+          "name": "balance",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "last_update_ts",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Asset",
+      "fields": [
+        {
+          "doc": "",
+          "name": "contract_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "decimals",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "issuer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "last_price_usd",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "last_update_ts",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "AssetStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FundingAsset",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AssetStatus",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Active"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Paused"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Deleted"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Owner"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Account",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "AccountList"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Asset",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "AssetList"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Receiver",
+            "type_": [
+              "address",
+              "address"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OrderedList",
+      "fields": [
+        {
+          "doc": "",
+          "name": "addresses",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UserPortfolio",
+      "fields": [
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "assets",
+          "type_": {
+            "map": {
+              "key_type": "address",
+              "value_type": {
+                "udt": {
+                  "name": "UserPortfolioAsset"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "createdAt",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "currency",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "deletedAt",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "lastRebalance",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "leadingChangedAt",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "rebalanceType",
+          "type_": {
+            "udt": {
+              "name": "RebalanceType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "rebalanceValue",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "state",
+          "type_": {
+            "udt": {
+              "name": "PortfolioState"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "updatedAt",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UserPortfolioAsset",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "cost",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "percentage",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "state",
+          "type_": {
+            "udt": {
+              "name": "PortfolioAssetState"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AddUserPortfolioAsset",
+      "fields": [
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "percentage",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PortfolioState",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Initial"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Funded"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Filled"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Unfunded"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Closing"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Closed"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RebalanceType",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Percentage"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Time"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PortfolioAssetState",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Active"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Paused"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Deleted"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_owner_address",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_owner",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "version",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_ledger_sequence",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  }
+]

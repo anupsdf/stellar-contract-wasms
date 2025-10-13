@@ -1,0 +1,1709 @@
+[
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "InvalidInput",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "NotFound",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "InsufficientBalance",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "RewardCalculationFailed",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "UnlockNotReady",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "AlreadyClaimed",
+          "value": 9
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Config",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "reward_rate",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_supply",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "treasury_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "version",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Config"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserLockCount",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserLockByIndex",
+            "type_": [
+              "address",
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserLpCount",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserLpByIndex",
+            "type_": [
+              "address",
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserUnlockCount",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserUnlockByIndex",
+            "type_": [
+              "address",
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserBlubRestakeCount",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserBlubRestakeByIndex",
+            "type_": [
+              "address",
+              "u32"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "LockTotals"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "LpTotals"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserRewards",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "DistributionCount"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "DistributionByIndex",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "GlobalState"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "RewardSnapshot",
+            "type_": [
+              "u64"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ProtocolOwnedLiquidity"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "DailyPolSnapshot",
+            "type_": [
+              "u64"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserLockTotals",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserPools",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserLp",
+            "type_": [
+              "address",
+              "bytes"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_config",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "Config"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "treasury_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user_lp",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "LpPosition"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Record AQUA lock with POL contribution (admin-only)",
+      "name": "record_lock",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "duration_days",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "tx_hash",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u32",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LockEntry",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "duration_days",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "lock_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "pol_contributed",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reward_multiplier",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "tx_hash",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LockTotals",
+      "fields": [
+        {
+          "doc": "",
+          "name": "accumulated_rewards",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "last_update_ts",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_entries",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "total_locked_aqua",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LpPosition",
+      "fields": [
+        {
+          "doc": "",
+          "name": "last_tx",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "last_update_ts",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "lp_shares",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "reward_debt",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_asset_a",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_asset_b",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "record_unlock",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "tx_hash",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u32",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GlobalState",
+      "fields": [
+        {
+          "doc": "",
+          "name": "last_reward_update",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "reward_per_locked_token",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reward_per_lp_token",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_locked",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_lp_staked",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_users",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UnlockEntry",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "claimed",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "tx_hash",
+          "type_": "bytes"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user_pools",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "bytes"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_global_state",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "GlobalState"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_unlock_count",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "UserRewardTotals"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "record_lp_deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "amount_a",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_b",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "tx_hash",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "credit_user_reward",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "kind",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "tx_hash",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Record POL rewards claimed from AQUA-BLUB pair voting (admin-only)",
+      "name": "record_pol_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "reward_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "ice_voting_power",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_reward_rate",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_rate",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "BlubRestakeEntry",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "previous_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "tx_hash",
+          "type_": "bytes"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UserRewardTotals",
+      "fields": [
+        {
+          "doc": "",
+          "name": "last_update_ts",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "locked_total",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "lp_total",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "pending_locked",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "pending_lp",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_unlock_by_index",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "UnlockEntry"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user_lock_count",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "record_blub_restake",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "tx_hash",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u32",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LockRecordedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "duration_days",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "lock_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "reward_multiplier",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "tx_hash",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user_lock_totals",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "LockTotals"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RewardDistribution",
+      "fields": [
+        {
+          "doc": "",
+          "name": "distributed_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "kind",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_reward",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "treasury_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "tx_hash",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "user_count",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UnlockRecordedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "entry_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "tx_hash",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "calculate_user_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "UserRewardTotals"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_blub_restake_count",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get daily POL snapshot",
+      "name": "get_daily_pol_snapshot",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "day",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "ProtocolOwnedLiquidity"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_distribution_count",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user_lock_by_index",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "LockEntry"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PolContributionEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "aqua_locked",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "lock_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "pol_aqua_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "pol_blub_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_pol_aqua",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_pol_blub",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LpDepositRecordedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount_a",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_b",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "tx_hash",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PolRewardsClaimedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "ice_voting_power",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reward_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reward_distribution_to_users",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_pol_rewards",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "treasury_amount",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ProtocolOwnedLiquidity",
+      "fields": [
+        {
+          "doc": "",
+          "name": "aqua_blub_lp_position",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "ice_voting_power_used",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "last_reward_claim",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_aqua_contributed",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_blub_contributed",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_pol_rewards_earned",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_blub_restake_by_index",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "BlubRestakeEntry"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_distribution_by_index",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "RewardDistribution"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get total POL contribution for user",
+      "name": "get_user_pol_contribution",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UserRewardCreditedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "kind",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "tx_hash",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "record_reward_distribution",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "kind",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "total_reward",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "distributed_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "treasury_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "tx_hash",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u32",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "BlubRestakeRecordedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "entry_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "tx_hash",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get POL state",
+      "name": "get_protocol_owned_liquidity",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "ProtocolOwnedLiquidity"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "BatchRewardCalculatedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "kind",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "user_count",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RewardDistributionRecordedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "distributed_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "distribution_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "kind",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_reward",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "treasury_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "tx_hash",
+          "type_": "bytes"
+        }
+      ]
+    }
+  }
+]

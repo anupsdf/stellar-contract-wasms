@@ -1,0 +1,985 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Config"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Pool",
+            "type_": [
+              "bytes"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserLPPosition",
+            "type_": [
+              "address",
+              "bytes"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserPools",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PoolCount"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "GlobalStats"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "PoolSnapshot",
+            "type_": [
+              "bytes",
+              "u64"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "FeesCollected",
+            "type_": [
+              "bytes",
+              "u64"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LPPosition",
+      "fields": [
+        {
+          "doc": "",
+          "name": "asset_a_deposited",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "asset_b_deposited",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "last_reward_claim",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "lp_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_fees_earned",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LiquidityPool",
+      "fields": [
+        {
+          "doc": "",
+          "name": "active",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "created_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "fee_rate",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "reserve_a",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "reserve_b",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "total_liquidity",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LiquidityError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "PoolNotFound",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "InsufficientLiquidity",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "InvalidTokens",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "InvalidFeeRate",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "ContractPaused",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "PoolLimitReached",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "InvalidPoolId",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "PositionNotFound",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "NumericOverflow",
+          "value": 14
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LiquidityConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "default_fee_rate",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "emergency_pause",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "max_pools",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "min_liquidity",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "rewards_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "staking_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "treasury_address",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FeesCollectedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_fees",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "LiquidityPool"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolRegisteredEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "creator",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GlobalLiquidityStats",
+      "fields": [
+        {
+          "doc": "",
+          "name": "last_update",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "total_fees_collected",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_lp_providers",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "total_pools",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "total_value_locked",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_config",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "LiquidityConfig"
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "LiquidityError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "staking_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "rewards_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "treasury_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "min_liquidity",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "default_fee_rate",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "max_pools",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "LiquidityError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "toggle_pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "active",
+          "type_": "bool"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "LiquidityError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "LiquidityRecordedEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount_a",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_b",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "lp_tokens",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "register_pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "token_a",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_b",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "initial_a",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "initial_b",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "fee_rate",
+          "type_": {
+            "option": {
+              "value_type": "i128"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "LiquidityError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_daily_fees",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "day",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_pool_count",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user_pools",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "bytes"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_global_stats",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "GlobalLiquidityStats"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_emergency_pause",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "paused",
+          "type_": "bool"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "LiquidityError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user_lp_position",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "LPPosition"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_pool_fee_rate",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "new_fee_rate",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "LiquidityError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "record_fees_collected",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "total_fees",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "LiquidityError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "calculate_user_fee_share",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": {
+              "udt": {
+                "name": "LiquidityError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "record_liquidity_removal",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "lp_tokens_burned",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_a_returned",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_b_returned",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "LiquidityError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "record_liquidity_addition",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "amount_a",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount_b",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "lp_tokens_minted",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "LiquidityError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+]

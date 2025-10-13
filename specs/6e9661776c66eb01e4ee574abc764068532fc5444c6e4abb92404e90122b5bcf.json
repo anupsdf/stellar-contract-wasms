@@ -1,0 +1,68 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StakeType",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Standard"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Compound"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Governance"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Liquidity"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RewardPoolType",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Staking"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Liquidity"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Governance"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Bonus"
+          }
+        }
+      ]
+    }
+  }
+]
