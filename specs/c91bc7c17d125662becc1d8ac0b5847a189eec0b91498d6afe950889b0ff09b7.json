@@ -1,0 +1,796 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Treasury"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "HitzToken"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "XlmToken"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "BaseFee"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "EmissionStartTs"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "EmissionIntervalSec"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "EmissionEpoch0UnitReward"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "OraclePrice"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "OracleLastUpdate"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Entry",
+            "type_": [
+              "string"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Stake",
+            "type_": [
+              {
+                "tuple": {
+                  "value_types": [
+                    "string",
+                    "address"
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "StakeTotal",
+            "type_": [
+              "string"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "RewardPool",
+            "type_": [
+              "string"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Claimed",
+            "type_": [
+              {
+                "tuple": {
+                  "value_types": [
+                    "string",
+                    "address"
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "EntryAt",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "EntryCount"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TotalMinted"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "BatchDistTotalEscrow"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "BatchDistHitzAmount"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Entry",
+      "fields": [
+        {
+          "doc": "",
+          "name": "created_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "escrow_xlm",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "tvl_xlm",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Upgrade core contract to new WASM code (admin-only)\\nNote: Named `upgrade_core` to avoid export name collision with token's `upgrade`.",
+      "name": "upgrade_core",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Reset instance storage (admin-only)\\n\\nCRITICAL: This clears instance configuration. Contract will be unusable until re-initialized.\\nUse with extreme caution during upgrades only when you need to change core parameters.\\n\\nClears: Admin, Treasury, HitzToken, XlmToken, BaseFee, Oracle settings, Emission settings\\nPreserves: Persistent data (entries, stakes, rewards, TotalMinted, EntryCount)\\n\\nAfter calling this, you MUST call init() again to restore functionality.",
+      "name": "reset_instance",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Admin-only: remove entries in chunks to stay under footprint limits.\\nRemoves entries at indexes [start, start+limit) using EntryAt(i).",
+      "name": "reset_entries_chunk",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "start",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "limit",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Helper to introspect entry count before chunking.",
+      "name": "entry_count",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Admin-only: remove one entry by its position (EntryAt(i)) and related keys.",
+      "name": "reset_entry_by_pos",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "i",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initialize the contract (one-time only)\\n\\n# Arguments\\n* `admin` - Admin address with privileged rights\\n* `treasury` - Treasury address receiving all XLM fees (also the oracle updater)\\n* `hitz_token` - HITZ token contract address (OpenZeppelin token)\\n* `xlm_token` - XLM token contract address (SAC)\\n* `base_fee` - Base fee per difficulty unit in stroops (default 100,000 = 0.01 XLM)",
+      "name": "init",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "treasury",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "hitz_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "xlm_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "base_fee",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Update base fee (admin-only)\\n\\n# Arguments\\n* `new_base_fee` - New base fee per difficulty unit in stroops (e.g., 100,000 = 0.01 XLM)",
+      "name": "set_base_fee",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_base_fee",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Transfer all contract XLM balance to treasury (admin-only)\\n\\nUsed to recover XLM that may be locked in the contract after upgrade/reset.\\nTransfers the entire XLM balance of the contract to the treasury address.\\n\\n# Returns\\nThe amount of XLM transferred in stroops",
+      "name": "withdraw_xlm_to_treasury",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Update oracle price (treasury-only)\\n\\nTreasury bot calls this after fetching current market price from DEX.\\nThis price is used for dynamic emission rate calculations.\\n\\n# Arguments\\n* `caller` - Treasury address (must be the configured Treasury)\\n* `new_price` - New HITZ/XLM price in stroops (e.g., 100,000 = 0.01 XLM per HITZ)",
+      "name": "update_oracle_price",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_price",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get oracle data (price and last update timestamp)\\n\\nReturns (price_in_stroops, last_update_timestamp)",
+      "name": "get_oracle_data",
+      "inputs": [],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "i128",
+              "u64"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get current base fee",
+      "name": "get_base_fee",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get total HITZ supply minted so far\\nReturns the total amount of HITZ tokens minted by this contract in stroops",
+      "name": "get_total_supply",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get remaining HITZ tokens that can be minted\\nReturns the amount of HITZ remaining before hitting the 21M cap, in stroops",
+      "name": "get_remaining_supply",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Create a new entry (admin-only)\\nSECURITY: Limited to MAX_ENTRIES to prevent DOS",
+      "name": "create_entry",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "entry_id",
+          "type_": "string"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Record a user action (main entrypoint)\\n\\nHandles fee transfer, reward calculation, and optional auto-staking\\nFor invest action, amount_xlm specifies the investment (min 0.3 XLM), ignored for other actions",
+      "name": "record_action",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "entry_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "kind",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "amount_xlm",
+          "type_": {
+            "option": {
+              "value_type": "i128"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get entry data",
+      "name": "get_entry",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "entry_id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "Entry"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "List entry IDs with pagination",
+      "name": "list_entries",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "start",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "limit",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "string"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get user's stake for an entry",
+      "name": "get_stake",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "entry_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get total stake for an entry",
+      "name": "get_stake_total",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "entry_id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Contract version\\nDistribute HITZ rewards proportionally based on escrow performance\\n\\nTreasury bot calls this after buying HITZ with accumulated XLM fees.\\nContract automatically distributes to entries based on their escrow_xlm.\\n\\n# Arguments\\n* `caller` - Treasury address that holds the HITZ\\n* `hitz_amount` - Total HITZ to distribute across all entries\\n\\n# Performance\\nOptimized to single loop - O(n) where n = number of entries\\nSECURITY: Limited to 1000 entries to prevent DOS",
+      "name": "distribute_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "hitz_amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Distribute HITZ rewards in batches to handle large entry counts\\n\\nThis function processes entries in batches to stay within Stellar's\\n100 storage entry footprint limit per transaction.\\n\\n# Arguments\\n* `caller` - Treasury address that holds the HITZ\\n* `hitz_amount` - Total HITZ to distribute (only needed on first batch)\\n* `start_index` - Starting entry index for this batch\\n* `batch_size` - Number of entries to process in this batch (max 20)\\n\\n# Returns\\n* `u32` - Next start_index to use, or entry_count if complete\\n\\n# Usage\\n1. First call: start_index=0, hitz_amount=total, batch_size=20\\n2. Subsequent calls: start_index=returned_value, hitz_amount=0, batch_size=20\\n3. Continue until returned value >= total entry count",
+      "name": "distribute_rewards_batch",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "hitz_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "start_index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "batch_size",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Allocate HITZ rewards to a specific entry's reward pool\\n\\nAdmin-only function for manual reward allocation (e.g., promotions, bonuses)",
+      "name": "allocate_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "entry_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "hitz_amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Batch allocate rewards to multiple entries\\n\\nAdmin-only function for manual batch allocation (e.g., campaigns, airdrops)",
+      "name": "batch_allocate_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "entry_ids",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "amounts",
+          "type_": {
+            "vec": {
+              "element_type": "i128"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Claim HITZ rewards from an entry's reward pool\\n\\nStakers receive rewards proportional to their stake\\nFormula: claimable = (reward_pool \\xc3\\x97 user_stake) / total_stake - already_claimed",
+      "name": "claim_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "entry_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "claimer",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Unstake HITZ tokens from an entry\\n\\nAllows users to withdraw their staked HITZ back to their wallet.\\nUser loses their stake percentage and future rewards from this entry.\\n\\n# Arguments\\n* `entry_id` - The entry to unstake from\\n* `caller` - The user unstaking (must have stake)\\n* `amount` - Amount of HITZ to unstake (in stroops)\\n\\n# Returns\\nAmount unstaked\\n\\n# Panics\\n- If user has no stake\\n- If amount exceeds user's stake\\n- If amount <= 0",
+      "name": "unstake",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "entry_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get claimable HITZ rewards for a user",
+      "name": "get_claimable_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "entry_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get reward pool size for an entry",
+      "name": "get_reward_pool",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "entry_id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Calculate APR for an entry based on HITZ rewards\\n\\nAPR = ((reward_pool / total_stake) / days_since_creation) \\xc3\\x97 365 \\xc3\\x97 100\\nReturns APR as basis points (1% = 100, 10% = 1000)",
+      "name": "calculate_apr",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "entry_id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get comprehensive entry statistics for ranking\\n\\nReturns: (tvl_xlm, escrow_xlm, total_stake_hitz, reward_pool_hitz, apr_basis_points)",
+      "name": "get_entry_stats",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "entry_id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "i128",
+              "i128",
+              "i128",
+              "i128",
+              "i128"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "version",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Merge one entry into another (admin-only).\\nAll escrow, TVL, reward pool, and stakes move from `from_id` to `into_id`.\\nThe `from_id` entry is removed from storage and index.\\n\\nFor stake migration:\\n- If `stakers` list is provided: migrates those users' stakes from from_id to into_id\\n- If `stakers` is empty: only moves totals (admin must ensure no orphaned stakes)\\n\\nNote: We cannot iterate all stakers (no index), so admin must provide the list.\\nUse off-chain indexing or events to track stakers.",
+      "name": "merge_entries",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "from_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "into_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "stakers",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Remove an entry completely (admin-only).\\n\\nIf `stakers` list is provided:\\n- Returns all stakes to those users\\n- Verifies returned stakes match total\\n- Then removes entry\\n\\nIf `stakers` is empty:\\n- Removes entry only if total stake is 0\\n- Otherwise panics (admin must provide staker list)\\n\\nNote: We cannot iterate all stakers (no index), so admin must provide the list.\\nUse off-chain indexing or events to track stakers.",
+      "name": "remove_entry",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "entry_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "stakers",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  }
+]
