@@ -58,6 +58,8 @@ jobs:
   get-contracts:
     runs-on: ubuntu-latest
     needs: list-buckets
+    outputs:
+      commit-sha: ${{ steps.commit.outputs.commit-sha }}
     steps:
       - uses: actions/checkout@v4
       - run: rustup upgrade
