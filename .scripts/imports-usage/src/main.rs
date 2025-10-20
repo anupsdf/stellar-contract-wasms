@@ -40,17 +40,23 @@ fn main() -> Result<(), Box<dyn Error>> {
     // First output: unique list of all values
     let unique_imports: Vec<String> = all_imports.iter().cloned().collect();
     let unique_json = serde_json::to_string_pretty(&unique_imports)?;
-    fs::write(Path::new(output_dir).join("unique_imports.json"), unique_json)?;
+    fs::write(Path::new(output_dir).join("host-functions-imported.json"), unique_json)?;
 
     // Fetch env.json
     let env_url = "https://raw.githubusercontent.com/stellar/rs-soroban-env/main/soroban-env-common/env.json";
     let env_response = reqwest::blocking::get(env_url)?;
     let env_json: serde_json::Value = env_response.json()?;
     let mut env_functions = HashSet::new();
-    if let Some(array) = env_json.as_array() {
-        for item in array {
-            if let Some(name) = item.as_str() {
-                env_functions.insert(name.to_string());
+    
+    // Parse the nested structure: modules -> functions -> name
+    if let Some(modules) = env_json.get("modules").and_then(|m| m.as_array()) {
+        for module in modules {
+            if let Some(functions) = module.get("functions").and_then(|f| f.as_array()) {
+                for function in functions {
+                    if let Some(name) = function.get("name").and_then(|n| n.as_str()) {
+                        env_functions.insert(name.to_string());
+                    }
+                }
             }
         }
     }
@@ -58,7 +64,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     // Second output: env functions not in imports
     let missing: Vec<String> = env_functions.difference(&all_imports.into_iter().collect()).cloned().collect();
     let missing_json = serde_json::to_string_pretty(&missing)?;
-    fs::write(Path::new(output_dir).join("missing_env_functions.json"), missing_json)?;
+    fs::write(Path::new(output_dir).join("host-functions-not-imported.json"), missing_json)?;
 
     Ok(())
 }
