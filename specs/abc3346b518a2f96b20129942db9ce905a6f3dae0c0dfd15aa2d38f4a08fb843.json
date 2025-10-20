@@ -1,0 +1,175 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DummyPart",
+      "fields": [
+        {
+          "doc": "",
+          "name": "a1",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "a2",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "a3",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "a4",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "b16",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "b32",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "flag",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Simule une \\xc3\\xa9criture de ~520 octets en stockage persistent.",
+      "name": "create_dummy_part",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "uuid",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "a1",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "a2",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "a3",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "a4",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "flag",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "b32",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "b16",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Lecture de la donn\\xc3\\xa9e pour v\\xc3\\xa9rifier le rent r\\xc3\\xa9el.",
+      "name": "read_dummy_part",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "uuid",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "DummyPart"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+]

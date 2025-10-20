@@ -294,5 +294,5 @@ f76f09521d8e85d357b09a0a051253d9fd68ea0009990f27f82aa35d1707f838,2,get_config in
 f9ee01066578bb3c379142bc3f2784e0fb804ac3a55cd1ef98cfe21237213438,2,add_operation sum sub mul div last_op get_op all_op
 fbeac541c04c8f73b7992ae8ddf08b1056beb90ca9e74b23d0ecd54282f26064,2,init update_contract swap withdraw
 fde84527fba3c2ce4979ba34dcbce62802ffc7a04e1e1da6d97ac548411b8cc8,2,swap_exact_soroswap setup_soroswap_id get_pair_router_soroswap get_soroswap_id upgrade
-Total specs,1585,
-Unique specs,800,
+Total specs,1586,
+Unique specs,801,
