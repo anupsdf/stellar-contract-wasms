@@ -2,20 +2,19 @@
 
 This repository does a daily download of contracts deployed to the Stellar Mainnet.
 
-Find contracts in the `contracts/` directory. Contracts are named `<wasm-hash>.wasm`.
+It also generates a docs website about all the contracts at:
+- https://leighmcculloch.github.io/stellar-contract-wasms/
 
-Find contract specs in the `specs/` directory. Specs are named `<wasm-hash>.json`.
+## What's Here
 
-Find contract metadata in the `meta/` directory. Metadata is named `<wasm-hash>.json`.
+- [`contracts/`](./contracts) - contracts are named `<wasm-hash>.wasm`
 
-Find some analysis of the contracts in the `analysis/` directory.
+- [`specs/`](./specs) - specs from contracts
 
-## Contract Wiki
+- [`meta/`](./meta) - meta from contracts
 
-Generate a static website documenting all contracts:
+- [`imports/`](./imports) - host functions imported by contracts
 
-```bash
-make wiki
-```
+- [`wat/`](./wat) – wasm text (wat) of each contract
 
-This creates a wiki in the `dist/` directory with pages for each contract showing its metadata and specification rendered as Rust code.
+- [`analysis/`](./analysis) – summary data about a variety of things to do with the contracts
