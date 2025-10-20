@@ -1,0 +1,17 @@
+(module
+  (type (;0;) (func (result i64)))
+  (type (;1;) (func))
+  (memory (;0;) 16)
+  (global (;0;) (mut i32) i32.const 1048576)
+  (global (;1;) i32 i32.const 1048576)
+  (global (;2;) i32 i32.const 1048576)
+  (export "memory" (memory 0))
+  (export "increment" (func 0))
+  (func (;0;) (type 0) (result i64)
+    i64.const 244813135876
+  )
+  (func (;1;) (type 1))
+  (@custom "contractspecv0" (after code) "\00\00\00\00\00\00\00\00\00\00\00\09increment\00\00\00\00\00\00\00\00\00\00\01\00\00\00\04")
+  (@custom "contractenvmetav0" (after code) "\00\00\00\00\00\00\00\14\00\00\00\00")
+  (@custom "contractmetav0" (after code) "\00\00\00\00\00\00\00\05rsver\00\00\00\00\00\00\061.74.1\00\00\00\00\00\00\00\00\00\08rssdkver\00\00\00/20.3.2#1d7f9bd8030f69070634bfb07394339824ceb399\00")
+)

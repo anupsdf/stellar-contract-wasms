@@ -266,6 +266,10 @@ jobs:
           ${{ needs.list-buckets.outputs.bucket20 }}
           ${{ needs.list-buckets.outputs.bucket21 }}
 
+      - name: Run wat
+        run: >
+          cargo run --locked --release --manifest-path .scripts/wat/Cargo.toml contracts/ wat/
+
       - name: Run extract-specs
         run: >
           cargo run --locked --release --manifest-path .scripts/extract-specs/Cargo.toml contracts/ specs/
@@ -296,6 +300,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git add analysis/
           git add contracts/
+          git add wat/
           git add meta/
           git add specs/
           git commit -m "Update contracts from buckets" || echo "No changes to commit"
