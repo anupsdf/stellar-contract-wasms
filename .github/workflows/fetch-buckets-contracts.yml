@@ -332,9 +332,9 @@ jobs:
           --spec-dir specs
           --wat-dir wat
           --imports-dir imports
-          --output-dir wiki
+          --output-dir docs
       - id: deployment
         uses: actions/deploy-pages@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          folder: wiki
+          folder: docs
