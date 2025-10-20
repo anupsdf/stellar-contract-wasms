@@ -319,14 +319,8 @@ jobs:
           git push
           echo "commit-sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
 
-  deploy:
+  generate-docs:
     needs: get-contracts
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -336,14 +330,32 @@ jobs:
       - uses: stellar/actions/rust-cache@main
       - name: Run wikigen
         run: >
-          cargo run --locked --release --manifest-path .scripts/wikigen/Cargo.toml -- 
+          cargo run --locked --release --manifest-path .scripts/wikigen/Cargo.toml --
           --contracts-dir contracts
           --meta-dir meta
           --spec-dir specs
           --wat-dir wat
           --imports-dir imports
           --output-dir docs
+      - name: Run imports-usage
+        run: >
+          cargo run --locked --release --manifest-path .scripts/imports-usage/Cargo.toml --
+          imports
+          analysis
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
 
+  deploy:
+    needs: [get-contracts, generate-docs]
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - id: deployment
         uses: actions/deploy-pages@v4
         with:
