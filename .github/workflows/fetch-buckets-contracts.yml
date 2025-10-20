@@ -311,6 +311,19 @@ jobs:
           git commit -m "Update contracts from buckets" || echo "No changes to commit"
           git push
 
+  deploy:
+    needs: get-contracts
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: rustup upgrade
+      - uses: stellar/actions/rust-cache@main
       - name: Run wikigen
         run: >
           cargo run --locked --release --manifest-path .scripts/wikigen/Cargo.toml -- 
@@ -320,8 +333,7 @@ jobs:
           --wat-dir wat
           --imports-dir imports
           --output-dir wiki
-
-      - name: Deploy to GitHub Pages
+      - id: deployment
         uses: actions/deploy-pages@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
