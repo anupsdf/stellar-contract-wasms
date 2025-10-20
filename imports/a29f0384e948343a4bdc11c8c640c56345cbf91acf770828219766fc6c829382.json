@@ -1,0 +1,7 @@
+[
+  "bytes_len",
+  "call",
+  "obj_cmp",
+  "vec_new",
+  "vec_new_from_linear_memory"
+]

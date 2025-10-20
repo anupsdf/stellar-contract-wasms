@@ -1,0 +1,5 @@
+[
+  "get_contract_data",
+  "has_contract_data",
+  "put_contract_data"
+]

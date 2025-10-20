@@ -1,0 +1,17 @@
+[
+  "bytes_copy_to_linear_memory",
+  "bytes_len",
+  "bytes_new_from_linear_memory",
+  "bytes_slice",
+  "call",
+  "compute_hash_keccak256",
+  "extend_current_contract_instance_and_code_ttl",
+  "obj_from_i128_pieces",
+  "obj_from_u64",
+  "obj_to_i128_hi64",
+  "obj_to_i128_lo64",
+  "obj_to_u64",
+  "require_auth",
+  "serialize_to_bytes",
+  "vec_new_from_linear_memory"
+]

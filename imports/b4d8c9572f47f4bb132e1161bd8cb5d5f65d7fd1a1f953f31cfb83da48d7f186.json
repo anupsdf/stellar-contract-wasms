@@ -1,0 +1,15 @@
+[
+  "call",
+  "fail_with_error",
+  "obj_cmp",
+  "obj_to_i128_hi64",
+  "obj_to_i128_lo64",
+  "obj_to_i64",
+  "obj_to_u128_hi64",
+  "obj_to_u128_lo64",
+  "obj_to_u64",
+  "require_auth",
+  "vec_get",
+  "vec_len",
+  "vec_unpack_to_linear_memory"
+]

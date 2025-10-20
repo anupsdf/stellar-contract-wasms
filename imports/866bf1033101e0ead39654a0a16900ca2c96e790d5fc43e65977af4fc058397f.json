@@ -1,0 +1,9 @@
+[
+  "call",
+  "require_auth",
+  "vec_get",
+  "vec_len",
+  "vec_new",
+  "vec_push_back",
+  "vec_unpack_to_linear_memory"
+]

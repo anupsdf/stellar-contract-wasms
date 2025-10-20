@@ -1,0 +1,21 @@
+[
+  "bytes_front",
+  "bytes_len",
+  "bytes_new_from_linear_memory",
+  "bytes_slice",
+  "extend_current_contract_instance_and_code_ttl",
+  "fail_with_error",
+  "get_contract_data",
+  "has_contract_data",
+  "map_get",
+  "map_has",
+  "map_new",
+  "map_put",
+  "obj_cmp",
+  "put_contract_data",
+  "require_auth",
+  "vec_get",
+  "vec_len",
+  "vec_new",
+  "vec_push_back"
+]

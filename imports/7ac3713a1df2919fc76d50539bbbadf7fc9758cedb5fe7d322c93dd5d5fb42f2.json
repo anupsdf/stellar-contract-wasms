@@ -1,0 +1,17 @@
+[
+  "bytes_copy_from_linear_memory",
+  "bytes_copy_to_linear_memory",
+  "bytes_get",
+  "bytes_len",
+  "compute_hash_sha256",
+  "extend_current_contract_instance_and_code_ttl",
+  "fail_with_error",
+  "get_contract_data",
+  "has_contract_data",
+  "map_unpack_to_linear_memory",
+  "put_contract_data",
+  "require_auth",
+  "symbol_new_from_linear_memory",
+  "vec_new_from_linear_memory",
+  "verify_sig_ecdsa_secp256r1"
+]

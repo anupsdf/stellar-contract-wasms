@@ -1,0 +1,12 @@
+[
+  "call",
+  "obj_from_i128_pieces",
+  "obj_to_i128_hi64",
+  "obj_to_i128_lo64",
+  "require_auth",
+  "symbol_index_in_linear_memory",
+  "symbol_new_from_linear_memory",
+  "vec_get",
+  "vec_len",
+  "vec_new_from_linear_memory"
+]

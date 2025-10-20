@@ -1,0 +1,17 @@
+[
+  "call",
+  "get_contract_data",
+  "has_contract_data",
+  "map_key_by_pos",
+  "map_len",
+  "map_unpack_to_linear_memory",
+  "map_val_by_pos",
+  "obj_from_i128_pieces",
+  "obj_to_i128_hi64",
+  "obj_to_i128_lo64",
+  "put_contract_data",
+  "symbol_new_from_linear_memory",
+  "vec_new",
+  "vec_new_from_linear_memory",
+  "vec_push_back"
+]

@@ -1,0 +1,21 @@
+[
+  "bytes_len",
+  "call",
+  "compute_hash_sha256",
+  "create_contract",
+  "del_contract_data",
+  "extend_contract_code_ttl",
+  "extend_contract_data_ttl",
+  "extend_contract_instance_and_code_ttl",
+  "extend_contract_instance_ttl",
+  "extend_current_contract_instance_and_code_ttl",
+  "get_contract_data",
+  "get_current_contract_address",
+  "get_ledger_sequence",
+  "get_max_live_until_ledger",
+  "has_contract_data",
+  "obj_cmp",
+  "put_contract_data",
+  "require_auth",
+  "vec_new_from_linear_memory"
+]

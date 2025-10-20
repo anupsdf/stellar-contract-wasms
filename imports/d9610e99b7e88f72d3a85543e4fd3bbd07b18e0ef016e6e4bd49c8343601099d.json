@@ -1,0 +1,15 @@
+[
+  "contract_event",
+  "get_contract_data",
+  "has_contract_data",
+  "map_new_from_linear_memory",
+  "map_unpack_to_linear_memory",
+  "obj_from_i128_pieces",
+  "obj_to_i128_hi64",
+  "obj_to_i128_lo64",
+  "put_contract_data",
+  "require_auth",
+  "string_new_from_linear_memory",
+  "symbol_new_from_linear_memory",
+  "vec_new_from_linear_memory"
+]

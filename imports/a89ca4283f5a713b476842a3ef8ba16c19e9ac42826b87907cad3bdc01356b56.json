@@ -1,0 +1,23 @@
+[
+  "call",
+  "extend_contract_data_ttl",
+  "extend_current_contract_instance_and_code_ttl",
+  "fail_with_error",
+  "get_contract_data",
+  "get_current_contract_address",
+  "get_ledger_timestamp",
+  "has_contract_data",
+  "map_unpack_to_linear_memory",
+  "obj_from_i128_pieces",
+  "obj_from_u64",
+  "obj_to_i128_hi64",
+  "obj_to_i128_lo64",
+  "obj_to_u64",
+  "put_contract_data",
+  "require_auth",
+  "symbol_new_from_linear_memory",
+  "vec_back",
+  "vec_get",
+  "vec_len",
+  "vec_new_from_linear_memory"
+]

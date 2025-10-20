@@ -1,0 +1,7 @@
+[
+  "contract_event",
+  "get_contract_data",
+  "has_contract_data",
+  "put_contract_data",
+  "vec_new_from_linear_memory"
+]

@@ -1,0 +1,8 @@
+[
+  "get_contract_data",
+  "has_contract_data",
+  "obj_from_i128_pieces",
+  "obj_to_i128_hi64",
+  "obj_to_i128_lo64",
+  "put_contract_data"
+]

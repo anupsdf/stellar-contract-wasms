@@ -1,0 +1,6 @@
+[
+  "get_contract_data",
+  "has_contract_data",
+  "log_from_linear_memory",
+  "put_contract_data"
+]

@@ -1,0 +1,23 @@
+[
+  "authorize_as_curr_contract",
+  "bytes_len",
+  "call",
+  "get_current_contract_address",
+  "map_new_from_linear_memory",
+  "map_unpack_to_linear_memory",
+  "obj_from_i128_pieces",
+  "obj_from_u128_pieces",
+  "obj_to_i128_hi64",
+  "obj_to_i128_lo64",
+  "obj_to_u128_hi64",
+  "obj_to_u128_lo64",
+  "require_auth",
+  "symbol_index_in_linear_memory",
+  "symbol_new_from_linear_memory",
+  "vec_get",
+  "vec_len",
+  "vec_new",
+  "vec_new_from_linear_memory",
+  "vec_push_back",
+  "vec_unpack_to_linear_memory"
+]

@@ -1,0 +1,6 @@
+[
+  "has_contract_data",
+  "put_contract_data",
+  "string_new_from_linear_memory",
+  "vec_new_from_linear_memory"
+]

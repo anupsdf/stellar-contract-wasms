@@ -1,0 +1,23 @@
+[
+  "bytes_len",
+  "contract_event",
+  "del_contract_data",
+  "extend_contract_data_ttl",
+  "extend_current_contract_instance_and_code_ttl",
+  "fail_with_error",
+  "get_contract_data",
+  "get_ledger_sequence",
+  "has_contract_data",
+  "map_new_from_linear_memory",
+  "map_unpack_to_linear_memory",
+  "obj_from_i128_pieces",
+  "obj_to_i128_hi64",
+  "obj_to_i128_lo64",
+  "put_contract_data",
+  "require_auth",
+  "string_new_from_linear_memory",
+  "symbol_new_from_linear_memory",
+  "update_current_contract_wasm",
+  "vec_new",
+  "vec_new_from_linear_memory"
+]

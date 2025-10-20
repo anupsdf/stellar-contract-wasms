@@ -1,0 +1,10 @@
+[
+  "call",
+  "map_new_from_linear_memory",
+  "map_unpack_to_linear_memory",
+  "obj_from_u64",
+  "obj_to_u64",
+  "string_new_from_linear_memory",
+  "strkey_to_address",
+  "vec_new_from_linear_memory"
+]

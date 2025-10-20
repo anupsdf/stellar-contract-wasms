@@ -1,0 +1,12 @@
+[
+  "bytes_len",
+  "call",
+  "extend_current_contract_instance_and_code_ttl",
+  "obj_from_i128_pieces",
+  "obj_from_u64",
+  "obj_to_i128_hi64",
+  "obj_to_i128_lo64",
+  "obj_to_u64",
+  "require_auth",
+  "vec_new_from_linear_memory"
+]

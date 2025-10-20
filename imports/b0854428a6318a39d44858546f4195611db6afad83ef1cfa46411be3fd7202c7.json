@@ -1,0 +1,9 @@
+[
+  "bytes_len",
+  "call",
+  "create_contract",
+  "get_current_contract_address",
+  "obj_cmp",
+  "require_auth",
+  "vec_new_from_linear_memory"
+]

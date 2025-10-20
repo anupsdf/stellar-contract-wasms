@@ -1,0 +1,9 @@
+[
+  "contract_event",
+  "fail_with_error",
+  "get_contract_data",
+  "has_contract_data",
+  "put_contract_data",
+  "vec_new",
+  "vec_push_back"
+]

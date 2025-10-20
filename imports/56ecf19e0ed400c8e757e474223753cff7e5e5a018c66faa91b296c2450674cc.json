@@ -1,0 +1,5 @@
+[
+  "contract_event",
+  "symbol_new_from_linear_memory",
+  "vec_new_from_linear_memory"
+]

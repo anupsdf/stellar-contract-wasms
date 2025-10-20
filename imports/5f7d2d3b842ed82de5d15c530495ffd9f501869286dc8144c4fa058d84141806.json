@@ -1,0 +1,18 @@
+[
+  "call",
+  "contract_event",
+  "get_contract_data",
+  "has_contract_data",
+  "map_new_from_linear_memory",
+  "map_unpack_to_linear_memory",
+  "obj_from_i128_pieces",
+  "obj_from_u64",
+  "obj_to_i128_hi64",
+  "obj_to_i128_lo64",
+  "obj_to_u64",
+  "prng_u64_in_inclusive_range",
+  "put_contract_data",
+  "require_auth",
+  "require_auth_for_args",
+  "vec_new_from_linear_memory"
+]

@@ -1,0 +1,19 @@
+[
+  "bytes_copy_to_linear_memory",
+  "bytes_len",
+  "bytes_new_from_linear_memory",
+  "bytes_slice",
+  "compute_hash_keccak256",
+  "del_contract_data",
+  "get_contract_data",
+  "has_contract_data",
+  "put_contract_data",
+  "recover_key_ecdsa_secp256k1",
+  "require_auth",
+  "string_copy_to_linear_memory",
+  "string_len",
+  "string_new_from_linear_memory",
+  "symbol_new_from_linear_memory",
+  "update_current_contract_wasm",
+  "vec_new_from_linear_memory"
+]

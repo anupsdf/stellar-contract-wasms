@@ -1,0 +1,5 @@
+[
+  "log_from_linear_memory",
+  "obj_to_i128_hi64",
+  "obj_to_i128_lo64"
+]

@@ -1,0 +1,12 @@
+[
+  "fail_with_error",
+  "get_contract_data",
+  "get_ledger_timestamp",
+  "has_contract_data",
+  "obj_cmp",
+  "obj_from_u64",
+  "obj_to_u64",
+  "put_contract_data",
+  "require_auth",
+  "vec_new_from_linear_memory"
+]

@@ -1,0 +1,20 @@
+[
+  "bytes_len",
+  "fail_with_error",
+  "get_contract_data",
+  "has_contract_data",
+  "map_del",
+  "map_get",
+  "map_has",
+  "map_keys",
+  "map_len",
+  "map_new",
+  "map_put",
+  "map_unpack_to_linear_memory",
+  "put_contract_data",
+  "require_auth",
+  "string_new_from_linear_memory",
+  "update_current_contract_wasm",
+  "vec_get",
+  "vec_len"
+]

@@ -1,0 +1,11 @@
+[
+  "get_contract_data",
+  "has_contract_data",
+  "map_new_from_linear_memory",
+  "map_unpack_to_linear_memory",
+  "put_contract_data",
+  "vec_get",
+  "vec_len",
+  "vec_new",
+  "vec_push_back"
+]

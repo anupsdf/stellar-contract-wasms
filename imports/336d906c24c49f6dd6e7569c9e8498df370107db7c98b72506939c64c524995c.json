@@ -1,0 +1,22 @@
+[
+  "bytes_append",
+  "bytes_copy_from_linear_memory",
+  "bytes_copy_to_linear_memory",
+  "bytes_len",
+  "bytes_new",
+  "call",
+  "extend_current_contract_instance_and_code_ttl",
+  "get_contract_data",
+  "has_contract_data",
+  "map_new_from_linear_memory",
+  "map_unpack_to_linear_memory",
+  "obj_from_u64",
+  "obj_to_u64",
+  "put_contract_data",
+  "require_auth",
+  "serialize_to_bytes",
+  "string_new_from_linear_memory",
+  "symbol_new_from_linear_memory",
+  "update_current_contract_wasm",
+  "vec_new_from_linear_memory"
+]

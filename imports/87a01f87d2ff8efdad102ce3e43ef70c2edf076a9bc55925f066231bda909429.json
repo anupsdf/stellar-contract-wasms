@@ -1,0 +1,12 @@
+[
+  "bytes_len",
+  "call",
+  "create_asset_contract",
+  "create_contract",
+  "map_new_from_linear_memory",
+  "require_auth",
+  "symbol_new_from_linear_memory",
+  "vec_append",
+  "vec_new",
+  "vec_new_from_linear_memory"
+]

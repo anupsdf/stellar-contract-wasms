@@ -1,0 +1,15 @@
+[
+  "del_contract_data",
+  "get_contract_data",
+  "has_contract_data",
+  "map_new_from_linear_memory",
+  "map_unpack_to_linear_memory",
+  "obj_cmp",
+  "put_contract_data",
+  "require_auth",
+  "vec_del",
+  "vec_get",
+  "vec_len",
+  "vec_new_from_linear_memory",
+  "vec_push_back"
+]

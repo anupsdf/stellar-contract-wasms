@@ -1,0 +1,14 @@
+[
+  "extend_current_contract_instance_and_code_ttl",
+  "get_contract_data",
+  "has_contract_data",
+  "map_get",
+  "map_has",
+  "map_len",
+  "map_new",
+  "map_new_from_linear_memory",
+  "map_put",
+  "map_unpack_to_linear_memory",
+  "map_values",
+  "put_contract_data"
+]

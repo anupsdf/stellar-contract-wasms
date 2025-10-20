@@ -1,0 +1,8 @@
+[
+  "call",
+  "obj_from_u64",
+  "obj_to_u64",
+  "string_new_from_linear_memory",
+  "strkey_to_address",
+  "vec_new"
+]

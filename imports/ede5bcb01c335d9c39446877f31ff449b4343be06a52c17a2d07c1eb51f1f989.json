@@ -1,0 +1,8 @@
+[
+  "call",
+  "obj_from_i128_pieces",
+  "require_auth",
+  "string_new_from_linear_memory",
+  "strkey_to_address",
+  "vec_new_from_linear_memory"
+]

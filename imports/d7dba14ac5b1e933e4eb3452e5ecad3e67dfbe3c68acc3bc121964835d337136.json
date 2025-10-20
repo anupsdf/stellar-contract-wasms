@@ -1,0 +1,19 @@
+[
+  "call",
+  "get_contract_data",
+  "get_current_contract_address",
+  "has_contract_data",
+  "obj_from_i128_pieces",
+  "obj_to_i128_hi64",
+  "obj_to_i128_lo64",
+  "obj_to_u128_hi64",
+  "obj_to_u128_lo64",
+  "put_contract_data",
+  "require_auth",
+  "symbol_new_from_linear_memory",
+  "vec_get",
+  "vec_len",
+  "vec_new",
+  "vec_new_from_linear_memory",
+  "vec_push_back"
+]

@@ -1,0 +1,17 @@
+[
+  "call",
+  "del_contract_data",
+  "get_contract_data",
+  "get_current_contract_address",
+  "get_ledger_timestamp",
+  "has_contract_data",
+  "obj_from_i128_pieces",
+  "obj_from_u64",
+  "obj_to_i128_hi64",
+  "obj_to_i128_lo64",
+  "obj_to_u64",
+  "put_contract_data",
+  "symbol_new_from_linear_memory",
+  "vec_new_from_linear_memory",
+  "vec_unpack_to_linear_memory"
+]

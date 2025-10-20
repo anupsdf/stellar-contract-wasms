@@ -1,0 +1,8 @@
+[
+  "bytes_len",
+  "create_contract",
+  "get_current_contract_address",
+  "obj_cmp",
+  "require_auth",
+  "upload_wasm"
+]

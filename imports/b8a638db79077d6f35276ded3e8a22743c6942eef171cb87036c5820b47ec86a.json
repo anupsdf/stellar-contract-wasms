@@ -1,0 +1,5 @@
+[
+  "call",
+  "require_auth",
+  "vec_new_from_linear_memory"
+]

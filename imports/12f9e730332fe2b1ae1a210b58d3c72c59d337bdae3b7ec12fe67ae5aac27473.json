@@ -1,0 +1,22 @@
+[
+  "bytes_len",
+  "extend_current_contract_instance_and_code_ttl",
+  "fail_with_error",
+  "get_contract_data",
+  "get_ledger_sequence",
+  "get_max_live_until_ledger",
+  "has_contract_data",
+  "obj_from_i128_pieces",
+  "obj_from_u64",
+  "obj_to_i128_hi64",
+  "obj_to_i128_lo64",
+  "obj_to_u64",
+  "put_contract_data",
+  "require_auth",
+  "try_call",
+  "vec_get",
+  "vec_len",
+  "vec_new",
+  "vec_new_from_linear_memory",
+  "vec_push_back"
+]

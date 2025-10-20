@@ -1,0 +1,11 @@
+[
+  "bytes_len",
+  "obj_to_i128_hi64",
+  "obj_to_i128_lo64",
+  "obj_to_u64",
+  "put_contract_data",
+  "require_auth",
+  "symbol_new_from_linear_memory",
+  "update_current_contract_wasm",
+  "vec_new_from_linear_memory"
+]

@@ -1,0 +1,20 @@
+[
+  "bytes_len",
+  "contract_event",
+  "del_contract_data",
+  "extend_contract_data_ttl",
+  "fail_with_error",
+  "get_contract_data",
+  "get_ledger_sequence",
+  "get_max_live_until_ledger",
+  "has_contract_data",
+  "map_new_from_linear_memory",
+  "obj_cmp",
+  "put_contract_data",
+  "require_auth",
+  "symbol_new_from_linear_memory",
+  "update_current_contract_wasm",
+  "vec_get",
+  "vec_len",
+  "vec_new_from_linear_memory"
+]

@@ -1,0 +1,6 @@
+[
+  "address_to_strkey",
+  "require_auth",
+  "string_new_from_linear_memory",
+  "vec_new_from_linear_memory"
+]

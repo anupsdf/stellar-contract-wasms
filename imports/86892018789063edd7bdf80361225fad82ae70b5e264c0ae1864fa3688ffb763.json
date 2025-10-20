@@ -1,0 +1,20 @@
+[
+  "bytes_len",
+  "bytes_new_from_linear_memory",
+  "call",
+  "get_contract_data",
+  "get_current_contract_address",
+  "has_contract_data",
+  "obj_from_i128_pieces",
+  "obj_from_u64",
+  "obj_to_i128_hi64",
+  "obj_to_i128_lo64",
+  "obj_to_u64",
+  "put_contract_data",
+  "require_auth",
+  "require_auth_for_args",
+  "symbol_new_from_linear_memory",
+  "update_current_contract_wasm",
+  "vec_new",
+  "vec_new_from_linear_memory"
+]

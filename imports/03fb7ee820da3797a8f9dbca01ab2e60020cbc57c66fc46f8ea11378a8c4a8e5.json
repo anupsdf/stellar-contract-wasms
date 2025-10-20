@@ -1,0 +1,7 @@
+[
+  "bytes_len",
+  "contract_event",
+  "create_contract_with_constructor",
+  "get_current_contract_address",
+  "vec_new_from_linear_memory"
+]

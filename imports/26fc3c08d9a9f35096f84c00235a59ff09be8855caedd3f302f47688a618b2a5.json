@@ -1,0 +1,6 @@
+[
+  "call",
+  "string_new_from_linear_memory",
+  "strkey_to_address",
+  "vec_new_from_linear_memory"
+]

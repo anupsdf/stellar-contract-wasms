@@ -1,0 +1,9 @@
+[
+  "bytes_len",
+  "get_contract_data",
+  "has_contract_data",
+  "put_contract_data",
+  "symbol_new_from_linear_memory",
+  "vec_new_from_linear_memory",
+  "verify_sig_ed25519"
+]

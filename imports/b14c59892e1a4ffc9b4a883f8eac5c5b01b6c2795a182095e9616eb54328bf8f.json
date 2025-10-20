@@ -1,0 +1,16 @@
+[
+  "bytes_copy_to_linear_memory",
+  "bytes_len",
+  "bytes_new_from_linear_memory",
+  "call",
+  "contract_event",
+  "create_contract_with_constructor",
+  "get_contract_data",
+  "get_current_contract_address",
+  "has_contract_data",
+  "obj_cmp",
+  "put_contract_data",
+  "require_auth",
+  "vec_new",
+  "vec_new_from_linear_memory"
+]

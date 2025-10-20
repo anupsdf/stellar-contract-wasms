@@ -1,0 +1,14 @@
+[
+  "bytes_len",
+  "call",
+  "create_contract",
+  "get_contract_id",
+  "get_current_contract_address",
+  "obj_cmp",
+  "require_auth",
+  "symbol_index_in_linear_memory",
+  "symbol_new_from_linear_memory",
+  "vec_get",
+  "vec_len",
+  "vec_new_from_linear_memory"
+]

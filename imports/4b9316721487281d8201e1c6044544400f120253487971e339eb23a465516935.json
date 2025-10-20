@@ -1,0 +1,6 @@
+[
+  "compute_hash_sha256",
+  "extend_contract_data_ttl",
+  "extend_current_contract_instance_and_code_ttl",
+  "put_contract_data"
+]

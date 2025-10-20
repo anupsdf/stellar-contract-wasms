@@ -1,0 +1,11 @@
+[
+  "call",
+  "extend_current_contract_instance_and_code_ttl",
+  "get_ledger_sequence",
+  "get_max_live_until_ledger",
+  "vec_get",
+  "vec_len",
+  "vec_new",
+  "vec_push_back",
+  "vec_unpack_to_linear_memory"
+]

@@ -270,6 +270,10 @@ jobs:
         run: >
           cargo run --locked --release --manifest-path .scripts/wat/Cargo.toml contracts/ wat/
 
+      - name: Run imports
+        run: >
+          cargo run --locked --release --manifest-path .scripts/extract-imports/Cargo.toml contracts/ imports/
+
       - name: Run extract-specs
         run: >
           cargo run --locked --release --manifest-path .scripts/extract-specs/Cargo.toml contracts/ specs/

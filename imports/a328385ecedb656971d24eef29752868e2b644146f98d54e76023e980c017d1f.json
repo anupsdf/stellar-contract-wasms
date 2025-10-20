@@ -1,0 +1,9 @@
+[
+  "call",
+  "get_current_contract_address",
+  "obj_from_i128_pieces",
+  "obj_to_i128_hi64",
+  "obj_to_i128_lo64",
+  "require_auth_for_args",
+  "vec_new_from_linear_memory"
+]

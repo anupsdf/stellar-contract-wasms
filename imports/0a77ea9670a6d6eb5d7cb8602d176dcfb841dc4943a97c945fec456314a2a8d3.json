@@ -1,0 +1,17 @@
+[
+  "call",
+  "map_new",
+  "map_new_from_linear_memory",
+  "map_put",
+  "map_unpack_to_linear_memory",
+  "obj_from_i128_pieces",
+  "obj_from_u64",
+  "obj_to_i128_hi64",
+  "obj_to_i128_lo64",
+  "obj_to_u64",
+  "symbol_index_in_linear_memory",
+  "symbol_new_from_linear_memory",
+  "vec_get",
+  "vec_len",
+  "vec_new_from_linear_memory"
+]

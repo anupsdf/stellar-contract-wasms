@@ -1,0 +1,12 @@
+[
+  "bytes_len",
+  "call",
+  "create_contract",
+  "extend_current_contract_instance_and_code_ttl",
+  "get_contract_data",
+  "has_contract_data",
+  "put_contract_data",
+  "require_auth",
+  "symbol_new_from_linear_memory",
+  "vec_new_from_linear_memory"
+]

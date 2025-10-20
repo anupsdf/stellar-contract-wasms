@@ -1,0 +1,11 @@
+[
+  "contract_event",
+  "fail_with_error",
+  "get_contract_data",
+  "has_contract_data",
+  "obj_cmp",
+  "put_contract_data",
+  "require_auth",
+  "symbol_new_from_linear_memory",
+  "vec_new_from_linear_memory"
+]

@@ -1,0 +1,9 @@
+[
+  "fail_with_error",
+  "get_contract_data",
+  "has_contract_data",
+  "map_new",
+  "map_put",
+  "put_contract_data",
+  "require_auth"
+]

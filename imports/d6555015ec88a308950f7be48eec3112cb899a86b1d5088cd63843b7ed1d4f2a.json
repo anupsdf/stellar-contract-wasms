@@ -1,0 +1,10 @@
+[
+  "bytes_len",
+  "call",
+  "create_contract",
+  "get_current_contract_address",
+  "map_new_from_linear_memory",
+  "map_unpack_to_linear_memory",
+  "symbol_new_from_linear_memory",
+  "vec_new_from_linear_memory"
+]
