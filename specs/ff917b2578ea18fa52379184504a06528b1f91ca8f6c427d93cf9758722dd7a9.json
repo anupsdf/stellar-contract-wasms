@@ -1,0 +1,652 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "reward_token",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "schedule_rewards_config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "distributor",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "start_at",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "duration",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "tps",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "working_supply",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "checkpoint_user",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "working_balance",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "working_supply",
+          "type_": "u128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "claim",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "working_balance",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "working_supply",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user_reward",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "working_balance",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "working_supply",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_reward_token",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_reward_configs",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "RewardConfig"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_reward_config",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "RewardConfig"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "version",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "contract_name",
+      "inputs": [],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GaugeError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 102
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 201
+        },
+        {
+          "doc": "",
+          "name": "InvalidConfig",
+          "value": 3000
+        },
+        {
+          "doc": "",
+          "name": "ConfigNotExpiredYet",
+          "value": 3001
+        },
+        {
+          "doc": "",
+          "name": "StartNotInFuture",
+          "value": 3002
+        },
+        {
+          "doc": "",
+          "name": "StartTooEarly",
+          "value": 3003
+        },
+        {
+          "doc": "",
+          "name": "TooManyConfigs",
+          "value": 3004
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RewardConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "expired_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "start_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "tps",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GlobalRewardData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "accumulated",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "claimed",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "epoch",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "inv",
+          "type_": "u256"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UserRewardData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "epoch",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "last_inv",
+          "type_": "u256"
+        },
+        {
+          "doc": "",
+          "name": "to_claim",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "MathError",
+      "cases": [
+        {
+          "doc": "MathError: NumberOverflow",
+          "name": "NumberOverflow",
+          "value": 510
+        },
+        {
+          "doc": "MathError: Generic math error",
+          "name": "MathError",
+          "value": 511
+        },
+        {
+          "doc": "MathError: Addition operation caused overflow",
+          "name": "AdditionOverflow",
+          "value": 512
+        },
+        {
+          "doc": "MathError: Subtraction operation caused underflow",
+          "name": "SubtractionUnderflow",
+          "value": 513
+        },
+        {
+          "doc": "MathError: Multiplication operation caused overflow",
+          "name": "MultiplicationOverflow",
+          "value": 514
+        },
+        {
+          "doc": "MathError: Division by zero",
+          "name": "DivisionByZero",
+          "value": 515
+        },
+        {
+          "doc": "MathError: Type conversion overflow",
+          "name": "ConversionOverflow",
+          "value": 516
+        },
+        {
+          "doc": "MathError: Attempted to convert negative value to unsigned type",
+          "name": "NegativeToUnsigned",
+          "value": 517
+        },
+        {
+          "doc": "MathError: Fixed-point arithmetic overflow",
+          "name": "FixedPointOverflow",
+          "value": 518
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OracleError",
+      "cases": [
+        {
+          "doc": "OracleError: OracleNonPositive",
+          "name": "OracleNonPositive",
+          "value": 601
+        },
+        {
+          "doc": "",
+          "name": "OracleTooVolatile",
+          "value": 602
+        },
+        {
+          "doc": "",
+          "name": "OracleStaleForPool",
+          "value": 603
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StorageError",
+      "cases": [
+        {
+          "doc": "StorageError",
+          "name": "AlreadyInitialized",
+          "value": 201
+        },
+        {
+          "doc": "",
+          "name": "ValueNotInitialized",
+          "value": 501
+        },
+        {
+          "doc": "",
+          "name": "ValueMissing",
+          "value": 502
+        },
+        {
+          "doc": "",
+          "name": "ValueConversionError",
+          "value": 503
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ValidationError",
+      "cases": [
+        {
+          "doc": "ValidationError",
+          "name": "InvalidToken",
+          "value": 801
+        },
+        {
+          "doc": "",
+          "name": "InvalidPercentage",
+          "value": 802
+        },
+        {
+          "doc": "",
+          "name": "ZeroAmount",
+          "value": 804
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OraclePriceData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "delay",
+          "type_": {
+            "udt": {
+              "name": "Delay"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "price",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PriceDivergenceGuardRails",
+      "fields": [
+        {
+          "doc": "",
+          "name": "oracle_twap_percent_divergence",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ValidityGuardRails",
+      "fields": [
+        {
+          "doc": "",
+          "name": "seconds_before_stale_for_pool",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "too_volatile_ratio",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OracleGuardRails",
+      "fields": [
+        {
+          "doc": "",
+          "name": "price_divergence",
+          "type_": {
+            "udt": {
+              "name": "PriceDivergenceGuardRails"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "validity",
+          "type_": {
+            "udt": {
+              "name": "ValidityGuardRails"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OracleValidity",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "NonPositive"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TooVolatile"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "StaleForPool"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Frozen"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Valid"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "HistoricalOracleData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "last_price",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "last_price_twap",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "last_update_ts",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Delay",
+      "fields": [
+        {
+          "doc": "",
+          "name": "0",
+          "type_": "u64"
+        }
+      ]
+    }
+  }
+]
