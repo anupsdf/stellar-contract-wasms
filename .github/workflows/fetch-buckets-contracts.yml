@@ -302,7 +302,7 @@ jobs:
 
       - name: Run imports-usage
         run: >
-          cargo run --locked --release --manifest-path .scripts/imports-usage/Cargo.toml imports analysis/imports-usage/
+          cargo run --locked --release --manifest-path .scripts/imports-usage/Cargo.toml imports analysis/
 
       - name: Commit contracts
         id: commit
