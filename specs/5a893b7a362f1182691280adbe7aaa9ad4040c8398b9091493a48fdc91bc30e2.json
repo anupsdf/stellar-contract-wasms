@@ -1,0 +1,251 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InitValuesAlreadySet",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "DeserializationError",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "QuoteExpired",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "InvalidStartTime",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "BuyerIsServer",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "InvalidCurrency",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "RouteQuoteTooLarge",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "InvalidBase64",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "InvalidBase64Length",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "InvalidFeePercentage",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "PriceOverflow",
+          "value": 12
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initialize the contract with owner and token addresses",
+      "name": "init",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "owner_pubkey",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "native_asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "usdc_asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "eurc_asset",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Purchase a nanosubscription using the provided route quote",
+      "name": "buy",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "route_quote",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "route_quote_signature",
+          "type_": {
+            "bytes_n": {
+              "n": 64
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "requested_start_time",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "buyer",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Withdraw accumulated fees to a specified recipient",
+      "name": "withdraw_fees",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "currency",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Update the fee percentage (in basis points)",
+      "name": "update_fee_percentage",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_fee_bps",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ContractError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get current configuration (view function)",
+      "name": "get_config",
+      "inputs": [],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "address",
+              "address",
+              "address",
+              "address",
+              "u32"
+            ]
+          }
+        }
+      ]
+    }
+  }
+]
