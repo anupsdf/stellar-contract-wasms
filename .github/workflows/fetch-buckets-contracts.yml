@@ -300,6 +300,10 @@ jobs:
         run: >
           cargo run --locked --release --manifest-path .scripts/dupe-specs-analysis/Cargo.toml contracts/ > analysis/dupe-specs.csv
 
+      - name: Run imports-usage
+        run: >
+          cargo run --locked --release --manifest-path .scripts/imports-usage/Cargo.toml imports analysis/imports-usage/
+
       - name: Commit contracts
         id: commit
         run: |
@@ -339,6 +343,7 @@ jobs:
           --wat-dir wat
           --imports-dir imports
           --output-dir docs
+
       - id: deployment
         uses: actions/deploy-pages@v4
         with:
