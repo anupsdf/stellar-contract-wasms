@@ -299,6 +299,7 @@ jobs:
           cargo run --locked --release --manifest-path .scripts/dupe-specs-analysis/Cargo.toml contracts/ > analysis/dupe-specs.csv
 
       - name: Commit contracts
+        id: commit
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
@@ -310,6 +311,7 @@ jobs:
           git add imports/
           git commit -m "Update contracts from buckets" || echo "No changes to commit"
           git push
+          echo "commit-sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
 
   deploy:
     needs: get-contracts
@@ -322,6 +324,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.get-contracts.outputs.commit-sha }}
       - run: rustup upgrade
       - uses: stellar/actions/rust-cache@main
       - name: Run wikigen
