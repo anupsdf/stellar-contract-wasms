@@ -58,7 +58,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     // Second output: env functions not in imports
     let missing: Vec<String> = env_functions.difference(&all_imports.into_iter().collect()).cloned().collect();
     let missing_json = serde_json::to_string_pretty(&missing)?;
-    fs::write("missing_env_functions.json", missing_json)?;
+    fs::write(Path::new(output_dir).join("missing_env_functions.json"), missing_json)?;
 
     Ok(())
 }
