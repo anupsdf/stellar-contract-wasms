@@ -309,3 +309,19 @@ jobs:
           git add specs/
           git commit -m "Update contracts from buckets" || echo "No changes to commit"
           git push
+
+      - name: Run wikigen
+        run: >
+          cargo run --locked --release --manifest-path .scripts/wikigen/Cargo.toml -- 
+          --contracts-dir contracts
+          --meta-dir meta
+          --spec-dir specs
+          --wat-dir wat
+          --imports-dir imports
+          --output-dir wiki
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          folder: wiki
