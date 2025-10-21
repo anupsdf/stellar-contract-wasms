@@ -16,6 +16,11 @@
         .imports { background: #f0f8ff; padding: 20px; flex: 1; }
         .imports ul { margin: 0; padding-left: 20px; }
         .imports li { font-family: monospace; margin: 2px 0; }
+        .instances { background: #f8f8f8; padding: 20px; flex: 1; }
+        .instances ul { margin: 0; padding-left: 0; list-style: none; }
+        .instances li { margin: 2px 0; }
+        .instance-address { display: inline-block; background: #e6fffa; color: #234e52; padding: 2px 8px; margin: 2px; border-radius: 3px; font-size: 12px; font-family: monospace; cursor: pointer; transition: background-color 0.2s; }
+        .instance-address:hover { background: #b2f5ea; }
         .spec { background: #f8f8f8; padding: 20px; margin: 20px 0; font-size: 12px; }
         .function { margin-bottom: 30px; }
         .function h3 { font-family: monospace; background: #2d3748; color: #e2e8f0; padding: 10px; border-radius: 5px; margin: 0 0 10px 0; }
@@ -32,8 +37,9 @@
     <h1 class="contract-hash">Contract {{ hash }}</h1>
     <a href="index.html">← Back to Index</a>
 
-    {% if meta %}
+    {% if meta or instances %}
     <div class="meta-container">
+        {% if meta %}
         <div>
             <h2>Meta</h2>
             <div class="meta">
@@ -47,6 +53,19 @@
                 </table>
             </div>
         </div>
+        {% endif %}
+        {% if instances %}
+        <div>
+            <h2>Instances</h2>
+            <div class="instances">
+                <ul>
+                    {% for instance in instances %}
+                    <li><span class="instance-address">{{ instance }}</span></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
     </div>
     {% endif %}
 

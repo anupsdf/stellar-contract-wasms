@@ -362,6 +362,7 @@ dependencies = [
  "hex",
  "human_bytes",
  "reqwest",
+ "serde_json",
  "stellar-xdr",
  "tokio",
 ]

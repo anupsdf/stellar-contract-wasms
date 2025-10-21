@@ -19,4 +19,5 @@ wiki:
 		--spec-dir specs \
 		--wat-dir wat \
 		--imports-dir imports \
+		--instances-dir instances \
 		--output-dir docs

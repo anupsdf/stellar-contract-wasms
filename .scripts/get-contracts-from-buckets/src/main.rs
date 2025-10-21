@@ -1,11 +1,16 @@
 use flate2::read::GzDecoder;
 use human_bytes::human_bytes;
 use reqwest::Client;
+use std::collections::BTreeSet;
 use std::env;
 use std::fs;
 use std::io::Read;
 use std::path::Path;
-use stellar_xdr::curr::{BucketEntry, Frame, LedgerEntryData, Limited, Limits, ReadXdr};
+use stellar_xdr::curr::ContractDataDurability;
+use stellar_xdr::curr::{
+    BucketEntry, ContractDataEntry, ContractExecutable, Frame, Hash, LedgerEntryData, Limited,
+    Limits, ReadXdr, ScContractInstance, ScVal,
+};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -102,8 +107,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 
 fn decode_bucket(data: &[u8]) -> Result<usize, Box<dyn std::error::Error>> {
-    // Create contracts directory if it doesn't exist
+    // Create contracts and instances directory if it doesn't exist
     fs::create_dir_all("contracts")?;
+    fs::create_dir_all("instances")?;
 
     let mut cursor = std::io::Cursor::new(data);
     let mut limited = Limited::new(&mut cursor, Limits::none());
@@ -115,15 +121,46 @@ fn decode_bucket(data: &[u8]) -> Result<usize, Box<dyn std::error::Error>> {
         let Frame(entry) = entry;
         match entry {
             BucketEntry::Liveentry(live_entry) | BucketEntry::Initentry(live_entry) => {
-                if let LedgerEntryData::ContractCode(contract_code) = &live_entry.data {
-                    contract_count += 1;
-                    let wasm_hash = hex::encode(&contract_code.hash);
-                    let file_name = format!("contracts/{}.wasm", wasm_hash);
-                    fs::write(&file_name, &contract_code.code)?;
-                    eprintln!(
-                        "  Contract Code: {wasm_hash} ({})",
-                        human_bytes(contract_code.code.len() as f64)
-                    );
+                match &live_entry.data {
+                    LedgerEntryData::ContractCode(contract_code) => {
+                        contract_count += 1;
+                        let wasm_hash = hex::encode(&contract_code.hash);
+                        let file_name = format!("contracts/{}.wasm", wasm_hash);
+                        fs::write(&file_name, &contract_code.code)?;
+                        eprintln!(
+                            "  Contract Code: {wasm_hash} ({})",
+                            human_bytes(contract_code.code.len() as f64)
+                        );
+                    }
+                    LedgerEntryData::ContractData(ContractDataEntry {
+                        contract,
+                        durability: ContractDataDurability::Persistent,
+                        key: ScVal::LedgerKeyContractInstance,
+                        val:
+                            ScVal::ContractInstance(ScContractInstance {
+                                executable: ContractExecutable::Wasm(Hash(hash)),
+                                ..
+                            }),
+                        ..
+                    }) => {
+                        let address = contract.to_string();
+                        let wasm_hash = hex::encode(&hash);
+
+                        eprintln!("  Contract Instance: {address} => {wasm_hash}");
+
+                        let file_name = format!("instances/{}.json", wasm_hash);
+                        let mut addresses: BTreeSet<String> = if Path::new(&file_name).exists() {
+                            let content = fs::read_to_string(&file_name)?;
+                            serde_json::from_str(&content).unwrap_or_else(|_| BTreeSet::new())
+                        } else {
+                            BTreeSet::new()
+                        };
+                        addresses.insert(address.clone());
+                        let json_content =
+                            serde_json::to_string_pretty(&addresses.iter().collect::<Vec<_>>())?;
+                        fs::write(&file_name, json_content)?;
+                    }
+                    _ => (),
                 }
             }
             _ => {}

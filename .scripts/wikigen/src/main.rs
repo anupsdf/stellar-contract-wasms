@@ -28,6 +28,9 @@ struct Args {
     imports_dir: String,
 
     #[arg(long)]
+    instances_dir: String,
+
+    #[arg(long)]
     output_dir: String,
 }
 
@@ -38,6 +41,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let meta_dir = Path::new(&args.meta_dir);
     let spec_dir = Path::new(&args.spec_dir);
     let imports_dir = Path::new(&args.imports_dir);
+    let instances_dir = Path::new(&args.instances_dir);
     let output_dir = Path::new(&args.output_dir);
 
     let mut contracts = HashMap::new();
@@ -78,6 +82,18 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
     }
 
+    // Read instances files
+    for entry in fs::read_dir(instances_dir)? {
+        let entry = entry?;
+        let path = entry.path();
+        if path.extension().and_then(|s| s.to_str()) == Some("json") {
+            let hash = path.file_stem().unwrap().to_str().unwrap().to_string();
+            let content = fs::read_to_string(&path)?;
+            let instances: Vec<String> = serde_json::from_str(&content)?;
+            contracts.entry(hash.clone()).or_insert_with(|| ContractData::default()).instances = Some(instances);
+        }
+    }
+
     // Create output directory
     fs::create_dir_all(&output_dir)?;
 
@@ -97,6 +113,7 @@ struct ContractData {
     meta: Option<serde_json::Value>,
     spec: Option<serde_json::Value>,
     imports: Option<Vec<String>>,
+    instances: Option<Vec<String>>,
 }
 
 #[derive(serde::Serialize)]
@@ -105,6 +122,7 @@ struct ContractTemplate {
     meta: Option<std::collections::BTreeMap<String, String>>,
     spec: Option<SpecTemplate>,
     imports: Option<Vec<String>>,
+    instances: Option<Vec<String>>,
     wat: Option<String>,
 }
 
@@ -129,6 +147,7 @@ struct ContractItem {
     hash: String,
     function_names: Vec<String>,
     import_names: Vec<String>,
+    instances: Vec<String>,
     source_repo: Option<String>,
     size: String,
 }
@@ -205,6 +224,7 @@ fn generate_contract_page(wat_dir: &str, hash: &str, data: &ContractData, output
         meta,
         spec,
         imports: data.imports.clone(),
+        instances: data.instances.clone(),
         wat,
     };
 
@@ -213,6 +233,7 @@ fn generate_contract_page(wat_dir: &str, hash: &str, data: &ContractData, output
     context.insert("meta", &template_data.meta);
     context.insert("spec", &template_data.spec);
     context.insert("imports", &template_data.imports);
+    context.insert("instances", &template_data.instances);
     context.insert("wat", &template_data.wat);
 
     let html = tera.render("contract.html", &context)?;
@@ -278,10 +299,12 @@ fn generate_index_page(contracts_dir: &str, contracts: &HashMap<String, Contract
         };
 
         let import_names = data.imports.clone().unwrap_or_default();
+        let instances = data.instances.clone().unwrap_or_default();
         contract_items.push(ContractItem {
             hash: hash.clone(),
             function_names,
             import_names,
+            instances,
             source_repo,
             size,
         });
