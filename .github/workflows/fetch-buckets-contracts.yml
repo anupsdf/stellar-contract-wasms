@@ -315,6 +315,7 @@ jobs:
           git add meta/
           git add specs/
           git add imports/
+          git add instances/
           git commit -m "Update contracts from buckets" || echo "No changes to commit"
           git push
           echo "commit-sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
