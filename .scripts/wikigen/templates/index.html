@@ -125,6 +125,17 @@
 
         // Initialize the count on page load
         updateContractCount();
+
+        // Handle search query from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchQuery = urlParams.get('search');
+        if (searchQuery) {
+            const searchInput = document.getElementById('searchInput');
+            searchInput.value = searchQuery;
+            // Trigger the search
+            const event = new Event('input', { bubbles: true });
+            searchInput.dispatchEvent(event);
+        }
     </script>
 </body>
 </html>

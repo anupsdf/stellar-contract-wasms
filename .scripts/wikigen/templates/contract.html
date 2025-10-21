@@ -60,7 +60,7 @@
             <div class="instances">
                 <ul>
                     {% for instance in instances %}
-                    <li><span class="instance-address">{{ instance }}</span></li>
+                    <li><span class="instance-address" onclick="searchForInstance('{{ instance }}')">{{ instance }}</span></li>
                     {% endfor %}
                 </ul>
             </div>
@@ -100,5 +100,12 @@
         <pre><code class="language-wasm">{{ wat | safe }}</code></pre>
     </div>
     {% endif %}
+
+    <script>
+        function searchForInstance(instanceAddress) {
+            // Redirect to index page with the instance address as search query
+            window.location.href = 'index.html?search=' + encodeURIComponent(instanceAddress);
+        }
+    </script>
 </body>
 </html>
