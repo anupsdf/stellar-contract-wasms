@@ -994,6 +994,7 @@ a27578aaeb9c1d1686b42d48c211436e977d7bf4f57dafca00c03af58984eee1.wasm,ok,_,29,tr
 a29f0384e948343a4bdc11c8c640c56345cbf91acf770828219766fc6c829382.wasm,ok,_,8,false,1.3 KiB
 a2b1fe28fe6bcdad4bd7c2f5a0955f4b943ee0045f638b4bccf4e6eb638dc2a8.wasm,ok,_,10,true,5.9 KiB
 a2b79883db0af8c9f4ea8d941236bdfdf870039b4f7f6d35d791b752da54b4fe.wasm,ok,_,17,false,7.4 KiB
+a2e483b7b713c317dedf7ba6722e50215596b6750cbe8a7d8bdf9c9c0560cc06.wasm,ok,_,3,true,798 B
 a316e2675d3dd3ccc3f42ed494f6d126d61e26bea87fe4702ce42b3027fc2fe4.wasm,ok,_,28,false,26.1 KiB
 a321628fd5f5f85baa9de2fbab587014faf06a402ada6b08104c398aea2290a0.wasm,ok,_,11,false,5.3 KiB
 a328385ecedb656971d24eef29752868e2b644146f98d54e76023e980c017d1f.wasm,ok,_,1,false,1.8 KiB
@@ -1597,6 +1598,6 @@ ffaafd8a37ebaeaf08b6a55caa232e521c00ff443ffcbc1af29165390b4269dc.wasm,ok,_,11,fa
 ffd2249433d021c6a215e08d21b834ee985e92b8e6dccb816849033fa4523ab9.wasm,ok,_,20,false,28.2 KiB
 ffd799287d904c23c6ca086a9d517df50f860f504502e917660b8730cbe915b5.wasm,ok,_,8,true,19.3 KiB
 ffddf40e7c479975864512a0e40dd43e0fe5ee0c8b8ea47329d973ba7477138e.wasm,ok,_,17,false,6 KiB
-Contracts with specs: 1595 (99.81226%),_,_,_,_,_
-Contracts with specs and docs: 512 (32.04005%),_,_,_,_,_
-Contracts without specs: 3 (0.18773466%),_,_,_,_,_
+Contracts with specs: 1596 (99.812386%),_,_,_,_,_
+Contracts with specs and docs: 513 (32.08255%),_,_,_,_,_
+Contracts without specs: 3 (0.18761726%),_,_,_,_,_

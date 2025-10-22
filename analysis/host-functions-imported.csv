@@ -1,5 +1,5 @@
 function,count
-vec_new_from_linear_memory,1477
+vec_new_from_linear_memory,1478
 put_contract_data,1442
 has_contract_data,1441
 get_contract_data,1435
