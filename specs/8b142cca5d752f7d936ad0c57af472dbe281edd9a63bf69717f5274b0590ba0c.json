@@ -1,0 +1,40 @@
+[
+  {
+    "function_v0": {
+      "doc": "Increment increments an internal counter, returning the new value.",
+      "name": "increment",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Decrement decrements an internal counter, returning the new value.",
+      "name": "decrement",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Reset resets the counter to zero.",
+      "name": "reset",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the current count.",
+      "name": "get_count",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  }
+]
