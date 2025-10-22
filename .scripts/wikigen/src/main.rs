@@ -2,6 +2,20 @@ use std::collections::{BTreeMap, HashMap};
 use std::fs;
 use std::path::Path;
 
+fn truncate_rssdkver(version: &str) -> String {
+    if let Some(hash_pos) = version.find('#') {
+        let before_hash = &version[..hash_pos];
+        let after_hash = &version[hash_pos + 1..];
+        if after_hash.len() > 5 {
+            format!("{}#{}", before_hash, &after_hash[..5])
+        } else {
+            version.to_string()
+        }
+    } else {
+        version.to_string()
+    }
+}
+
 use clap::Parser;
 use human_bytes::human_bytes;
 use stellar_xdr::curr::ScSpecEntry;
@@ -150,6 +164,7 @@ struct ContractItem {
     instances: Vec<String>,
     source_repo: Option<String>,
     size: String,
+    rssdkver: Option<String>,
 }
 
 fn generate_contract_page(wat_dir: &str, hash: &str, data: &ContractData, output_dir: &Path) -> Result<(), Box<dyn std::error::Error>> {
@@ -266,8 +281,9 @@ fn generate_index_page(contracts_dir: &str, contracts: &HashMap<String, Contract
             }
         }
         
-        // Extract source_repo from meta
+        // Extract source_repo and rssdkver from meta
         let mut source_repo = None;
+        let mut rssdkver = None;
         if let Some(meta_value) = &data.meta {
             if let Some(entries) = meta_value.as_array() {
                 for entry_value in entries {
@@ -278,7 +294,12 @@ fn generate_index_page(contracts_dir: &str, contracts: &HashMap<String, Contract
                                     if let Some(val) = sc_meta.get("val") {
                                         if let Some(val_str) = val.as_str() {
                                             source_repo = Some(val_str.to_string());
-                                            break;
+                                        }
+                                    }
+                                } else if key_str == "rssdkver" {
+                                    if let Some(val) = sc_meta.get("val") {
+                                        if let Some(val_str) = val.as_str() {
+                                            rssdkver = Some(truncate_rssdkver(val_str));
                                         }
                                     }
                                 }
@@ -307,6 +328,7 @@ fn generate_index_page(contracts_dir: &str, contracts: &HashMap<String, Contract
             instances,
             source_repo,
             size,
+            rssdkver,
         });
     }
 

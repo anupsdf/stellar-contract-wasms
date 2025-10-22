@@ -9,6 +9,7 @@
         .contract-card h3 { margin-top: 0; }
         .contract-hash { font-family: monospace; font-size: 12px; color: #666; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .contract-size { font-family: monospace; font-size: 10px; color: #888; margin-top: 4px; }
+        .contract-rssdkver { font-family: monospace; font-size: 10px; color: #888; margin-top: 4px; }
         .function-names { margin: 10px 0; }
         .function-name { display: inline-block; background: #d4edda; color: #155724; padding: 2px 8px; margin: 2px; border-radius: 3px; font-size: 12px; font-family: monospace; cursor: pointer; transition: background-color 0.2s; }
         .function-name:hover { background: #c3e6cb; }
@@ -34,10 +35,11 @@
     
     <div class="contract-list">
         {% for contract in contracts %}
-        <div class="contract-card" data-searchable="{{ contract.function_names | join(sep=" ") }} {{ contract.import_names | join(sep=" ") }} {{ contract.instances | join(sep=" ") }} {{ contract.source_repo | default(value="") }} {{ contract.hash }}">
+        <div class="contract-card" data-searchable="{{ contract.function_names | join(sep=" ") }} {{ contract.import_names | join(sep=" ") }} {{ contract.instances | join(sep=" ") }} {{ contract.source_repo | default(value="") }} {{ contract.rssdkver | default(value="") }} {{ contract.hash }}">
             <a href="{{ contract.hash }}.html">
               <div class="contract-hash">{{ contract.hash }}</div>
               <div class="contract-size">{{ contract.size }}</div>
+              <div class="contract-rssdkver">sdk {{ contract.rssdkver }}</div>
             </a>
             {% if contract.function_names %}
             <div class="function-names">
