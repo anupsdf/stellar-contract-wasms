@@ -1,4 +1,4 @@
-use std::collections::HashSet;
+use std::collections::{HashMap, HashSet};
 use std::fs;
 use std::path::Path;
 use std::{error::Error};
@@ -22,7 +22,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         return Err(format!("{} is not a directory", output_dir).into());
     }
 
-    let mut all_imports = HashSet::new();
+    let mut import_counts = HashMap::new();
 
     // Read all *.json files in imports_dir
     for entry in fs::read_dir(imports_dir)? {
@@ -32,15 +32,20 @@ fn main() -> Result<(), Box<dyn Error>> {
             let content = fs::read_to_string(&path)?;
             let imports: Vec<String> = serde_json::from_str(&content)?;
             for import in imports {
-                all_imports.insert(import);
+                *import_counts.entry(import).or_insert(0) += 1;
             }
         }
     }
 
-    // First output: unique list of all values
-    let unique_imports: Vec<String> = all_imports.iter().cloned().collect();
-    let unique_json = serde_json::to_string_pretty(&unique_imports)?;
-    fs::write(Path::new(output_dir).join("host-functions-imported.json"), unique_json)?;
+    // First output: CSV of imported functions with counts
+    let mut wtr = csv::Writer::from_path(Path::new(output_dir).join("host-functions-imported.csv"))?;
+    wtr.write_record(&["function", "count"])?;
+    let mut imported_functions: Vec<_> = import_counts.iter().collect();
+    imported_functions.sort_by(|a, b| b.1.cmp(a.1).then(a.0.cmp(b.0)));
+    for (function, count) in imported_functions {
+        wtr.write_record(&[function, &count.to_string()])?;
+    }
+    wtr.flush()?;
 
     // Fetch env.json
     let env_url = "https://raw.githubusercontent.com/stellar/rs-soroban-env/main/soroban-env-common/env.json";
@@ -61,10 +66,16 @@ fn main() -> Result<(), Box<dyn Error>> {
         }
     }
 
-    // Second output: env functions not in imports
-    let missing: Vec<String> = env_functions.difference(&all_imports.into_iter().collect()).cloned().collect();
-    let missing_json = serde_json::to_string_pretty(&missing)?;
-    fs::write(Path::new(output_dir).join("host-functions-not-imported.json"), missing_json)?;
+    // Second output: CSV of env functions not in imports with count 0
+    let mut wtr = csv::Writer::from_path(Path::new(output_dir).join("host-functions-not-imported.csv"))?;
+    wtr.write_record(&["function", "count"])?;
+    let all_imported: HashSet<_> = import_counts.keys().cloned().collect();
+    let mut missing: Vec<String> = env_functions.difference(&all_imported).cloned().collect();
+    missing.sort();
+    for function in missing {
+        wtr.write_record(&[&function, "0"])?;
+    }
+    wtr.flush()?;
 
     Ok(())
 }
