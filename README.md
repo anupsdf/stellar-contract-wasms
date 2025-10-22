@@ -17,4 +17,6 @@ It also generates a docs website about all the contracts at:
 
 - [`wat/`](./wat) – wasm text (wat) of each contract
 
+- [`instances/`](./instances) - array of known contract addresses that are or have used the contract wasm (note this is a best guess from daily downloads, and is not derived from tracking every ledger)
+
 - [`analysis/`](./analysis) – summary data about a variety of things to do with the contracts
