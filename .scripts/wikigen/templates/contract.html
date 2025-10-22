@@ -31,11 +31,19 @@
         h1 { color: #2d3748; }
         .contract-hash { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         h2 { color: #4a5568; }
+        .page-actions { margin: 15px 0; }
+        .page-actions a { margin-right: 15px; text-decoration: none; color: #3182ce; }
+        .page-actions a:hover { text-decoration: underline; }
+        .download-link { background: #e6fffa; color: #234e52; padding: 8px 12px; border-radius: 5px; font-weight: bold; }
+        .download-link:hover { background: #b2f5ea; text-decoration: none; }
     </style>
 </head>
 <body>
     <h1 class="contract-hash">Contract {{ hash }}</h1>
-    <a href="index.html">← Back to Index</a>
+    <div class="page-actions">
+        <a href="index.html">← Back to Index</a>
+        <a href="https://github.com/leighmcculloch/stellar-contract-wasms/raw/refs/heads/main/contracts/{{ hash }}.wasm" class="download-link">📥 Download WASM</a>
+    </div>
 
     {% if meta or instances %}
     <div class="meta-container">
