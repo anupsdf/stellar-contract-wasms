@@ -32,6 +32,8 @@
         .contract-hash { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         h2 { color: #4a5568; }
         .page-actions { margin: 15px 0; }
+        .wat-toggle { cursor: pointer; user-select: none; }
+        .wat-content { display: none; }
         .page-actions a { margin-right: 15px; text-decoration: none; color: #3182ce; }
         .page-actions a:hover { text-decoration: underline; }
         .download-link { background: #e6fffa; color: #234e52; padding: 8px 12px; border-radius: 5px; font-weight: bold; }
@@ -103,9 +105,11 @@
     {% endif %}
 
     {% if wat %}
-    <h2>WebAssembly Text (WAT)</h2>
-    <div class="wat">
-        <pre><code class="language-wasm">{{ wat | safe }}</code></pre>
+    <h2 class="wat-toggle" onclick="toggleWat()">WebAssembly Text (WAT) ▶</h2>
+    <div class="wat wat-content">
+        <div id="wat-loading" style="display: none;">Loading WAT...</div>
+        <div id="wat-error" style="display: none; color: #e53e3e;">Failed to load WAT file.</div>
+        <pre id="wat-code"><code class="language-wasm"></code></pre>
     </div>
     {% endif %}
 
@@ -113,6 +117,56 @@
         function searchForInstance(instanceAddress) {
             // Redirect to index page with the instance address as search query
             window.location.href = 'index.html?search=' + encodeURIComponent(instanceAddress);
+        }
+
+        let watLoaded = false;
+
+        async function toggleWat() {
+            const content = document.querySelector('.wat-content');
+            const toggle = document.querySelector('.wat-toggle');
+            const loading = document.getElementById('wat-loading');
+            const error = document.getElementById('wat-error');
+            const code = document.getElementById('wat-code');
+
+            if (content.style.display === 'none' || content.style.display === '') {
+                content.style.display = 'block';
+                toggle.textContent = 'WebAssembly Text (WAT) ▼';
+
+                if (!watLoaded) {
+                    loading.style.display = 'block';
+                    error.style.display = 'none';
+
+                    try {
+                        const response = await fetch(`https://api.github.com/repos/leighmcculloch/stellar-contract-wasms/contents/wat/{{ hash }}.wat`);
+                        if (response.ok) {
+                            const data = await response.json();
+                            const watText = atob(data.content);
+                            code.innerHTML = `<code class="language-wasm">${escapeHtml(watText)}</code>`;
+                            // Re-initialize Prism highlighting for the new content
+                            if (window.Prism) {
+                                Prism.highlightElement(code.querySelector('code'));
+                            }
+                        } else {
+                            throw new Error('Failed to fetch');
+                        }
+                    } catch (err) {
+                        error.style.display = 'block';
+                        code.innerHTML = '';
+                    } finally {
+                        loading.style.display = 'none';
+                        watLoaded = true;
+                    }
+                }
+            } else {
+                content.style.display = 'none';
+                toggle.textContent = 'WebAssembly Text (WAT) ▶';
+            }
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
         }
     </script>
 </body>
