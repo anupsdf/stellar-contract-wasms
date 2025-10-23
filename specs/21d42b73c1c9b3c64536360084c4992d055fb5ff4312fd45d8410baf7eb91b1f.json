@@ -1,0 +1,254 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CollatError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "UserAlreadySet",
+          "value": 101
+        },
+        {
+          "doc": "",
+          "name": "InvalidAmount",
+          "value": 102
+        },
+        {
+          "doc": "",
+          "name": "InvalidAsset",
+          "value": 103
+        },
+        {
+          "doc": "",
+          "name": "SpentWouldExceedBalance",
+          "value": 104
+        },
+        {
+          "doc": "",
+          "name": "PaymentExceedsSpent",
+          "value": 105
+        },
+        {
+          "doc": "",
+          "name": "PaymentExceedsBalance",
+          "value": 106
+        },
+        {
+          "doc": "",
+          "name": "WithdrawAmountExceedsWithdrawable",
+          "value": 107
+        },
+        {
+          "doc": "",
+          "name": "SpentExceedsBalance",
+          "value": 108
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "controller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "treasury",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "user",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "balance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "spent",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "all_spent",
+      "inputs": [],
+      "outputs": [
+        {
+          "map": {
+            "key_type": "address",
+            "value_type": "i128"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "spend",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "paymentf",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "paymentc",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "liquidate",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "set_spent",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "extend",
+      "inputs": [],
+      "outputs": []
+    }
+  }
+]
