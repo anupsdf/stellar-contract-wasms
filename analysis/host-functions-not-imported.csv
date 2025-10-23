@@ -24,7 +24,6 @@ bytes_to_string,0
 dummy0,0
 duration_obj_from_u64,0
 duration_obj_to_u64,0
-get_address_from_muxed_address,0
 get_ledger_version,0
 i256_shl,0
 i256_shr,0
