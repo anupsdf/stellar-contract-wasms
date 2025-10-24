@@ -1,0 +1,32 @@
+[
+  {
+    "sc_meta_v0": {
+      "key": "title",
+      "val": "KALE Batch Tractor - Full Lifecycle"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "desc",
+      "val": "Batch operations for plant, work, and harvest - reduces transactions by 90%"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "binver",
+      "val": "3.0.0"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "rsver",
+      "val": "1.90.0"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "rssdkver",
+      "val": "23.0.3#6aa930b08eabfd578b7824a0d5de473cbd958282"
+    }
+  }
+]
