@@ -1,0 +1,197 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NoFarmersProvided",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "BatchTooLarge",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "MismatchedArrays",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "FarmNotInitialized",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "PlantFailed",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "WorkFailed",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "HarvestFailed",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "InvalidBatchSize",
+          "value": 8
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initialize the contract with farm address",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "farm",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Batch plant operation - plants for multiple farmers at once\\n\\n# Arguments\\n* `farmers` - Vector of farmer addresses (max 10)\\n* `amounts` - Vector of stake amounts in stroops (1 KALE = 10_000_000 stroops)\\n\\n# Returns\\nVector of boolean success status for each farmer\\n\\n# Example\\n```\\nlet farmers = vec![&env, farmer1, farmer2, farmer3];\\nlet amounts = vec![&env, 10_000_000, 20_000_000, 15_000_000];\\nlet results = batch_plant(env, farmers, amounts);\\n// results = [true, true, true] if all succeeded\\n```",
+      "name": "batch_plant",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "farmers",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "amounts",
+          "type_": {
+            "vec": {
+              "element_type": "i128"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "bool"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Batch work submission - submits mining results for multiple farmers\\n\\n# Arguments\\n* `farmers` - Vector of farmer addresses (max 10)\\n* `hashes` - Vector of mining result hashes (32 bytes each)\\n* `nonces` - Vector of mining nonces\\n\\n# Returns\\nVector of gap values (i128) for each farmer\\nReturns 0 if work failed for a farmer\\n\\n# Example\\n```\\nlet farmers = vec![&env, farmer1, farmer2];\\nlet hashes = vec![&env, hash1, hash2];\\nlet nonces = vec![&env, 12345, 67890];\\nlet gaps = batch_work(env, farmers, hashes, nonces);\\n// gaps = [150, 200] - gap values returned from contract\\n```",
+      "name": "batch_work",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "farmers",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "hashes",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "nonces",
+          "type_": {
+            "vec": {
+              "element_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "i128"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Batch harvest - harvests rewards for multiple farmers\\n\\n# Arguments\\n* `farmers` - Vector of farmer addresses (max 10)\\n* `blocks` - Vector of block numbers to harvest\\n\\n# Returns\\nVector of reward amounts (i128) for each farmer in stroops\\nReturns 0 if harvest failed for a farmer\\n\\n# Example\\n```\\nlet farmers = vec![&env, farmer1, farmer2, farmer3];\\nlet blocks = vec![&env, 12340, 12340, 12340]; // same block\\nlet rewards = batch_harvest(env, farmers, blocks);\\n// rewards = [5_000_000, 3_000_000, 4_000_000] in stroops\\n```",
+      "name": "batch_harvest",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "farmers",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "blocks",
+          "type_": {
+            "vec": {
+              "element_type": "u32"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "i128"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the configured farm contract address",
+      "name": "get_farm",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Utility function to check maximum supported batch size",
+      "name": "max_batch_size",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  }
+]
