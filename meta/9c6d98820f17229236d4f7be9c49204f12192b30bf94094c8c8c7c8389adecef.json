@@ -1,0 +1,32 @@
+[
+  {
+    "sc_meta_v0": {
+      "key": "Description",
+      "val": "Tansu - Soroban Versioning"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "rsver",
+      "val": "1.90.0"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "rssdkver",
+      "val": "23.0.3#6aa930b08eabfd578b7824a0d5de473cbd958282"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "source_repo",
+      "val": "tupui/soroban-versioning"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "home_domain",
+      "val": "tansu.dev"
+    }
+  }
+]

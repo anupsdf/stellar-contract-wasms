@@ -1,0 +1,2097 @@
+[
+  {
+    "function_v0": {
+      "doc": "Setup anonymous voting for a project.\\n\\nConfigures BLS12-381 cryptographic primitives for anonymous voting.\\nOnly the contract admin can call this function.\\n\\n# Arguments\\n* `env` - The environment object\\n* `project_key` - Unique identifier for the project\\n* `public_key` - Asymmetric public key to be used for vote encryption\\n\\n# Panics\\n* If the caller is not the contract admin",
+      "name": "anonymous_voting_setup",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "maintainer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_key",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "public_key",
+          "type_": "string"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the anonymous voting configuration for a project.\\n\\n# Arguments\\n* `env` - The environment object\\n* `project_key` - The project key identifier\\n\\n# Returns\\n* `types::AnonymousVoteConfig` - The anonymous voting configuration\\n\\n# Panics\\n* If no anonymous voting configuration exists for the project",
+      "name": "get_anonymous_voting_config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "project_key",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "AnonymousVoteConfig"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Build vote commitments from votes and seeds for anonymous voting.\\n\\nCreates BLS12-381 commitments for each vote using the formula:\\nC = g^vote * h^seed where g and h are generator points.\\n\\nNote: This function does not consider voting weights, which are applied\\nduring the tallying phase. Calling this on the smart contract would reveal\\nthe votes and seeds, so it must be run either in simulation or client-side.\\n\\n# Arguments\\n* `env` - The environment object\\n* `project_key` - Unique identifier for the project\\n* `votes` - Vector of vote choices (0=abstain, 1=approve, 2=reject)\\n* `seeds` - Vector of random seeds for each vote\\n\\n# Returns\\n* `Vec<BytesN<96>>` - Vector of vote commitments (one per vote)\\n\\n# Panics\\n* If no anonymous voting configuration exists for the project",
+      "name": "build_commitments_from_votes",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "project_key",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "votes",
+          "type_": {
+            "vec": {
+              "element_type": "u128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "seeds",
+          "type_": {
+            "vec": {
+              "element_type": "u128"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "bytes_n": {
+                "n": 96
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Create a new proposal for a project.\\n\\nThe proposer is automatically added to the abstain group.\\nBy creating a proposal, the proposer incur a collateral which is\\nrepaid upon execution of the proposal unless the proposal is revoked.\\nThis is a deterrent mechanism.\\n\\n# Arguments\\n* `env` - The environment object\\n* `proposer` - Address of the proposal creator\\n* `project_key` - Unique identifier for the project\\n* `title` - Title of the proposal\\n* `ipfs` - IPFS content identifier describing the proposal\\n* `voting_ends_at` - UNIX timestamp when voting ends\\n* `public_voting` - Whether voting is public or anonymous\\n* [`Option<outcomes_contract>`] - Outcome contract address\\n\\n# Returns\\n* `u32` - The ID of the created proposal.\\n\\n# Panics\\n* If the title is too long\\n* If the voting period is invalid\\n* If the project doesn't exist",
+      "name": "create_proposal",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "proposer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_key",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "title",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "ipfs",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "voting_ends_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "public_voting",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "outcomes_contract",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Revoke a proposal.\\n\\nUseful if there was some spam or bad intent. That will prevent the\\ncollateral to be claimed back.\\n\\n# Arguments\\n* `env` - The environment object\\n* `maintainer` - Address of the proposal creator\\n* `project_key` - The project key identifier\\n* `proposal_id` - The ID of the proposal to vote on\\n\\n# Panics\\n* If the proposal is not active anymore\\n* If the maintainer is not authorized",
+      "name": "revoke_proposal",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "maintainer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_key",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "proposal_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Cast a vote on a proposal.\\n\\nAllows a member to vote on a proposal.\\nThe vote can be either public or anonymous depending on the proposal configuration.\\nFor public votes, the choice and weight are visible. For anonymous votes, only\\nthe weight is visible, and the choice is encrypted.\\n\\n# Arguments\\n* `env` - The environment object\\n* `voter` - The address of the voter\\n* `project_key` - The project key identifier\\n* `proposal_id` - The ID of the proposal to vote on\\n* `vote` - The vote data (public or anonymous)\\n\\n# Panics\\n* If the voter has already voted\\n* If the voting period has ended\\n* If the proposal is not active anymore\\n* If the proposal doesn't exist\\n* If the voter's weight exceeds their maximum allowed weight\\n* If the voter is not a member of the project",
+      "name": "vote",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "voter",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_key",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "proposal_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "vote",
+          "type_": {
+            "udt": {
+              "name": "Vote"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Execute a vote after the voting period ends.\\n\\nProcesses the voting results and determines the final status of the proposal.\\nFor public votes, the results are calculated directly from vote counts.\\nFor anonymous votes, tallies and seeds are validated against vote commitments\\nto ensure the results are correct.\\n\\n# Arguments\\n* `env` - The environment object\\n* `maintainer` - The address of the maintainer executing the proposal\\n* `project_key` - The project key identifier\\n* `proposal_id` - The ID of the proposal to execute\\n* [`Option<tallies>`] - decoded tally values (scaled by weights), respectively Approve, reject and abstain\\n* [`Option<seeds>`] - decoded seed values (scaled by weights), respectively Approve, reject and abstain\\n\\n# Returns\\n* `types::ProposalStatus` - The final status of the proposal (Approved, Rejected, or Cancelled)\\n\\n# Panics\\n* If the voting period hasn't ended\\n* If the proposal doesn't exist\\n* If the proposal is not active anymore\\n* If tallies/seeds are missing for anonymous votes\\n* If commitment",
+      "name": "execute",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "maintainer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_key",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "proposal_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "tallies",
+          "type_": {
+            "option": {
+              "value_type": {
+                "vec": {
+                  "element_type": "u128"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "seeds",
+          "type_": {
+            "option": {
+              "value_type": {
+                "vec": {
+                  "element_type": "u128"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "ProposalStatus"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Verify vote commitment proof for anonymous voting.\\n\\nValidates that the provided tallies and seeds match the vote commitments\\nwithout revealing individual votes. This ensures the integrity of anonymous\\nvoting results.\\n\\nThe commitment is:\\n\\nC = g^v * h^r (in additive notation: g*v + h*r),\\n\\nwhere g, h are BLS12-381 generator points and v is the vote choice,\\nr is the seed. Voting weight is introduced during the tallying phase.\\n\\n# Arguments\\n* `env` - The environment object\\n* `project_key` - The project key identifier\\n* `proposal` - The proposal containing vote commitments\\n* `tallies` - Decoded tally values [approve, reject, abstain] (scaled by weights)\\n* `seeds` - Decoded seed values [approve, reject, abstain] (scaled by weights)\\n\\n# Returns\\n* `bool` - True if all commitments match the provided tallies and seeds\\n\\n# Panics\\n* If no anonymous voting configuration exists for the project",
+      "name": "proof",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "project_key",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "proposal",
+          "type_": {
+            "udt": {
+              "name": "Proposal"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "tallies",
+          "type_": {
+            "vec": {
+              "element_type": "u128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "seeds",
+          "type_": {
+            "vec": {
+              "element_type": "u128"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Returns a page of proposals (0 to MAX_PROPOSALS_PER_PAGE proposals per page).\\n\\n# Arguments\\n* `env` - The environment object\\n* `project_key` - The project key identifier\\n* `page` - The page number (0-based)\\n\\n# Returns\\n* `types::Dao` - The DAO object containing a page of proposals\\n\\n# Panics\\n* If the page number is out of bounds",
+      "name": "get_dao",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "project_key",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "page",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Dao"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get a single proposal by ID.\\n\\n# Arguments\\n* `env` - The environment object\\n* `project_key` - The project key identifier\\n* `proposal_id` - The ID of the proposal to retrieve\\n\\n# Returns\\n* `types::Proposal` - The proposal object\\n\\n# Panics\\n* If the proposal doesn't exist",
+      "name": "get_proposal",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "project_key",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "proposal_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Proposal"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Add a new member to the system with metadata.\\n\\n# Arguments\\n* `env` - The environment object\\n* `member_address` - The address of the member to add\\n* `meta` - Metadata string associated with the member (e.g., IPFS hash)\\n\\n# Panics\\n* If the member already exists",
+      "name": "add_member",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "member_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "meta",
+          "type_": "string"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get member information including all project badges.\\n\\n# Arguments\\n* `env` - The environment object\\n* `member_address` - The address of the member to retrieve\\n\\n# Returns\\n* `types::Member` - Member information including metadata and project badges\\n\\n# Panics\\n* If the member doesn't exist",
+      "name": "get_member",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "member_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Member"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Set badges for a member in a specific project.\\n\\nThis function replaces all existing badges for the member in the specified project\\nwith the new badge list. The member's maximum voting\\nweight is calculated as the sum of all assigned badge weights.\\n\\n# Arguments\\n* `env` - The environment object\\n* `maintainer` - The address of the maintainer (must be authorized)\\n* `key` - The project key identifier\\n* `member` - The address of the member to set badges for\\n* `badges` - Vector of badges to assign\\n\\n# Panics\\n* If the maintainer is not authorized\\n* If the member doesn't exist\\n* If the project doesn't exist",
+      "name": "set_badges",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "maintainer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "key",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "member",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "badges",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Badge"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get all badges for a specific project, organized by badge type.\\n\\nReturns a structure containing vectors of member addresses for each badge type\\n(Developer, Triage, Community, Verified).\\n\\n# Arguments\\n* `env` - The environment object\\n* `key` - The project key identifier\\n\\n# Returns\\n* `types::Badges` - Structure containing member addresses for each badge type",
+      "name": "get_badges",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "key",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Badges"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the maximum voting weight for a member in a specific project.\\n\\nCalculates the sum of all badge weights for the member in the project.\\nIf no badges are assigned, returns the Default badge weight (1).\\nThis weight determines the maximum number of votes the member can cast\\nin a single voting transaction.\\n\\n# Arguments\\n* `env` - The environment object\\n* `project_key` - The project key identifier\\n* `member_address` - The address of the member\\n\\n# Returns\\n* `u32` - The maximum voting weight for the member\\n\\n# Panics\\n* If the member doesn't exist",
+      "name": "get_max_weight",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "project_key",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "member_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initialize the Tansu contract with admin configuration.\\n\\n# Arguments\\n* `env` - The environment object\\n* `admin` - The admin address",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Pause or unpause the contract (emergency stop.)\\n\\n# Arguments\\n* `env` - The environment object\\n* `admin` - The admin address\\n* `paused` - Pause or unpause the contract operations which change\\nledger states.",
+      "name": "pause",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "paused",
+          "type_": "bool"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Require that the contract is not paused, panic if it is\\n\\n# Panics\\n* If the contract is paused.",
+      "name": "require_not_paused",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get current administrators configuration.\\n\\n# Arguments\\n* `env` - The environment object\\n\\n# Returns\\n* `types::AdminsConfig` - The administrators configuration",
+      "name": "get_admins_config",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "AdminsConfig"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Set the Soroban Domain contract.\\n\\n# Arguments\\n* `env` - The environment object\\n* `admin` - The admin address\\n* `domain_contract` - The new domain contract",
+      "name": "set_domain_contract",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "domain_contract",
+          "type_": {
+            "udt": {
+              "name": "Contract"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Set the Collateral contract.\\n\\n# Arguments\\n* `env` - The environment object\\n* `admin` - The admin address\\n* `collateral_contract` - The new collateral contract",
+      "name": "set_collateral_contract",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "collateral_contract",
+          "type_": {
+            "udt": {
+              "name": "Contract"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Propose a contract upgrade.\\n\\n# Arguments\\n* `env` - The environment object\\n* `admin` - An admin address\\n* `new_wasm_hash` - The new WASM hash\\n* `new_admins_config` - Optional new admin configuration (None to keep current)\\n\\n# Panics\\n* If the admin is not authorized\\n* If there is already an existing proposal (cancel the previous first)",
+      "name": "propose_upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "new_admins_config",
+          "type_": {
+            "option": {
+              "value_type": {
+                "udt": {
+                  "name": "AdminsConfig"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Approve an upgrade proposal\\n\\n# Arguments\\n* `env` - The environment object\\n* `admin` - An admin address\\n\\n# Panics\\n* If the admin is not authorized\\n* If the admin already approved\\n* If there is no upgrade to approve",
+      "name": "approve_upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Execute or cancel upgrade proposal\\n\\n# Arguments\\n* `env` - The environment object\\n* `admin` - An admin address\\n* `accept` - true to accept and false to reject.\\n\\nUpgrades can always be cancelled but only executed if there are enough\\napprovals and the timelock period is over.\\n\\n# Panics\\n* If the admin is not authorized\\n* If it is too early to execute\\n* If there are not enough approvals\\n* If there is no upgrade to execute",
+      "name": "finalize_upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "accept",
+          "type_": "bool"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get upgrade proposal details",
+      "name": "get_upgrade_proposal",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "UpgradeProposal"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the current version of the contract.\\n\\n# Returns\\n* `u32` - The contract version number",
+      "name": "version",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Register a new project.\\n\\nCreates a new project entry with maintainers, URL, and commit hash.\\nAlso registers the project name in the domain contract if not already registered.\\nThe project key is generated using keccak256 hash of the project name.\\n\\n# Arguments\\n* `env` - The environment object\\n* `maintainer` - The address of the maintainer calling this function\\n* `name` - The project name (max 15 characters)\\n* `maintainers` - List of maintainer addresses for the project\\n* `url` - The project's Git repository URL\\n* `ipfs` - CID of the tansu.toml file with associated metadata\\n\\n# Returns\\n* `Bytes` - The project key (keccak256 hash of the name)\\n\\n# Panics\\n* If the project name is longer than 15 characters\\n* If the project already exists\\n* If the maintainer is not authorized\\n* If the domain registration fails\\n* If the maintainer doesn't own an existing domain",
+      "name": "register",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "maintainer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "maintainers",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "url",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "ipfs",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        "bytes"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Update the configuration of an existing project.\\n\\nAllows maintainers to change the project's URL, commit hash, and maintainer list.\\n\\n# Arguments\\n* `env` - The environment object\\n* `maintainer` - The address of the maintainer calling this function\\n* `key` - The project key identifier\\n* `maintainers` - New list of maintainer addresses\\n* `url` - New Git repository URL\\n* `hash` - New commit hash\\n\\n# Panics\\n* If the project doesn't exist\\n* If the maintainer is not authorized",
+      "name": "update_config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "maintainer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "key",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "maintainers",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "url",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "ipfs",
+          "type_": "string"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Set the latest commit hash for a project.\\n\\nUpdates the current commit hash for the specified project.\\n\\n# Arguments\\n* `env` - The environment object\\n* `maintainer` - The address of the maintainer calling this function\\n* `project_key` - The project key identifier\\n* `hash` - The new commit hash\\n\\n# Panics\\n* If the project doesn't exist\\n* If the maintainer is not authorized",
+      "name": "commit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "maintainer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "project_key",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": "string"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the last commit hash\\nGet the latest commit hash for a project.\\n\\n# Arguments\\n* `env` - The environment object\\n* `project_key` - The project key identifier\\n\\n# Returns\\n* `String` - The current commit hash\\n\\n# Panics\\n* If the project doesn't exist",
+      "name": "get_commit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "project_key",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get project information including configuration and maintainers.\\n\\n# Arguments\\n* `env` - The environment object\\n* `project_key` - The project key identifier\\n\\n# Returns\\n* `types::Project` - Project information including name, config, and maintainers\\n\\n# Panics\\n* If the project doesn't exist",
+      "name": "get_project",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "project_key",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Project"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractErrors",
+      "cases": [
+        {
+          "doc": "",
+          "name": "UnexpectedError",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "InvalidKey",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "ProjectAlreadyExist",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "UnauthorizedSigner",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "NoHashFound",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "InvalidDomainError",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "MaintainerNotDomainOwner",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "ProposalInputValidation",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "NoProposalorPageFound",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "AlreadyVoted",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "ProposalVotingTime",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "ProposalActive",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "WrongVoteType",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "WrongVoter",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "TallySeedError",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "InvalidProof",
+          "value": 15
+        },
+        {
+          "doc": "",
+          "name": "NoAnonymousVotingConfig",
+          "value": 16
+        },
+        {
+          "doc": "",
+          "name": "BadCommitment",
+          "value": 17
+        },
+        {
+          "doc": "",
+          "name": "UnknownMember",
+          "value": 18
+        },
+        {
+          "doc": "",
+          "name": "MemberAlreadyExist",
+          "value": 19
+        },
+        {
+          "doc": "",
+          "name": "VoterWeight",
+          "value": 20
+        },
+        {
+          "doc": "",
+          "name": "VoteLimitExceeded",
+          "value": 21
+        },
+        {
+          "doc": "",
+          "name": "ContractPaused",
+          "value": 22
+        },
+        {
+          "doc": "",
+          "name": "UpgradeError",
+          "value": 23
+        },
+        {
+          "doc": "",
+          "name": "ContractValidation",
+          "value": 24
+        },
+        {
+          "doc": "",
+          "name": "CollateralError",
+          "value": 25
+        }
+      ]
+    }
+  },
+  {
+    "event_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ProjectRegistered",
+      "prefix_topics": [
+        "project_registered"
+      ],
+      "params": [
+        {
+          "doc": "",
+          "name": "project_key",
+          "type_": "bytes",
+          "location": "topic_list"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "maintainer",
+          "type_": "address",
+          "location": "data"
+        }
+      ],
+      "data_format": "map"
+    }
+  },
+  {
+    "event_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ProjectConfigUpdated",
+      "prefix_topics": [
+        "project_config_updated"
+      ],
+      "params": [
+        {
+          "doc": "",
+          "name": "project_key",
+          "type_": "bytes",
+          "location": "topic_list"
+        },
+        {
+          "doc": "",
+          "name": "maintainer",
+          "type_": "address",
+          "location": "data"
+        }
+      ],
+      "data_format": "map"
+    }
+  },
+  {
+    "event_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Commit",
+      "prefix_topics": [
+        "commit"
+      ],
+      "params": [
+        {
+          "doc": "",
+          "name": "project_key",
+          "type_": "bytes",
+          "location": "topic_list"
+        },
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": "string",
+          "location": "data"
+        }
+      ],
+      "data_format": "map"
+    }
+  },
+  {
+    "event_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "MemberAdded",
+      "prefix_topics": [
+        "member_added"
+      ],
+      "params": [
+        {
+          "doc": "",
+          "name": "member_address",
+          "type_": "address",
+          "location": "data"
+        }
+      ],
+      "data_format": "map"
+    }
+  },
+  {
+    "event_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "BadgesUpdated",
+      "prefix_topics": [
+        "badges_updated"
+      ],
+      "params": [
+        {
+          "doc": "",
+          "name": "project_key",
+          "type_": "bytes",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "maintainer",
+          "type_": "address",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "member",
+          "type_": "address",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "badges_count",
+          "type_": "u32",
+          "location": "data"
+        }
+      ],
+      "data_format": "map"
+    }
+  },
+  {
+    "event_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ProposalCreated",
+      "prefix_topics": [
+        "proposal_created"
+      ],
+      "params": [
+        {
+          "doc": "",
+          "name": "project_key",
+          "type_": "bytes",
+          "location": "topic_list"
+        },
+        {
+          "doc": "",
+          "name": "proposal_id",
+          "type_": "u32",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "title",
+          "type_": "string",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "proposer",
+          "type_": "address",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "voting_ends_at",
+          "type_": "u64",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "public_voting",
+          "type_": "bool",
+          "location": "data"
+        }
+      ],
+      "data_format": "map"
+    }
+  },
+  {
+    "event_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VoteCast",
+      "prefix_topics": [
+        "vote_cast"
+      ],
+      "params": [
+        {
+          "doc": "",
+          "name": "project_key",
+          "type_": "bytes",
+          "location": "topic_list"
+        },
+        {
+          "doc": "",
+          "name": "proposal_id",
+          "type_": "u32",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "voter",
+          "type_": "address",
+          "location": "data"
+        }
+      ],
+      "data_format": "map"
+    }
+  },
+  {
+    "event_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ProposalExecuted",
+      "prefix_topics": [
+        "proposal_executed"
+      ],
+      "params": [
+        {
+          "doc": "",
+          "name": "project_key",
+          "type_": "bytes",
+          "location": "topic_list"
+        },
+        {
+          "doc": "",
+          "name": "proposal_id",
+          "type_": "u32",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": "string",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "maintainer",
+          "type_": "address",
+          "location": "data"
+        }
+      ],
+      "data_format": "map"
+    }
+  },
+  {
+    "event_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractPaused",
+      "prefix_topics": [
+        "contract_paused"
+      ],
+      "params": [
+        {
+          "doc": "",
+          "name": "paused",
+          "type_": "bool",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address",
+          "location": "data"
+        }
+      ],
+      "data_format": "map"
+    }
+  },
+  {
+    "event_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AnonymousVotingSetup",
+      "prefix_topics": [
+        "anonymous_voting_setup"
+      ],
+      "params": [
+        {
+          "doc": "",
+          "name": "project_key",
+          "type_": "bytes",
+          "location": "topic_list"
+        },
+        {
+          "doc": "",
+          "name": "maintainer",
+          "type_": "address",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "public_key",
+          "type_": "string",
+          "location": "data"
+        }
+      ],
+      "data_format": "map"
+    }
+  },
+  {
+    "event_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractUpdated",
+      "prefix_topics": [
+        "contract_updated"
+      ],
+      "params": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "contract_key",
+          "type_": "string",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "wasm_hash",
+          "type_": {
+            "option": {
+              "value_type": {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            }
+          },
+          "location": "data"
+        }
+      ],
+      "data_format": "map"
+    }
+  },
+  {
+    "event_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UpgradeProposed",
+      "prefix_topics": [
+        "upgrade_proposed"
+      ],
+      "params": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "wasm_hash",
+          "type_": "bytes",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "executable_at",
+          "type_": "u64",
+          "location": "data"
+        }
+      ],
+      "data_format": "map"
+    }
+  },
+  {
+    "event_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UpgradeApproved",
+      "prefix_topics": [
+        "upgrade_approved"
+      ],
+      "params": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "approvals_count",
+          "type_": "u32",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "threshold_reached",
+          "type_": "bool",
+          "location": "data"
+        }
+      ],
+      "data_format": "map"
+    }
+  },
+  {
+    "event_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UpgradeStatus",
+      "prefix_topics": [
+        "upgrade_status"
+      ],
+      "params": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "wasm_hash",
+          "type_": "bytes",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": "string",
+          "location": "data"
+        }
+      ],
+      "data_format": "map"
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Contract",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "wasm_hash",
+          "type_": {
+            "option": {
+              "value_type": {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "DomainContract"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "CollateralContract"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Member",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Paused"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "UpgradeProposal"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "AdminsConfig"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Badges",
+      "fields": [
+        {
+          "doc": "",
+          "name": "community",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "developer",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "triage",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "verified",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Badge",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Developer",
+          "value": 10000000
+        },
+        {
+          "doc": "",
+          "name": "Triage",
+          "value": 5000000
+        },
+        {
+          "doc": "",
+          "name": "Community",
+          "value": 1000000
+        },
+        {
+          "doc": "",
+          "name": "Verified",
+          "value": 500000
+        },
+        {
+          "doc": "",
+          "name": "Default",
+          "value": 1
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ProjectBadges",
+      "fields": [
+        {
+          "doc": "",
+          "name": "badges",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Badge"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "project",
+          "type_": "bytes"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Member",
+      "fields": [
+        {
+          "doc": "",
+          "name": "meta",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "projects",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "ProjectBadges"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ProposalStatus",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Active"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Approved"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Rejected"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Cancelled"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Malicious"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Vote",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "PublicVote",
+            "type_": [
+              {
+                "udt": {
+                  "name": "PublicVote"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "AnonymousVote",
+            "type_": [
+              {
+                "udt": {
+                  "name": "AnonymousVote"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VoteChoice",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Approve"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Reject"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Abstain"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PublicVote",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "vote_choice",
+          "type_": {
+            "udt": {
+              "name": "VoteChoice"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "weight",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AnonymousVote",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "commitments",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "bytes_n": {
+                  "n": 96
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "encrypted_seeds",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "encrypted_votes",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "weight",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VoteData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "public_voting",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "votes",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Vote"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "voting_ends_at",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AnonymousVoteConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "public_key",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "seed_generator_point",
+          "type_": {
+            "bytes_n": {
+              "n": 96
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "vote_generator_point",
+          "type_": {
+            "bytes_n": {
+              "n": 96
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AdminsConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admins",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "threshold",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UpgradeProposal",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admins_config",
+          "type_": {
+            "udt": {
+              "name": "AdminsConfig"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "approvals",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "executable_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Proposal",
+      "fields": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "ipfs",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "outcomes_contract",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "proposer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "ProposalStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "title",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "vote_data",
+          "type_": {
+            "udt": {
+              "name": "VoteData"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Dao",
+      "fields": [
+        {
+          "doc": "",
+          "name": "proposals",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Proposal"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ProjectKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Key",
+            "type_": [
+              "bytes"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Badges",
+            "type_": [
+              "bytes"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "LastHash",
+            "type_": [
+              "bytes"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Dao",
+            "type_": [
+              "bytes",
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "DaoTotalProposals",
+            "type_": [
+              "bytes"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "AnonymousVoteConfig",
+            "type_": [
+              "bytes"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Config",
+      "fields": [
+        {
+          "doc": "",
+          "name": "ipfs",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "url",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Project",
+      "fields": [
+        {
+          "doc": "",
+          "name": "config",
+          "type_": {
+            "udt": {
+              "name": "Config"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "maintainers",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        }
+      ]
+    }
+  }
+]

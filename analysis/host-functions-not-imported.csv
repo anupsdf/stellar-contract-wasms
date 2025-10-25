@@ -7,11 +7,9 @@ bls12_381_fr_mul,0
 bls12_381_fr_pow,0
 bls12_381_fr_sub,0
 bls12_381_g1_msm,0
-bls12_381_g1_mul,0
 bls12_381_g2_add,0
 bls12_381_g2_msm,0
 bls12_381_g2_mul,0
-bls12_381_hash_to_g1,0
 bls12_381_map_fp2_to_g2,0
 bls12_381_map_fp_to_g1,0
 bn254_g1_add,0
