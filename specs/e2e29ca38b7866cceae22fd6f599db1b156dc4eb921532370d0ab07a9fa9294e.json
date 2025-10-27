@@ -1,0 +1,452 @@
+[
+  {
+    "function_v0": {
+      "doc": "Initialize the contract\\n\\n### Arguments\\n* `admin` - The admin address\\n* `pool` - The blend pool address\\n* `is_apr_capped` - Whether the vault will be APR capped\\n* `value` - The APR cap if `is_apr_capped`, the admin take_rate otherwise\\n\\n### Panics\\n* `InvalidFeeModeValue` - If the value is not within 0 and 1_000_0000",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "is_apr_capped",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Fetch a user's position in shares\\n\\n### Arguments\\n* `reserve` - The asset address of the reserve\\n* `user` - The address of the user\\n\\n### Returns\\n* `i128` - The user's position in shares, or 0 if the reserve does not have a vault or the\\nuser has no shares",
+      "name": "get_shares",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "reserve",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Fetch a user's position in bTokens\\n\\n### Arguments\\n* `reserve` - The asset address of the reserve\\n* `user` - The address of the user\\n\\n### Returns\\n* `i128` - The user's position in bTokens, or 0 if they have no bTokens",
+      "name": "get_b_tokens",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "reserve",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Fetch a user's position in underlying tokens\\n\\n### Arguments\\n* `reserve` - The asset address of the reserve\\n* `user` - The address of the user\\n\\n### Returns\\n* `i128` - The user's position in underlying tokens, or 0 if they have no shares",
+      "name": "get_underlying_tokens",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "reserve",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Fetch the accrued fees in underlying tokens\\n\\n### Arguments\\n* `reserve` - The asset address of the reserve\\n\\n### Returns\\n* `i128` - The admin's accrued fees in underlying tokens, or 0 if the reserve does not exist",
+      "name": "get_collected_fees",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "reserve",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the blend pool address\\n\\n### Returns\\n* `Address` - The blend pool address",
+      "name": "get_pool",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the reserve vault data\\n\\n### Arguments\\n* `reserve` - The asset address of the reserve\\n\\n### Returns\\n* `ReserveData` - The reserve data\\n\\n### Panics\\n* `ReserveNotFound` - If the reserve does not exist",
+      "name": "get_reserve_vault",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "reserve",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "ReserveVault"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "ADMIN ONLY\\nSets the Fee mode for the fee vault\\n\\n### Arguments\\n* `e` - The environment object\\n* `is_apr_capped` - Whether the vault will be APR capped\\n* `value` - The APR cap if `is_apr_capped`, the admin take_rate otherwise\\n\\n### Panics\\n* `InvalidFeeModeValue` - If the value is not within 0 and 1_000_0000",
+      "name": "set_fee_mode",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "is_apr_capped",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "ADMIN ONLY\\nSets the admin address for the fee vault\\n\\n### Arguments\\n* `e` - The environment object\\n* `admin` - The new admin address to set",
+      "name": "set_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "ADMIN ONLY\\nAdd a new reserve vault\\n\\n### Arguments\\n* `reserve_address` - The address of the reserve to add\\n\\n### Panics\\n* `ReserveAlreadyExists` - If the reserve already has a vault",
+      "name": "add_reserve_vault",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "reserve_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "ADMIN ONLY\\nClaims emissions for the given reserves from the pool. This is a passthrough function\\nthat invokes the pool's \"claim\" function as the contract. More details can be found\\nhere: https://github.com/blend-capital/blend-contracts/blob/v1.0.0/pool/src/contract.rs#L192\\n\\n### Arguments\\n* `reserve_token_ids` - The ids of the reserves to claiming emissions for\\n* `to` - The address to send the emissions to\\n\\n### Returns\\n* `i128` - The amount of blnd tokens claimed",
+      "name": "claim_emissions",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "reserve_token_ids",
+          "type_": {
+            "vec": {
+              "element_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "ADMIN ONLY\\nClaims fees for the given reserves from the vault\\n\\n### Arguments\\n* `reserve` - The address of the reserve to claim fees for\\n* `to` - The address to send the fees to\\n\\n### Returns\\n* `i128` - The number of b_tokens burnt\\n\\n### Panics\\n* `ReserveNotFound` - If the reserve does not have a vault\\n* `InsufficientAccruedFees` - If there are no fees to claim",
+      "name": "claim_fees",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "reserve",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Deposits tokens into the fee vault for a specific reserve\\n\\n### Arguments\\n* `reserve` - The address of the reserve to deposit\\n* `user` - The address of the user making the deposit\\n* `amount` - The amount of tokens to deposit\\n\\n### Returns\\n* `i128` - The number of shares minted for the user\\n\\n### Panics\\n* `ReserveNotFound` - If the reserve does not have a vault\\n* `InvalidAmount` - If the amount is less than or equal to 0\\n* `InvalidBTokensMinted` - If the amount of bTokens minted is less than or equal to 0\\n* `InvalidSharesMinted` - If the amount of shares minted is less than or equal to 0",
+      "name": "deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "reserve",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Withdraws tokens from the fee vault for a specific reserve\\n\\n### Arguments\\n* `reserve` - The address of the reserve to withdraw\\n* `user` - The address of the user making the withdrawal\\n* `amount` - The amount of tokens to withdraw\\n\\n### Returns\\n* `i128` - The number of shares burnt\\n\\n### Panics\\n* `ReserveNotFound` - If the reserve does not have a vault\\n* `InvalidAmount` - If the amount is less than or equal to 0\\n* `BalanceError` - If the user does not have enough shares to withdraw the amount\\n* `InvalidBTokensBurnt` - If the amount of bTokens burnt is less than or equal to 0\\n* `InsufficientReserves` - If the pool doesn't have enough reserves to complete the withdrawal",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "reserve",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "The error codes for the contract.",
+      "lib": "",
+      "name": "FeeVaultError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "BalanceError",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "ReserveNotFound",
+          "value": 100
+        },
+        {
+          "doc": "",
+          "name": "ReserveAlreadyExists",
+          "value": 101
+        },
+        {
+          "doc": "",
+          "name": "InvalidAmount",
+          "value": 102
+        },
+        {
+          "doc": "",
+          "name": "InsufficientAccruedFees",
+          "value": 103
+        },
+        {
+          "doc": "",
+          "name": "InvalidFeeModeValue",
+          "value": 104
+        },
+        {
+          "doc": "",
+          "name": "InsufficientReserves",
+          "value": 105
+        },
+        {
+          "doc": "",
+          "name": "InvalidBTokensMinted",
+          "value": 106
+        },
+        {
+          "doc": "",
+          "name": "InvalidBTokensBurnt",
+          "value": 107
+        },
+        {
+          "doc": "",
+          "name": "InvalidSharesMinted",
+          "value": 108
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ReserveVault",
+      "fields": [
+        {
+          "doc": "The number of bTokens the admin is due",
+          "name": "accrued_fees",
+          "type_": "i128"
+        },
+        {
+          "doc": "The reserve asset address",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "The reserve's last bRate",
+          "name": "b_rate",
+          "type_": "i128"
+        },
+        {
+          "doc": "The timestamp of the last update",
+          "name": "last_update_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "The total bToken deposits owned by the reserve vault depositors. Excludes accrued fees.",
+          "name": "total_b_tokens",
+          "type_": "i128"
+        },
+        {
+          "doc": "The total shares issued by the reserve vault",
+          "name": "total_shares",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DepositKey",
+      "fields": [
+        {
+          "doc": "",
+          "name": "reserve",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FeeVaultDataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Deposit",
+            "type_": [
+              {
+                "udt": {
+                  "name": "DepositKey"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ResVault",
+            "type_": [
+              "address"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FeeMode",
+      "fields": [
+        {
+          "doc": "",
+          "name": "is_apr_capped",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "i128"
+        }
+      ]
+    }
+  }
+]

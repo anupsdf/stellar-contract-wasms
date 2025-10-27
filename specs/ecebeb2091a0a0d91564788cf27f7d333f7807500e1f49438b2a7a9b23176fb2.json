@@ -1,0 +1,82 @@
+[
+  {
+    "function_v0": {
+      "doc": "Initialize: admin, fee bps, pricing (base/slope in stroops per token), and fungible token contract id.",
+      "name": "init",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "fee_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "base",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "slope",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Buy tokens for XLM (stroops). Returns tokens_out (integer units).\\nNOTE: This minimal version matches the worker ABI; on-chain XLM and token transfers are TODO.",
+      "name": "buy",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "buyer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "xlm_stroops",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sell tokens for XLM; returns XLM stroops paid out (placeholder).",
+      "name": "sell",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "seller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  }
+]
