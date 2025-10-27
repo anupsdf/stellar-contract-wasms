@@ -1,0 +1,1259 @@
+[
+  {
+    "function_v0": {
+      "doc": "Constructor\\n\\nInitializes the contract.\\n\\n# Parameters\\n- `e`: The environment.\\n- `admin`: The address of the admin.",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Name\\n\\nGets the name of the contract.\\n\\n# Parameters\\n- `e`: The environment.\\n\\n# Returns\\n- `String`: The name of the contract.",
+      "name": "name",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Version\\n\\nGets the version of the contract.\\n\\n# Parameters\\n- `e`: The environment.\\n\\n# Returns\\n- `String`: The version of the contract.",
+      "name": "version",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Upgrade\\n\\nUpgrades the contract.\\n\\n# Parameters\\n- `e`: The environment.\\n- `upgrader`: The address of the upgrader.\\n- `new_wasm_hash`: The hash of the new WASM.\\n\\n# Returns\\n- `Result<(), Error>`: The result of the upgrade operation.",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "upgrader",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Has Role\\n\\nChecks if an account has a role.\\n\\n# Parameters\\n- `e`: The environment.\\n- `account`: The address of the account.\\n- `role`: The role to check.\\n\\n# Returns\\n- `bool`: True if the account has the role, false otherwise.",
+      "name": "has_role",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "role",
+          "type_": {
+            "udt": {
+              "name": "Role"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Grant Role\\n\\nGrants a role to an account.\\n\\n# Parameters\\n- `e`: The environment.\\n- `admin`: The address of the admin granting the role.\\n- `account`: The address of the account receiving the role.\\n- `role`: The role to be granted.\\n\\n# Returns\\n- `Result<(), Error>`: The result of the grant operation.",
+      "name": "grant_role",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "role",
+          "type_": {
+            "udt": {
+              "name": "Role"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Revoke Role\\n\\nRevokes a role from an account.\\n\\n# Parameters\\n- `e`: The environment.\\n- `admin`: The address of the admin revoking the role.\\n- `account`: The address of the account losing the role.\\n- `role`: The role to be revoked.\\n\\n# Returns\\n- `Result<(), Error>`: The result of the revoke operation.",
+      "name": "revoke_role",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "role",
+          "type_": {
+            "udt": {
+              "name": "Role"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get Invoices Count\\n\\nGets the total number of invoices.\\n\\n# Parameters\\n- `e`: The environment.\\n\\n# Returns\\n- `u128`: The total number of invoices.",
+      "name": "get_invoices_count",
+      "inputs": [],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get Invoice\\n\\nGets an invoice by its ID.\\n\\n# Parameters\\n- `e`: The environment.\\n- `invoice_id`: The ID of the invoice.\\n\\n# Returns\\n- `Result<Invoice, Error>`: The invoice or an error.",
+      "name": "get_invoice",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "invoice_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "Invoice"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get Invoice Token Config\\n\\nGets the invoice token config.\\n\\n# Parameters\\n- `e`: The environment.\\n- `token_id`: The address of the token.\\n\\n# Returns\\n- `InvoiceTokenConfig`: The invoices config.",
+      "name": "get_invoice_token_config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "InvoiceTokenConfig"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Set Invoice Token Config\\n\\nSets the invoice token config.\\n\\n# Parameters\\n- `e`: The environment.\\n- `admin`: The address of the admin setting the config.\\n- `token_id`: The address of the token.\\n- `min_amount`: The new minimum amount for invoices.\\n\\n# Returns\\n- `Result<(), Error>`: The result of the set operation.",
+      "name": "set_invoice_token_config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "min_amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Remove Invoice Token Config\\n\\nRemoves the invoice token config.\\n\\n# Parameters\\n- `e`: The environment.\\n- `admin`: The address of the admin removing the config.\\n- `token_id`: The address of the token.\\n\\n# Returns\\n- `Result<(), Error>`: The result of the remove operation.",
+      "name": "remove_invoice_token_config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Send Invoice\\n\\nSends an invoice.\\n\\n# Parameters\\n- `e`: The environment.\\n- `sender`: The address of the sender.\\n- `token_id`: The address of the token.\\n- `amount`: The amount of the invoice.\\n- `managers`: A list of manager addresses controlling the invoice.\\n- `expiration_ledger`: The expiration ledger for approving the invoice.\\n\\n# Returns\\n- `Result<(), Error>`: The empty result or an error.",
+      "name": "send_invoice",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "invoice_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "managers",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "expiration_ledger",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Refund Invoice\\n\\nRefunds an invoice.\\n\\n# Parameters\\n- `e`: The environment.\\n- `invoice_id`: The ID of the invoice to be refunded.\\n\\n# Returns\\n- `Result<(), Error>`: The result of the refund operation.",
+      "name": "refund_invoice",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "invoice_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get Deals Count\\n\\nGets the total number of deals.\\n\\n# Parameters\\n- `e`: The environment.\\n\\n# Returns\\n- `u128`: The total number of deals.",
+      "name": "get_deals_count",
+      "inputs": [],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get Deal\\n\\nGets a deal by its ID.\\n\\n# Parameters\\n- `e`: The environment.\\n- `deal_id`: The ID of the deal.\\n\\n# Returns\\n- `Result<Deal, Error>`: The deal or an error.",
+      "name": "get_deal",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "deal_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "Deal"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Create Deal\\n\\nCreates a deal.\\n\\n# Parameters\\n- `e`: The environment.\\n- `deal_id`: The ID of the deal.\\n- `manager`: The address of the manager creating the deal.\\n- `type_`: The type of the deal.\\n- `metadata_uri`: The URI of the deal metadata.\\n- `metadata_hash`: The hash of the deal metadata.\\n- `invoice_ids`: A list of invoice IDs associated with the deal.\\n\\n# Returns\\n- `Result<(), Error>`: The empty result or an error.",
+      "name": "create_deal",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "deal_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "manager",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "type_",
+          "type_": {
+            "udt": {
+              "name": "DealType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "metadata_uri",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "metadata_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "invoice_ids",
+          "type_": {
+            "vec": {
+              "element_type": "u128"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Update Deal\\n\\nUpdates a deal.\\n\\n# Parameters\\n- `e`: The environment.\\n- `deal_id`: The ID of the deal to be updated.\\n- `new_status`: The new status of the deal.\\n- `new_metadata_uri`: The new URI of the deal metadata.\\n- `new_metadata_hash`: The new hash of the deal metadata.\\n\\n# Returns\\n- `Result<(), Error>`: The result of the update operation.",
+      "name": "update_deal",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "deal_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "new_status",
+          "type_": {
+            "udt": {
+              "name": "DealStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "new_metadata_uri",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "new_metadata_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Cancel Deal\\n\\nCancels a deal.\\n\\n# Parameters\\n- `e`: The environment.\\n- `deal_id`: The ID of the deal to be canceled.\\n\\n# Returns\\n- `Result<(), Error>`: The result of the cancel operation.",
+      "name": "cancel_deal",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "deal_id",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Payout Deal\\n\\nPayouts a deal.\\n\\n# Parameters\\n- `e`: The environment.\\n- `deal_id`: The ID of the deal to be paid out.\\n- `system_wallet`: The address of the system wallet.\\n- `system_fee_amount`: The system fee amount.\\n- `broker_wallet`: The address of the broker wallet.\\n- `broker_fee_amount`: The broker fee amount.\\n- `remaining_wallet`: The address of the remaining wallet.\\n\\n# Returns\\n- `Result<(), Error>`: The result of the payout operation.",
+      "name": "payout_deal",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "deal_id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "system_wallet",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "system_fee_amounts",
+          "type_": {
+            "vec": {
+              "element_type": "i128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "broker_wallet",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "broker_fee_amounts",
+          "type_": {
+            "vec": {
+              "element_type": "i128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "remaining_wallet",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "Error codes for the contract.\\n\\nThis enum represents various errors that can occur within the contract.\\nEach variant is associated with a unique error code.\\n\\nError codes are categorized as follows:\\n- 1xx: Existence Errors\\n- 2xx: Permission Errors\\n- 3xx: Validation Errors",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "The invoice was not found.",
+          "name": "InvoiceNotFound",
+          "value": 101
+        },
+        {
+          "doc": "The invoice token config was not found.",
+          "name": "InvoiceTokenConfigNotFound",
+          "value": 102
+        },
+        {
+          "doc": "The deal was not found.",
+          "name": "DealNotFound",
+          "value": 103
+        },
+        {
+          "doc": "The invoice already exists.",
+          "name": "InvoiceAlreadyExists",
+          "value": 104
+        },
+        {
+          "doc": "The deal already exists.",
+          "name": "DealAlreadyExists",
+          "value": 105
+        },
+        {
+          "doc": "The request was forbidden.",
+          "name": "Forbidden",
+          "value": 201
+        },
+        {
+          "doc": "The invoice status is invalid.",
+          "name": "InvalidInvoiceStatus",
+          "value": 301
+        },
+        {
+          "doc": "The invoice token config min amount is invalid",
+          "name": "InvalidInvoiceTokenConfigMinAmount",
+          "value": 302
+        },
+        {
+          "doc": "The deal status is invalid.",
+          "name": "InvalidDealStatus",
+          "value": 303
+        },
+        {
+          "doc": "The deal metadata is invalid.",
+          "name": "InvalidDealMetadata",
+          "value": 304
+        },
+        {
+          "doc": "The deal invoice IDs count is invalid.",
+          "name": "InvalidDealInvoiceIDsCount",
+          "value": 305
+        },
+        {
+          "doc": "The invoice managers count is invalid.",
+          "name": "InvalidInvoiceManagersCount",
+          "value": 306
+        },
+        {
+          "doc": "The invoice manager is invalid.",
+          "name": "InvalidInvoiceManager",
+          "value": 307
+        },
+        {
+          "doc": "The fee amount is invalid.",
+          "name": "InvalidFeeAmount",
+          "value": 308
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Event emitted when a role is granted to an account.\\n\\n# Fields\\n- `account`: The address of the account receiving the role.\\n- `role`: The role being granted.",
+      "lib": "",
+      "name": "GrantedRoleEventData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "role",
+          "type_": {
+            "udt": {
+              "name": "Role"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Event emitted when a role is revoked from an account.\\n\\n# Fields\\n- `account`: The address of the account losing the role.\\n- `role`: The role being revoked.",
+      "lib": "",
+      "name": "RevokedRoleEventData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "role",
+          "type_": {
+            "udt": {
+              "name": "Role"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Event emitted when an invoice is sent.\\n\\n# Fields\\n- `id`: The ID of the sent invoice.\\n- `sender`: The address of the account that sent the invoice.\\n- `token_id`: The address of the token used for the invoice.\\n- `amount`: The amount of the invoice.\\n- `managers`: A list of manager addresses controlling the invoice.",
+      "lib": "",
+      "name": "SentInvoiceEventData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "managers",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Event emitted when an invoice is refunded.\\n\\n# Fields\\n- `id`: The ID of the refunded invoice.",
+      "lib": "",
+      "name": "RefundedInvoiceEventData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "\\n# Fields\\n- `id`: The ID of the paid invoice.",
+      "lib": "",
+      "name": "PaidInvoiceEventData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Event emitted when a deal is created.\\n\\n# Fields\\n- `id`: The ID of the created deal.\\n- `type_`: The type of the created deal.\\n- `manager`: The address of the manager creating the deal.\\n- `metadata_hash`: The hash of the deal metadata.\\n- `invoice_ids`: A list of invoice IDs associated with the deal.",
+      "lib": "",
+      "name": "CreatedDealEventData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "invoice_ids",
+          "type_": {
+            "vec": {
+              "element_type": "u128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "manager",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "metadata_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "type_",
+          "type_": {
+            "udt": {
+              "name": "DealType"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Event emitted when a deal is updated.\\n\\n# Fields\\n- `id`: The ID of the updated deal.\\n- `status`: The new status of the deal.\\n- `metadata_hash`: The new hash of the deal metadata.",
+      "lib": "",
+      "name": "UpdatedDealEventData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "metadata_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "DealStatus"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Event emitted when a deal is cancelled.\\n\\n# Fields\\n- `id`: The ID of the cancelled deal.\\n- `metadata_hash`: The final hash of the deal metadata.",
+      "lib": "",
+      "name": "CancelledDealEventData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "metadata_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Event emitted when a deal is paid.\\n\\n# Fields\\n- `id`: The ID of the closed deal.\\n- `metadata_hash`: The final hash of the deal metadata.",
+      "lib": "",
+      "name": "PaidDealEventData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "metadata_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "DataKey enum used to define different types of data keys.\\n\\n# Variants\\n- `Roles`: Represents a role data key.\\n- `Invoices`: Represents an invoice data key.\\n- `InvoicesCount`: Represents the count of invoices.\\n- `InvoiceTokenConfigs`: Represents an invoice token config data key.\\n- `Deals`: Represents a deal data key.\\n- `DealsCount`: Represents the count of deals.",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Roles",
+            "type_": [
+              {
+                "udt": {
+                  "name": "RolesDataKey"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Invoices",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "InvoicesCount"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "InvoiceTokenConfigs",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Deals",
+            "type_": [
+              "u128"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "DealsCount"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "RolesDataKey struct used to store role data.\\n\\n# Fields\\n- `role`: The role assigned to the account.\\n- `account`: The address of the account.",
+      "lib": "",
+      "name": "RolesDataKey",
+      "fields": [
+        {
+          "doc": "",
+          "name": "account",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "role",
+          "type_": {
+            "udt": {
+              "name": "Role"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "Role enum used to define different roles in the contract.\\n\\n# Variants\\n- `Admin`: Represents the admin role.\\n- `Manager`: Represents the manager role.\\n- `Upgrader`: Represents the upgrader role.",
+      "lib": "",
+      "name": "Role",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Manager"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Upgrader"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Invoice struct used to define the structure of an invoice.\\n\\n# Fields\\n- `status`: The current status of the invoice.\\n- `sender`: The address of the account that sent the invoice.\\n- `token_id`: The address of the token used for the invoice.\\n- `amount`: The amount of the invoice.\\n- `managers`: A list of manager addresses controlling the invoice.",
+      "lib": "",
+      "name": "Invoice",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "managers",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "InvoiceStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "InvoiceStatus enum used to define the possible statuses of an invoice.\\n\\n# Variants\\n- `Sent`: The invoice has been sent.\\n- `Refunded`: The invoice has been refunded.\\n- `InProgress`: The invoice is in progress.\\n- `Paid`: The invoice has been paid.",
+      "lib": "",
+      "name": "InvoiceStatus",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Sent"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Refunded"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "InProgress"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Paid"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "InvoiceTokenConfig struct used to define the configuration of an invoice token.\\n\\n# Fields\\n- `min_amount`: The minimum amount for an invoice.",
+      "lib": "",
+      "name": "InvoiceTokenConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "min_amount",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Deal struct used to define the structure of a deal.\\n\\n# Fields\\n- `type_`: The type of the deal.\\n- `status`: The current status of the deal.\\n- `metadata`: Metadata associated with the deal.\\n- `manager`: The address of the account managing the deal.\\n- `invoice_ids`: A list of invoice IDs associated with the deal.",
+      "lib": "",
+      "name": "Deal",
+      "fields": [
+        {
+          "doc": "",
+          "name": "invoice_ids",
+          "type_": {
+            "vec": {
+              "element_type": "u128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "manager",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "metadata",
+          "type_": {
+            "udt": {
+              "name": "DealMetadata"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "DealStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "type_",
+          "type_": {
+            "udt": {
+              "name": "DealType"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "DealType enum used to define the possible types of deals.\\n\\n# Variants\\n- `Tokens`: A deal involving tokens.\\n- `Funds`: A deal involving funds.\\n- `Logistics`: A deal involving logistics.",
+      "lib": "",
+      "name": "DealType",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Tokens"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Funds"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Logistics"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "DealStatus enum used to define the possible statuses of a deal.\\n\\n# Variants\\n- `Pending`: The deal is pending.\\n- `InTransit`: The deal is in transit.\\n- `Received`: The deal has been received.\\n- `Paid`: The deal has been paid (only for deal with invoices).\\n- `Cancelled`: The deal has been cancelled.",
+      "lib": "",
+      "name": "DealStatus",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Pending"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "InTransit"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Received"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Paid"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Cancelled"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "DealMetadata struct used to define the metadata associated with a deal.\\n\\n# Fields\\n- `uri`: The URI of the metadata.\\n- `hash`: The hash of the metadata.",
+      "lib": "",
+      "name": "DealMetadata",
+      "fields": [
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "uri",
+          "type_": "string"
+        }
+      ]
+    }
+  }
+]
