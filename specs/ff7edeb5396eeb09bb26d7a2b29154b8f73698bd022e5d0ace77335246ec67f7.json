@@ -1,0 +1,1391 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "InvestmentPayload",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "investment_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "investor",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "refunded",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PaymentInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amortization",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "sender",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "investors_count",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "min_investment",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "total_invested",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_paid",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_value",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolInitConfig",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin_fee",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "fee_receiver",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "funds_receiver",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "min_investment",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "originator_wallet",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "sbrl_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "PoolRoles",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "operator",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CreditDemand",
+      "fields": [
+        {
+          "doc": "",
+          "name": "added_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "contract_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "volume",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CreditDemandPayment",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amortization",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "InvestorInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "current_balance",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "investments_count",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "is_investor",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "total_invested",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initialize the pool contract",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "config",
+          "type_": {
+            "udt": {
+              "name": "PoolInitConfig"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "roles",
+          "type_": {
+            "udt": {
+              "name": "PoolRoles"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Simple hello function for testing",
+      "name": "hello",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "symbol"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "symbol"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Check if pool is initialized",
+      "name": "is_initialized",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Set minimum investment (operator only)",
+      "name": "set_min_investment",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_min",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Set administration fee (operator only)",
+      "name": "set_admin_fee",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_fee",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Set fee receiver address (admin only)",
+      "name": "set_fee_receiver",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_receiver",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Set funds receiver address (admin only)",
+      "name": "set_funds_receiver",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_receiver",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Set SBRL token address (admin only) - for updating to SAC address",
+      "name": "set_sbrl_token",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_token_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_pool_id",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_pool_name",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_pool_symbol",
+      "inputs": [],
+      "outputs": [
+        "string"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_total_invested",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_total_paid",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_total_repaid",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_min_investment",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get administration fee (public for backward compatibility)",
+      "name": "get_admin_fee",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get administration fee (operator only - matching Solidity pattern)\\nEquivalente ao getAdministrationFee do Solidity com onlyRole(OPERATOR_ROLE)",
+      "name": "get_admin_fee_protected",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_total_value",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_last_payment_date",
+      "inputs": [],
+      "outputs": [
+        "i64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_fee_receiver",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_funds_receiver",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_originator_wallet",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_sbrl_token",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_operator",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_credit_demand_fee",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_credit_demand_amortization",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_credit_demands",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "CreditDemand"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_credit_demands_count",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_investors",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_investors_count",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_investor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_investor_balance",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "investor",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_pool_info",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "PoolInfo"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Adds a credit demand to the pool (only operator)",
+      "name": "add_credit_demand",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "credit_demand_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Removes a credit demand from the pool (only operator)",
+      "name": "remove_credit_demand",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "credit_demand_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Processes a payment from a credit demand (only registered credit demands)",
+      "name": "process_credit_demand_payment",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amortization",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if an address is a registered credit demand",
+      "name": "is_registered_credit_demand",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Main SBRL investment function (without permit)\\nBased on investSBRLWithoutPermit from Solidity contract",
+      "name": "invest_sbrl",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "investor",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "SBRL investment with permit signature\\nBased on investSBRLPermit from Solidity contract",
+      "name": "invest_with_permit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "investor",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "deadline",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "v",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "_r",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "_s",
+          "type_": "bytes"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get user investment history\\nBased on getUserInvestments from Solidity contract",
+      "name": "get_user_investments",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "InvestmentPayload"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get specific user investment by index",
+      "name": "get_user_investment_by_index",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "InvestmentPayload"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get number of investments for a user",
+      "name": "get_user_investments_count",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get investment information for a specific investor\\nReturns basic investment info like balance, total invested, etc.",
+      "name": "get_investment_info",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "investor",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "InvestorInfo"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get list of investment IDs for a user\\nEquivalente a getUserInvestmentIds do Solidity",
+      "name": "get_user_investment_ids",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "investor",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "string"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get investment by ID",
+      "name": "get_investment_by_id",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "investor",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "investment_id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "InvestmentPayload"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Cancel investment by ID (cooling-off period: 5 days)",
+      "name": "cancel_investment_by_id",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "investor",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "investment_id",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Distribute payments to investors from credit demands (called by credit demands)\\nBased on creditDemandPayInvestorsSBRL from Solidity RivoolPool",
+      "name": "credit_demand_pay_investors_sbrl",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "amortization",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get payment history for investor",
+      "name": "get_investor_payment_history",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "investor",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "PaymentInfo"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get all payments from the pool (for all investors)",
+      "name": "get_all_pool_payments",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "PaymentInfo"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Ajustar total_invested manualmente (ADMIN ONLY)\\n\\xc3\\x9atil para corre\\xc3\\xa7\\xc3\\xb5es em caso de bugs ou inconsist\\xc3\\xaancias\\n\\nUSE CASE: Ap\\xc3\\xb3s upgrade que corrige bug de total_invested,\\nusar esta fun\\xc3\\xa7\\xc3\\xa3o para ajustar o valor ao correto (soma dos balan\\xc3\\xa7os)",
+      "name": "admin_set_total_invested",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_total",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Compensar investidor com SBRL da Pool (ADMIN ONLY)\\nTransferir SBRL da Pool para investidor\\n\\nUSE CASE: Compensar investidores por pagamentos distribu\\xc3\\xaddos incorretamente\\ndevido ao bug de total_invested",
+      "name": "admin_compensate_investor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "investor",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "symbol"
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Storage key for enumeration of accounts per role.",
+      "lib": "",
+      "name": "RoleAccountKey",
+      "fields": [
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "role",
+          "type_": "symbol"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "Storage keys for the data associated with the access control",
+      "lib": "",
+      "name": "AccessControlStorageKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "RoleAccounts",
+            "type_": [
+              {
+                "udt": {
+                  "name": "RoleAccountKey"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "HasRole",
+            "type_": [
+              "address",
+              "symbol"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "RoleAccountsCount",
+            "type_": [
+              "symbol"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "RoleAdmin",
+            "type_": [
+              "symbol"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PendingAdmin"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AccessControlError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 1210
+        },
+        {
+          "doc": "",
+          "name": "AdminNotSet",
+          "value": 1211
+        },
+        {
+          "doc": "",
+          "name": "IndexOutOfBounds",
+          "value": 1212
+        },
+        {
+          "doc": "",
+          "name": "AdminRoleNotFound",
+          "value": 1213
+        },
+        {
+          "doc": "",
+          "name": "RoleCountIsNotZero",
+          "value": 1214
+        },
+        {
+          "doc": "",
+          "name": "RoleNotFound",
+          "value": 1215
+        },
+        {
+          "doc": "",
+          "name": "AdminAlreadySet",
+          "value": 1216
+        },
+        {
+          "doc": "",
+          "name": "RoleNotHeld",
+          "value": 1217
+        },
+        {
+          "doc": "",
+          "name": "RoleIsEmpty",
+          "value": 1218
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "Storage keys for `Ownable` utility.",
+      "lib": "",
+      "name": "OwnableStorageKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Owner"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PendingOwner"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OwnableError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "OwnerNotSet",
+          "value": 1220
+        },
+        {
+          "doc": "",
+          "name": "TransferInProgress",
+          "value": 1221
+        },
+        {
+          "doc": "",
+          "name": "OwnerAlreadySet",
+          "value": 1222
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RoleTransferError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NoPendingTransfer",
+          "value": 1200
+        },
+        {
+          "doc": "",
+          "name": "InvalidLiveUntilLedger",
+          "value": 1201
+        },
+        {
+          "doc": "",
+          "name": "InvalidPendingAccount",
+          "value": 1202
+        }
+      ]
+    }
+  }
+]
