@@ -10,6 +10,7 @@ file,result,message,entries,has docs,size
 017ae0d7e6c2141df9ea927a715b3152f0cde31e202c9c3bb7cc0e745616beb6.wasm,ok,_,13,false,46.1 KiB
 017d6f6a8012e954fe5ec032123e066b9ebcd25364860bd32e2e26d4d2c6cf8d.wasm,ok,_,16,false,16.5 KiB
 0191f55837f76fa8d2c1d5374000c80cd0b33dfaddafcf27b50c7c8b1547328a.wasm,ok,_,47,true,17.3 KiB
+01aa22418312a9c5137150961bdf2a43eadaafe5adf935eaedab622555df324f.wasm,ok,_,36,true,14.4 KiB
 01cfbd28e984de234c5fa3e91713d2304159fe00df2acdc58594a4cc3674a7f3.wasm,ok,_,5,true,13.7 KiB
 01d76265b4cabdbcd4b38be35c2431988dc369a75c0b4605397bd03b162dbe72.wasm,ok,_,33,false,30.5 KiB
 024f15dba90fa6379ec9b03befce2c823413f6190ccf6264553fa9a785a3da5a.wasm,ok,_,6,false,7.5 KiB
@@ -1645,6 +1646,6 @@ ffaafd8a37ebaeaf08b6a55caa232e521c00ff443ffcbc1af29165390b4269dc.wasm,ok,_,11,fa
 ffd2249433d021c6a215e08d21b834ee985e92b8e6dccb816849033fa4523ab9.wasm,ok,_,20,false,28.2 KiB
 ffd799287d904c23c6ca086a9d517df50f860f504502e917660b8730cbe915b5.wasm,ok,_,8,true,19.3 KiB
 ffddf40e7c479975864512a0e40dd43e0fe5ee0c8b8ea47329d973ba7477138e.wasm,ok,_,17,false,6 KiB
-Contracts with specs: 1643 (99.81774%),_,_,_,_,_
-Contracts with specs and docs: 545 (33.110573%),_,_,_,_,_
-Contracts without specs: 3 (0.18226002%),_,_,_,_,_
+Contracts with specs: 1644 (99.81785%),_,_,_,_,_
+Contracts with specs and docs: 546 (33.151184%),_,_,_,_,_
+Contracts without specs: 3 (0.18214937%),_,_,_,_,_
