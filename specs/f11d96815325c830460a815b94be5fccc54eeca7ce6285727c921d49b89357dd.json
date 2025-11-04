@@ -1,0 +1,311 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GameStatus",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "WaitingForGuesses"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Player1Guessed"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Finished"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Winner",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "None"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Player1"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Player2"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Tie"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Game",
+      "fields": [
+        {
+          "doc": "",
+          "name": "player1",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "player1_guess",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "player1_wager",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "player2",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "player2_guess",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "player2_wager",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "session_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "GameStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "target_number",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "winner",
+          "type_": {
+            "udt": {
+              "name": "Winner"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Constructor called once during contract deployment\\nSets up the admin and game engine address",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "game_engine_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the admin address",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the game engine address",
+      "name": "get_game_engine",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Upgrade the contract to new WASM bytecode (admin only)",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Create a new game with two players and their wagers\\nThis calls the game engine to create a session and lock points\\nThe session_id must be provided by the caller to ensure deterministic simulation",
+      "name": "create_game",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "session_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "player1",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "player2",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "player1_wager",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "player2_wager",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "target_number",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Player 1 submits their guess (1-10)",
+      "name": "player1_guess",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "session_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "guess",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Player 2 submits their guess (1-10)\\nThis automatically resolves the game and awards faction points!",
+      "name": "player2_guess",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "session_id",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "guess",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get game details",
+      "name": "get_game",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "session_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Game"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the winner of a game",
+      "name": "get_winner",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "session_id",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Winner"
+          }
+        }
+      ]
+    }
+  }
+]
