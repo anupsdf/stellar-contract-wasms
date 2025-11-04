@@ -8,8 +8,8 @@ symbol_new_from_linear_memory,1389
 call,1188
 obj_from_i128_pieces,1175
 map_new_from_linear_memory,1172
-obj_to_i128_hi64,1106
-obj_to_i128_lo64,1106
+obj_to_i128_hi64,1107
+obj_to_i128_lo64,1107
 map_unpack_to_linear_memory,1089
 bytes_len,1045
 get_current_contract_address,986

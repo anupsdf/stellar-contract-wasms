@@ -1,0 +1,31 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "place_trade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "base",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "quote",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "expected_profit",
+          "type_": "i128"
+        }
+      ],
+      "outputs": []
+    }
+  }
+]
