@@ -1,0 +1,920 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "TransferFailed",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "AuthorityNotRegistered",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "SchemaNotFound",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "AttestationExists",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "AttestationNotFound",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "NotAuthorized",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "StorageFailed",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "InvalidUid",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "ResolverError",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "SchemaHasNoResolver",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "AdminNotSet",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "AttestationNotRevocable",
+          "value": 15
+        },
+        {
+          "doc": "",
+          "name": "InvalidSchemaDefinition",
+          "value": 16
+        },
+        {
+          "doc": "",
+          "name": "InvalidAttestationValue",
+          "value": 17
+        },
+        {
+          "doc": "",
+          "name": "InvalidReference",
+          "value": 18
+        },
+        {
+          "doc": "",
+          "name": "InvalidNonce",
+          "value": 19
+        },
+        {
+          "doc": "",
+          "name": "ExpiredSignature",
+          "value": 20
+        },
+        {
+          "doc": "",
+          "name": "InvalidSignature",
+          "value": 21
+        },
+        {
+          "doc": "",
+          "name": "AttestationExpired",
+          "value": 22
+        },
+        {
+          "doc": "",
+          "name": "InvalidDeadline",
+          "value": 23
+        },
+        {
+          "doc": "",
+          "name": "ResolverCallFailed",
+          "value": 24
+        },
+        {
+          "doc": "",
+          "name": "InvalidSignaturePoint",
+          "value": 25
+        },
+        {
+          "doc": "",
+          "name": "BlsPubKeyNotRegistered",
+          "value": 26
+        },
+        {
+          "doc": "",
+          "name": "IntegerOverflow",
+          "value": 27
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ResolverAttestation",
+      "fields": [
+        {
+          "doc": "",
+          "name": "attester",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "expiration_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "ref_uid",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "revocable",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "revocation_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "schema_uid",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "uid",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "\\xe2\\x95\\x94\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x97\\n\\xe2\\x95\\x91                                 DataKey                                   \\xe2\\x95\\x91\\n\\xe2\\x95\\x9a\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x9d\\n\\nRepresents the keys used for data storage in the contract.\\n\\nEach variant corresponds to a different type of data that can be stored\\nin the contract's persistent storage.",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "Key for storing the contract admin address",
+            "name": "Admin"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "Key for storing authority information, indexed by the authority's address",
+            "name": "Authority",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "Key for storing structured schema information, indexed by the schema's unique identifier",
+            "name": "Schema",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "Key for storing attestation data\\n\\nIndexed by attestation UID for direct lookup",
+            "name": "AttestationUID",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "Key for storing the current nonce for an attester\\n\\nUsed to prevent replay attacks in delegated attestations",
+            "name": "AttesterNonce",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "Key for storing the BLS public key for an attester\\n\\nOne-to-one mapping: wallet address -> BLS public key",
+            "name": "AttesterPublicKey",
+            "type_": [
+              "address"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "\\xe2\\x95\\x94\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x97\\n\\xe2\\x95\\x91                               Authority                                   \\xe2\\x95\\x91\\n\\xe2\\x95\\x9a\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x9d\\n\\nRepresents an authority that can create schemas and attestations.\\n\\nAuthorities are registered entities with specific permissions in the system\\nthat can create schemas and issue attestations.",
+      "lib": "",
+      "name": "Authority",
+      "fields": [
+        {
+          "doc": "The Stellar address of the authority",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "Metadata describing the authority\\n\\nTypically in JSON format, containing information about the authority.",
+          "name": "metadata",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "\\xe2\\x95\\x94\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x97\\n\\xe2\\x95\\x91                                 Schema                                    \\xe2\\x95\\x91\\n\\xe2\\x95\\x9a\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x9d\\n\\nRepresents a schema definition that attestations can follow.\\n\\nSchemas define the structure and validation rules for attestations.\\nThe definition field supports multiple formats:\\n- XDR-encoded: Stellar-native binary format for structured data\\n- JSON: Human-readable structured format",
+      "lib": "",
+      "name": "Schema",
+      "fields": [
+        {
+          "doc": "The address of the authority that created this schema",
+          "name": "authority",
+          "type_": "address"
+        },
+        {
+          "doc": "The schema definition in any supported format\\n\\nSupports XDR-encoded structured data or JSON",
+          "name": "definition",
+          "type_": "string"
+        },
+        {
+          "doc": "Optional address of a resolver contract for this schema\\n\\nIf present, this contract will be called to handle attestation operations.",
+          "name": "resolver",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "Whether attestations using this schema can be revoked",
+          "name": "revocable",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "\\xe2\\x95\\x94\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x97\\n\\xe2\\x95\\x91                      DelegatedAttestationRequest                          \\xe2\\x95\\x91\\n\\xe2\\x95\\x9a\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x9d\\n\\nRepresents a request for delegated attestations.\\n\\nThis allows an attester to sign an attestation off-chain, which can then be\\nsubmitted on-chain by any party (who will pay the transaction fees).",
+      "lib": "",
+      "name": "DelegatedAttestationRequest",
+      "fields": [
+        {
+          "doc": "The address of the original attester (who signed off-chain)",
+          "name": "attester",
+          "type_": "address"
+        },
+        {
+          "doc": "Expiration timestamp for this signed request\\n\\nAfter this time, the signature is no longer valid and cannot be submitted.",
+          "name": "deadline",
+          "type_": "u64"
+        },
+        {
+          "doc": "Optional expiration time for the attestation itself",
+          "name": "expiration_time",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "The nonce for this attestation (must be the next expected nonce for the attester)",
+          "name": "nonce",
+          "type_": "u64"
+        },
+        {
+          "doc": "The unique identifier of the schema this attestation follows",
+          "name": "schema_uid",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "BLS12-381 G1 signature of the request data (96 bytes)",
+          "name": "signature",
+          "type_": {
+            "bytes_n": {
+              "n": 96
+            }
+          }
+        },
+        {
+          "doc": "The address of the entity that is the subject of this attestation",
+          "name": "subject",
+          "type_": "address"
+        },
+        {
+          "doc": "The value or content of the attestation",
+          "name": "value",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "\\xe2\\x95\\x94\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x97\\n\\xe2\\x95\\x91                      DelegatedRevocationRequest                           \\xe2\\x95\\x91\\n\\xe2\\x95\\x9a\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x9d\\n\\nRepresents a request for delegated revocation.\\n\\nThis allows an attester to sign a revocation off-chain, which can then be\\nsubmitted on-chain by any party.",
+      "lib": "",
+      "name": "DelegatedRevocationRequest",
+      "fields": [
+        {
+          "doc": "The unique identifier of the attestation to revoke",
+          "name": "attestation_uid",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "Expiration timestamp for this signed request",
+          "name": "deadline",
+          "type_": "u64"
+        },
+        {
+          "doc": "The nonce of the attestation to revoke",
+          "name": "nonce",
+          "type_": "u64"
+        },
+        {
+          "doc": "The address of the original attester (who signed off-chain)",
+          "name": "revoker",
+          "type_": "address"
+        },
+        {
+          "doc": "The unique identifier of the schema",
+          "name": "schema_uid",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "BLS12-381 G1 signature of the request data (96 bytes)",
+          "name": "signature",
+          "type_": {
+            "bytes_n": {
+              "n": 96
+            }
+          }
+        },
+        {
+          "doc": "The address of the entity that is the subject of the attestation to revoke",
+          "name": "subject",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "\\xe2\\x95\\x94\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x97\\n\\xe2\\x95\\x91                            Attestation                                    \\xe2\\x95\\x91\\n\\xe2\\x95\\x9a\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x9d\\n\\nRepresents an attestation with support for both direct and delegated attestations.\\n\\nUsed for tracking attestations and supporting multiple attestations per schema/subject\\npair through nonces.",
+      "lib": "",
+      "name": "Attestation",
+      "fields": [
+        {
+          "doc": "The address of the entity that created this attestation\\n\\nIn direct attestations, this is the caller.\\nIn delegated attestations, this is the original signer.",
+          "name": "attester",
+          "type_": "address"
+        },
+        {
+          "doc": "Optional expiration timestamp\\n\\nIf set, the attestation is considered invalid after this time.",
+          "name": "expiration_time",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "Unique nonce for this attestation\\n\\nAllows for multiple attestations of the same schema for the same subject,\\nand prevents replay attacks in delegated attestations.",
+          "name": "nonce",
+          "type_": "u64"
+        },
+        {
+          "doc": "Optional timestamp when the attestation was revoked",
+          "name": "revocation_time",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "Whether this attestation has been revoked",
+          "name": "revoked",
+          "type_": "bool"
+        },
+        {
+          "doc": "The unique identifier of the schema this attestation follows",
+          "name": "schema_uid",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "The address of the entity that is the subject of this attestation",
+          "name": "subject",
+          "type_": "address"
+        },
+        {
+          "doc": "Timestamp when the attestation was created",
+          "name": "timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "The unique identifier of the attestation",
+          "name": "uid",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "The value or content of the attestation",
+          "name": "value",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "\\xe2\\x95\\x94\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x97\\n\\xe2\\x95\\x91                            BLS Public Key                                 \\xe2\\x95\\x91\\n\\xe2\\x95\\x9a\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x90\\xe2\\x95\\x9d\\n\\nRepresents a BLS12-381 public key for an attester.\\n\\nEach wallet address can have exactly one BLS public key. No updates or revocations.",
+      "lib": "",
+      "name": "BlsPublicKey",
+      "fields": [
+        {
+          "doc": "The BLS12-381 G2 public key (192 bytes compressed)",
+          "name": "key",
+          "type_": {
+            "bytes_n": {
+              "n": 192
+            }
+          }
+        },
+        {
+          "doc": "Timestamp when this key was registered",
+          "name": "registered_at",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initializes the contract with an administrative address.\\n\\nThis function can only be called once. Subsequent calls will result in an\\n`AlreadyInitialized` error.\\n\\n# Arguments\\n\\n* `admin` - The address to be set as the contract administrator.\\n\\n# Errors\\n\\nReturns `Err(errors::Error::AlreadyInitialized)` if the contract has already been initialized.",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Registers a new attestation schema.\\n\\nA schema defines the structure and rules for attestations. Each schema is\\nidentified by a unique UID, which is derived from its definition.\\n\\n# Arguments\\n\\n* `caller` - The address of the entity registering the schema. The caller is designated as the schema's creator.\\n* `schema_definition` - A string defining the schema. The format of this string is up to the implementer.\\n* `resolver` - An optional address of a contract that can resolve or validate attestations against this schema.\\n* `revocable` - A boolean indicating whether attestations made against this schema can be revoked.\\n\\n# Returns\\n\\nReturns a `Result` containing the 32-byte UID of the newly registered schema,\\nor an error if the registration fails.",
+      "name": "register",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "schema_definition",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "resolver",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "revocable",
+          "type_": "bool"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "bytes_n": {
+                "n": 32
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves a registered schema by its UID.\\n\\n# Arguments\\n\\n* `schema_uid` - The 32-byte unique identifier of the schema to retrieve.\\n\\n# Returns\\n\\nReturns a `Result` containing the `Schema` struct if found, or an error\\nif no schema with the given UID exists.",
+      "name": "get_schema",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "schema_uid",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "Schema"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Creates an attestation where the attester is also the subject.\\n\\nThis function creates a new attestation based on a specified schema. The `attester`\\nmust authorize this operation by signing the transaction, and they will also be the subject of the attestation.\\n\\n# Arguments\\n\\n* `attester` - The address of the entity making the attestation. Must be the transaction signer.\\n* `schema_uid` - The UID of the schema for which the attestation is being made.\\n* `value` - The value of the attestation, conforming to the schema's definition.\\n* `expiration_time` - An optional Unix timestamp indicating when the attestation expires.\\n\\n# Returns\\n\\nReturns a `Result` containing the 32-byte UID of the newly created attestation,\\nor an error if the process fails.",
+      "name": "attest",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "attester",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "schema_uid",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "expiration_time",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "bytes_n": {
+                "n": 32
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Revokes an existing attestation.\\n\\nOnly the original attester or an authorized party (as defined by the schema) can\\nrevoke an attestation. The schema must also permit revocations.\\n\\n# Arguments\\n\\n* `revoker` - The address of the entity revoking the attestation. Must be authorized to perform this action.\\n* `attestation_uid` - The UID of the attestation to be revoked.\\n\\n# Returns\\n\\nReturns `Ok(())` on successful revocation, or an error if the revocation fails.",
+      "name": "revoke",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "revoker",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "attestation_uid",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves an attestation by its UID.\\n\\n# Arguments\\n\\n* `attestation_uid` - The 32-byte unique identifier of the attestation to retrieve.\\n\\n# Returns\\n\\nReturns a `Result` containing the `Attestation` struct if found, or an error\\nif no attestation with the given UID exists.",
+      "name": "get_attestation",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "attestation_uid",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "Attestation"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Creates an attestation using a delegated signature.\\n\\nThis method allows for gas-less attestations where a `submitter` can post an\\nattestation on behalf of an `attester`. The `attester`'s authorization is\\nverified through a signed `DelegatedAttestationRequest`. The attestation UID\\ncan be derived off-chain from the request parameters.\\n\\nAnyone can submit this transaction, paying the fees.\\n\\n# Arguments\\n\\n* `submitter` - The address submitting the transaction, which must authorize the invocation.\\n* `request` - The `DelegatedAttestationRequest` struct containing the attestation details and the attester's signature.\\n\\n# Returns\\n\\nReturns `Ok(())` on success, or an error if the request is invalid or signature verification fails.",
+      "name": "attest_by_delegation",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "submitter",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "request",
+          "type_": {
+            "udt": {
+              "name": "DelegatedAttestationRequest"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Revokes an attestation using a delegated signature.\\n\\nThis method allows for gas-less revocations where a `submitter` can post a\\nrevocation on behalf of a `revoker`. The `revoker`'s authorization is\\nverified through a signed `DelegatedRevocationRequest`.\\n\\n# Arguments\\n\\n* `submitter` - The address submitting the transaction, which must authorize the invocation.\\n* `request` - The `DelegatedRevocationRequest` struct containing the revocation details and the revoker's signature.\\n\\n# Returns\\n\\nReturns `Ok(())` on success, or an error if the request is invalid or signature verification fails.",
+      "name": "revoke_by_delegation",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "submitter",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "request",
+          "type_": {
+            "udt": {
+              "name": "DelegatedRevocationRequest"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets the next nonce for an attester.\\n\\nNonces are used in delegated requests to prevent replay attacks. Each delegated\\nrequest from an attester must have a unique, sequential nonce.\\n\\n# Arguments\\n\\n* `attester` - The address of the attester.\\n\\n# Returns\\n\\nReturns the next expected nonce (`u64`) for the given attester.",
+      "name": "get_attester_nonce",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "attester",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Registers a BLS public key for an attester.\\n\\nThis public key can be used to verify delegated attestations and revocations,\\nenabling more advanced cryptographic operations. The attester must authorize this registration.\\n\\n# Arguments\\n\\n* `attester` - The address of the attester for whom the BLS key is being registered. Must authorize transaction.\\n* `public_key` - The 192-byte BLS public key.\\n\\n# Returns\\n\\nReturns `Ok(())` on successful registration, or an error if one already exists or registration fails.",
+      "name": "register_bls_key",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "attester",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "public_key",
+          "type_": {
+            "bytes_n": {
+              "n": 192
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets the BLS public key for an attester.\\n\\n# Arguments\\n\\n* `attester` - The address of the attester.\\n\\n# Returns\\n\\nReturns a `Result` containing the `BlsPublicKey` if found, or an error if no key\\nis registered for the given attester.",
+      "name": "get_bls_key",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "attester",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "BlsPublicKey"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets the domain separation tag (DST) for delegated attestations.\\n\\nThe DST is a unique byte string used to ensure that signatures created for one\\npurpose cannot be repurposed for another. This is crucial for the security of\\ndelegated operations.\\n\\n# Returns\\n\\nReturns the `Bytes` slice representing the DST for delegated attestations.",
+      "name": "get_dst_for_attestation",
+      "inputs": [],
+      "outputs": [
+        "bytes"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Gets the domain separation tag (DST) for delegated revocations.\\n\\nThe DST is a unique byte string used to ensure that signatures created for one\\npurpose cannot be repurposed for another. This is crucial for the security of\\ndelegated operations.\\n\\n# Returns\\n\\nReturns the `Bytes` slice representing the DST for delegated revocations.",
+      "name": "get_dst_for_revocation",
+      "inputs": [],
+      "outputs": [
+        "bytes"
+      ]
+    }
+  }
+]

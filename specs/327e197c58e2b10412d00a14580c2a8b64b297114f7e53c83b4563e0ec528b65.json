@@ -1,0 +1,1073 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "NotAuthorized",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "RecipientNotAuthority",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "AttesterNotAuthority",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "SchemaNotRegistered",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "InvalidSchemaRules",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "InsufficientPayment",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "NothingToWithdraw",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "TokenTransferFailed",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "WithdrawalFailed",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "UnauthorizedVerifier",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "VerifierInactive",
+          "value": 13
+        },
+        {
+          "doc": "",
+          "name": "ExceedsVerificationLevel",
+          "value": 14
+        },
+        {
+          "doc": "",
+          "name": "InvalidVerificationLevel",
+          "value": 15
+        },
+        {
+          "doc": "",
+          "name": "VerifierNotFound",
+          "value": 16
+        },
+        {
+          "doc": "",
+          "name": "InvalidAuthorityData",
+          "value": 17
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Attestation",
+      "fields": [
+        {
+          "doc": "",
+          "name": "attester",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "expiration_time",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "ref_uid",
+          "type_": {
+            "option": {
+              "value_type": "bytes"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "revocable",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "schema_uid",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "uid",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": {
+            "option": {
+              "value_type": "i128"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Payment record for organizations that paid the verification fee",
+      "lib": "",
+      "name": "PaymentRecord",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount_paid",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "ref_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "timestamp",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Data stored for an authority that paid for verification",
+      "lib": "",
+      "name": "RegisteredAuthorityData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "metadata",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "ref_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "registration_time",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Initialized"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "RegistrationFee"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "PaymentRecord"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Authority"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TokenId"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TokenWasmHash"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "CollectedLevies"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "CollectedFees"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "RegAuthPrefix"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "CollLevyPrefix"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_contract_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "admin_register_authority",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "auth_to_reg",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "metadata",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "register_authority",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "authority_to_reg",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "metadata",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_authority",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "authority",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "bool",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "attest",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "attestation",
+          "type_": {
+            "udt": {
+              "name": "Attestation"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "bool",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "revoke",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "attestation",
+          "type_": {
+            "udt": {
+              "name": "Attestation"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "bool",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "withdraw_levies",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Withdraw collected XLM fees for an authority",
+      "name": "withdraw_fees",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_collected_levies",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "authority",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get collected XLM fees for an authority",
+      "name": "get_collected_fees",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "authority",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_token_id",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_admin_address",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Transfer ownership of the contract to a new address\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `current_owner` - The current owner address (must be authenticated)\\n* `new_owner` - The address to transfer ownership to\\n\\n# Returns\\n* `Ok(())` - If ownership transfer is successful\\n* `Err(Error)` - If not authorized or validation fails",
+      "name": "transfer_ownership",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "current_owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Renounce ownership of the contract (permanent action)\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `current_owner` - The current owner address (must be authenticated)\\n\\n# Returns\\n* `Ok(())` - If ownership renunciation is successful\\n* `Err(Error)` - If not authorized\\n\\n# Warning\\nThis is irreversible! After renouncing ownership, all admin functions become inaccessible.",
+      "name": "renounce_ownership",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "current_owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the current owner of the contract\\n\\n# Arguments\\n* `env` - The Soroban environment\\n\\n# Returns\\n* `Ok(Address)` - The current owner address\\n* `Err(Error)` - If no owner is set (contract not initialized)",
+      "name": "get_owner",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Check if an address is the current owner\\n\\n# Arguments\\n* `env` - The Soroban environment\\n* `address` - The address to check\\n\\n# Returns\\n* `bool` - True if the address is the owner, false otherwise",
+      "name": "is_owner",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Pay verification fee to become eligible for authority registration",
+      "name": "pay_verification_fee",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "payer",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "ref_id",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "token_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Check if an address has confirmed payment",
+      "name": "has_confirmed_payment",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "payer",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get payment record for an address",
+      "name": "get_payment_record",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "payer",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "PaymentRecord"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Admin function to withdraw collected fees",
+      "name": "admin_withdraw_fees",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Called before an attestation is created (resolver interface)",
+      "name": "onattest",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "attestation",
+          "type_": {
+            "udt": {
+              "name": "ResolverAttestationData"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "bool",
+            "error_type": {
+              "udt": {
+                "name": "ResolverError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Called after an attestation is created (resolver interface)",
+      "name": "onresolve",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "attestation",
+          "type_": {
+            "udt": {
+              "name": "ResolverAttestationData"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ResolverError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ResolverAttestationData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "attester",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "expiration_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "ref_uid",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "revocable",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "revocation_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "schema_uid",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "uid",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "value",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ResolverMetadata",
+      "fields": [
+        {
+          "doc": "",
+          "name": "description",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "resolver_type",
+          "type_": {
+            "udt": {
+              "name": "ResolverType"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "version",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ResolverType",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Default"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Authority"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "TokenReward"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "FeeCollection"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Hybrid"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Staking"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Custom"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ResolverError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NotAuthorized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "InvalidAttestation",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "InvalidSchema",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "InsufficientFunds",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "TokenTransferFailed",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "StakeRequired",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "ValidationFailed",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "CustomError",
+          "value": 8
+        }
+      ]
+    }
+  }
+]
