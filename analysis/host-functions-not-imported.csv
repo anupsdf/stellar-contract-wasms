@@ -35,6 +35,8 @@ obj_to_u256_hi_hi,0
 obj_to_u256_hi_lo,0
 obj_to_u256_lo_hi,0
 obj_to_u256_lo_lo,0
+poseidon2_permutation,0
+poseidon_permutation,0
 prng_reseed,0
 protocol_gated_dummy,0
 symbol_copy_to_linear_memory,0
