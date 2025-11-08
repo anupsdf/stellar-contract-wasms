@@ -1,0 +1,294 @@
+[
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "on_auth",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "source",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "contexts",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "Context"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Upgrade contract code (admin via contract registry owner)",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "ContractRegistryNotSet",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "TokensRegistryNotSet",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "TimeLockStoreNotSet",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "TransferNotAllowed",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "UninstallNotAllowed",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "OperationNotAllowed",
+          "value": 6
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "on_install",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "_source",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_installed",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "wallet",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "on_uninstall",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "_source",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "contract_registry",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "Token address cannot be zero address",
+          "name": "InvalidTokenAddress",
+          "value": 1
+        },
+        {
+          "doc": "Token decimals cannot be zero",
+          "name": "InvalidDecimals",
+          "value": 2
+        },
+        {
+          "doc": "Token symbol cannot be empty",
+          "name": "InvalidSymbol",
+          "value": 3
+        },
+        {
+          "doc": "Token with this symbol already exists",
+          "name": "TokenSymbolExists",
+          "value": 4
+        },
+        {
+          "doc": "Token with this address already exists",
+          "name": "TokenAddressExists",
+          "value": 5
+        },
+        {
+          "doc": "Token not found",
+          "name": "TokenNotFound",
+          "value": 6
+        },
+        {
+          "doc": "Caller is not authorized",
+          "name": "Unauthorized",
+          "value": 7
+        },
+        {
+          "doc": "Contract registry not set",
+          "name": "ContractRegistryNotSet",
+          "value": 8
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Token",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "decimals",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Represents a time-locked transfer request",
+      "lib": "",
+      "name": "TransferRequest",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "wallet",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TimeLockStoreError",
+      "cases": [
+        {
+          "doc": "Transfer request not found",
+          "name": "TransferRequestNotFound",
+          "value": 1
+        },
+        {
+          "doc": "Time lock has not yet expired",
+          "name": "TimeLockNotExpired",
+          "value": 2
+        },
+        {
+          "doc": "General error",
+          "name": "GeneralError",
+          "value": 999
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        }
+      ]
+    }
+  }
+]

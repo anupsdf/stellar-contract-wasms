@@ -1,0 +1,1194 @@
+[
+  {
+    "function_v0": {
+      "doc": "Upgrade contract code (admin via contract registry owner)",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "contract_registry",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "funds_buffer",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_initialized",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "wallet",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "register_wallet",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "wallet",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Emit a dummy IncomingTransactionProcessed event (admin only)",
+      "name": "emit_in_tx_dummy",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Emit a dummy OutgoingTransactionProcessed event (admin only)",
+      "name": "emit_out_tx_dummy",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "unregister_wallet",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "wallet",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_funds_buffer_address",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "change_funds_buffer_address",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_address",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "process_incoming_transaction",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "transaction_id",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "operation_id",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "transaction_type",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "transaction_currency",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "transaction_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "transaction_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "target_wallet",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "target_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "target_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "created_at",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "process_outgoing_transaction",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "transaction_id",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "operation_id",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "transaction_type",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "transaction_currency",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "transaction_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "transaction_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "source_wallet",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "source_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "source_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "created_at",
+          "type_": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "Caller is not authorized (not admin or oracle)",
+          "name": "Unauthorized",
+          "value": 1
+        },
+        {
+          "doc": "Card wallet does not exist",
+          "name": "CardNotFound",
+          "value": 2
+        },
+        {
+          "doc": "Card is not active",
+          "name": "CardInactive",
+          "value": 3
+        },
+        {
+          "doc": "Card has expired",
+          "name": "CardExpired",
+          "value": 4
+        },
+        {
+          "doc": "Invalid treasure address (cannot be zero address)",
+          "name": "InvalidTreasureAddress",
+          "value": 5
+        },
+        {
+          "doc": "Token transfer failed",
+          "name": "TokenTransferFailed",
+          "value": 6
+        },
+        {
+          "doc": "Contract registry not set",
+          "name": "ContractRegistryNotSet",
+          "value": 7
+        },
+        {
+          "doc": "Cards management contract not found",
+          "name": "CardsManagementNotFound",
+          "value": 8
+        },
+        {
+          "doc": "Tokens registry contract not found",
+          "name": "TokensRegistryNotFound",
+          "value": 9
+        },
+        {
+          "doc": "Funds management contract not found",
+          "name": "FundsManagementNotFound",
+          "value": 10
+        },
+        {
+          "doc": "Token not supported",
+          "name": "TokenNotSupported",
+          "value": 11
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TransactionType",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Unknown",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Pos",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "Atm",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "Epos",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "MoneyTransfer",
+          "value": 4
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CreditTransactionData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "card_wallet",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "created_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "currency_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "operation_id",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "transaction_id",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "transaction_type",
+          "type_": {
+            "udt": {
+              "name": "TransactionType"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "Caller is not authorized",
+          "name": "Unauthorized",
+          "value": 1
+        },
+        {
+          "doc": "Wallet policy is not live",
+          "name": "PolicyNotLive",
+          "value": 2
+        },
+        {
+          "doc": "Policy is already live",
+          "name": "PolicyAlreadyLive",
+          "value": 3
+        },
+        {
+          "doc": "Invalid funds buffer address",
+          "name": "InvalidFundsBufferAddress",
+          "value": 4
+        },
+        {
+          "doc": "Token transfer failed",
+          "name": "TokenTransferFailed",
+          "value": 5
+        },
+        {
+          "doc": "Contract registry not set",
+          "name": "ContractRegistryNotSet",
+          "value": 6
+        },
+        {
+          "doc": "Funds buffer contract not found",
+          "name": "FundsBufferNotFound",
+          "value": 7
+        },
+        {
+          "doc": "Tokens registry contract not found",
+          "name": "TokensRegistryNotFound",
+          "value": 8
+        },
+        {
+          "doc": "Token not supported",
+          "name": "TokenNotSupported",
+          "value": 9
+        },
+        {
+          "doc": "Wallet not tracked",
+          "name": "WalletNotTracked",
+          "value": 10
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "WalletStatus",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NA",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Live",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "Deprecated",
+          "value": 2
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "IncomingTransactionData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "created_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "operation_id",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "target_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "target_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "target_wallet",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "transaction_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "transaction_currency",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "transaction_id",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "transaction_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "transaction_type",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OutgoingTransactionData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "created_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "operation_id",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "source_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "source_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "source_wallet",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "transaction_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "transaction_currency",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "transaction_id",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "transaction_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "transaction_type",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Signer",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Ed25519",
+            "type_": [
+              {
+                "udt": {
+                  "name": "Ed25519Signer"
+                }
+              },
+              {
+                "udt": {
+                  "name": "SignerRole"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Secp256r1",
+            "type_": [
+              {
+                "udt": {
+                  "name": "Secp256r1Signer"
+                }
+              },
+              {
+                "udt": {
+                  "name": "SignerRole"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SignerKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Ed25519",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Secp256r1",
+            "type_": [
+              "bytes"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SignerRole",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Standard",
+            "type_": [
+              {
+                "vec": {
+                  "element_type": {
+                    "udt": {
+                      "name": "SignerPolicy"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SignerPolicy",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ExternalValidatorPolicy",
+            "type_": [
+              {
+                "udt": {
+                  "name": "ExternalPolicy"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Ed25519Signer",
+      "fields": [
+        {
+          "doc": "",
+          "name": "public_key",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ExternalPolicy",
+      "fields": [
+        {
+          "doc": "",
+          "name": "policy_address",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Secp256r1Signer",
+      "fields": [
+        {
+          "doc": "",
+          "name": "key_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "public_key",
+          "type_": {
+            "bytes_n": {
+              "n": 65
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SmartAccountError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "AccountInitializationFailed",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "StorageEntryNotFound",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "StorageEntryAlreadyExists",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "NoSigners",
+          "value": 20
+        },
+        {
+          "doc": "",
+          "name": "SignerAlreadyExists",
+          "value": 21
+        },
+        {
+          "doc": "",
+          "name": "SignerNotFound",
+          "value": 22
+        },
+        {
+          "doc": "",
+          "name": "SignerExpired",
+          "value": 23
+        },
+        {
+          "doc": "",
+          "name": "CannotRevokeAdminSigner",
+          "value": 24
+        },
+        {
+          "doc": "",
+          "name": "CannotDowngradeLastAdmin",
+          "value": 25
+        },
+        {
+          "doc": "",
+          "name": "MaxSignersReached",
+          "value": 26
+        },
+        {
+          "doc": "",
+          "name": "MatchingSignatureNotFound",
+          "value": 40
+        },
+        {
+          "doc": "",
+          "name": "SignatureVerificationFailed",
+          "value": 41
+        },
+        {
+          "doc": "",
+          "name": "InvalidProofType",
+          "value": 42
+        },
+        {
+          "doc": "",
+          "name": "NoProofsInAuthEntry",
+          "value": 43
+        },
+        {
+          "doc": "",
+          "name": "ClientDataJsonIncorrectChallenge",
+          "value": 44
+        },
+        {
+          "doc": "",
+          "name": "InvalidWebauthnClientDataJson",
+          "value": 45
+        },
+        {
+          "doc": "",
+          "name": "InsufficientPermissions",
+          "value": 60
+        },
+        {
+          "doc": "",
+          "name": "InsufficientPermissionsOnCreation",
+          "value": 61
+        },
+        {
+          "doc": "",
+          "name": "InvalidPolicy",
+          "value": 80
+        },
+        {
+          "doc": "",
+          "name": "InvalidTimeRange",
+          "value": 81
+        },
+        {
+          "doc": "",
+          "name": "InvalidNotAfterTime",
+          "value": 82
+        },
+        {
+          "doc": "",
+          "name": "PolicyClientInitializationError",
+          "value": 83
+        },
+        {
+          "doc": "",
+          "name": "PluginNotFound",
+          "value": 100
+        },
+        {
+          "doc": "",
+          "name": "PluginAlreadyInstalled",
+          "value": 101
+        },
+        {
+          "doc": "",
+          "name": "PluginInitializationFailed",
+          "value": 102
+        },
+        {
+          "doc": "",
+          "name": "PluginOnAuthFailed",
+          "value": 103
+        },
+        {
+          "doc": "",
+          "name": "NotFound",
+          "value": 1000
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StorageType",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Persistent"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Instance"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StorageOperation",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Store"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Update"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Delete"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StorageChangeEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "operation",
+          "type_": {
+            "udt": {
+              "name": "StorageOperation"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "storage_type",
+          "type_": {
+            "udt": {
+              "name": "StorageType"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "Token address cannot be zero address",
+          "name": "InvalidTokenAddress",
+          "value": 1
+        },
+        {
+          "doc": "Token decimals cannot be zero",
+          "name": "InvalidDecimals",
+          "value": 2
+        },
+        {
+          "doc": "Token symbol cannot be empty",
+          "name": "InvalidSymbol",
+          "value": 3
+        },
+        {
+          "doc": "Token with this symbol already exists",
+          "name": "TokenSymbolExists",
+          "value": 4
+        },
+        {
+          "doc": "Token with this address already exists",
+          "name": "TokenAddressExists",
+          "value": 5
+        },
+        {
+          "doc": "Token not found",
+          "name": "TokenNotFound",
+          "value": 6
+        },
+        {
+          "doc": "Caller is not authorized",
+          "name": "Unauthorized",
+          "value": 7
+        },
+        {
+          "doc": "Contract registry not set",
+          "name": "ContractRegistryNotSet",
+          "value": 8
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Token",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "decimals",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,1811 @@
+[
+  {
+    "function_v0": {
+      "doc": "Upgrade contract code (only Contract Registry owner is authorized)",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ContractRegistry"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "CorporationsByEntity",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 16
+                }
+              },
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "EmployeesByEntity",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 16
+                }
+              },
+              "address",
+              "address"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_employee",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "parent_entity",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "corporation",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_employee",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "parent_entity",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "corporation",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Employee"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "contract_registry",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_corporation",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "parent_entity",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "corporation",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "Corporation"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_employee",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "parent_entity",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "corporation",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_corporation",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "parent_entity",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "corporation",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "EmployeeCreatedData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "corporation",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "parent_entity",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "EmployeeRemovedData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "corporation",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "parent_entity",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "change_employee_status",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "parent_entity_bytes",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "corporation",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_status",
+          "type_": {
+            "udt": {
+              "name": "Status"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "add_employee_permission",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "parent_entity",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "corporation",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_permission",
+          "type_": {
+            "udt": {
+              "name": "WalletPermission"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CorporationCreatedData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "corporation",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "creator",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "parent_entity",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "change_corporation_status",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "parent_entity_bytes",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "corporation",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_status",
+          "type_": {
+            "udt": {
+              "name": "Status"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "change_corp_wallet_confirm",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "parent_entity_bytes",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "corporation",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "WalletConfirmationStatus"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "remove_employee_permission",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "parent_entity",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "corporation",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "permission",
+          "type_": {
+            "udt": {
+              "name": "WalletPermission"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "EmployeeStatusChangedData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "corporation",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_status",
+          "type_": {
+            "udt": {
+              "name": "Status"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "parent_entity",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "change_employee_verify_status",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "parent_entity_bytes",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "corporation",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_status",
+          "type_": {
+            "udt": {
+              "name": "VerificationStatus"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CorporationStatusChangedData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "corporation",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_status",
+          "type_": {
+            "udt": {
+              "name": "Status"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "parent_entity",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "EmployeePermissionChangedData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "corporation",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_permission",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "WalletPermission"
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "parent_entity",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "change_corporation_verify_status",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "parent_entity_bytes",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "corporation",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_status",
+          "type_": {
+            "udt": {
+              "name": "VerificationStatus"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CorporationWalletStatusChangedData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "corporation",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_status",
+          "type_": {
+            "udt": {
+              "name": "WalletConfirmationStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "parent_entity",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "EmployeeVerificationStatusChangedData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "corporation",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_status",
+          "type_": {
+            "udt": {
+              "name": "VerificationStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "parent_entity",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "CorporationVerificationStatusChangedData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "corporation",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "new_status",
+          "type_": {
+            "udt": {
+              "name": "VerificationStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "parent_entity",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ContractData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Unauthorized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "InvalidParentEntity",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "CorporationAlreadyExists",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "CorporationDoesNotExist",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "EmployeeAlreadyExists",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "EmployeeDoesNotExist",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "ContractRegistryNotSet",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "BadHex",
+          "value": 8
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Status",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Unknown",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Pending",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "Active",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "Blocked",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "Deleted",
+          "value": 4
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Employee",
+      "fields": [
+        {
+          "doc": "",
+          "name": "permissions",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "Status"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "verification_status",
+          "type_": {
+            "udt": {
+              "name": "VerificationStatus"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Corporation",
+      "fields": [
+        {
+          "doc": "",
+          "name": "creator",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "Status"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "verification_status",
+          "type_": {
+            "udt": {
+              "name": "VerificationStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "wallet_status",
+          "type_": {
+            "udt": {
+              "name": "WalletConfirmationStatus"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "WalletPermission",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Na",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Sudo",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "Sign",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "Request",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "ManageAccess",
+          "value": 4
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VerificationStatus",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Unknown",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Applied",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "InReview",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "Approved",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "Cancelled",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "Rejected",
+          "value": 5
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "WalletConfirmationStatus",
+      "cases": [
+        {
+          "doc": "",
+          "name": "Unknown",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Confirmed",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "Rejected",
+          "value": 2
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "Caller is not authorized",
+          "name": "Unauthorized",
+          "value": 1
+        },
+        {
+          "doc": "Wallet policy is not live",
+          "name": "PolicyNotLive",
+          "value": 2
+        },
+        {
+          "doc": "Policy is already live",
+          "name": "PolicyAlreadyLive",
+          "value": 3
+        },
+        {
+          "doc": "Invalid funds buffer address",
+          "name": "InvalidFundsBufferAddress",
+          "value": 4
+        },
+        {
+          "doc": "Token transfer failed",
+          "name": "TokenTransferFailed",
+          "value": 5
+        },
+        {
+          "doc": "Contract registry not set",
+          "name": "ContractRegistryNotSet",
+          "value": 6
+        },
+        {
+          "doc": "Funds buffer contract not found",
+          "name": "FundsBufferNotFound",
+          "value": 7
+        },
+        {
+          "doc": "Tokens registry contract not found",
+          "name": "TokensRegistryNotFound",
+          "value": 8
+        },
+        {
+          "doc": "Token not supported",
+          "name": "TokenNotSupported",
+          "value": 9
+        },
+        {
+          "doc": "Wallet not tracked",
+          "name": "WalletNotTracked",
+          "value": 10
+        }
+      ]
+    }
+  },
+  {
+    "udt_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "WalletStatus",
+      "cases": [
+        {
+          "doc": "",
+          "name": "NA",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "Live",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "Deprecated",
+          "value": 2
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "IncomingTransactionData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "created_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "operation_id",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "target_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "target_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "target_wallet",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "transaction_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "transaction_currency",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "transaction_id",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "transaction_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "transaction_type",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OutgoingTransactionData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "created_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "operation_id",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "source_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "source_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "source_wallet",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "transaction_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "transaction_currency",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "transaction_id",
+          "type_": {
+            "bytes_n": {
+              "n": 16
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "transaction_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "transaction_type",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Signer",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Ed25519",
+            "type_": [
+              {
+                "udt": {
+                  "name": "Ed25519Signer"
+                }
+              },
+              {
+                "udt": {
+                  "name": "SignerRole"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Secp256r1",
+            "type_": [
+              {
+                "udt": {
+                  "name": "Secp256r1Signer"
+                }
+              },
+              {
+                "udt": {
+                  "name": "SignerRole"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SignerKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Ed25519",
+            "type_": [
+              {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Secp256r1",
+            "type_": [
+              "bytes"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SignerRole",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Standard",
+            "type_": [
+              {
+                "vec": {
+                  "element_type": {
+                    "udt": {
+                      "name": "SignerPolicy"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SignerPolicy",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "ExternalValidatorPolicy",
+            "type_": [
+              {
+                "udt": {
+                  "name": "ExternalPolicy"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Ed25519Signer",
+      "fields": [
+        {
+          "doc": "",
+          "name": "public_key",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ExternalPolicy",
+      "fields": [
+        {
+          "doc": "",
+          "name": "policy_address",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Secp256r1Signer",
+      "fields": [
+        {
+          "doc": "",
+          "name": "key_id",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "public_key",
+          "type_": {
+            "bytes_n": {
+              "n": 65
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SmartAccountError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 0
+        },
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "AccountInitializationFailed",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "StorageEntryNotFound",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "StorageEntryAlreadyExists",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "NoSigners",
+          "value": 20
+        },
+        {
+          "doc": "",
+          "name": "SignerAlreadyExists",
+          "value": 21
+        },
+        {
+          "doc": "",
+          "name": "SignerNotFound",
+          "value": 22
+        },
+        {
+          "doc": "",
+          "name": "SignerExpired",
+          "value": 23
+        },
+        {
+          "doc": "",
+          "name": "CannotRevokeAdminSigner",
+          "value": 24
+        },
+        {
+          "doc": "",
+          "name": "CannotDowngradeLastAdmin",
+          "value": 25
+        },
+        {
+          "doc": "",
+          "name": "MaxSignersReached",
+          "value": 26
+        },
+        {
+          "doc": "",
+          "name": "MatchingSignatureNotFound",
+          "value": 40
+        },
+        {
+          "doc": "",
+          "name": "SignatureVerificationFailed",
+          "value": 41
+        },
+        {
+          "doc": "",
+          "name": "InvalidProofType",
+          "value": 42
+        },
+        {
+          "doc": "",
+          "name": "NoProofsInAuthEntry",
+          "value": 43
+        },
+        {
+          "doc": "",
+          "name": "ClientDataJsonIncorrectChallenge",
+          "value": 44
+        },
+        {
+          "doc": "",
+          "name": "InvalidWebauthnClientDataJson",
+          "value": 45
+        },
+        {
+          "doc": "",
+          "name": "InsufficientPermissions",
+          "value": 60
+        },
+        {
+          "doc": "",
+          "name": "InsufficientPermissionsOnCreation",
+          "value": 61
+        },
+        {
+          "doc": "",
+          "name": "InvalidPolicy",
+          "value": 80
+        },
+        {
+          "doc": "",
+          "name": "InvalidTimeRange",
+          "value": 81
+        },
+        {
+          "doc": "",
+          "name": "InvalidNotAfterTime",
+          "value": 82
+        },
+        {
+          "doc": "",
+          "name": "PolicyClientInitializationError",
+          "value": 83
+        },
+        {
+          "doc": "",
+          "name": "PluginNotFound",
+          "value": 100
+        },
+        {
+          "doc": "",
+          "name": "PluginAlreadyInstalled",
+          "value": 101
+        },
+        {
+          "doc": "",
+          "name": "PluginInitializationFailed",
+          "value": 102
+        },
+        {
+          "doc": "",
+          "name": "PluginOnAuthFailed",
+          "value": 103
+        },
+        {
+          "doc": "",
+          "name": "NotFound",
+          "value": 1000
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StorageType",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Persistent"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Instance"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StorageOperation",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Store"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Update"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Delete"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "StorageChangeEvent",
+      "fields": [
+        {
+          "doc": "",
+          "name": "operation",
+          "type_": {
+            "udt": {
+              "name": "StorageOperation"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "storage_type",
+          "type_": {
+            "udt": {
+              "name": "StorageType"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Represents a time-locked transfer request",
+      "lib": "",
+      "name": "TransferRequest",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "time",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "wallet",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "TimeLockStoreError",
+      "cases": [
+        {
+          "doc": "Transfer request not found",
+          "name": "TransferRequestNotFound",
+          "value": 1
+        },
+        {
+          "doc": "Time lock has not yet expired",
+          "name": "TimeLockNotExpired",
+          "value": 2
+        },
+        {
+          "doc": "General error",
+          "name": "GeneralError",
+          "value": 999
+        }
+      ]
+    }
+  }
+]
