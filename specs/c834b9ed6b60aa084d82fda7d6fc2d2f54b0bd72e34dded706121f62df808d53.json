@@ -1,0 +1,957 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "InitParams",
+      "fields": [
+        {
+          "doc": "",
+          "name": "allowed_token_ids",
+          "type_": {
+            "vec": {
+              "element_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "apply_tokens_allowlist",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "base_uri",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "contract_uri",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "currencies",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "default_native_price",
+          "type_": {
+            "udt": {
+              "name": "MintPriceSettings"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "forwarder",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "initial_owner",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "max_supply",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "minter",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "prices",
+          "type_": {
+            "vec": {
+              "element_type": "u128"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "royalty_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OfferOptions",
+      "fields": [
+        {
+          "doc": "",
+          "name": "ad_parameters",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "admins",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "validators",
+          "type_": {
+            "vec": {
+              "element_type": "address"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "OfferInitParams",
+      "fields": [
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "offer_metadata",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "options",
+          "type_": {
+            "udt": {
+              "name": "OfferOptions"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SponsoringOffer",
+      "fields": [
+        {
+          "doc": "",
+          "name": "ad_parameters",
+          "type_": {
+            "map": {
+              "key_type": "string",
+              "value_type": "bool"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "admins",
+          "type_": {
+            "map": {
+              "key_type": "address",
+              "value_type": "bool"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "disabled",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "nft_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "offer_metadata",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "proposals",
+          "type_": {
+            "map": {
+              "key_type": "u32",
+              "value_type": {
+                "map": {
+                  "key_type": "string",
+                  "value_type": {
+                    "udt": {
+                      "name": "SponsoringProposal"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "validators",
+          "type_": {
+            "map": {
+              "key_type": "address",
+              "value_type": "bool"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SponsoringProposal",
+      "fields": [
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "last_rejected",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "last_submitted",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "last_validated",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "MintAndSubmitParams",
+      "fields": [
+        {
+          "doc": "",
+          "name": "ad_datas",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "ad_parameters",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "currency",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "offer_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "referral_info",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token_data",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ReferralInfo",
+      "fields": [
+        {
+          "doc": "",
+          "name": "additional_info",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "enabler",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "spender",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ReviewAdProposal",
+      "fields": [
+        {
+          "doc": "",
+          "name": "ad_parameter",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "offer_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "proposal_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "reason",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "validated",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "validator",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "MintPriceSettings",
+      "fields": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "u128"
+        },
+        {
+          "doc": "",
+          "name": "enabled",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "initialize",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "nft_factory",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "fee_recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "native_xlm",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_offer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "nft_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "offer_params",
+          "type_": {
+            "udt": {
+              "name": "OfferInitParams"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "submit_ad_proposal",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "offer_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "ad_parameter",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "data",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "submit_ad_proposals",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "offer_ids",
+          "type_": {
+            "vec": {
+              "element_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "token_ids",
+          "type_": {
+            "vec": {
+              "element_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "ad_parameters",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "datas",
+          "type_": {
+            "vec": {
+              "element_type": "string"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "review_ad_proposal",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "offer_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "proposal_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "ad_parameter",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "validated",
+          "type_": "bool"
+        },
+        {
+          "doc": "",
+          "name": "reason",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "validator",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "review_ad_proposals",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "reviews",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "udt": {
+                  "name": "ReviewAdProposal"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "u32"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "update_offer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "offer_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "offer_params",
+          "type_": {
+            "udt": {
+              "name": "OfferInitParams"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_offer_contract",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "offer_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_total_offers",
+      "inputs": [],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_all_offers",
+      "inputs": [],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "SponsoringOffer"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_user_offers",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": {
+              "udt": {
+                "name": "SponsoringOffer"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_offer_proposals",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "offer_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "token_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "map": {
+            "key_type": "string",
+            "value_type": {
+              "udt": {
+                "name": "SponsoringProposal"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_allowed_ad_parameter",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "offer_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "ad_parameter",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_offer_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "offer_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_offer_disabled",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "offer_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "is_offer_validator",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "offer_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "validator",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "get_fee_amount",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "base_amount",
+          "type_": "u128"
+        }
+      ],
+      "outputs": [
+        "u128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "create_dsponsor_nft",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "init_params",
+          "type_": {
+            "udt": {
+              "name": "InitParams"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "salt",
+          "type_": {
+            "option": {
+              "value_type": {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Updates the protocol fee settings\\n\\n# Arguments\\n* `new_bps` - The new fee in basis points (1 basis point = 0.01%)\\n* `new_recipient` - The new address that will receive the protocol fees\\n\\n# Returns\\nReturns true if the update was successful",
+      "name": "update_protocol_fee",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_bps",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "new_recipient",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Creates a new DSponsor NFT and an associated offer in a single transaction\\n\\n# Arguments\\n* `init_params` - Parameters for initializing the NFT contract\\n* `offer_params` - Parameters for creating the offer\\n\\n# Returns\\nReturns the offer ID if successful",
+      "name": "create_dsponsor_nft_and_offer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "init_params",
+          "type_": {
+            "udt": {
+              "name": "InitParams"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "offer_params",
+          "type_": {
+            "udt": {
+              "name": "OfferInitParams"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "u32"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Mints an NFT and submits ad proposals in a single transaction\\n\\n# Arguments\\n* `params` - Parameters for minting and submitting ad proposals\\n\\n# Returns\\nReturns true if successful",
+      "name": "mint_and_submit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "params",
+          "type_": {
+            "udt": {
+              "name": "MintAndSubmitParams"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  }
+]

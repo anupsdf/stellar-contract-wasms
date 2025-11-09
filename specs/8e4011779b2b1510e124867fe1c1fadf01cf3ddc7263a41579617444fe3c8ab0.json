@@ -1,0 +1,40 @@
+[
+  {
+    "function_v0": {
+      "doc": "Deploys the contract on behalf of the `Deployer` contract.\\n\\nThis has to be authorized by the `Deployer`s administrator.",
+      "name": "create_dsponsor_nft",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "init_params",
+          "type_": {
+            "udt": {
+              "name": "InitParams"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "native_xlm",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "salt",
+          "type_": {
+            "option": {
+              "value_type": {
+                "bytes_n": {
+                  "n": 32
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        "address"
+      ]
+    }
+  }
+]
