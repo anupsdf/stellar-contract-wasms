@@ -1,0 +1,784 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "VaultData",
+      "fields": [
+        {
+          "doc": "The admin's bTokens. Excluded from the `total_b_tokens` value.",
+          "name": "admin_balance",
+          "type_": "i128"
+        },
+        {
+          "doc": "The reserve's last bRate",
+          "name": "b_rate",
+          "type_": "i128"
+        },
+        {
+          "doc": "The timestamp of the last update",
+          "name": "last_update_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "The total bToken deposits owned by the reserve vault depositors. Excludes admin balance.",
+          "name": "total_b_tokens",
+          "type_": "i128"
+        },
+        {
+          "doc": "The total shares issued by the reserve vault",
+          "name": "total_shares",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "The error codes for the contract.",
+      "lib": "",
+      "name": "FeeVaultError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "BalanceError",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "ReserveNotFound",
+          "value": 100
+        },
+        {
+          "doc": "",
+          "name": "ReserveAlreadyExists",
+          "value": 101
+        },
+        {
+          "doc": "",
+          "name": "InvalidAmount",
+          "value": 102
+        },
+        {
+          "doc": "",
+          "name": "InsufficientAccruedFees",
+          "value": 103
+        },
+        {
+          "doc": "",
+          "name": "InvalidFeeRate",
+          "value": 104
+        },
+        {
+          "doc": "",
+          "name": "InsufficientReserves",
+          "value": 105
+        },
+        {
+          "doc": "",
+          "name": "InvalidBTokensMinted",
+          "value": 106
+        },
+        {
+          "doc": "",
+          "name": "InvalidBTokensBurnt",
+          "value": 107
+        },
+        {
+          "doc": "",
+          "name": "InvalidSharesMinted",
+          "value": 108
+        },
+        {
+          "doc": "",
+          "name": "InvalidFeeRateType",
+          "value": 109
+        },
+        {
+          "doc": "",
+          "name": "NoRewardsConfigured",
+          "value": 110
+        },
+        {
+          "doc": "",
+          "name": "InvalidRewardConfig",
+          "value": 111
+        },
+        {
+          "doc": "",
+          "name": "InvalidSharesBurnt",
+          "value": 112
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Fee",
+      "fields": [
+        {
+          "doc": "The vault's fee rate, with 7 decimals (e.g. 1000000 = 10%)",
+          "name": "rate",
+          "type_": "u32"
+        },
+        {
+          "doc": "The vault's fee mode\\n* 0 = take rate (admin earns a percentage of the vault's earnings)\\n* 1 = capped rate (vault earns at most the APR cap, with any additional returns going to the admin)\\n* 2 = fixed rate (vault always earns the fixed rate, with the admin either supplementing or earning the difference)",
+          "name": "rate_type",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "The vault's reward data",
+      "lib": "",
+      "name": "RewardData",
+      "fields": [
+        {
+          "doc": "",
+          "name": "eps",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "expiration",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "last_time",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "The user's reward data",
+      "lib": "",
+      "name": "UserRewards",
+      "fields": [
+        {
+          "doc": "",
+          "name": "accrued",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "index",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "UserRewardKey",
+      "fields": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FeeVaultDataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Shares",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Rwd",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "UserRwd",
+            "type_": [
+              {
+                "udt": {
+                  "name": "UserRewardKey"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "* @dev\\n *\\n * Summary of the vault state. This is intended for offchain services like a dApp to easily display information\\n * about the vault. It is not intended to be used for onchain logic.",
+      "lib": "",
+      "name": "VaultSummary",
+      "fields": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "est_apr",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": {
+            "udt": {
+              "name": "Fee"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "reward_data",
+          "type_": {
+            "udt": {
+              "name": "RewardData"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "reward_token",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "signer",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "vault",
+          "type_": {
+            "udt": {
+              "name": "VaultData"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Deposits tokens into the fee vault for a specific reserve. Requires the signer to sign\\nthe transaction if the signer is set.\\n\\n### Arguments\\n* `user` - The address of the user making the deposit\\n* `amount` - The amount of tokens to deposit\\n\\n### Returns\\n* `i128` - The number of shares minted for the user\\n\\n### Panics\\n* `InvalidAmount` - If the amount is less than or equal to 0\\n* `InvalidBTokensMinted` - If the amount of bTokens minted is less than or equal to 0\\n* `InvalidSharesMinted` - If the amount of shares minted is less than or equal to 0\\n* `BalanceError` - If the user does not have enough tokens",
+      "name": "deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the vault's fee configuration\\n\\n### Returns\\n* `Fee` - The fee configuration for the vault",
+      "name": "get_fee",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Fee"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "ADMIN ONLY\\nSets the Fee mode for the fee vault\\n\\n### Arguments\\n* `e` - The environment object\\n* `rate_type` - The rate type the vault will use\\n* 0 = take rate (admin earns a percentage of the vault's earnings)\\n* 1 = capped rate (vault earns at most the APR cap, with any additional returns going to the admin)\\n* 2 = fixed rate (vault always earns the fixed rate, with the admin either supplementing or earning the difference)\\n* `rate` - The rate value, with 7 decimals (e.g. 1000000 for 10%)\\n\\n### Panics\\n* `InvalidFeeRate` - If the value is not within 0 and 1_000_0000\\n* `InvalidFeeRateType` - If the rate type is not 0, 1, or 2",
+      "name": "set_fee",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "rate_type",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "rate",
+          "type_": "u32"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Withdraws tokens from the fee vault for a specific reserve. If the input amount is greater\\nthan the user's underlying balance, the user's full balance will be withdrawn.\\nRequires the signer to sign the transaction if the signer is set.\\n\\n### Arguments\\n* `user` - The address of the user making the withdrawal\\n* `amount` - The amount of tokens to withdraw\\n\\n### Returns\\n* `i128` - The number of shares burnt\\n\\n### Panics\\n* `InvalidAmount` - If the amount is less than or equal to 0\\n* `InvalidBTokensBurnt` - If the amount of bTokens burnt is less than or equal to 0\\n* `InsufficientReserves` - If the pool doesn't have enough reserves to complete the withdrawal",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the vault's admin\\n\\n### Returns\\n* `Address` - The admin address for the vault",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the vault data\\n\\n### Returns\\n* `VaultData` - The vault data",
+      "name": "get_vault",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "VaultData"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "ADMIN ONLY\\nSets the admin address for the fee vault. Requires a signature from both the current admin\\nand the new admin address.\\n\\n### Arguments\\n* `e` - The environment object\\n* `admin` - The new admin address to set",
+      "name": "set_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the vault's blend pool it deposits into and the asset it supports.\\n\\n### Returns\\n* `(Address, Address)` - (The blend pool address, the asset address)",
+      "name": "get_config",
+      "inputs": [],
+      "outputs": [
+        {
+          "tuple": {
+            "value_types": [
+              "address",
+              "address"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Fetch a user's position in shares\\n\\n### Arguments\\n* `user` - The address of the user\\n\\n### Returns\\n* `i128` - The user's position in shares, or the user has no shares",
+      "name": "get_shares",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the vault's signer\\n\\n### Returns\\n* `Option<Address>` - The signer address for the vault, or None if no signer is set",
+      "name": "get_signer",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "ADMIN ONLY\\nSets the signer for the fee vault. This address is required to sign\\nall user deposits into the fee vault. Requires a signature from both the current admin\\nand the new signer address.\\n\\nPassing `None` as the signer will remove the signer requirement for deposits.\\n\\n### Arguments\\n* `signer` - The new signer address to set",
+      "name": "set_signer",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "signer",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Fetch a user's rewards for a specific token. Does not update the user's rewards.\\n\\nIf the current claimable rewards is needed, it is recommended to simulate a claim\\ncall to get the current claimable rewards.\\n\\n### Arguments\\n* `user` - The address of the user\\n* `token` - The address of the reward token\\n\\n### Returns\\n* `Option<UserRewards>` - The user's rewards for the token, or None",
+      "name": "get_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "UserRewards"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "ADMIN ONLY\\nSets rewards to be distributed to the fee vault depositors. The full `reward_amount` will be\\ntransferred to the vault to be distributed to the users until the `expiration` timestamp.\\n\\n### Arguments\\n* `token` - The address of the reward token\\n* `reward_amount` - The amount of rewards to distribute\\n* `expiration` - The timestamp when the rewards expire\\n\\n### Panics\\n* `InvalidRewardConfig` - If the reward token cannot be changed, or if a valid reward period cannot be started\\n* `BalanceError` - If the admin does not have enough tokens to set the rewards",
+      "name": "set_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "reward_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "expiration",
+          "type_": "u64"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Fetch a user's position in bTokens\\n\\n### Arguments\\n* `user` - The address of the user\\n\\n### Returns\\n* `i128` - The user's position in bTokens, or 0 if they have no bTokens",
+      "name": "get_b_tokens",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initialize the contract\\n\\n### Arguments\\n* `admin` - The admin address\\n* `pool` - The blend pool address the vault will deposit into\\n* `asset` - The asset address of the reserve the vault will support\\n* `rate_type` - The rate type the vault will use\\n* 0 = take rate (admin earns a percentage of the vault's earnings)\\n* 1 = capped rate (vault earns at most the APR cap, with any additional returns going to the admin)\\n* 2 = fixed rate (vault always earns the fixed rate, with the admin either supplementing or earning the difference)\\n* `rate` - The rate value, with 7 decimals (e.g. 1000000 for 10%)\\n* `signer`- The signer address if the vault is permissioned, None otherwise\\n\\n### Panics\\n* `InvalidFeeRate` - If the value is not within 0 and 1_000_0000\\n* `InvalidFeeRateType` - If the rate type is not 0, 1, or 2",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pool",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "rate_type",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "rate",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "signer",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "ADMIN ONLY\\nDeposit tokens into the vault's admin balance\\n\\n### Arguments\\n* `amount` - The amount of tokens to deposit\\n\\n### Returns\\n* `i128` - The number of b_tokens minted\\n\\n### Panics\\n* `InvalidAmount` - If the amount is less than or equal to 0\\n* `InvalidBTokensMinted` - If the amount of bTokens minted is less than or equal to 0\\n* `BalanceError` - If the user does not have enough tokens",
+      "name": "admin_deposit",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Claims rewards for the user from the fee vault.\\n\\n### Arguments\\n* `user` - The address of the user claiming rewards\\n* `reward_token` - The address of the reward token to claim\\n* `to` - The address to send the claimed rewards to\\n\\n### Returns\\n* `i128` - The amount of rewards claimed\\n\\n### Panics\\n* `NoRewardsConfigured` - If no rewards are configured for the token",
+      "name": "claim_rewards",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "reward_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "ADMIN ONLY\\nWithdraw tokens from the vault's admin balance\\n\\n### Arguments\\n* `amount` - The amount of underlying tokens to withdraw\\n\\n### Returns\\n* `i128` - The number of b_tokens burnt\\n\\n### Panics\\n* `InvalidAmount` - If the amount is less than or equal to 0\\n* `BalanceError` - If the user does not have enough shares to withdraw the amount\\n* `InvalidBTokensBurnt` - If the amount of bTokens burnt is less than or equal to 0",
+      "name": "admin_withdraw",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "ADMIN ONLY\\nClaims emissions for the given reserves from the pool. This is a passthrough function\\nthat invokes the pool's \"claim\" function as the contract. More details can be found\\nhere: https://github.com/blend-capital/blend-contracts/blob/v1.0.0/pool/src/contract.rs#L192\\n\\n### Arguments\\n* `reserve_token_ids` - The ids of the reserves to claiming emissions for\\n* `to` - The address to send the emissions to\\n\\n### Returns\\n* `i128` - The amount of blnd tokens claimed",
+      "name": "claim_emissions",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "reserve_token_ids",
+          "type_": {
+            "vec": {
+              "element_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "to",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the reward data for a specific token\\n\\n### Arguments\\n* `token` - The address of the reward token\\n\\n### Returns\\n* `Option<RewardData>` - The reward data for the token, or None if no data exists",
+      "name": "get_reward_data",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "option": {
+            "value_type": {
+              "udt": {
+                "name": "RewardData"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the current reward token for the fee vault\\n\\n### Returns\\n* `Option<Address>` - The address of the reward token, or None if no reward token is set",
+      "name": "get_reward_token",
+      "inputs": [],
+      "outputs": [
+        {
+          "option": {
+            "value_type": "address"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "ADMIN ONLY\\nUpgrades the contract to use new WASM bytecode. This allows the contract\\nto be updated with new functionality while preserving its state and address.\\n\\n### Arguments\\n* `new_wasm_hash` - The hash of the new WASM bytecode to upgrade to\\n\\n### Panics\\n* Only the admin can call this function",
+      "name": "upgrade_contract",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "NOT INTENDED FOR CONTRACT USE\\n\\nGet the vault summary, which includes the pool, asset, admin, signer, fee, vault data,\\nrewards, and estimated APR for vault suppliers. Intended for use by dApps looking\\nto fetch display data.\\n\\n### Returns\\n* `VaultSummary` - The summary of the vault",
+      "name": "get_vault_summary",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "VaultSummary"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Fetch a user's position in underlying tokens\\n\\n### Arguments\\n* `user` - The address of the user\\n\\n### Returns\\n* `i128` - The user's position in underlying tokens, or 0 if they have no shares",
+      "name": "get_underlying_tokens",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "user",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "i128"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Fetch the admin balance in underlying tokens\\n\\n### Returns\\n* `i128` - The admin's accrued fees in underlying tokens, or 0 if the reserve does not exist",
+      "name": "get_underlying_admin_balance",
+      "inputs": [],
+      "outputs": [
+        "i128"
+      ]
+    }
+  }
+]
