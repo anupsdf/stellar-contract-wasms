@@ -1,0 +1,241 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ArbitrageError",
+      "cases": [
+        {
+          "doc": "Insufficient profit after swaps",
+          "name": "InsufficientProfit",
+          "value": 1
+        },
+        {
+          "doc": "Invalid invocations (empty or exceeds limit)",
+          "name": "InvalidInvocations",
+          "value": 2
+        },
+        {
+          "doc": "Swap execution failed",
+          "name": "SwapFailed",
+          "value": 3
+        },
+        {
+          "doc": "Flash loan repayment failed",
+          "name": "RepaymentFailed",
+          "value": 4
+        },
+        {
+          "doc": "Unauthorized caller",
+          "name": "Unauthorized",
+          "value": 5
+        },
+        {
+          "doc": "Invalid parameters",
+          "name": "InvalidParams",
+          "value": 6
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Flash loan parameters for Blend protocol",
+      "lib": "",
+      "name": "FlashLoan",
+      "fields": [
+        {
+          "doc": "Amount to borrow",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "Asset to borrow",
+          "name": "asset",
+          "type_": "address"
+        },
+        {
+          "doc": "Receiver contract address (implements exec_op)",
+          "name": "contract",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Request types for additional pool operations",
+      "lib": "",
+      "name": "Request",
+      "fields": [
+        {
+          "doc": "Asset address or liquidatee address",
+          "name": "address",
+          "type_": "address"
+        },
+        {
+          "doc": "Amount for the request",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "Request type (see RequestType enum)",
+          "name": "request_type",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Main entry point for executing arbitrage with flash loan\\n\\nFlow:\\n1. Stores invocations and parameters in temporary storage\\n2. Calls Blend pool's flash_loan function\\n3. Blend transfers loan_asset to this contract\\n4. Blend calls back to exec_op()\\n5. exec_op() executes the stored invocations\\n6. Blend pulls back the loan amount (automatic)\\n7. Validates profitability and returns net profit\\n\\n# Arguments\\n* `caller` - Address initiating the arbitrage (must authorize)\\n* `blend_pool` - Blend pool contract address for flash loan\\n* `loan_asset` - Token address to borrow\\n* `loan_amount` - Amount to borrow (in token base units)\\n* `invocations` - Vector of (contract_address, function_name, args) for DEX swaps\\n* `min_profit` - Minimum profit threshold (reverts if not met)\\n\\n# Returns\\nNet profit amount (total received - loan amount)\\n\\n# Errors\\n* `Unauthorized` - If caller doesn't authorize\\n* `InvalidInvocations` - If invocations vector is empty or exceeds max\\n* `InsufficientProfit` - If final profit < min_profit",
+      "name": "pwnd_arb",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "blend_pool",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "loan_asset",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "loan_amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "invocations",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "tuple": {
+                  "value_types": [
+                    "address",
+                    "symbol",
+                    {
+                      "vec": {
+                        "element_type": "val"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "min_profit",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": {
+              "udt": {
+                "name": "ArbitrageError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Blend flash loan callback (moderc3156 interface)\\n\\nCalled by Blend pool after flash loan is issued.\\nExecutes stored invocations and ensures loan is repaid.\\n\\n# Arguments\\n* `caller` - Original user who requested flash loan\\n* `token` - Flash loaned asset address\\n* `amount` - Flash loan amount\\n* `fee` - Flash loan fee (currently 0 on Blend)",
+      "name": "exec_op",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "fee",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "ArbitrageError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "pwnd_exec",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "caller",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "invocations",
+          "type_": {
+            "vec": {
+              "element_type": {
+                "tuple": {
+                  "value_types": [
+                    "address",
+                    "symbol",
+                    {
+                      "vec": {
+                        "element_type": "val"
+                      }
+                    },
+                    "bool"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "vec": {
+            "element_type": "val"
+          }
+        }
+      ]
+    }
+  }
+]
