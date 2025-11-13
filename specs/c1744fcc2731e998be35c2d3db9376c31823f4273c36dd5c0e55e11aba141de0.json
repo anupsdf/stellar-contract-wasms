@@ -1,0 +1,472 @@
+[
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Game",
+      "fields": [
+        {
+          "doc": "",
+          "name": "guess1",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "guess2",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "player1",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "player1_wager",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "player2",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "player2_wager",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "session_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "GameStatus"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "winner",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "winning_number",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "GameNotFound",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "GameAlreadyStarted",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "NotPlayer",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "AlreadyGuessed",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "BothPlayersNotGuessed",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "GameAlreadyEnded",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "NotInitialized",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitialized",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "NotAdmin",
+          "value": 9
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "tuple_v0": {
+            "doc": "",
+            "name": "Game",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "GameCounter"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "BlendizzardAddress"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GameStatus",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Active"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Ended"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GameOutcome",
+      "fields": [
+        {
+          "doc": "",
+          "name": "game_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "player1",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "player2",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "session_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "winner",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Update the contract WASM hash (upgrade contract)\\n\\n# Arguments\\n* `new_wasm_hash` - The hash of the new WASM binary\\n\\n# Errors\\n* `NotAdmin` - If caller is not the admin",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get game information.\\n\\n# Arguments\\n* `game_id` - The ID of the game\\n\\n# Returns\\n* `Game` - The game state (includes winning number after game ends)",
+      "name": "get_game",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "game_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "Game"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the current admin address\\n\\n# Returns\\n* `Address` - The admin address",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Set a new admin address\\n\\n# Arguments\\n* `new_admin` - The new admin address\\n\\n# Errors\\n* `NotAdmin` - If caller is not the current admin",
+      "name": "set_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Make a guess for the current game.\\nPlayers can guess a number between 1 and 10.\\n\\n# Arguments\\n* `game_id` - The ID of the game\\n* `player` - Address of the player making the guess\\n* `guess` - The guessed number (1-10)",
+      "name": "make_guess",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "game_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "guess",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Start a new game between two players with FP wagers.\\nThis creates a session in Blendizzard and locks FP before starting the game.\\n\\n**CRITICAL:** This method requires authorization from THIS contract (not players).\\nBlendizzard will call `game_id.require_auth()` which checks this contract's address.\\n\\n# Arguments\\n* `session_id` - Unique session identifier (u32)\\n* `player1` - Address of first player\\n* `player2` - Address of second player\\n* `player1_wager` - FP amount player1 is wagering\\n* `player2_wager` - FP amount player2 is wagering\\n\\n# Returns\\n* `u32` - The game ID",
+      "name": "start_game",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "session_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "player1",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "player2",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "player1_wager",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "player2_wager",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u32",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initialize the contract with Blendizzard address and admin\\n\\n# Arguments\\n* `admin` - Admin address (can upgrade contract)\\n* `blendizzard` - Address of the Blendizzard contract",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "blendizzard",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Reveal the winner of the game and submit outcome to Blendizzard.\\nCan only be called after both players have made their guesses.\\nThis ends the Blendizzard session, unlocks FP, and updates faction standings.\\n\\n# Arguments\\n* `game_id` - The ID of the game\\n\\n# Returns\\n* `Address` - Address of the winning player",
+      "name": "reveal_winner",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "game_id",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the current Blendizzard contract address\\n\\n# Returns\\n* `Address` - The Blendizzard contract address",
+      "name": "get_blendizzard",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Set a new Blendizzard contract address\\n\\n# Arguments\\n* `new_blendizzard` - The new Blendizzard contract address\\n\\n# Errors\\n* `NotAdmin` - If caller is not the admin",
+      "name": "set_blendizzard",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_blendizzard",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  }
+]
