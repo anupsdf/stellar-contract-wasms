@@ -1,0 +1,22 @@
+[
+  "bytes_append",
+  "bytes_len",
+  "bytes_new",
+  "compute_hash_sha256",
+  "create_contract_with_constructor",
+  "get_contract_data",
+  "get_current_contract_address",
+  "has_contract_data",
+  "map_get",
+  "map_has",
+  "map_new",
+  "map_new_from_linear_memory",
+  "map_put",
+  "map_unpack_to_linear_memory",
+  "put_contract_data",
+  "require_auth",
+  "serialize_to_bytes",
+  "try_call",
+  "update_current_contract_wasm",
+  "vec_new_from_linear_memory"
+]

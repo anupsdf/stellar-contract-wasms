@@ -1,0 +1,318 @@
+[
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "",
+          "name": "XAssetDeployFailed",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "AssetAlreadyDeployed",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "AssetAdminSetFailed",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "NoSuchAsset",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "AssetUpgradeFailed",
+          "value": 5
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "Storage",
+      "fields": [
+        {
+          "doc": "A map of deployed asset contracts to their asset symbol.\\nThis is used to check if a contract is a valid asset contract\\nand to get the asset symbol from the contract address.\\nThe key is the asset symbol, the value is the asset contract address.",
+          "name": "assets",
+          "type_": {
+            "map": {
+              "key_type": "string",
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "Wasm hash of the xasset contract",
+          "name": "wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        },
+        {
+          "doc": "XLM oracle contract, initialized and then passed\\nto deployed xasset contracts",
+          "name": "xlm_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "XLM SAC contract address; initialized and then passed\\nto deployed xasset contracts",
+          "name": "xlm_sac",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "xlm_sac",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "xlm_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "xasset_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Update the xasset wasm hash used to deploy assets, or referenced when upgrading assets. Admin-only.",
+      "name": "update_xasset_wasm_hash",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "xasset_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "bytes_n": {
+                "n": 32
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Deploy a new xasset contract for the given asset symbol and parameters. Admin-only.",
+      "name": "deploy_asset_contract",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset_contract",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "pegged_asset",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "min_collat_ratio",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "name",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "symbol",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "decimals",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "annual_interest_rate",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the asset contract address for a given asset symbol.",
+      "name": "get_asset_contract",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset_symbol",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Manually set a new asset symbol to a contract address. Admin-only.\\nThis should only be needed if there is a change in storage, or a situation where\\nmanual intervention is required.",
+      "name": "set_asset_contract",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset_symbol",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "asset_contract",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Admin can manually set an existing asset symbol to an existing contract address.",
+      "name": "set_existing_asset_contract",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset_symbol",
+          "type_": "string"
+        },
+        {
+          "doc": "",
+          "name": "asset_contract",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Upgrade an existing asset contract to the current wasm hash. Admin-only.",
+      "name": "upgrade_existing_asset_contract",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "asset_symbol",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "address",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Upgrade the contract to new wasm. Admin-only.",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": []
+    }
+  }
+]

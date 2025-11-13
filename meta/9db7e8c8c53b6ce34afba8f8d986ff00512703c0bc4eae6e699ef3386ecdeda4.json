@@ -1,0 +1,50 @@
+[
+  {
+    "sc_meta_v0": {
+      "key": "rsver",
+      "val": "1.89.0"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "rssdkver",
+      "val": "23.0.3#6aa930b08eabfd578b7824a0d5de473cbd958282"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "authors",
+      "val": "The Aha Company <help@theaha.co>"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "binver",
+      "val": "0.0.0"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "contract",
+      "val": "true"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "name",
+      "val": "orchestrator"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "scaffold_version",
+      "val": "0.0.16"
+    }
+  },
+  {
+    "sc_meta_v0": {
+      "key": "source_repo",
+      "val": "github:EquitXCompany/equitx-project"
+    }
+  }
+]

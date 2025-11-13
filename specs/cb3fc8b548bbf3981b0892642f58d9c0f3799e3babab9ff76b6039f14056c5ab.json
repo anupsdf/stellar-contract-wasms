@@ -1,0 +1,1540 @@
+[
+  {
+    "function_v0": {
+      "doc": "Pause the contract (emergency stop)\\n\\nWhen paused, all player-facing functions are disabled except admin functions.\\nThis is an emergency mechanism to protect player funds in case of discovered vulnerabilities.\\n\\n# Errors\\n* `NotAdmin` - If caller is not the admin",
+      "name": "pause",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Check if a contract is an approved game",
+      "name": "is_game",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Unpause the contract\\n\\nRestores normal contract functionality after emergency pause.\\n\\n# Errors\\n* `NotAdmin` - If caller is not the admin",
+      "name": "unpause",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Update the contract WASM hash (upgrade contract)\\n\\n# Errors\\n* `NotAdmin` - If caller is not the admin",
+      "name": "upgrade",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_wasm_hash",
+          "type_": {
+            "bytes_n": {
+              "n": 32
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Add a game contract to the approved list\\n\\n# Errors\\n* `NotAdmin` - If caller is not the admin",
+      "name": "add_game",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "End a game session with outcome verification\\n\\nRequires game contract authorization. Both players' FP wagers are spent/burned.\\nOnly the winner's wager contributes to their faction standings.\\nZK proof verification handled client-side for MVP.\\n\\n# Errors\\n* `SessionNotFound` - If session doesn't exist\\n* `InvalidSessionState` - If session is not Pending\\n* `InvalidGameOutcome` - If outcome data doesn't match session\\n* `ProofVerificationFailed` - If ZK proof is invalid",
+      "name": "end_game",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "game_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "session_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "proof",
+          "type_": "bytes"
+        },
+        {
+          "doc": "",
+          "name": "outcome",
+          "type_": {
+            "udt": {
+              "name": "GameOutcome"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the admin address",
+      "name": "get_admin",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get epoch information\\n\\nReturns current epoch if no number specified, otherwise the specified epoch.\\n\\n# Errors\\n* `EpochNotFinalized` - If requested epoch doesn't exist",
+      "name": "get_epoch",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "epoch",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "EpochInfo"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Check if contract is paused",
+      "name": "is_paused",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Update the admin address\\n\\n# Errors\\n* `NotAdmin` - If caller is not the current admin",
+      "name": "set_admin",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get the current configuration",
+      "name": "get_config",
+      "inputs": [],
+      "outputs": [
+        {
+          "udt": {
+            "name": "Config"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get player information\\n\\nReturns complete persistent player data including selected faction, total deposited,\\nand deposit timestamp.\\n\\n# Errors\\n* `PlayerNotFound` - If player has never interacted with the contract",
+      "name": "get_player",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "Player"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Start a new game session\\n\\nLocks factions and fp for both players. If this is a player's first game\\nin the epoch, initializes their fp and locks their faction.\\n\\n# Errors\\n* `GameNotWhitelisted` - If game_id is not approved\\n* `SessionAlreadyExists` - If session_id already exists\\n* `InvalidAmount` - If wagers are <= 0\\n* `InsufficientFactionPoints` - If players don't have enough fp\\n* `ContractPaused` - If contract is in emergency pause mode",
+      "name": "start_game",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "game_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "session_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "player1",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "player2",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "player1_wager",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "player2_wager",
+          "type_": "i128"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Cycle to the next epoch\\n\\nFinalizes current epoch (determines winner, withdraws BLND, swaps to USDC,\\nsets reward pool) and opens next epoch.\\n\\n# Returns\\nThe new epoch number\\n\\n# Errors\\n* `EpochNotReady` - If not enough time has passed\\n* `EpochAlreadyFinalized` - If current epoch is already finalized\\n* `FeeVaultError` - If fee-vault operations fail\\n* `SwapError` - If BLND \\xe2\\x86\\x92 USDC swap fails",
+      "name": "cycle_epoch",
+      "inputs": [],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "u32",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Remove a game contract from the approved list\\n\\n# Errors\\n* `NotAdmin` - If caller is not the admin",
+      "name": "remove_game",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "id",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initialize the contract\\n\\nSets up the admin, external contract addresses, and creates the first epoch.\\n\\n# Arguments\\n* `admin` - Admin address (can modify config and upgrade contract)\\n* `fee_vault` - fee-vault-v2 contract address\\n* `soroswap_router` - Soroswap router contract address\\n* `blnd_token` - BLND token address\\n* `usdc_token` - USDC token address\\n* `epoch_duration` - Duration of each epoch in seconds (default: 345,600 = 4 days)\\n* `reserve_token_ids` - Reserve token IDs for claiming BLND emissions (e.g., vec![&env, 1] for reserve 0 b-tokens)\\n\\n# Errors\\n* `AlreadyInitialized` - If contract has already been initialized",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "fee_vault",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "soroswap_router",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "blnd_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "usdc_token",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "epoch_duration",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "reserve_token_ids",
+          "type_": {
+            "vec": {
+              "element_type": "u32"
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Update global configuration\\n\\nAllows admin to update specific configuration parameters.\\nOnly updates parameters that are provided (non-None).\\n\\n# Arguments\\n* `new_fee_vault` - New fee-vault-v2 contract address (optional)\\n* `new_soroswap_router` - New Soroswap router contract address (optional)\\n* `new_blnd_token` - New BLND token address (optional)\\n* `new_usdc_token` - New USDC token address (optional)\\n* `new_epoch_duration` - New epoch duration in seconds (optional)\\n* `new_reserve_token_ids` - New reserve token IDs for claiming BLND emissions (optional)\\n\\n# Errors\\n* `NotAdmin` - If caller is not the admin",
+      "name": "update_config",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "new_fee_vault",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "new_soroswap_router",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "new_blnd_token",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "new_usdc_token",
+          "type_": {
+            "option": {
+              "value_type": "address"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "new_epoch_duration",
+          "type_": {
+            "option": {
+              "value_type": "u64"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "new_reserve_token_ids",
+          "type_": {
+            "option": {
+              "value_type": {
+                "vec": {
+                  "element_type": "u32"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Migration: Update Player struct from old formats to current format\\n\\nThis migration fixes deserialization errors caused by Player struct schema changes:\\n- V0 (pre-Nov 10): Had `total_deposited` field instead of `last_epoch_balance`\\n- V1 (Nov 10-12): Had `deposit_timestamp` field instead of `time_multiplier_start`\\n- V2 (current): Uses `time_multiplier_start` and `last_epoch_balance`\\n\\nThe migration reads old formats, deletes them, and writes back the current format.\\n\\n# Usage\\nCall this for each player address that needs migration. This is typically called:\\n- By players themselves when they encounter deserialization errors\\n- By admin for known active players\\n\\n# Arguments\\n* `player` - Player address to migrate\\n\\n# Returns\\n* `true` if migration was performed (player had V0 or V1 data)\\n* `false` if player data doesn't exist or is already in V2 format",
+      "name": "migrate_player",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Select a faction for the player\\n\\nSets the player's persistent faction preference. Can be changed at ANY time.\\nIf you haven't played a game this epoch, the new faction applies immediately.\\nIf you've already played this epoch, the current epoch stays locked to your\\nold faction, and the new selection applies starting next epoch.\\n\\n# Arguments\\n* `faction` - Faction ID (0=WholeNoodle, 1=PointyStick, 2=SpecialRock)\\n\\n# Errors\\n* `InvalidFaction` - If faction ID is not 0, 1, or 2",
+      "name": "select_faction",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "faction",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Get player's epoch-specific information for the current epoch\\n\\nReturns complete epoch-specific data including locked faction, available/locked FP,\\ntotal FP contributed, and balance snapshot.\\n\\n**NEW BEHAVIOR:** If player hasn't played any games this epoch yet, calculates\\nwhat their FP WOULD be based on current vault balance without writing to storage.\\nThis allows UIs to display FP before the player's first game.\\n\\n# Errors\\n* `FactionNotSelected` - If player hasn't selected a faction yet",
+      "name": "get_epoch_player",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "udt": {
+                "name": "EpochPlayer"
+              }
+            },
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Claim epoch reward for a player for a specific epoch\\n\\nPlayers who contributed FP to the winning faction can claim their share\\nof the epoch's reward pool (USDC converted from BLND yield).\\n\\n**Note:** To check claimable amounts or claim status before calling,\\nuse transaction simulation. This is the idiomatic Soroban pattern.\\n\\n# Returns\\nAmount of USDC claimed\\n\\n# Errors\\n* `EpochNotFinalized` - If epoch doesn't exist or isn't finalized\\n* `RewardAlreadyClaimed` - If player already claimed for this epoch\\n* `NotWinningFaction` - If player wasn't in the winning faction\\n* `NoRewardsAvailable` - If player has no rewards to claim\\n* `ContractPaused` - If contract is in emergency pause mode",
+      "name": "claim_epoch_reward",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "epoch",
+          "type_": "u32"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": "i128",
+            "error_type": "error"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Migration: Update EpochPlayer storage key from old format to new format\\n\\nThis migration handles the storage key rename from DataKey::EpochUser to DataKey::EpochPlayer.\\nThe EpochPlayer struct itself hasn't changed, only the storage key name changed\\nas part of the user\\xe2\\x86\\x92player terminology standardization.\\n\\n# Usage\\nCall this for each (epoch, player) pair that might have old data. Typically called:\\n- By players when they encounter issues claiming rewards or checking epoch data\\n- By admin for active epochs with known players\\n- Can be called proactively for the current epoch\\n\\n# Arguments\\n* `epoch` - Epoch number to migrate\\n* `player` - Player address to migrate\\n\\n# Returns\\n* `true` if migration was performed (found data in old DataKey::EpochUser)\\n* `false` if data doesn't exist or is already migrated to DataKey::EpochPlayer",
+      "name": "migrate_epoch_player",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "epoch",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address"
+        }
+      ],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Global configuration\\n\\nStores contract configuration parameters.\\nNote: Admin address is stored separately via DataKey::Admin for single source of truth.\\nNote: Pause state is stored separately via DataKey::Paused for efficient access.",
+      "lib": "",
+      "name": "Config",
+      "fields": [
+        {
+          "doc": "BLND token address",
+          "name": "blnd_token",
+          "type_": "address"
+        },
+        {
+          "doc": "Duration of each epoch in seconds (default: 4 days = 345,600 seconds)",
+          "name": "epoch_duration",
+          "type_": "u64"
+        },
+        {
+          "doc": "fee-vault-v2 contract address",
+          "name": "fee_vault",
+          "type_": "address"
+        },
+        {
+          "doc": "Reserve token IDs for claiming BLND emissions from Blend pool\\nFormula: reserve_index * 2 + token_type\\ntoken_type: 0 = debt token, 1 = b-token (suppliers)\\nExample: For reserve 0 b-tokens (suppliers), use [1]",
+          "name": "reserve_token_ids",
+          "type_": {
+            "vec": {
+              "element_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "Soroswap router contract address",
+          "name": "soroswap_router",
+          "type_": "address"
+        },
+        {
+          "doc": "USDC token address",
+          "name": "usdc_token",
+          "type_": "address"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Persistent player data (across all epochs)\\n\\nStores the player's faction preference and time multiplier tracking.\\nThis persists across epoch boundaries.",
+      "lib": "",
+      "name": "Player",
+      "fields": [
+        {
+          "doc": "Player's vault balance from the previous epoch (for cross-epoch comparison)\\nUsed to detect >50% withdrawal between epochs",
+          "name": "last_epoch_balance",
+          "type_": "i128"
+        },
+        {
+          "doc": "The player's persistent faction selection (can be changed between epochs)",
+          "name": "selected_faction",
+          "type_": "u32"
+        },
+        {
+          "doc": "Timestamp when the time multiplier calculation started\\nSet when player plays their first game (with vault balance > 0)\\nReset to current time if player withdraws >50% between epochs",
+          "name": "time_multiplier_start",
+          "type_": "u64"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "OLDEST Player struct for migration purposes (pre-Nov 10)\\nUsed to read data stored with old field \"total_deposited\"",
+      "lib": "",
+      "name": "PlayerV0",
+      "fields": [
+        {
+          "doc": "",
+          "name": "deposit_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "selected_faction",
+          "type_": "u32"
+        },
+        {
+          "doc": "",
+          "name": "total_deposited",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "OLD Player struct for migration purposes (Nov 10 - Nov 12)\\nUsed to read data stored with old field name \"deposit_timestamp\"",
+      "lib": "",
+      "name": "PlayerV1",
+      "fields": [
+        {
+          "doc": "",
+          "name": "deposit_timestamp",
+          "type_": "u64"
+        },
+        {
+          "doc": "",
+          "name": "last_epoch_balance",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "selected_faction",
+          "type_": "u32"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Epoch metadata\\n\\nStores all information about an epoch including timing, standings, and rewards.",
+      "lib": "",
+      "name": "EpochInfo",
+      "fields": [
+        {
+          "doc": "Unix timestamp when this epoch ends (start_time + epoch_duration)",
+          "name": "end_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "The sequential epoch number (starts at 0)",
+          "name": "epoch_number",
+          "type_": "u32"
+        },
+        {
+          "doc": "Map of faction_id -> total fp contributed by all players\\nUsed to determine the winning faction",
+          "name": "faction_standings",
+          "type_": {
+            "map": {
+              "key_type": "u32",
+              "value_type": "i128"
+            }
+          }
+        },
+        {
+          "doc": "True if epoch has been finalized via cycle_epoch",
+          "name": "is_finalized",
+          "type_": "bool"
+        },
+        {
+          "doc": "Total USDC available for reward distribution (set during cycle_epoch)",
+          "name": "reward_pool",
+          "type_": "i128"
+        },
+        {
+          "doc": "Unix timestamp when this epoch started",
+          "name": "start_time",
+          "type_": "u64"
+        },
+        {
+          "doc": "The winning faction (None until epoch is finalized)",
+          "name": "winning_faction",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "Game session status",
+      "lib": "",
+      "name": "GameStatus",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "Game has started but not yet completed",
+            "name": "Pending"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "Game has completed with a verified outcome",
+            "name": "Completed"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "Game was cancelled (e.g., timeout)",
+            "name": "Cancelled"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Per-epoch player data\\n\\nCreated when a player first interacts with the contract in a new epoch.\\nTracks faction points and epoch-specific faction lock.\\nFP is calculated once at first game of epoch based on vault balance.",
+      "lib": "",
+      "name": "EpochPlayer",
+      "fields": [
+        {
+          "doc": "Available faction points (not locked in games)\\nCalculated once at first game of epoch and remains valid until next epoch",
+          "name": "available_fp",
+          "type_": "i128"
+        },
+        {
+          "doc": "Player's vault balance snapshot at first game of this epoch\\nCaptures the vault balance used to calculate this epoch's FP",
+          "name": "epoch_balance_snapshot",
+          "type_": "i128"
+        },
+        {
+          "doc": "The faction locked in for this epoch (locked on first game)\\nNone = not yet locked, Some(faction_id) = locked",
+          "name": "epoch_faction",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "Total faction points contributed to the player's faction this epoch\\nUsed for reward distribution calculation",
+          "name": "total_fp_contributed",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Game outcome for verification\\n\\nThis is the data structure that should be proven by the ZK proof.\\nThe proof verifies that these values are correct based on game execution.",
+      "lib": "",
+      "name": "GameOutcome",
+      "fields": [
+        {
+          "doc": "Game contract address",
+          "name": "game_id",
+          "type_": "address"
+        },
+        {
+          "doc": "First player's address",
+          "name": "player1",
+          "type_": "address"
+        },
+        {
+          "doc": "Second player's address",
+          "name": "player2",
+          "type_": "address"
+        },
+        {
+          "doc": "Unique session identifier",
+          "name": "session_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "Winner of the game\\ntrue = player1 won, false = player2 won",
+          "name": "winner",
+          "type_": "bool"
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "Game session tracking\\n\\nCreated when a game starts, updated when it ends.\\nTracks all game state including players, wagers, and outcome.",
+      "lib": "",
+      "name": "GameSession",
+      "fields": [
+        {
+          "doc": "Timestamp when game was created",
+          "name": "created_at",
+          "type_": "u64"
+        },
+        {
+          "doc": "Epoch when this game was created\\nUsed to prevent games from being completed in a different epoch",
+          "name": "epoch_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "Address of the game contract",
+          "name": "game_id",
+          "type_": "address"
+        },
+        {
+          "doc": "First player's address",
+          "name": "player1",
+          "type_": "address"
+        },
+        {
+          "doc": "Faction points wagered by player1",
+          "name": "player1_wager",
+          "type_": "i128"
+        },
+        {
+          "doc": "Second player's address",
+          "name": "player2",
+          "type_": "address"
+        },
+        {
+          "doc": "Faction points wagered by player2",
+          "name": "player2_wager",
+          "type_": "i128"
+        },
+        {
+          "doc": "Unique session identifier for this game instance",
+          "name": "session_id",
+          "type_": "u32"
+        },
+        {
+          "doc": "Current status of the game",
+          "name": "status",
+          "type_": {
+            "udt": {
+              "name": "GameStatus"
+            }
+          }
+        },
+        {
+          "doc": "Winner of the game (None until completed)\\ntrue = player1 won, false = player2 won",
+          "name": "winner",
+          "type_": {
+            "option": {
+              "value_type": "bool"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_struct_v0": {
+      "doc": "OLD EpochPlayer struct for migration purposes (pre-Nov 13)\\nUsed to read data stored with old field \"locked_fp\"",
+      "lib": "",
+      "name": "EpochPlayerV0",
+      "fields": [
+        {
+          "doc": "",
+          "name": "available_fp",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "epoch_balance_snapshot",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "epoch_faction",
+          "type_": {
+            "option": {
+              "value_type": "u32"
+            }
+          }
+        },
+        {
+          "doc": "",
+          "name": "locked_fp",
+          "type_": "i128"
+        },
+        {
+          "doc": "",
+          "name": "total_fp_contributed",
+          "type_": "i128"
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "Error codes for the Blendizzard contract\\n\\nAll errors are represented as u32 values for efficient storage and transmission.\\nError codes are grouped by category for better organization.",
+      "lib": "",
+      "name": "Error",
+      "cases": [
+        {
+          "doc": "Caller is not the admin",
+          "name": "NotAdmin",
+          "value": 1
+        },
+        {
+          "doc": "Contract has already been initialized",
+          "name": "AlreadyInitialized",
+          "value": 2
+        },
+        {
+          "doc": "Player has insufficient balance for the requested operation",
+          "name": "InsufficientBalance",
+          "value": 10
+        },
+        {
+          "doc": "Player has insufficient faction points for the requested wager",
+          "name": "InsufficientFactionPoints",
+          "value": 11
+        },
+        {
+          "doc": "Amount is invalid (e.g., zero or negative)",
+          "name": "InvalidAmount",
+          "value": 12
+        },
+        {
+          "doc": "Faction ID is invalid (must be 0, 1, or 2)",
+          "name": "InvalidFaction",
+          "value": 13
+        },
+        {
+          "doc": "Player's faction is already locked for this epoch (cannot change)",
+          "name": "FactionAlreadyLocked",
+          "value": 14
+        },
+        {
+          "doc": "Player does not exist (no deposits or interactions yet)",
+          "name": "PlayerNotFound",
+          "value": 15
+        },
+        {
+          "doc": "Player must select a faction before playing games",
+          "name": "FactionNotSelected",
+          "value": 16
+        },
+        {
+          "doc": "Game contract is not in the whitelist",
+          "name": "GameNotWhitelisted",
+          "value": 20
+        },
+        {
+          "doc": "Game session was not found",
+          "name": "SessionNotFound",
+          "value": 21
+        },
+        {
+          "doc": "Game session with this ID already exists",
+          "name": "SessionAlreadyExists",
+          "value": 22
+        },
+        {
+          "doc": "Game session is in an invalid state for this operation",
+          "name": "InvalidSessionState",
+          "value": 23
+        },
+        {
+          "doc": "Game outcome data is invalid",
+          "name": "InvalidGameOutcome",
+          "value": 24
+        },
+        {
+          "doc": "Proof verification failed (ZK proof is invalid)",
+          "name": "ProofVerificationFailed",
+          "value": 25
+        },
+        {
+          "doc": "Game is from a previous epoch and cannot be completed",
+          "name": "GameExpired",
+          "value": 26
+        },
+        {
+          "doc": "Epoch has not been finalized yet",
+          "name": "EpochNotFinalized",
+          "value": 30
+        },
+        {
+          "doc": "Epoch has already been finalized",
+          "name": "EpochAlreadyFinalized",
+          "value": 31
+        },
+        {
+          "doc": "Epoch cannot be cycled yet (not enough time has passed)",
+          "name": "EpochNotReady",
+          "value": 32
+        },
+        {
+          "doc": "No rewards available for this player in this epoch",
+          "name": "NoRewardsAvailable",
+          "value": 40
+        },
+        {
+          "doc": "Reward has already been claimed for this epoch",
+          "name": "RewardAlreadyClaimed",
+          "value": 41
+        },
+        {
+          "doc": "Player was not in the winning faction for this epoch",
+          "name": "NotWinningFaction",
+          "value": 42
+        },
+        {
+          "doc": "fee-vault-v2 operation failed",
+          "name": "FeeVaultError",
+          "value": 50
+        },
+        {
+          "doc": "Soroswap swap operation failed",
+          "name": "SwapError",
+          "value": 51
+        },
+        {
+          "doc": "Token transfer operation failed",
+          "name": "TokenTransferError",
+          "value": 52
+        },
+        {
+          "doc": "Arithmetic overflow occurred",
+          "name": "OverflowError",
+          "value": 60
+        },
+        {
+          "doc": "Division by zero attempted",
+          "name": "DivisionByZero",
+          "value": 61
+        },
+        {
+          "doc": "Contract is paused (emergency stop activated)",
+          "name": "ContractPaused",
+          "value": 70
+        }
+      ]
+    }
+  },
+  {
+    "event_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GameAdded",
+      "prefix_topics": [
+        "game_added"
+      ],
+      "params": [
+        {
+          "doc": "",
+          "name": "game_id",
+          "type_": "address",
+          "location": "data"
+        }
+      ],
+      "data_format": "map"
+    }
+  },
+  {
+    "event_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GameEnded",
+      "prefix_topics": [
+        "game_ended"
+      ],
+      "params": [
+        {
+          "doc": "",
+          "name": "game_id",
+          "type_": "address",
+          "location": "topic_list"
+        },
+        {
+          "doc": "",
+          "name": "session_id",
+          "type_": "u32",
+          "location": "topic_list"
+        },
+        {
+          "doc": "",
+          "name": "winner",
+          "type_": "address",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "loser",
+          "type_": "address",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "fp_contributed",
+          "type_": "i128",
+          "location": "data"
+        }
+      ],
+      "data_format": "map"
+    }
+  },
+  {
+    "event_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "EpochCycled",
+      "prefix_topics": [
+        "epoch_cycled"
+      ],
+      "params": [
+        {
+          "doc": "",
+          "name": "old_epoch",
+          "type_": "u32",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "new_epoch",
+          "type_": "u32",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "winning_faction",
+          "type_": "u32",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "reward_pool",
+          "type_": "i128",
+          "location": "data"
+        }
+      ],
+      "data_format": "map"
+    }
+  },
+  {
+    "event_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GameRemoved",
+      "prefix_topics": [
+        "game_removed"
+      ],
+      "params": [
+        {
+          "doc": "",
+          "name": "game_id",
+          "type_": "address",
+          "location": "data"
+        }
+      ],
+      "data_format": "map"
+    }
+  },
+  {
+    "event_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "GameStarted",
+      "prefix_topics": [
+        "game_started"
+      ],
+      "params": [
+        {
+          "doc": "",
+          "name": "game_id",
+          "type_": "address",
+          "location": "topic_list"
+        },
+        {
+          "doc": "",
+          "name": "session_id",
+          "type_": "u32",
+          "location": "topic_list"
+        },
+        {
+          "doc": "",
+          "name": "player1",
+          "type_": "address",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "player2",
+          "type_": "address",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "player1_wager",
+          "type_": "i128",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "player2_wager",
+          "type_": "i128",
+          "location": "data"
+        }
+      ],
+      "data_format": "map"
+    }
+  },
+  {
+    "event_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "AdminChanged",
+      "prefix_topics": [
+        "admin_changed"
+      ],
+      "params": [
+        {
+          "doc": "",
+          "name": "old_admin",
+          "type_": "address",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "new_admin",
+          "type_": "address",
+          "location": "data"
+        }
+      ],
+      "data_format": "map"
+    }
+  },
+  {
+    "event_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "ConfigUpdated",
+      "prefix_topics": [
+        "config_updated"
+      ],
+      "params": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address",
+          "location": "data"
+        }
+      ],
+      "data_format": "map"
+    }
+  },
+  {
+    "event_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FactionLocked",
+      "prefix_topics": [
+        "faction_locked"
+      ],
+      "params": [
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address",
+          "location": "topic_list"
+        },
+        {
+          "doc": "",
+          "name": "epoch",
+          "type_": "u32",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "faction",
+          "type_": "u32",
+          "location": "data"
+        }
+      ],
+      "data_format": "map"
+    }
+  },
+  {
+    "event_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "RewardsClaimed",
+      "prefix_topics": [
+        "rewards_claimed"
+      ],
+      "params": [
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address",
+          "location": "topic_list"
+        },
+        {
+          "doc": "",
+          "name": "epoch",
+          "type_": "u32",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "faction",
+          "type_": "u32",
+          "location": "data"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i128",
+          "location": "data"
+        }
+      ],
+      "data_format": "map"
+    }
+  },
+  {
+    "event_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "FactionSelected",
+      "prefix_topics": [
+        "faction_selected"
+      ],
+      "params": [
+        {
+          "doc": "",
+          "name": "player",
+          "type_": "address",
+          "location": "topic_list"
+        },
+        {
+          "doc": "",
+          "name": "faction",
+          "type_": "u32",
+          "location": "data"
+        }
+      ],
+      "data_format": "map"
+    }
+  },
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "Admin address - singleton (Instance storage)",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "Global configuration - singleton (Instance storage)",
+            "name": "Config"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "Current epoch number - singleton (Instance storage)",
+            "name": "CurrentEpoch"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "Pause state - singleton (Instance storage)",
+            "name": "Paused"
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "OLD - Player persistent data (for migration only - DO NOT USE)\\nThis variant exists only to support migration from old storage keys",
+            "name": "User",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "Player persistent data - Player(player_address) -> Player (Persistent storage)",
+            "name": "Player",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "OLD - Player epoch-specific data (for migration only - DO NOT USE)\\nThis variant exists only to support migration from old storage keys",
+            "name": "EpochUser",
+            "type_": [
+              "u32",
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "Player epoch-specific data - EpochPlayer(epoch_number, player_address) -> EpochPlayer (Temporary storage)",
+            "name": "EpochPlayer",
+            "type_": [
+              "u32",
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "Epoch metadata - Epoch(epoch_number) -> EpochInfo (Temporary storage)",
+            "name": "Epoch",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "Game session data - Session(session_id) -> GameSession (Temporary storage)",
+            "name": "Session",
+            "type_": [
+              "u32"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "Whitelisted game contracts - Game(game_address) -> bool (Persistent storage)",
+            "name": "Game",
+            "type_": [
+              "address"
+            ]
+          }
+        },
+        {
+          "tuple_v0": {
+            "doc": "Reward claim tracking - Claimed(player_address, epoch_number) -> bool (Temporary storage)",
+            "name": "Claimed",
+            "type_": [
+              "address",
+              "u32"
+            ]
+          }
+        }
+      ]
+    }
+  }
+]
