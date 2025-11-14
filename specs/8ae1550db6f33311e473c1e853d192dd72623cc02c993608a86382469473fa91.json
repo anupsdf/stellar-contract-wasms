@@ -1,0 +1,332 @@
+[
+  {
+    "udt_union_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "DataKey",
+      "cases": [
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "Admin"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "CarbonID"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "CarbonSinkID"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "IsActive"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "SinkMinimum"
+          }
+        },
+        {
+          "void_v0": {
+            "doc": "",
+            "name": "ContractSuccessor"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SACError",
+      "cases": [
+        {
+          "doc": "",
+          "name": "InternalError",
+          "value": 1
+        },
+        {
+          "doc": "",
+          "name": "OperationNotSupportedError",
+          "value": 2
+        },
+        {
+          "doc": "",
+          "name": "AlreadyInitializedError",
+          "value": 3
+        },
+        {
+          "doc": "",
+          "name": "UnauthorizedError",
+          "value": 4
+        },
+        {
+          "doc": "",
+          "name": "AuthenticationError",
+          "value": 5
+        },
+        {
+          "doc": "",
+          "name": "AccountMissingError",
+          "value": 6
+        },
+        {
+          "doc": "",
+          "name": "AccountIsNotClassic",
+          "value": 7
+        },
+        {
+          "doc": "",
+          "name": "NegativeAmountError",
+          "value": 8
+        },
+        {
+          "doc": "",
+          "name": "AllowanceError",
+          "value": 9
+        },
+        {
+          "doc": "",
+          "name": "BalanceError",
+          "value": 10
+        },
+        {
+          "doc": "",
+          "name": "BalanceDeauthorizedError",
+          "value": 11
+        },
+        {
+          "doc": "",
+          "name": "OverflowError",
+          "value": 12
+        },
+        {
+          "doc": "",
+          "name": "TrustlineMissingError",
+          "value": 13
+        }
+      ]
+    }
+  },
+  {
+    "udt_error_enum_v0": {
+      "doc": "",
+      "lib": "",
+      "name": "SinkError",
+      "cases": [
+        {
+          "doc": "The contract is deactivated and cannot perform sink operations.",
+          "name": "ContractDeactivated",
+          "value": 1066
+        },
+        {
+          "doc": "The sink amount is below the minimum required amount.",
+          "name": "AmountTooLow",
+          "value": 1067
+        },
+        {
+          "doc": "A negative amount was provided, which is invalid.",
+          "name": "NegativeAmount",
+          "value": 1068
+        },
+        {
+          "doc": "The funder's balance is insufficient for the operation.",
+          "name": "InsufficientBalance",
+          "value": 1069
+        },
+        {
+          "doc": "An account or trustline ledger entry is missing for the operation.",
+          "name": "AccountOrTrustlineMissing",
+          "value": 1070
+        },
+        {
+          "doc": "The trustline limit has been reached for the recipient.",
+          "name": "TrustlineLimitReached",
+          "value": 1071
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Activates the contract, allowing sink operations.\\nRequires admin authorization and extends the instance TTL.\\n\\n## Arguments\\n\\n* `env` - The Soroban environment.",
+      "name": "activate",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Checks if the contract is currently active.\\nA deactivated contract that does not have a successor may be temporarily paused.\\nExtends the instance TTL before returning the value.\\n\\n## Arguments\\n\\n* `env` - The Soroban environment.\\n\\n## Returns\\n\\nA boolean indicating if the contract is active.",
+      "name": "is_active",
+      "inputs": [],
+      "outputs": [
+        "bool"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Deactivates the contract, preventing sink operations.\\nRequires admin authorization and extends the instance TTL.\\n\\n## Arguments\\n\\n* `env` - The Soroban environment.",
+      "name": "deactivate",
+      "inputs": [],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Resets the CarbonSINK SAC admin by setting it to the current contract admin and deactivates the contract.\\nThis is called as part of the upgrade process, before setting a new SinkContract as the CarbonSINK SAC admin.\\nRequires admin authorization and extends the instance TTL.\\n\\n## Arguments\\n\\n* `env` - The Soroban environment.\\n\\n## Returns\\n\\nThe address of the admin.",
+      "name": "reset_admin",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sinks CARBON tokens by burning them from the `funder` and minting equivalent CarbonSINK tokens to the `recipient`.\\nQuantizes the amount to kg resolution, checks minimum requirements, and handles authorization for CarbonSINK minting.\\nEmits an event if the Mercury feature is enabled, otherwise performs the full sink operation.\\n\\n## Arguments\\n\\n* `env` - The Soroban environment.\\n* `funder` - The address funding the sink operation (spends CARBON).\\n* `recipient` - The address receiving the CarbonSINK tokens.\\n* `amount` - The amount of CARBON to sink in decigrams.\\n* `project_id` - The impact project ID (e.g. VCS1360).\\n* `memo_text` - A retirement reason or transaction reference.\\n\\n## Returns\\n\\nA Result indicating success (unit type) or a `SinkError`.\\n\\n## Errors\\n\\n* `AmountTooLow` - The quantized amount is below the minimum sink amount.\\n* `InsufficientBalance` - The funder's CARBON balance is insufficient.\\n* `AccountOrTrustlineMissing` - The funder or recipient has a missing trustline or account.\\n* `TrustlineLimitReached",
+      "name": "sink_carbon",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "funder",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "recipient",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i64"
+        },
+        {
+          "doc": "",
+          "name": "project_id",
+          "type_": "symbol"
+        },
+        {
+          "doc": "",
+          "name": "memo_text",
+          "type_": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SinkError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Initializes the SinkContract with the admin, CARBON asset ID, and CarbonSINK asset ID.\\nSets up initial storage values including admin, asset IDs, active status, and minimum sink amount.\\nThis constructor must be called once during contract deployment.\\n\\n## Arguments\\n\\n* `env` - The Soroban environment.\\n* `admin` - The address of the contract administrator.\\n* `carbon_id` - The address of the CARBON asset contract.\\n* `carbonsink_id` - The address of the CarbonSINK asset contract.",
+      "name": "__constructor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "admin",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "carbon_id",
+          "type_": "address"
+        },
+        {
+          "doc": "",
+          "name": "carbonsink_id",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the contract successor address, or the current contract address if no successor is set.\\nNote that the successor contract may itself already be superseded by another contract.\\nTo find the latest active contract, call this function on each successor until it returns its own address.\\nExtends the instance TTL before returning the value.\\n\\n## Arguments\\n\\n* `env` - The Soroban environment.\\n\\n## Returns\\n\\nThe successor address or the current contract address.",
+      "name": "get_contract_successor",
+      "inputs": [],
+      "outputs": [
+        "address"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sets the contract successor address for upgrades.\\nRequires admin authorization and extends the instance TTL.\\n\\n## Arguments\\n\\n* `env` - The Soroban environment.\\n* `successor` - The address of the successor contract.",
+      "name": "set_contract_successor",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "successor",
+          "type_": "address"
+        }
+      ],
+      "outputs": []
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Retrieves the minimum sink amount required for a sink operation.\\nExtends the instance TTL before returning the value.\\n\\n## Arguments\\n\\n* `env` - The Soroban environment.\\n\\n## Returns\\n\\nThe minimum sink amount as an i64.",
+      "name": "get_minimum_sink_amount",
+      "inputs": [],
+      "outputs": [
+        "i64"
+      ]
+    }
+  },
+  {
+    "function_v0": {
+      "doc": "Sets the minimum sink amount for sink operations.\\nRequires admin authorization, validates the amount is non-negative, and extends the instance TTL.\\n\\n## Arguments\\n\\n* `env` - The Soroban environment.\\n* `amount` - The new minimum sink amount (must be >= 0).\\n\\n## Returns\\n\\nA Result indicating success or an error if the amount is negative.\\n\\n## Errors\\n\\n* `NegativeAmount` - The provided amount must be positive.",
+      "name": "set_minimum_sink_amount",
+      "inputs": [
+        {
+          "doc": "",
+          "name": "amount",
+          "type_": "i64"
+        }
+      ],
+      "outputs": [
+        {
+          "result": {
+            "ok_type": {
+              "tuple": {
+                "value_types": []
+              }
+            },
+            "error_type": {
+              "udt": {
+                "name": "SinkError"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+]

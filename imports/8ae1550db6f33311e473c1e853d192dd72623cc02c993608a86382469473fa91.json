@@ -1,0 +1,18 @@
+[
+  "call",
+  "contract_event",
+  "extend_current_contract_instance_and_code_ttl",
+  "fail_with_error",
+  "get_contract_data",
+  "get_current_contract_address",
+  "has_contract_data",
+  "obj_from_i128_pieces",
+  "obj_from_i64",
+  "obj_to_i64",
+  "put_contract_data",
+  "require_auth",
+  "string_new_from_linear_memory",
+  "symbol_new_from_linear_memory",
+  "try_call",
+  "vec_new_from_linear_memory"
+]
