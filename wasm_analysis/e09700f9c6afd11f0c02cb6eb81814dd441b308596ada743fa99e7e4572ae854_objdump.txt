@@ -1,0 +1,96 @@
+
+e09700f9c6afd11f0c02cb6eb81814dd441b308596ada743fa99e7e4572ae854.wasm:	file format wasm 0x1
+
+Section Details:
+
+Type[2]:
+ - type[0] (i64, i64) -> i64
+ - type[1] () -> nil
+Function[4]:
+ - func[0] sig=0 <add>
+ - func[1] sig=1
+ - func[2] sig=1
+ - func[3] sig=1 <_>
+Memory[1]:
+ - memory[0] pages: initial=16
+Global[3]:
+ - global[0] i32 mutable=1 - init i32=1048576
+ - global[1] i32 mutable=0 <__data_end> - init i32=1048576
+ - global[2] i32 mutable=0 <__heap_base> - init i32=1048576
+Export[5]:
+ - memory[0] -> "memory"
+ - func[0] <add> -> "add"
+ - func[3] <_> -> "_"
+ - global[1] -> "__data_end"
+ - global[2] -> "__heap_base"
+Code[4]:
+ - func[0] size=80 <add>
+ - func[1] size=9
+ - func[2] size=3
+ - func[3] size=2 <_>
+Custom:
+ - name: "contractspecv0"
+Custom:
+ - name: "contractenvmetav0"
+Custom:
+ - name: "contractmetav0"
+
+Code Disassembly:
+
+000070 func[0] <add>:
+ 000071: 02 7f                      | local[2..3] type=i32
+ 000073: 02 40                      | block
+ 000075: 02 40                      |   block
+ 000077: 20 00                      |     local.get 0
+ 000079: 42 ff 01                   |     i64.const 255
+ 00007c: 83                         |     i64.and
+ 00007d: 42 05                      |     i64.const 5
+ 00007f: 52                         |     i64.ne
+ 000080: 0d 00                      |     br_if 0
+ 000082: 20 01                      |     local.get 1
+ 000084: 42 ff 01                   |     i64.const 255
+ 000087: 83                         |     i64.and
+ 000088: 42 05                      |     i64.const 5
+ 00008a: 52                         |     i64.ne
+ 00008b: 0d 00                      |     br_if 0
+ 00008d: 20 01                      |     local.get 1
+ 00008f: 42 20                      |     i64.const 32
+ 000091: 88                         |     i64.shr_u
+ 000092: a7                         |     i32.wrap_i64
+ 000093: 22 02                      |     local.tee 2
+ 000095: 41 00                      |     i32.const 0
+ 000097: 48                         |     i32.lt_s
+ 000098: 20 00                      |     local.get 0
+ 00009a: 42 20                      |     i64.const 32
+ 00009c: 88                         |     i64.shr_u
+ 00009d: a7                         |     i32.wrap_i64
+ 00009e: 22 03                      |     local.tee 3
+ 0000a0: 20 02                      |     local.get 2
+ 0000a2: 6a                         |     i32.add
+ 0000a3: 22 02                      |     local.tee 2
+ 0000a5: 20 03                      |     local.get 3
+ 0000a7: 48                         |     i32.lt_s
+ 0000a8: 47                         |     i32.ne
+ 0000a9: 0d 01                      |     br_if 1
+ 0000ab: 20 02                      |     local.get 2
+ 0000ad: ad                         |     i64.extend_i32_u
+ 0000ae: 42 20                      |     i64.const 32
+ 0000b0: 86                         |     i64.shl
+ 0000b1: 42 05                      |     i64.const 5
+ 0000b3: 84                         |     i64.or
+ 0000b4: 0f                         |     return
+ 0000b5: 0b                         |   end
+ 0000b6: 00                         |   unreachable
+ 0000b7: 0b                         | end
+ 0000b8: 10 81 80 80 80 00          | call 1
+ 0000be: 00                         | unreachable
+ 0000bf: 0b                         | end
+0000c1 func[1]:
+ 0000c2: 10 82 80 80 80 00          | call 2
+ 0000c8: 00                         | unreachable
+ 0000c9: 0b                         | end
+0000cb func[2]:
+ 0000cc: 00                         | unreachable
+ 0000cd: 0b                         | end
+0000cf func[3] <_>:
+ 0000d0: 0b                         | end

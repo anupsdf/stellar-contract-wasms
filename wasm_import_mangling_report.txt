@@ -1,0 +1,15 @@
+WASM Import Mangling Analysis Report
+Checking for potential impact from Rust bug (rust-lang/rust#148363)
+Date: Thu Nov 13 22:53:24 PST 2025
+======================================================================
+
+NOTE: These Stellar Soroban contracts use the Soroban environment interface
+defined in rs-soroban-env/env.json (v24.0.0) which uses intentionally
+shortened import names (e.g., b.k, l._, v._) for WASM size optimization.
+This is the correct and expected pattern, not a mangling bug.
+
+Reference: https://github.com/stellar/rs-soroban-env/blob/v24.0.0/soroban-env-common/env.json
+
+======================================================================
+Summary: 0 potentially affected out of 43 analyzed
+
