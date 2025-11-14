@@ -304,6 +304,10 @@ jobs:
         run: >
           cargo run --locked --release --manifest-path .scripts/imports-usage/Cargo.toml imports analysis/
 
+      - name: Run find rsver 1.91.0 script
+        run: >
+          ./find_rsver_1910.sh | tee find_rsver_1910_results.txt
+
       - name: Commit contracts
         id: commit
         run: |
@@ -316,6 +320,7 @@ jobs:
           git add specs/
           git add imports/
           git add instances/
+          git add find_rsver_1910_results.txt
           git commit -m "Update contracts from buckets" || echo "No changes to commit"
           git push
           echo "commit-sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
